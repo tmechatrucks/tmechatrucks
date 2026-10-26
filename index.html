@@ -1030,6 +1030,47 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   }
 }
 
+
+/* HOMEPAGE ONLY: REFINED PHONE / TABLET LAYOUT */
+@media (max-width: 850px) {
+  .tm-header-inner { flex-wrap: nowrap; gap: 8px; }
+  .tm-brand { flex: 1 1 auto; min-width: 0; gap: 8px; }
+  .tm-brand img { width: 49px; height: 49px; }
+  .tm-brand-name { font-size: 14px; line-height: 1.2; }
+  .tm-brand-tagline { font-size: 9px; letter-spacing: .5px; }
+  .tm-header-controls { flex: 0 0 auto; gap: 7px; }
+  .tm-nav { position: absolute; top: 100%; left: 0; right: 0;
+    width: 100%; display: none; flex-direction: column;
+    align-items: stretch; gap: 0; padding: 8px 4% 16px;
+    background: #fff; box-shadow: 0 12px 18px #0002;
+    max-height: calc(100dvh - 78px); overflow-y: auto; z-index: 1001; }
+  .tm-nav.tm-nav-open { display: flex; }
+  .hero { width: 94%; margin: 12px auto 0; border-radius: 15px; overflow: hidden; }
+  .site-footer { width: 94%; margin: 18px auto 12px;
+    border-radius: 15px; overflow: hidden; }
+  .btn { min-height: 38px; padding: 9px 14px; font-size: 12px; border-radius: 8px; }
+  .button-row > div { display: flex; flex-wrap: wrap; gap: 9px; }
+  .button-row .btn { width: auto; flex: 0 1 auto; max-width: 100%; }
+  .testimonials-actions a.btn { padding: 9px 14px; font-size: 12px; }
+}
+@media (max-width: 560px) {
+  .tm-header-inner { width: 96%; gap: 5px; }
+  .tm-brand { gap: 5px; }
+  .tm-brand img { width: 43px; height: 43px; }
+  .tm-brand-name { font-size: 12px; overflow-wrap: normal; }
+  .tm-brand-tagline { font-size: 8px; letter-spacing: .2px; }
+  .tm-language { width: 62px; }
+  .button-row .btn { width: auto; flex: 0 1 auto; }
+  .site-footer { padding: 30px 0 18px; }
+  .footer-grid { gap: 16px; padding-bottom: 18px; }
+  .footer-links { gap: 5px; }
+  .footer-grid p, .footer-grid a { font-size: 12px; }
+}
+@media (max-width: 360px) {
+  .tm-brand img { width: 37px; height: 37px; }
+  .tm-brand-name { font-size: 11px; }
+  .tm-brand-tagline { font-size: 7px; }
+}
 </style>
 </head>
 
@@ -2329,6 +2370,20 @@ menuToggle.addEventListener("click", function() {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
   menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
   menuToggle.textContent = isOpen ? "×" : "☰";
+});
+
+// Close mobile navigation when clicking/tapping outside it.
+document.addEventListener("pointerdown", function(event) {
+  if (!mainNav.classList.contains("tm-nav-open")) return;
+  if (mainNav.contains(event.target) || menuToggle.contains(event.target)) return;
+  closeMobileMenu();
+});
+
+// Close an open mobile menu if the layout returns to desktop.
+window.addEventListener("resize", function() {
+  if (window.innerWidth > 850 && mainNav.classList.contains("tm-nav-open")) {
+    closeMobileMenu();
+  }
 });
 
 document.querySelectorAll('[data-show-about="true"]').forEach((link) => {
