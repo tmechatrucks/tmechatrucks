@@ -1,0 +1,2449 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Explore truck sales, spare parts, repairs, diagnostics and technical services from T-MechaTrucks & Parts Ltd in Kigali, Rwanda.">
+
+  <meta name="theme-color" content="#082b50">
+
+  <title>Our Services | T-MechaTrucks & Parts Ltd</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+  <style>
+
+    :root {
+
+      --navy: #082b50;
+
+      --deep: #041628;
+
+      --orange: #ff8a00;
+
+      --gold: #c49a32;
+
+      --white: #fff;
+
+      --muted: #667085;
+
+      --light: #f4f7fb;
+
+      --border: #e3e9f0;
+
+      --shadow: 0 10px 30px rgba(4, 22, 40, .09);
+
+    }
+
+
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+
+      margin: 0;
+
+      color: #263547;
+
+      background: #fff;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      line-height: 1.65;
+
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    button, select { font: inherit; }
+
+    .tm-container { width: min(1200px, 92%); margin-inline: auto; }
+
+
+
+    /* HEADER */
+
+    .tm-header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      background: #fff;
+
+      box-shadow: 0 3px 16px rgba(0,0,0,.08);
+
+    }
+
+    .tm-header-inner {
+
+      width: min(1320px, 94%);
+
+      min-height: 82px;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+    }
+
+    .tm-brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      min-width: 0;
+
+    }
+
+    .tm-brand img { width: 58px; height: 58px; object-fit: contain; }
+
+    .tm-brand-text { min-width: 0; }
+
+    .tm-brand-text strong {
+
+      display: block;
+
+      color: var(--navy);
+
+      font-size: 16px;
+
+      line-height: 1.25;
+
+    }
+
+    .tm-brand-text span {
+
+      display: block;
+
+      margin-top: 4px;
+
+      color: var(--orange);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+    }
+
+    .tm-nav {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 17px;
+
+    }
+
+    .tm-nav a {
+
+      color: var(--navy);
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+
+      transition: color .2s;
+
+    }
+
+    .tm-nav a:hover, .tm-nav a.active { color: var(--orange); }
+
+    .tm-header-actions { display: flex; align-items: center; gap: 12px; }
+
+    .tm-language {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+      padding: 7px 9px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #fff;
+
+      color: var(--navy);
+
+      font-weight: 700;
+
+      font-size: 12px;
+
+      cursor: pointer;
+
+      max-width: 112px;
+
+    }
+
+    .tm-menu-toggle {
+
+      display: none;
+
+      width: 42px;
+
+      height: 42px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #fff;
+
+      color: var(--navy);
+
+      font-size: 24px;
+
+      cursor: pointer;
+
+    }
+
+
+
+    /* HERO */
+
+    .services-hero {
+
+      position: relative;
+
+      isolation: isolate;
+
+      overflow: hidden;
+
+      padding: 100px 0 92px;
+
+      color: #fff;
+
+      text-align: center;
+
+      background: var(--deep) url("images/combo12.png") center 48% / cover no-repeat;
+
+    }
+
+    .services-hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -1;
+
+      background: linear-gradient(110deg, rgba(4,22,40,.94), rgba(8,43,80,.78));
+
+    }
+
+    .hero-label {
+
+      display: inline-block;
+
+      padding: 7px 15px;
+
+      border: 1px solid rgba(255,255,255,.35);
+
+      border-radius: 30px;
+
+      color: #ffd28e;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+
+    }
+
+    .services-hero h1 {
+
+      margin: 18px 0 12px;
+
+      color: #fff;
+
+      font-size: clamp(36px, 5vw, 58px);
+
+      line-height: 1.15;
+
+    }
+
+    .services-hero h1 span { color: var(--orange); }
+
+    .services-hero p {
+
+      max-width: 760px;
+
+      margin: 0 auto 27px;
+
+      color: #edf3fa;
+
+      font-size: 16px;
+
+    }
+
+    .hero-buttons {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      gap: 12px;
+
+    }
+
+    .tm-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      min-height: 45px;
+
+      padding: 11px 20px;
+
+      border: 0;
+
+      border-radius: 6px;
+
+      background: var(--orange);
+
+      color: #fff;
+
+      font-size: 13px;
+
+      font-weight: 800;
+      cursor: pointer;
+
+    transition: transform .2s, background .2s;
+
+    }
+
+    .tm-button:hover { transform: translateY(-2px); background: #e97800; }
+
+    .tm-button-outline {
+
+      border: 1px solid rgba(255,255,255,.7);
+
+      background: transparent;
+
+    }
+
+    .tm-button-outline:hover { background: rgba(255,255,255,.12); }
+
+
+
+    /* INTRO */
+
+    .services-intro { padding: 55px 0 25px; text-align: center; }
+
+    .section-kicker {
+
+      margin: 0 0 8px;
+
+      color: var(--orange);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+
+      text-transform: uppercase;
+
+    }
+
+    .services-intro h2 {
+
+      margin: 0 0 12px;
+
+      color: var(--navy);
+
+      font-size: clamp(26px, 3vw, 36px);
+
+      line-height: 1.25;
+
+    }
+
+    .services-intro > p:last-child {
+
+      max-width: 780px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+    }
+
+
+
+    /* SERVICE GROUPS AND CARDS */
+
+    .services-content { padding: 25px 0 70px; }
+
+    .service-group { margin-top: 42px; scroll-margin-top: 110px; }
+
+    .group-heading {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 22px;
+
+    }
+
+    .group-number {
+
+      display: grid;
+
+      place-items: center;
+
+      flex: 0 0 48px;
+
+      width: 48px;
+
+      height: 48px;
+
+      border-radius: 12px;
+
+      background: var(--navy);
+
+      color: #fff;
+
+      font-size: 19px;
+
+      font-weight: 800;
+
+    }
+
+    .group-heading h2 {
+
+      margin: 0;
+
+      color: var(--navy);
+
+      font-size: clamp(20px, 2.5vw, 27px);
+
+      line-height: 1.25;
+
+    }
+
+    .group-heading p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+    .service-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      gap: 22px;
+
+    }
+
+    .service-card {
+
+      display: flex;
+
+      flex-direction: column;
+
+      min-width: 0;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      background: #fff;
+
+      box-shadow: 0 4px 18px rgba(4,22,40,.04);
+
+      transition: transform .22s, box-shadow .22s;
+
+    }
+
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+    .service-image {
+
+      position: relative;
+
+      height: 205px;
+
+      overflow: hidden;
+
+      background: #e8edf3;
+
+    }
+
+    .service-image img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform .35s;
+
+    }
+
+    .service-card:hover .service-image img { transform: scale(1.045); }
+
+    .service-number {
+
+      position: absolute;
+
+      left: 13px;
+
+      top: 13px;
+
+      display: grid;
+
+      place-items: center;
+
+      width: 37px;
+
+      height: 37px;
+
+      border-radius: 50%;
+
+      background: var(--orange);
+
+      color: #fff;
+
+      font-weight: 800;
+
+      box-shadow: 0 3px 10px rgba(0,0,0,.15);
+
+    }
+
+    .service-body {
+
+      display: flex;
+
+      flex: 1;
+
+      flex-direction: column;
+
+      padding: 20px;
+
+    }
+
+    .service-body h3 {
+
+      margin: 0 0 10px;
+
+      color: var(--navy);
+
+      font-size: 19px;
+
+      line-height: 1.35;
+
+    }
+
+    .service-body > p {
+
+      margin: 0 0 15px;
+
+      color: #596779;
+
+      font-size: 13px;
+
+      line-height: 1.75;
+
+    }
+
+    .service-features {
+
+      display: grid;
+
+      gap: 8px;
+
+      margin: 0 0 20px;
+
+      padding: 0;
+
+      list-style: none;
+
+    }
+
+    .service-features li {
+
+      position: relative;
+
+      padding-left: 21px;
+
+      color: #344458;
+
+      font-size: 12px;
+
+      line-height: 1.55;
+
+    }
+
+    .service-features li::before {
+
+      content: "✓";
+
+      position: absolute;
+
+      left: 0;
+
+      top: 0;
+
+      color: var(--orange);
+
+      font-weight: 900;
+
+    }
+
+    .service-card .tm-button { width: 100%; margin-top: auto; }
+
+
+
+    /* CONTACT CTA */
+
+    .services-cta {
+
+      padding: 55px 0;
+
+      background: linear-gradient(120deg, var(--deep), var(--navy));
+
+      color: #fff;
+
+      text-align: center;
+
+    }
+
+    .services-cta h2 {
+
+      margin: 0 0 12px;
+
+      color: #fff;
+
+      font-size: clamp(25px, 3vw, 35px);
+
+    }
+
+    .services-cta p {
+
+      max-width: 720px;
+
+      margin: 0 auto 23px;
+
+      color: #e5edf7;
+
+      font-size: 14px;
+
+    }
+
+
+
+    /* FOOTER */
+
+    .tm-footer { padding: 28px 0; background: #020f1d; color: #d5deea; }
+
+    .tm-footer-inner {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+    }
+
+    .tm-footer p { margin: 0; font-size: 12px; }
+
+    .tm-footer a { color: #fff; }
+
+    .tm-footer a:hover { color: var(--orange); }
+
+
+
+    /* FLOATING CONTACT BUTTONS */
+
+    .tm-floating {
+
+      position: fixed;
+
+      right: 18px;
+
+      bottom: 20px;
+
+      z-index: 1100;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 11px;
+
+    }
+
+    .tm-float-button {
+
+      display: grid;
+
+      place-items: center;
+
+      width: 49px;
+
+      height: 49px;
+
+      border-radius: 50%;
+
+      color: #fff;
+
+      box-shadow: 0 4px 15px rgba(0,0,0,.22);
+
+      transition: transform .2s;
+
+    }
+
+    .tm-float-button:hover { transform: scale(1.08); }
+
+    .tm-float-call { background: var(--navy); }
+
+    .tm-float-whatsapp { background: #20b968; }
+
+    .tm-float-button svg { width: 23px; height: 23px; fill: currentColor; }
+
+
+
+    @media (max-width: 1100px) {
+
+      .tm-nav { gap: 10px; }
+
+      .tm-nav a { font-size: 12px; }
+
+      .tm-brand-text strong { font-size: 14px; }
+
+      .tm-brand-text span { font-size: 10px; }
+
+      .tm-header-inner { gap: 12px; }
+
+    }
+
+    @media (max-width: 900px) {
+
+      .tm-menu-toggle { display: block; }
+
+      .tm-header-inner { min-height: 74px; }
+
+      .tm-brand img { width: 50px; height: 50px; }
+
+      .tm-nav {
+
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+
+        right: 0;
+
+        padding: 15px 5% 20px;
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background: #fff;
+
+        box-shadow: 0 12px 18px rgba(0,0,0,.1);
+
+      }
+
+      .tm-nav.open { display: flex; }
+
+      .tm-nav a { padding: 12px 5px; border-bottom: 1px solid var(--border); font-size: 14px; }
+
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    }
+
+    @media (max-width: 560px) {
+
+      .tm-header-inner { width: 94%; gap: 8px; }
+
+      .tm-brand { gap: 7px; }
+
+      .tm-brand img { width: 43px; height: 43px; }
+
+      .tm-brand-text strong { max-width: 155px; font-size: 12px; }
+
+      .tm-brand-text span { max-width: 155px; font-size: 9px; }
+
+      .tm-header-actions { gap: 7px; }
+
+      .tm-language { padding: 7px 5px; font-size: 11px; }
+
+      .tm-menu-toggle { width: 37px; height: 38px; font-size: 21px; }
+
+      .services-hero { padding: 75px 0 68px; }
+
+      .services-hero p { font-size: 14px; }
+
+      .services-intro { padding-top: 42px; }
+
+      .service-grid { grid-template-columns: 1fr; gap: 17px; }
+
+      .service-image { height: 220px; }
+
+      .service-body { padding: 18px; }
+
+      .group-heading { align-items: flex-start; }
+
+      .group-number { flex-basis: 42px; width: 42px; height: 42px; }
+
+      .tm-footer-inner { flex-direction: column; align-items: flex-start; }
+
+      .tm-floating { right: 12px; bottom: 13px; }
+
+      .tm-float-button { width: 45px; height: 45px; }
+
+    }
+
+
+
+/* CONSISTENT BUTTON SIZE — MOBILE */
+
+
+
+@media (max-width: 560px) {
+
+  .btn,
+
+  .button,
+
+  button,
+
+  input[type="button"],
+
+  input[type="submit"],
+
+  input[type="reset"] {
+
+    min-height: 42px;
+
+    padding: 9px 14px;
+
+    font-size: 13px;
+
+    line-height: 1.3;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+  }
+
+
+
+  .button-row {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+  }
+
+
+
+  .button-row .btn,
+
+  .button-row .button {
+
+    flex: 1 1 100%;
+
+    width: 100%;
+
+    min-width: 0;
+
+    margin: 0;
+
+  }
+
+
+
+  .center-action .btn,
+
+  .center-action .button,
+
+  .testimonial-actions .btn,
+
+  .testimonial-actions .button {
+
+    min-width: 0;
+
+    max-width: 100%;
+
+  }
+
+}
+
+  
+/* Services page final responsive refinements */
+.tm-header {border-bottom:3px solid var(--gold); position:sticky; top:0;}
+.tm-header-inner {width:min(1320px,96%);gap:14px;}
+.tm-brand {flex-shrink:0;text-decoration:none;}
+.tm-brand img {width:62px;height:62px;flex-shrink:0;}
+.tm-brand-text strong {font-size:clamp(14px,1.4vw,19px);font-weight:800;}
+.tm-brand-text span {color:var(--orange);font-size:10px;font-weight:800;letter-spacing:.6px;}
+.tm-language,.tm-menu-toggle {border:1px solid var(--gold);border-radius:8px;}
+.tm-language {width:82px;max-width:82px;min-height:40px;}
+.tm-container {width:min(1200px,calc(100% - 36px));}
+.services-hero {width:min(1200px,calc(100% - 36px));margin:22px auto 0;padding:58px 22px 56px;border-radius:16px;}
+.services-hero h1 {margin:0 0 15px;font-size:clamp(40px,6vw,72px);line-height:1.08;}
+.services-hero .hero-label {margin-bottom:16px;font-size:clamp(12px,1.5vw,15px);letter-spacing:.8px;}
+.services-hero p {margin:8px auto 0;max-width:690px;}
+.services-intro {padding:42px 0 15px;}
+.services-content {padding-top:14px;}
+.service-grid {gap:17px;}
+.service-image {height:195px;}
+.service-body {padding:17px;}
+.service-body h3 {font-size:18px;}
+.service-card .tm-button {width:auto;align-self:flex-start;min-height:34px;padding:7px 13px;font-size:11px;border-radius:7px;line-height:1.3;}
+.tm-footer {width:min(1200px,calc(100% - 36px));margin:10px auto 20px;border-radius:15px;background:var(--navy);padding:24px 0;}
+.tm-footer-inner {gap:12px;}
+@media(max-width:1050px){
+ .tm-menu-toggle {display:block;}
+ .tm-header-inner {position:relative;min-height:76px;}
+ .tm-nav {display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:12px 16px;box-shadow:0 12px 20px #04162820;border-radius:0 0 12px 12px;}
+ .tm-nav.open {display:flex;}
+ .tm-nav a {padding:11px 8px;font-size:14px;border-bottom:1px solid var(--border);}
+ .service-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:600px){
+ .tm-header-inner {width:calc(100% - 20px);min-height:70px;gap:8px;}
+ .tm-brand {flex:1 1 auto;min-width:0;gap:8px;}
+ .tm-brand img {width:47px;height:47px;}
+ .tm-brand-text strong {font-size:clamp(12px,3.35vw,15px);line-height:1.22;overflow-wrap:anywhere;}
+ .tm-brand-text span {font-size:clamp(8px,2.2vw,10px);letter-spacing:.15px;line-height:1.3;}
+ .tm-header-actions {gap:6px;flex-shrink:0;}
+ .tm-language {width:70px;max-width:70px;min-height:38px;padding:5px 2px;font-size:11px;}
+ .tm-menu-toggle {width:39px;height:39px;padding:0;font-size:23px;}
+ .tm-container {width:calc(100% - 24px);}
+ .services-hero {width:calc(100% - 24px);margin:12px auto 0;padding:32px 15px;border-radius:13px;}
+ .services-hero h1 {font-size:clamp(35px,9vw,49px);}
+ .services-hero p {font-size:13px;line-height:1.6;}
+ .services-intro {padding:34px 0 10px;}
+ .services-content {padding-bottom:38px;}
+ .service-group {margin-top:28px;}
+ .service-grid {grid-template-columns:1fr;gap:16px;}
+ .service-image {height:210px;}
+ .service-body {padding:16px;}
+ .service-card .tm-button {min-height:34px;padding:7px 12px;font-size:11px;width:auto;}
+ .tm-footer {width:calc(100% - 24px);margin:12px auto 18px;border-radius:13px;}
+ .tm-footer-inner {align-items:center;text-align:center;}
+}
+@media(max-width:370px){.tm-brand img{width:40px;height:40px}.tm-brand-text strong{font-size:11px}.tm-brand-text span{font-size:7px}.tm-language{width:64px}}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<header class="tm-header">
+
+  <div class="tm-header-inner">
+
+    <a class="tm-brand" href="index.html" aria-label="T-MechaTrucks home">
+
+      <img src="images/logo.webp" alt="T-MechaTrucks logo">
+
+      <div class="tm-brand-text">
+
+        <strong>T-MechaTrucks &amp; Parts Ltd</strong>
+
+        <span data-i18n="tagline">TRUCKS · PARTS · SERVICE</span>
+
+      </div>
+
+    </a>
+
+
+
+    <nav class="tm-nav" id="tmNav" aria-label="Main navigation">
+
+      <a href="index.html" data-i18n="navHome">Home</a>
+
+      <a href="new-product.html" data-i18n="navNewParts">New Spare Parts</a>
+
+      <a href="used-product.html" data-i18n="navUsedParts">Used Spare Parts</a>
+
+      <a href="services.html" class="active" data-i18n="navServices">Our Services</a>
+
+      <a href="index.html#about" data-i18n="navAbout">About Us</a>
+
+      <a href="index.html#contact" data-i18n="navContact">Contact</a>
+
+      <a href="testimonials.html" data-i18n="navTestimonials">Testimonials</a>
+
+    </nav>
+
+
+
+    <div class="tm-header-actions">
+
+      <select id="tmLanguage" class="tm-language" aria-label="Choose language">
+
+        <option value="en">🇬🇧 EN</option>
+
+        <option value="rw">🇷🇼 RW</option>
+
+        <option value="fr">🇫🇷 FR</option>
+
+        <option value="sw">🇹🇿 SW</option>
+
+        <option value="zh">🇨🇳 ZH</option>
+
+      </select>
+
+      <button class="tm-menu-toggle" id="tmMenuToggle" type="button"
+
+        aria-label="Open menu" aria-expanded="false" aria-controls="tmNav">☰</button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+  <section class="services-hero">
+
+    <div class="tm-container">
+
+      <h1 data-i18n="heroTitle">Our <span>Services</span></h1>
+
+      <span class="hero-label" data-i18n="heroLabel">Professional Truck Solutions</span>
+
+      <p data-i18n="heroDescription">From truck sales and spare parts to repairs, diagnostics and technical support, T-MechaTrucks &amp; Parts Ltd helps keep your business moving.</p>
+
+    </div>
+
+  </section>
+
+
+
+  <section class="services-intro">
+
+    <div class="tm-container">
+
+      <p class="section-kicker" data-i18n="introKicker">What We Do</p>
+
+      <h2 data-i18n="introTitle">Solutions for Trucks, Trailers &amp; Businesses</h2>
+
+      <p data-i18n="introDescription">Explore our services below. Contact our team to discuss your requirements, availability and the right solution for your vehicle or business.</p>
+
+    </div>
+
+  </section>
+
+
+
+  <section class="services-content tm-container" id="servicesContent">
+
+    <div id="servicesGroups"></div>
+
+  </section>
+
+</main>
+
+
+
+<footer class="tm-footer">
+
+  <div class="tm-container tm-footer-inner">
+
+    <p>© <span id="currentYear"></span> T-MechaTrucks &amp; Parts Ltd. <span data-i18n="footerRights">All rights reserved.</span></p>
+
+    <p><a href="https://share.google/nYQdTx6pXrrND3oRh" target="_blank" rel="noopener" data-i18n="footerLocation">Kabutare, Rusororo, Kigali, Rwanda</a></p>
+
+    <p><a href="mailto:tmechatrucks@gmail.com">tmechatrucks@gmail.com</a></p>
+
+  </div>
+
+</footer>
+
+
+
+<div class="tm-floating" aria-label="Contact shortcuts">
+
+  <a class="tm-float-button tm-float-call" href="tel:+250799908714" data-i18n-title="callUs" title="Call Us" aria-label="Call Us">
+
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.56 3.58.56a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.19 2.46.56 3.58a1 1 0 01-.25 1.01z"/></svg>
+
+  </a>
+
+  <a class="tm-float-button tm-float-whatsapp" href="https://wa.me/250799908714" target="_blank" rel="noopener" data-i18n-title="whatsapp" title="WhatsApp" aria-label="WhatsApp">
+
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.78 11.78 0 0012.12 0C5.58 0 .26 5.31.26 11.85c0 2.09.55 4.13 1.59 5.93L.16 24l6.37-1.67a11.88 11.88 0 005.59 1.42h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.15-3.47-8.41zM12.13 21.7h-.01a9.84 9.84 0 01-5.01-1.37l-.36-.21-3.78.99 1.01-3.68-.24-.38a9.81 9.81 0 01-1.51-5.2c0-5.45 4.44-9.89 9.9-9.89a9.82 9.82 0 017 2.9 9.83 9.83 0 012.9 7c0 5.45-4.44 9.89-9.9 9.89zm5.43-7.41c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.11 3.23 5.11 4.53.71.31 1.27.5 1.7.64.71.22 1.36.19 1.87.11.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+
+  </a>
+
+</div>
+
+
+
+<script>
+
+(() => {
+
+  "use strict";
+
+
+
+  const PHONE = "250799908714";
+
+  const LANG_KEY = "tmecha-language";
+
+
+
+  const translations = {
+
+    en: {
+
+      tagline:"TRUCKS · PARTS · SERVICE",
+
+      navHome:"Home", navAbout:"About Us", navNewParts:"New Spare Parts",
+
+      navUsedParts:"Used Spare Parts", navServices:"Our Services",
+
+      navTestimonials:"Testimonials", navContact:"Contact",
+
+      heroLabel:"Professional Truck Solutions",
+
+      heroTitle:'Our <span>Services</span>',
+
+      heroDescription:"From truck sales and spare parts to repairs, diagnostics and technical support, T-MechaTrucks & Parts Ltd helps keep your business moving.",
+
+      heroWhatsApp:"Enquire on WhatsApp", heroContact:"Contact Us",
+
+      introKicker:"What We Do",
+
+      introTitle:"Solutions for Trucks, Trailers & Businesses",
+
+      introDescription:"Explore our services below. Contact our team to discuss your requirements, availability and the right solution for your vehicle or business.",
+
+      groupTrucks:"Trucks & Commercial Vehicles", groupTrucksDesc:"Truck sourcing, purchasing and fleet support.",
+
+      groupParts:"Spare Parts", groupPartsDesc:"New and quality used parts for heavy vehicles.",
+
+      groupRepair:"Repair & Maintenance", groupRepairDesc:"Workshop repairs and vehicle body services.",
+
+      groupDiagnostics:"Diagnostics & Technical Support", groupDiagnosticsDesc:"Fault diagnosis, electrical and programming support.",
+
+      groupOther:"Other Services", groupOtherDesc:"Equipment, cargo transport and technical learning.",
+
+      enquire:"Enquire Now", ctaTitle:"Need Help with Your Truck or Business?",
+
+      ctaDescription:"Contact T-MechaTrucks & Parts Ltd to discuss your requirements. Our team will help you understand the next steps.",
+
+      ctaWhatsApp:"Chat with Us on WhatsApp", callUs:"Call Us", whatsapp:"WhatsApp",
+
+      footerRights:"All rights reserved.", footerLocation:"Kabutare, Rusororo, Kigali, Rwanda"
+
+    },
+
+    rw: {
+
+      tagline:"TRUCKS · PARTS · SERVICE",
+
+      navHome:"Ahabanza", navAbout:"Abo Turibo", navNewParts:"Ibyuma Bishya",
+
+      navUsedParts:"Ibyuma Byakoreshejwe", navServices:"Serivisi Zacu",
+
+      navTestimonials:"Ubuhamya", navContact:"Twandikire",
+
+      heroLabel:"Serivisi Zinoze ku Bikamyo",
+
+      heroTitle:'Serivisi <span>Zacu</span>',
+
+      heroDescription:"Kuva ku kugura no kugurisha amakamyo n'ibikoresho byayo kugeza ku kuyasana, kuyapima no gutanga ubufasha bwa tekiniki, T-MechaTrucks & Parts Ltd ifasha ibikorwa byawe gukomeza.",
+
+      heroWhatsApp:"Twandikire kuri WhatsApp", heroContact:"Twandikire",
+
+      introKicker:"Ibyo Dukora",
+
+      introTitle:"Ibisubizo ku Makamyo, Trailers n'Ibigo",
+
+      introDescription:"Reba serivisi dutanga hano hasi. Twandikire kugira ngo tuganire ku byo ukeneye no ku gisubizo kibereye ikamyo cyangwa ubucuruzi bwawe.",
+
+      groupTrucks:"Amakamyo n'Ibinyabiziga by'Ubucuruzi", groupTrucksDesc:"Gushaka, kugura amakamyo no gufasha abafite amakamyo menshi.",
+
+      groupParts:"Ibikoresho by'Amakamyo", groupPartsDesc:"Ibikoresho bishya n'ibyakoreshwejwe bikimeze neza.",
+
+      groupRepair:"Gusana no Kwita ku Binnyabiziga", groupRepairDesc:"Gusana amakamyo, trailers n'ibice by'umubiri wayo.",
+
+      groupDiagnostics:"Isuzuma n'Ubufasha bwa Tekiniki", groupDiagnosticsDesc:"Gushaka ibibazo, amashanyarazi no gutunganya porogaramu z'ibinyabiziga.",
+
+      groupOther:"Izindi Serivisi", groupOtherDesc:"Ibikoresho by'ubwubatsi, gutwara imizigo n'amahugurwa ya tekiniki.",
+
+      enquire:"Baza Ibisobanuro", ctaTitle:"Ukeneye Ubufasha ku Kamyo cyangwa ku Bikorwa Byawe?",
+
+      ctaDescription:"Twandikire tuganire ku byo ukeneye. Abakozi bacu bazagufasha kumenya intambwe ikurikira.",
+
+      ctaWhatsApp:"Twandikire kuri WhatsApp", callUs:"Duhamagare", whatsapp:"WhatsApp",
+
+      footerRights:"Uburenganzira bwose burabitswe.", footerLocation:"Kabutare, Rusororo, Kigali, Rwanda"
+
+    },
+
+    fr: {
+
+      tagline:"TRUCKS · PARTS · SERVICE",
+
+      navHome:"Accueil", navAbout:"À propos", navNewParts:"Pièces neuves",
+
+      navUsedParts:"Pièces d'occasion", navServices:"Nos services",
+
+      navTestimonials:"Témoignages", navContact:"Contact",
+
+      heroLabel:"Solutions professionnelles pour camions",
+
+      heroTitle:'Nos <span>services</span>',
+
+      heroDescription:"De la vente de camions et de pièces détachées aux réparations, diagnostics et assistance technique, T-MechaTrucks & Parts Ltd accompagne votre activité.",
+
+      heroWhatsApp:"Demander sur WhatsApp", heroContact:"Nous contacter",
+
+      introKicker:"Nos activités",
+
+      introTitle:"Des solutions pour les camions, remorques et entreprises",
+
+      introDescription:"Découvrez nos services ci-dessous. Contactez notre équipe pour discuter de vos besoins et de la solution adaptée à votre véhicule ou à votre entreprise.",
+
+      groupTrucks:"Camions et véhicules commerciaux", groupTrucksDesc:"Recherche, achat de camions et assistance aux flottes.",
+
+      groupParts:"Pièces détachées", groupPartsDesc:"Pièces neuves et pièces d'occasion de qualité.",
+
+      groupRepair:"Réparation et entretien", groupRepairDesc:"Réparation en atelier et travaux de carrosserie.",
+
+      groupDiagnostics:"Diagnostic et assistance technique", groupDiagnosticsDesc:"Diagnostic des pannes, électricité et programmation.",
+
+      groupOther:"Autres services", groupOtherDesc:"Équipements, transport de marchandises et formation technique.",
+
+      enquire:"Demander des informations", ctaTitle:"Besoin d'aide pour votre camion ou votre entreprise ?",
+
+      ctaDescription:"Contactez T-MechaTrucks & Parts Ltd pour discuter de vos besoins. Notre équipe vous aidera à déterminer les prochaines étapes.",
+
+      ctaWhatsApp:"Discuter sur WhatsApp", callUs:"Appelez-nous", whatsapp:"WhatsApp",
+
+      footerRights:"Tous droits réservés.", footerLocation:"Kabutare, Rusororo, Kigali, Rwanda"
+
+    },
+
+    sw: {
+
+      tagline:"TRUCKS · PARTS · SERVICE",
+
+      navHome:"Mwanzo", navAbout:"Kuhusu Sisi", navNewParts:"Vipuri Vipya",
+
+      navUsedParts:"Vipuri Vilivyotumika", navServices:"Huduma Zetu",
+
+      navTestimonials:"Maoni ya Wateja", navContact:"Wasiliana Nasi",
+
+      heroLabel:"Suluhisho za Kitaalamu za Malori",
+
+      heroTitle:'Huduma <span>Zetu</span>',
+
+      heroDescription:"Kuanzia mauzo ya malori na vipuri hadi matengenezo, uchunguzi wa hitilafu na msaada wa kiufundi, T-MechaTrucks & Parts Ltd husaidia biashara yako kuendelea.",
+
+      heroWhatsApp:"Uliza kupitia WhatsApp", heroContact:"Wasiliana Nasi",
+
+      introKicker:"Tunachofanya",
+
+      introTitle:"Suluhisho kwa Malori, Trela na Biashara",
+
+      introDescription:"Tazama huduma zetu hapa chini. Wasiliana na timu yetu ili kujadili mahitaji yako na suluhisho linalofaa gari au biashara yako.",
+
+      groupTrucks:"Malori na Magari ya Biashara", groupTrucksDesc:"Kutafuta na kununua malori na kusaidia magari ya biashara.",
+
+      groupParts:"Vipuri", groupPartsDesc:"Vipuri vipya na vilivyotumika vilivyo katika hali nzuri.",
+
+      groupRepair:"Matengenezo na Ukarabati", groupRepairDesc:"Matengenezo ya gereji na ukarabati wa sehemu za mwili wa gari.",
+
+      groupDiagnostics:"Uchunguzi na Msaada wa Kiufundi", groupDiagnosticsDesc:"Utambuzi wa hitilafu, mifumo ya umeme na programu.",
+
+      groupOther:"Huduma Nyingine", groupOtherDesc:"Vifaa vya ujenzi, usafirishaji wa mizigo na mafunzo ya kiufundi.",
+
+      enquire:"Uliza Sasa", ctaTitle:"Unahitaji Msaada kwa Lori au Biashara Yako?",
+
+      ctaDescription:"Wasiliana na T-MechaTrucks & Parts Ltd kujadili mahitaji yako. Timu yetu itakusaidia kujua hatua zinazofuata.",
+
+      ctaWhatsApp:"Zungumza Nasi WhatsApp", callUs:"Tupigie Simu", whatsapp:"WhatsApp",
+
+      footerRights:"Haki zote zimehifadhiwa.", footerLocation:"Kabutare, Rusororo, Kigali, Rwanda"
+
+    },
+
+    zh: {
+
+      tagline:"TRUCKS · PARTS · SERVICE",
+
+      navHome:"首页", navAbout:"关于我们", navNewParts:"全新配件",
+
+      navUsedParts:"二手配件", navServices:"我们的服务",
+
+      navTestimonials:"客户评价", navContact:"联系我们",
+
+      heroLabel:"专业卡车解决方案",
+
+      heroTitle:'我们的<span>服务</span>',
+
+      heroDescription:"从卡车销售和配件供应，到维修、故障诊断及技术支持，T-MechaTrucks & Parts Ltd 助力您的业务持续运营。",
+
+      heroWhatsApp:"通过 WhatsApp 咨询", heroContact:"联系我们",
+
+      introKicker:"我们的业务",
+
+      introTitle:"为卡车、挂车和企业提供解决方案",
+
+      introDescription:"请查看以下服务。欢迎联系我们，讨论您的需求以及适合您车辆或企业的解决方案。",
+
+      groupTrucks:"卡车与商用车辆", groupTrucksDesc:"卡车采购、销售及车队支持。",
+
+      groupParts:"卡车配件", groupPartsDesc:"全新配件及品质良好的二手配件。",
+
+      groupRepair:"维修与保养", groupRepairDesc:"车间维修及车身修复服务。",
+
+      groupDiagnostics:"故障诊断与技术支持", groupDiagnosticsDesc:"故障排查、电气维修和编程支持。",
+
+      groupOther:"其他服务", groupOtherDesc:"工程设备、货物运输和技术培训。",
+
+      enquire:"立即咨询", ctaTitle:"您的卡车或业务需要帮助吗？",
+
+      ctaDescription:"请联系 T-MechaTrucks & Parts Ltd，讨论您的需求。我们的团队将协助您了解后续步骤。",
+
+      ctaWhatsApp:"通过 WhatsApp 联系我们", callUs:"致电我们", whatsapp:"WhatsApp",
+
+      footerRights:"版权所有。", footerLocation:"卢旺达基加利 Rusororo，Kabutare"
+
+    }
+
+  };
+
+
+
+  const groupInfo = [
+
+    { key:"groupTrucks", items:[1,2,3] },
+
+    { key:"groupParts", items:[4,5,6] },
+
+    { key:"groupRepair", items:[7,8,9,10] },
+
+    { key:"groupDiagnostics", items:[11,12,13,14,15] },
+
+    { key:"groupOther", items:[16,17,18] }
+
+  ];
+
+
+
+  /*
+
+   * Each service has localized titles, descriptions and feature points.
+
+   * If a language entry is missing, English is used as a safe fallback.
+
+   */
+
+  const services = [
+
+    {
+
+      id:1, image:"truck-sales.webp",
+
+      title:{en:"Truck Sales & Purchasing",rw:"Kugura no Kugurisha Amakamyo",fr:"Vente et achat de camions",sw:"Uuzaji na Ununuzi wa Malori",zh:"卡车销售与采购"},
+
+      desc:{
+
+        en:"Support for customers looking to buy or sell heavy trucks and commercial vehicles. We help you discuss vehicle requirements, intended use, condition and budget before moving forward with a suitable option.",
+
+        rw:"Dufasha abakiriya bashaka kugura cyangwa kugurisha amakamyo manini n'ibinyabiziga by'ubucuruzi. Tugirana ibiganiro ku byo ikamyo igomba kuba yujuje, aho izakoreshwa, uko imeze n'ingengo y'imari mbere yo gufata icyemezo.",
+
+        fr:"Nous accompagnons les clients qui souhaitent acheter ou vendre des poids lourds et des véhicules commerciaux. Nous discutons des besoins, de l'utilisation prévue, de l'état du véhicule et du budget.",
+
+        sw:"Tunawasaidia wateja wanaotaka kununua au kuuza malori makubwa na magari ya biashara. Tunajadili mahitaji, matumizi yaliyokusudiwa, hali ya gari na bajeti kabla ya kuchagua chaguo linalofaa.",
+
+        zh:"为有意购买或出售重型卡车及商用车辆的客户提供协助。我们会讨论车辆需求、用途、车况和预算，帮助您考虑合适的选择。"
+
+      },
+
+      features:{
+
+        en:["Heavy trucks and commercial vehicles","Purchase and selling enquiries","Assistance matching needs and budget"],
+
+        rw:["Amakamyo manini n'ibinyabiziga by'ubucuruzi","Ibibazo byo kugura no kugurisha","Guhuza ibyo ukeneye n'ingengo y'imari"],
+
+        fr:["Poids lourds et véhicules commerciaux","Demandes d'achat et de vente","Aide selon les besoins et le budget"],
+
+        sw:["Malori makubwa na magari ya biashara","Maswali ya ununuzi na uuzaji","Msaada kulingana na mahitaji na bajeti"],
+
+        zh:["重型卡车和商用车辆","购买与出售咨询","根据需求和预算提供协助"]
+
+      }
+
+    },
+
+    {
+
+      id:2, image:"truck-sourcing.webp",
+
+      title:{en:"Truck & Trailer Sourcing",rw:"Gushakira Abakiriya Amakamyo na Trailers",fr:"Recherche de camions et remorques",sw:"Kutafuta Malori na Trela",zh:"卡车与挂车寻购"},
+
+      desc:{
+
+        en:"Tell us the truck or trailer specifications you need. We can discuss vehicle type, carrying requirements, configuration and intended application to help identify suitable sourcing options.",
+
+        rw:"Tubwire ubwoko bw'ikamyo cyangwa trailer ukeneye. Tugirana ibiganiro ku bwoko bw'ikinyabiziga, ubushobozi bwo gutwara imizigo, imiterere yacyo n'icyo kizakoreshwa kugira ngo dushake amahitamo akwiye.",
+
+        fr:"Indiquez-nous les caractéristiques du camion ou de la remorque recherchés. Nous étudions le type de véhicule, la capacité de charge, la configuration et l'utilisation prévue.",
+
+        sw:"Tueleze sifa za lori au trela unayohitaji. Tunajadili aina ya gari, uwezo wa kubeba mizigo, mpangilio na matumizi yake ili kutafuta chaguo linalofaa.",
+
+        zh:"请告知您需要的卡车或挂车规格。我们可以讨论车辆类型、载重要求、配置和用途，以帮助寻找合适的采购方案。"
+
+      },
+
+      features:{
+
+        en:["Prime movers and trailers","Requirements-based sourcing enquiries","Support for commercial transport needs"],
+
+        rw:["Prime movers na trailers","Gushakira ikinyabiziga hakurikijwe ibyo ukeneye","Ubufasha mu gutwara imizigo y'ubucuruzi"],
+
+        fr:["Tracteurs routiers et remorques","Recherche selon vos besoins","Assistance pour le transport commercial"],
+
+        sw:["Vuta trela na trela","Utafutaji kulingana na mahitaji","Msaada kwa usafirishaji wa kibiashara"],
+
+        zh:["牵引车和挂车","按需求寻找车辆","商用运输需求支持"]
+
+      }
+
+    },
+
+    {
+
+      id:3, image:"fleet-solutions.webp",
+
+      title:{en:"Fleet Solutions",rw:"Ibisubizo ku Bafite Amakamyo Menshi",fr:"Solutions pour flottes",sw:"Suluhisho kwa Meli za Magari",zh:"车队解决方案"},
+
+      desc:{
+
+        en:"Support for businesses operating multiple trucks or commercial vehicles. Discuss your fleet's vehicle, spare-parts and maintenance needs with our team to explore practical solutions for your operations.",
+
+        rw:"Dufasha ibigo bikoresha amakamyo menshi cyangwa ibinyabiziga by'ubucuruzi. Ganira n'itsinda ryacu ku bikamyo, ibikoresho n'ibikenewe mu kubungabunga imodoka zawe kugira ngo harebwe ibisubizo bifatika.",
+
+        fr:"Nous accompagnons les entreprises qui exploitent plusieurs camions ou véhicules commerciaux. Échangez avec notre équipe sur les véhicules, les pièces et l'entretien nécessaires à votre flotte.",
+
+        sw:"Tunasaidia biashara zinazoendesha malori mengi au magari ya biashara. Jadili na timu yetu mahitaji ya magari, vipuri na matengenezo ili kupata suluhisho linalofaa shughuli zako.",
+
+        zh:"为运营多辆卡车或商用车辆的企业提供支持。与我们的团队讨论车队车辆、配件和维护需求，探索适合业务运营的解决方案。"
+
+      },
+
+      features:{
+
+        en:["Business and fleet requirements","Parts and maintenance enquiries","Solutions tailored to operations"],
+
+        rw:["Ibyo ubucuruzi n'ikigo cy'amakamyo bikenera","Ibikoresho no kubungabunga amakamyo","Ibisubizo bijyanye n'imikorere yawe"],
+
+        fr:["Besoins des entreprises et des flottes","Pièces et entretien","Solutions adaptées aux opérations"],
+
+        sw:["Mahitaji ya biashara na magari mengi","Vipuri na matengenezo","Suluhisho kulingana na shughuli zako"],
+
+        zh:["企业和车队需求","配件与维护咨询","适合运营需求的解决方案"]
+
+      }
+
+    },
+
+    {
+
+      id:4, image:"new-spare-parts.webp",
+
+      title:{en:"New Spare Parts",rw:"Ibikoresho Bishya by'Amakamyo",fr:"Pièces détachées neuves",sw:"Vipuri Vipya",zh:"全新卡车配件"},
+
+      desc:{
+
+        en:"We supply new spare parts for heavy trucks and commercial vehicles. Share the vehicle details and the part you need so our team can help with your enquiry.",
+
+        rw:"Dutanga ibikoresho bishya by'amakamyo manini n'ibinyabiziga by'ubucuruzi. Tubwire amakuru y'ikinyabiziga n'igikoresho ukeneye kugira ngo tugufashe.",
+
+        fr:"Nous fournissons des pièces neuves pour poids lourds et véhicules commerciaux. Communiquez les informations du véhicule et la pièce recherchée à notre équipe.",
+
+        sw:"Tunatoa vipuri vipya vya malori makubwa na magari ya biashara. Tueleze taarifa za gari na kipuri unachohitaji ili timu yetu ikusaidie.",
+
+        zh:"我们为重型卡车和商用车辆供应全新配件。请提供车辆信息和所需配件，以便团队协助您查询。"
+
+      },
+
+      features:{
+
+        en:["New parts for heavy vehicles","Parts enquiries and identification","Availability confirmed by our team"],
+
+        rw:["Ibikoresho bishya by'ibinyabiziga binini","Kugufasha kumenya igikoresho ukeneye","Abakozi bacu bemeza ko kiboneka"],
+
+        fr:["Pièces neuves pour poids lourds","Aide à l'identification des pièces","Disponibilité confirmée par notre équipe"],
+
+        sw:["Vipuri vipya vya magari makubwa","Msaada wa kutambua kipuri","Timu yetu huthibitisha upatikanaji"],
+
+        zh:["重型车辆全新配件","配件识别与咨询","由团队确认库存情况"]
+
+      }
+
+    },
+
+    {
+
+      id:5, image:"used-spare-parts.webp",
+
+      title:{en:"Quality Used Spare Parts",rw:"Ibikoresho Byakoreshejwe Bikimeze Neza",fr:"Pièces d'occasion de qualité",sw:"Vipuri Vilivyotumika Vilivyo Bora",zh:"优质二手配件"},
+
+      desc:{
+
+        en:"We offer quality used spare parts selected for customers seeking practical alternatives. Contact us with the part and vehicle details so the team can discuss condition and availability.",
+
+        rw:"Dutanga ibikoresho byakoreshejwe bikimeze neza ku bakiriya bashaka ubundi buryo bubafasha. Twandikire utubwire igikoresho n'ikinyabiziga bigenewe kugira ngo tuganire ku miterere yabyo no kuboneka kwabyo.",
+
+        fr:"Nous proposons des pièces d'occasion de qualité pour les clients recherchant une solution pratique. Contactez-nous avec les détails de la pièce et du véhicule pour discuter de l'état et de la disponibilité.",
+
+        sw:"Tunatoa vipuri vilivyotumika vilivyo katika hali nzuri kwa wateja wanaotafuta njia mbadala. Wasiliana nasi kwa maelezo ya kipuri na gari ili kujadili hali na upatikanaji.",
+
+        zh:"我们为寻求实用替代方案的客户提供优质二手配件。请提供配件和车辆信息，以便讨论配件状况及供应情况。"
+
+      },
+
+      features:{
+
+        en:["Used parts in working condition","Condition discussed before purchase","Availability confirmed on enquiry"],
+
+        rw:["Ibikoresho byakoreshejwe bigikora","Imiterere isobanurwa mbere yo kugura","Kuboneka byemezwa umaze kubaza"],
+
+        fr:["Pièces d'occasion fonctionnelles","État discuté avant l'achat","Disponibilité confirmée sur demande"],
+
+        sw:["Vipuri vilivyotumika vinavyofanya kazi","Hali hujadiliwa kabla ya kununua","Upatikanaji huthibitishwa ukiuliza"],
+
+        zh:["仍可正常使用的二手配件","购买前沟通配件状况","咨询后确认供应情况"]
+
+      }
+
+    },
+
+    {
+
+      id:6, image:"parts-delivery.webp",
+
+      title:{en:"Spare Parts Delivery",rw:"Gushyikiriza Abakiriya Ibikoresho",fr:"Livraison de pièces détachées",sw:"Uwasilishaji wa Vipuri",zh:"配件配送"},
+
+      desc:{
+
+        en:"Ask our team about arranging delivery or collection of spare parts. Delivery options depend on the destination, the item and the arrangements confirmed with our staff.",
+
+        rw:"Baza itsinda ryacu ku buryo ibikoresho byakugeraho cyangwa wabifatira. Uburyo bwo kubigeza aho uri bushingira ku hantu bigomba kujya, ubwoko bwabyo n'ibyemejwe n'abakozi.",
+
+        fr:"Contactez notre équipe pour organiser la livraison ou le retrait des pièces. Les options dépendent de la destination, de la pièce et des modalités convenues.",
+
+        sw:"Wasiliana na timu yetu kupanga kuwasilisha au kuchukua vipuri. Chaguo hutegemea mahali pa kupeleka, aina ya kipuri na makubaliano yaliyothibitishwa.",
+
+        zh:"请联系我们的团队安排配件配送或自取。配送方式取决于目的地、配件类型以及双方确认的安排。"
+
+      },
+
+      features:{
+
+        en:["Delivery or collection enquiries","Destination-based arrangements","Details confirmed with staff"],
+
+        rw:["Kubaza ku kugeza ibikoresho cyangwa kubifatira","Gahunda zishingira ku hantu bigomba kujya","Ibisobanuro byemezwa n'abakozi"],
+
+        fr:["Demandes de livraison ou de retrait","Organisation selon la destination","Détails confirmés par l'équipe"],
+
+        sw:["Maombi ya kuwasilisha au kuchukua","Mipango kulingana na mahali","Maelezo huthibitishwa na timu"],
+
+        zh:["配送或自取咨询","根据目的地安排","由工作人员确认具体细节"]
+
+      }
+
+    },
+
+    {
+
+      id:7, image:"truck-repair.webp",
+
+      title:{en:"Truck Repair & Maintenance",rw:"Gusana no Kubungabunga Amakamyo",fr:"Réparation et entretien des camions",sw:"Matengenezo na Ukarabati wa Malori",zh:"卡车维修与保养"},
+
+      desc:{
+
+        en:"Workshop support for truck repairs and routine maintenance to help keep vehicles operating safely and reliably. Contact us to discuss the symptoms, vehicle details and required work.",
+
+        rw:"Dutanga ubufasha mu gusana no kubungabunga amakamyo kugira ngo akomeze gukora neza kandi mu mutekano. Twandikire utubwire ibimenyetso by'ikibazo, amakuru y'ikamyo n'akazi gakeneye gukorwa.",
+
+        fr:"Nous proposons des réparations en atelier et de l'entretien courant pour aider les camions à fonctionner de manière fiable et sûre. Contactez-nous pour décrire le problème et les travaux nécessaires.",
+
+        sw:"Tunatoa huduma za gereji kwa ukarabati na matengenezo ya kawaida ya malori ili kusaidia yaendelee kufanya kazi kwa usalama. Wasiliana nasi kueleza tatizo na kazi inayohitajika.",
+
+        zh:"提供卡车车间维修和日常保养服务，帮助车辆安全、可靠地运行。请联系我们，说明故障表现、车辆信息和所需维修项目。"
+
+      },
+
+      features:{
+
+        en:["Workshop repairs","Routine maintenance enquiries","Assessment of reported problems"],
+
+        rw:["Gusana mu igaraje","Kubaza ku kubungabunga ikamyo","Gusuzuma ibibazo byagaragajwe"],
+
+        fr:["Réparations en atelier","Demandes d'entretien courant","Évaluation des problèmes signalés"],
+
+        sw:["Matengenezo ya gereji","Huduma za matengenezo ya kawaida","Tathmini ya matatizo yaliyoripotiwa"],
+
+        zh:["车间维修","日常保养咨询","评估已报告的问题"]
+
+      }
+
+    },
+
+    {
+
+      id:8, image:"prime-mover-trailer.webp",
+
+      title:{en:"Prime Mover & Trailer Repairs",rw:"Gusana Prime Movers na Trailers",fr:"Réparation de tracteurs routiers et remorques",sw:"Matengenezo ya Prime Movers na Trela",zh:"牵引车与挂车维修"},
+
+      desc:{
+
+        en:"Repair support for prime movers and trailers used in commercial transport. Our team can discuss the problem, vehicle configuration and work required before confirming the service.",
+
+        rw:"Dutanga ubufasha mu gusana prime movers na trailers zikoreshwa mu gutwara imizigo. Itsinda ryacu rishobora kuganira nawe ku kibazo, imiterere y'ikinyabiziga n'akazi gakeneye gukorwa.",
+
+        fr:"Nous proposons des réparations pour les tracteurs routiers et les remorques utilisés dans le transport commercial. Notre équipe étudie le problème, la configuration et les travaux nécessaires.",
+
+        sw:"Tunatoa huduma za ukarabati wa prime movers na trela zinazotumika katika usafirishaji wa kibiashara. Timu yetu inaweza kujadili tatizo, muundo wa gari na kazi inayohitajika.",
+
+        zh:"为商用运输牵引车和挂车提供维修支持。我们的团队可先讨论故障、车辆配置和所需维修工作，再确认服务安排。"
+
+      },
+
+      features:{
+
+        en:["Prime mover repairs","Trailer repair enquiries","Work discussed before confirmation"],
+
+        rw:["Gusana prime movers","Kubaza ku gusana trailers","Akazi kaganirwaho mbere yo kwemezwa"],
+
+        fr:["Réparation de tracteurs routiers","Demandes de réparation de remorques","Travaux discutés avant confirmation"],
+
+        sw:["Matengenezo ya prime movers","Maombi ya ukarabati wa trela","Kazi hujadiliwa kabla ya kuthibitishwa"],
+
+        zh:["牵引车维修","挂车维修咨询","确认前讨论维修工作"]
+
+      }
+
+    },
+
+    {
+
+      id:9, image:"body-chassis-repair.webp",
+
+      title:{en:"Body & Chassis Repair",rw:"Gusana Umubiri na Chassis by'Ikamyo",fr:"Réparation de carrosserie et de châssis",sw:"Ukarabati wa Mwili na Chassis",zh:"车身与底盘维修"},
+
+      desc:{
+
+        en:"Support for damaged truck body and chassis components. Contact us to explain the damage so the team can discuss the inspection and repair work that may be required.",
+
+        rw:"Dufasha mu gusana ibice by'umubiri w'ikamyo na chassis byangiritse. Twandikire utubwire ibyangiritse kugira ngo tuganire ku isuzuma no ku gusana bishobora gukenerwa.",
+
+        fr:"Nous intervenons sur les éléments endommagés de la carrosserie et du châssis des camions. Contactez-nous pour discuter de l'inspection et des réparations nécessaires.",
+
+        sw:"Tunasaidia kukarabati sehemu zilizoharibika za mwili na chassis ya lori. Wasiliana nasi kueleza uharibifu ili kujadili ukaguzi na matengenezo yanayohitajika.",
+
+        zh:"提供卡车受损车身和底盘部件的维修支持。请说明损坏情况，以便讨论检查和可能需要的维修工作。"
+
+      },
+
+      features:{
+
+        en:["Truck body repair enquiries","Chassis damage assessment","Repair scope discussed with staff"],
+
+        rw:["Kubaza ku gusana umubiri w'ikamyo","Gusuzuma ibyangiritse kuri chassis","Akazi ko gusana kaganirwaho n'abakozi"],
+
+        fr:["Demandes de réparation de carrosserie","Évaluation des dommages au châssis","Travaux discutés avec l'équipe"],
+
+        sw:["Maombi ya ukarabati wa mwili wa lori","Tathmini ya uharibifu wa chassis","Kazi hujadiliwa na timu"],
+
+        zh:["卡车车身维修咨询","底盘损坏评估","与工作人员讨论维修范围"]
+
+      }
+
+    },
+
+    {
+
+      id:10, image:"panel-beating-painting.webp",
+
+      title:{en:"Panel Beating & Spray Painting",rw:"Gukosora Umubiri no Gusiga Irangi",fr:"Débosselage et peinture au pistolet",sw:"Ukarabati wa Paneli na Upakaji Rangi",zh:"钣金修复与喷漆"},
+
+      desc:{
+
+        en:"Bodywork support for damaged panels and vehicle surfaces, including panel beating and spray painting. The repair scope is discussed after reviewing the condition of the vehicle.",
+
+        rw:"Dutanga ubufasha mu gukosora paneli n'ubuso bw'ikinyabiziga byangiritse, harimo gukubita ibyuma no gusiga irangi. Akazi gakenewe kagenwa nyuma yo gusuzuma uko ikinyabiziga kimeze.",
+
+        fr:"Nous proposons des travaux sur les panneaux et surfaces endommagés, notamment le débosselage et la peinture au pistolet. Les travaux sont définis après examen du véhicule.",
+
+        sw:"Tunatoa huduma za kurekebisha paneli na sehemu za gari zilizoharibika, ikiwemo kupiga paneli na kupaka rangi kwa spray. Kazi huamuliwa baada ya kukagua gari.",
+
+        zh:"提供受损车身面板修复和喷漆服务。检查车辆状况后，再讨论具体维修范围。"
+
+      },
+
+      features:{
+
+        en:["Panel beating enquiries","Spray painting services","Vehicle condition reviewed first"],
+
+        rw:["Kubaza ku gukosora paneli","Serivisi zo gusiga irangi","Kubanza gusuzuma ikinyabiziga"],
+
+        fr:["Demandes de débosselage","Services de peinture au pistolet","Examen préalable du véhicule"],
+
+        sw:["Maombi ya kurekebisha paneli","Huduma za kupaka rangi kwa spray","Gari hukaguliwa kwanza"],
+
+        zh:["钣金修复咨询","喷漆服务","先检查车辆状况"]
+
+      }
+
+    },
+
+    {
+
+      id:11, image:"../images/tmecha1.webp",
+
+      title:{en:"Truck Diagnostics & Inspection",rw:"Gusuzuma no Gupima Amakamyo",fr:"Diagnostic et inspection des camions",sw:"Uchunguzi na Ukaguzi wa Malori",zh:"卡车诊断与检查"},
+
+      desc:{
+
+        en:"Diagnostic and inspection support to help identify reported faults and assess vehicle condition. Share the warning signs or fault codes with our team to discuss the next step.",
+
+        rw:"Dutanga ubufasha mu gupima no gusuzuma amakamyo kugira ngo hamenyekane ibibazo byagaragaye n'uko ikinyabiziga kimeze. Tubwire ibimenyetso cyangwa amakode y'ikosa kugira ngo tuganire ku ntambwe ikurikira.",
+
+        fr:"Nous proposons des services de diagnostic et d'inspection pour identifier les pannes signalées et évaluer l'état du véhicule. Communiquez les symptômes ou codes d'erreur à notre équipe.",
+
+        sw:"Tunatoa huduma za uchunguzi na ukaguzi ili kusaidia kutambua hitilafu na kutathmini hali ya gari. Tueleze dalili au misimbo ya hitilafu ili kujadili hatua inayofuata.",
+
+        zh:"提供卡车诊断和检查服务，帮助识别故障并评估车辆状况。请提供故障表现或故障代码，以便讨论下一步处理方式。"
+
+      },
+
+      features:{
+
+        en:["Fault-code diagnosis enquiries","Vehicle condition inspection","Technical findings discussed"],
+
+        rw:["Kubaza ku gusuzuma amakode y'amakosa","Kugenzura uko ikinyabiziga kimeze","Ibyabonetse bisobanurwa na tekinisiye"],
+
+        fr:["Diagnostic des codes d'erreur","Inspection de l'état du véhicule","Explication des résultats techniques"],
+
+        sw:["Uchunguzi wa misimbo ya hitilafu","Ukaguzi wa hali ya gari","Matokeo ya kiufundi yanaelezwa"],
+
+        zh:["故障代码诊断咨询","车辆状况检查","讨论技术检查结果"]
+
+      }
+
+    },
+
+    {
+
+      id:12, image:"electrical-troubleshooting.webp",
+
+      title:{en:"Electrical Troubleshooting",rw:"Gushaka no Gukemura Ibibazo by'Amashanyarazi",fr:"Diagnostic des problèmes électriques",sw:"Utatuzi wa Matatizo ya Umeme",zh:"车辆电气故障排查"},
+
+      desc:{
+
+        en:"Support for investigating electrical problems affecting commercial vehicles. Describe the symptoms and any warning indicators so our team can discuss suitable troubleshooting steps.",
+
+        rw:"Dufasha mu gushaka ibibazo by'amashanyarazi bigira ingaruka ku binyabiziga by'ubucuruzi. Sobanura ibimenyetso n'amatara y'imbuzi agaragara kugira ngo tuganire ku buryo bwo kubikemura.",
+
+        fr:"Nous aidons à rechercher les problèmes électriques affectant les véhicules commerciaux. Décrivez les symptômes et les voyants d'alerte pour discuter des étapes de diagnostic.",
+
+        sw:"Tunasaidia kuchunguza matatizo ya umeme yanayoathiri magari ya biashara. Eleza dalili na taa za tahadhari ili kujadili hatua zinazofaa za uchunguzi.",
+
+        zh:"协助排查影响商用车辆的电气问题。请描述故障表现和警告指示灯，以便讨论适当的排查步骤。"
+
+      },
+
+      features:{
+
+        en:["Electrical fault enquiries","Warning indicator investigation","Troubleshooting support"],
+
+        rw:["Kubaza ku makosa y'amashanyarazi","Gusuzuma amatara y'imbuzi","Ubufasha mu gushaka igitera ikibazo"],
+
+        fr:["Demandes de diagnostic électrique","Recherche des voyants d'alerte","Assistance au dépannage"],
+
+        sw:["Maombi ya uchunguzi wa hitilafu za umeme","Uchunguzi wa taa za tahadhari","Msaada wa kutatua hitilafu"],
+
+        zh:["电气故障咨询","检查警告指示灯","故障排查支持"]
+
+      }
+
+    },
+
+    {
+
+      id:13, image:"ecu-programming.webp",
+
+      title:{en:"ECU Programming",rw:"Gutegura no Guhindura Porogaramu za ECU",fr:"Programmation du calculateur ECU",sw:"Upangaji wa ECU",zh:"ECU 编程"},
+
+      desc:{
+
+        en:"Technical enquiries for electronic control unit (ECU) programming and related vehicle electronic systems. The vehicle details and reported issue are reviewed before confirming the required work.",
+
+        rw:"Dutanga ubufasha mu bibazo bijyanye no gutegura porogaramu za ECU n'ubundi buryo bw'ikoranabuhanga rigenzura ikinyabiziga. Amakuru y'ikinyabiziga n'ikibazo cyagaragaye bibanza gusuzumwa.",
+
+        fr:"Nous traitons les demandes liées à la programmation des calculateurs ECU et aux systèmes électroniques du véhicule. Les informations du véhicule et le problème signalé sont examinés avant confirmation.",
+
+        sw:"Tunashughulikia maombi yanayohusu upangaji wa ECU na mifumo ya kielektroniki ya gari. Taarifa za gari na tatizo lililoripotiwa hukaguliwa kabla ya kuthibitisha kazi.",
+
+        zh:"提供电子控制单元（ECU）编程及相关车辆电子系统的技术咨询。确认所需工作前，会先检查车辆信息和故障情况。"
+
+      },
+
+      features:{
+
+        en:["ECU-related enquiries","Vehicle electronic system support","Required work reviewed first"],
+
+        rw:["Ibibazo bijyanye na ECU","Ubufasha ku bikoresho bya elegitoroniki","Kubanza gusuzuma akazi gakenewe"],
+
+        fr:["Demandes liées à l'ECU","Assistance aux systèmes électroniques","Examen préalable des travaux"],
+
+        sw:["Maombi yanayohusu ECU","Msaada wa mifumo ya kielektroniki","Kazi hukaguliwa kwanza"],
+
+        zh:["ECU 相关咨询","车辆电子系统支持","先评估所需工作"]
+
+      }
+
+    },
+
+    {
+
+      id:14, image:"key-programming.webp",
+
+      title:{en:"Vehicle Key Programming",rw:"Gutegura Imfunguzo z'Ibinyabiziga",fr:"Programmation des clés de véhicule",sw:"Upangaji wa Funguo za Gari",zh:"车辆钥匙编程"},
+
+      desc:{
+
+        en:"Enquiries for vehicle key programming and related electronic key systems. Contact us with the vehicle make and details so our team can discuss the available service options.",
+
+        rw:"Dufasha mu bibazo bijyanye no gutegura imfunguzo z'ibinyabiziga n'uburyo bwazo bw'ikoranabuhanga. Twandikire utubwire ubwoko bw'ikinyabiziga kugira ngo tuganire ku serivisi ishoboka.",
+
+        fr:"Nous traitons les demandes de programmation des clés et des systèmes électroniques associés. Indiquez la marque et les détails du véhicule pour discuter des options disponibles.",
+
+        sw:"Tunashughulikia maombi ya upangaji wa funguo za magari na mifumo yake ya kielektroniki. Tueleze aina na maelezo ya gari ili kujadili huduma zinazopatikana.",
+
+        zh:"提供车辆钥匙编程及相关电子钥匙系统咨询。请提供车辆品牌和信息，以便讨论可提供的服务。"
+
+      },
+
+      features:{
+
+        en:["Vehicle key programming enquiries","Vehicle details required","Service options confirmed by the team"],
+
+        rw:["Kubaza ku gutegura imfunguzo","Amakuru y'ikinyabiziga arasabwa","Itsinda ryemeza serivisi ishoboka"],
+
+        fr:["Demandes de programmation de clés","Informations du véhicule nécessaires","Options confirmées par l'équipe"],
+
+        sw:["Maombi ya upangaji wa funguo","Taarifa za gari zinahitajika","Huduma huthibitishwa na timu"],
+
+        zh:["车辆钥匙编程咨询","需要提供车辆信息","由团队确认可提供的服务"]
+
+      }
+
+    },
+
+    {
+
+      id:15, image:"roadside-assistance.webp",
+
+      title:{en:"Breakdown & Roadside Assistance",rw:"Ubufasha mu gihe Ikamyo Iparitse mu Muhanda",fr:"Dépannage et assistance routière",sw:"Msaada wa Gari Linapoharibika Barabarani",zh:"道路故障救援"},
+
+      desc:{
+
+        en:"Contact our team when a truck or commercial vehicle breaks down. Explain your location and the problem so we can discuss possible assistance and arrangements.",
+
+        rw:"Twandikire igihe ikamyo cyangwa ikinyabiziga cy'ubucuruzi gipfiriye mu muhanda. Sobanura aho uri n'ikibazo cyabaye kugira ngo tuganire ku bufasha bushoboka n'uko bwategurwa.",
+
+        fr:"Contactez notre équipe en cas de panne d'un camion ou d'un véhicule commercial. Indiquez votre emplacement et le problème pour discuter de l'assistance possible.",
+
+        sw:"Wasiliana na timu yetu lori au gari la biashara linapoharibika. Eleza ulipo na tatizo ili kujadili msaada unaowezekana na mipango yake.",
+
+        zh:"卡车或商用车辆发生故障时，请联系我们。说明您的位置和故障情况，以便讨论可能的救援和安排。"
+
+      },
+
+      features:{
+
+        en:["Breakdown assistance enquiries","Location and fault details needed","Assistance arrangements discussed"],
+
+        rw:["Kubaza ku bufasha bw'ikinyabiziga cyapfuye","Aho uri n'ikibazo bisabwa","Uko ubufasha bwatangwa biraganirwaho"],
+
+        fr:["Demandes d'assistance en cas de panne","Emplacement et détails nécessaires","Modalités d'assistance discutées"],
+
+        sw:["Maombi ya msaada wa gari lililoharibika","Mahali na maelezo ya tatizo yanahitajika","Mipango ya msaada hujadiliwa"],
+
+        zh:["车辆故障救援咨询","需要位置和故障信息","讨论救援安排"]
+
+      }
+
+    },
+
+    {
+
+      id:16, image:"equipment-hire.webp",
+
+      title:{en:"Earthmoving Equipment Hire",rw:"Gukodesha Imashini Ziremereye",fr:"Location d'engins de terrassement",sw:"Ukodishaji wa Vifaa vya Kuchimba Ardhi",zh:"土方工程设备租赁"},
+
+      desc:{
+
+        en:"Enquire about hiring earthmoving equipment for suitable projects. Tell us the equipment type, project location and expected period so availability and arrangements can be discussed.",
+
+        rw:"Baza ku gukodesha imashini ziremereye zikoreshwa mu mirimo y'ubutaka. Tubwire ubwoko bw'imashini, aho umushinga uri n'igihe uzamara kugira ngo tuganire ku kuboneka n'uko byategurwa.",
+
+        fr:"Renseignez-vous sur la location d'engins de terrassement pour vos projets. Précisez le type d'engin, le lieu du projet et la durée prévue afin de discuter de la disponibilité.",
+
+        sw:"Uliza kuhusu kukodisha vifaa vya kuchimba ardhi kwa miradi inayofaa. Tueleze aina ya kifaa, eneo la mradi na muda unaotarajiwa ili kujadili upatikanaji.",
+
+        zh:"可咨询适用于相关项目的土方设备租赁。请说明设备类型、项目地点和预计租期，以便讨论设备供应情况及安排。"
+
+      },
+
+      features:{
+
+        en:["Earthmoving equipment enquiries","Project and location details","Availability confirmed on request"],
+
+        rw:["Kubaza ku mashini ziremereye","Amakuru y'umushinga n'aho uri","Kuboneka byemezwa umaze kubaza"],
+
+        fr:["Demandes d'engins de terrassement","Détails du projet et du lieu","Disponibilité confirmée sur demande"],
+
+        sw:["Maombi ya vifaa vya kuchimba ardhi","Maelezo ya mradi na eneo","Upatikanaji huthibitishwa ukiuliza"],
+
+        zh:["土方设备租赁咨询","项目和地点信息","按需确认设备供应情况"]
+
+      }
+
+    },
+
+    {
+
+      id:17, image:"cargo-transport.webp",
+
+      title:{en:"Cargo Transportation Across East Africa",rw:"Gutwara Imizigo mu Burasirazuba bwa Afurika",fr:"Transport de marchandises en Afrique de l'Est",sw:"Usafirishaji wa Mizigo Afrika Mashariki",zh:"东非地区货物运输"},
+
+      desc:{
+
+        en:"Discuss commercial cargo transportation requirements with our team, including the type of cargo, route, destination and timing. Transport arrangements are confirmed after reviewing the request.",
+
+        rw:"Ganira n'itsinda ryacu ku byo ukeneye mu gutwara imizigo y'ubucuruzi, harimo ubwoko bw'imizigo, inzira, aho igomba kujya n'igihe. Gahunda y'urugendo yemezwa nyuma yo gusuzuma ubusabe.",
+
+        fr:"Discutez avec notre équipe de vos besoins en transport de marchandises, notamment le type de cargaison, l'itinéraire, la destination et le calendrier. Les modalités sont confirmées après examen de la demande.",
+
+        sw:"Jadili na timu yetu mahitaji ya usafirishaji wa mizigo ya biashara, ikiwemo aina ya mzigo, njia, unakoenda na muda. Mipango ya usafiri huthibitishwa baada ya ombi kuchunguzwa.",
+
+        zh:"与我们的团队讨论商业货物运输需求，包括货物类型、路线、目的地和时间安排。审核需求后再确认运输安排。"
+
+      },
+
+      features:{
+
+        en:["Commercial cargo enquiries","Route and destination details","Transport arrangements confirmed with staff"],
+
+        rw:["Kubaza ku gutwara imizigo y'ubucuruzi","Amakuru y'inzira n'aho imizigo ijya","Gahunda y'urugendo yemezwa n'abakozi"],
+
+        fr:["Demandes de transport commercial","Détails de l'itinéraire et de la destination","Modalités confirmées par l'équipe"],
+
+        sw:["Maombi ya usafirishaji wa kibiashara","Maelezo ya njia na unakoenda","Mipango huthibitishwa na timu"],
+
+        zh:["商业货物运输咨询","路线和目的地信息","由工作人员确认运输安排"]
+
+      }
+
+    },
+
+    {
+
+      id:18, image:"internship-training.webp",
+
+      title:{en:"Student Internships & Technical Training",rw:"Stage n'Amahugurwa ya Tekiniki ku Banyeshuri",fr:"Stages et formation technique pour étudiants",sw:"Mafunzo kwa Vitendo na Mafunzo ya Kiufundi kwa Wanafunzi",zh:"学生实习与技术培训"},
+
+      desc:{
+
+        en:"Students interested in practical exposure to truck servicing and technical work may contact us to enquire about internship or training opportunities. Availability and arrangements must be confirmed with the team.",
+
+        rw:"Abanyeshuri bashaka kwimenyereza gusana amakamyo n'indi mirimo ya tekiniki bashobora kutwandikira bakabaza amahirwe ya stage cyangwa amahugurwa. Kuboneka n'uko bikorwa byemezwa n'itsinda ryacu.",
+
+        fr:"Les étudiants souhaitant acquérir une expérience pratique en entretien de camions et en travaux techniques peuvent nous contacter pour se renseigner sur les stages ou formations. Les possibilités sont à confirmer.",
+
+        sw:"Wanafunzi wanaotaka kupata uzoefu wa vitendo katika matengenezo ya malori na kazi za kiufundi wanaweza kuuliza kuhusu nafasi za mafunzo kwa vitendo. Upatikanaji lazima uthibitishwe na timu.",
+
+        zh:"希望获得卡车维修和技术工作实践经验的学生，可联系我们咨询实习或培训机会。具体名额和安排需由团队确认。"
+
+      },
+
+      features:{
+
+        en:["Internship enquiries","Practical technical learning","Opportunities confirmed with the team"],
+
+        rw:["Kubaza amahirwe ya stage","Kwiga imirimo ya tekiniki mu bikorwa","Amahirwe yemezwa n'itsinda"],
+
+        fr:["Demandes de stage","Apprentissage technique pratique","Possibilités confirmées par l'équipe"],
+
+        sw:["Maombi ya nafasi za mafunzo","Kujifunza kazi za kiufundi kwa vitendo","Nafasi huthibitishwa na timu"],
+
+        zh:["实习机会咨询","技术实践学习","由团队确认培训机会"]
+
+      }
+
+    }
+
+  ];
+
+
+
+  const groupDescriptions = {
+
+    groupTrucks:"groupTrucksDesc",
+
+    groupParts:"groupPartsDesc",
+
+    groupRepair:"groupRepairDesc",
+
+    groupDiagnostics:"groupDiagnosticsDesc",
+
+    groupOther:"groupOtherDesc"
+
+  };
+
+
+
+  function currentLanguage() {
+
+    const select = document.getElementById("tmLanguage");
+
+    const stored = localStorage.getItem(LANG_KEY);
+
+    const lang = select && select.value ? select.value : stored;
+
+    return translations[lang] ? lang : "en";
+
+  }
+
+
+
+  function textFor(object, lang) {
+
+    return object && (object[lang] || object.en) || "";
+
+  }
+
+
+
+  function renderServices(lang) {
+
+    const host = document.getElementById("servicesGroups");
+
+    if (!host) return;
+
+
+
+    host.replaceChildren();
+
+
+
+    groupInfo.forEach((group, groupIndex) => {
+
+      const section = document.createElement("section");
+
+      section.className = "service-group";
+
+      section.id = group.key;
+
+
+
+      const heading = document.createElement("div");
+
+      heading.className = "group-heading";
+
+
+
+      const number = document.createElement("div");
+
+      number.className = "group-number";
+
+      number.textContent = String(groupIndex + 1).padStart(2, "0");
+
+
+
+      const headingText = document.createElement("div");
+
+      const h2 = document.createElement("h2");
+
+      h2.textContent = translations[lang][group.key] || translations.en[group.key];
+
+
+
+      const description = document.createElement("p");
+
+      const descKey = groupDescriptions[group.key];
+
+      description.textContent = translations[lang][descKey] || translations.en[descKey];
+
+
+
+      headingText.append(h2, description);
+
+      heading.append(number, headingText);
+
+
+
+      const grid = document.createElement("div");
+
+      grid.className = "service-grid";
+
+
+
+      group.items.forEach(id => {
+
+        const service = services.find(item => item.id === id);
+
+        if (!service) return;
+
+
+
+        const card = document.createElement("article");
+
+        card.className = "service-card";
+
+
+
+        const imageWrap = document.createElement("div");
+
+        imageWrap.className = "service-image";
+
+
+
+        const img = document.createElement("img");
+
+        img.src = service.id === 11 ? "images/tmecha1.webp" : "images/services/" + service.image;
+
+        img.alt = textFor(service.title, lang);
+
+        img.loading = "lazy";
+
+        img.onerror = function () {
+
+          this.onerror = null;
+
+          this.src = "images/logo.webp";
+
+          this.style.objectFit = "contain";
+
+          this.style.padding = "25px";
+
+        };
+
+
+
+        const badge = document.createElement("span");
+
+        badge.className = "service-number";
+
+        badge.textContent = String(service.id).padStart(2, "0");
+
+        imageWrap.append(img, badge);
+
+
+
+        const body = document.createElement("div");
+
+        body.className = "service-body";
+
+
+
+        const title = document.createElement("h3");
+
+        title.textContent = textFor(service.title, lang);
+
+
+
+        const paragraph = document.createElement("p");
+
+        paragraph.textContent = textFor(service.desc, lang);
+
+
+
+        const list = document.createElement("ul");
+
+        list.className = "service-features";
+
+        const features = textFor(service.features, lang);
+
+
+
+        features.forEach(feature => {
+
+          const li = document.createElement("li");
+
+          li.textContent = feature;
+
+          list.appendChild(li);
+
+        });
+
+
+
+        const button = document.createElement("a");
+
+        button.className = "tm-button";
+
+        button.href = "https://wa.me/" + PHONE + "?text=" +
+
+          encodeURIComponent(textFor(service.title, lang));
+
+        button.target = "_blank";
+
+        button.rel = "noopener";
+
+        button.textContent = translations[lang].enquire || translations.en.enquire;
+
+
+
+        body.append(title, paragraph, list, button);
+
+        card.append(imageWrap, body);
+
+        grid.appendChild(card);
+
+      });
+
+
+
+      section.append(heading, grid);
+
+      host.appendChild(section);
+
+    });
+
+  }
+
+
+
+  function applyLanguage(lang) {
+
+    if (!translations[lang]) lang = "en";
+
+
+
+    document.documentElement.lang = lang;
+
+    localStorage.setItem(LANG_KEY, lang);
+
+
+
+    const select = document.getElementById("tmLanguage");
+
+    if (select) select.value = lang;
+
+
+
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+
+      const key = element.dataset.i18n;
+
+      const value = translations[lang][key] || translations.en[key];
+
+      if (value === undefined) return;
+
+
+
+      if (key === "heroTitle") {
+
+        element.innerHTML = value;
+
+      } else {
+
+        element.textContent = value;
+
+      }
+
+    });
+
+
+
+    document.querySelectorAll("[data-i18n-title]").forEach(element => {
+
+      const key = element.dataset.i18nTitle;
+
+      const value = translations[lang][key] || translations.en[key];
+
+      if (value) element.title = value;
+
+    });
+
+
+
+    renderServices(lang);
+
+  }
+
+
+
+  const languageSelect = document.getElementById("tmLanguage");
+
+  if (languageSelect) {
+
+    languageSelect.addEventListener("change", event => {
+
+      applyLanguage(event.target.value);
+
+    });
+
+  }
+
+
+
+  const menuToggle = document.getElementById("tmMenuToggle");
+
+  const nav = document.getElementById("tmNav");
+
+
+
+  if (menuToggle && nav) {
+
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen = nav.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+
+      menuToggle.textContent = isOpen ? "×" : "☰";
+
+    });
+
+
+
+    nav.querySelectorAll("a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        nav.classList.remove("open");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+
+        menuToggle.setAttribute("aria-label", "Open menu");
+
+        menuToggle.textContent = "☰";
+
+      });
+
+    });
+
+  }
+
+
+
+  document.addEventListener("click", event => {
+    if (nav && menuToggle && !nav.contains(event.target) && !menuToggle.contains(event.target)) {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "☰";
+    }
+  });
+
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+
+
+  let savedLanguage = "en";
+
+  try {
+
+    const saved = localStorage.getItem(LANG_KEY);
+
+    if (saved && translations[saved]) savedLanguage = saved;
+
+  } catch (error) {
+
+    savedLanguage = "en";
+
+  }
+
+
+
+  applyLanguage(savedLanguage);
+
+})();
+
+</script>
+
+</body>
+
+</html>
