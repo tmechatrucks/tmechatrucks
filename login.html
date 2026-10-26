@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | T-MechaTrucks & Parts Ltd</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      color: #082b50;
+      background: linear-gradient(135deg, #ff8a00, #ffab3d);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 430px;
+      padding: 32px;
+      border: 1px solid #f0e5d7;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 15px 40px rgba(0,0,0,.3);
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .brand img {
+      display: block;
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+    }
+
+    .brand h1 {
+      color: #082b50;
+      font-size: 22px;
+      margin: 0 0 8px;
+    }
+
+    .brand p {
+      color: #607188;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #082b50;
+      font-size: 21px;
+      margin: 0 0 8px;
+    }
+
+    .intro {
+      color: #607188;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      margin: 16px 0 7px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #a9bbcc;
+      border-radius: 7px;
+      font-size: 15px;
+      background: #fff;
+      color: #172536;
+    }
+
+    input:focus {
+      outline: 2px solid #ff8a00;
+      border-color: #ff8a00;
+    }
+
+    .password-wrap {
+      position: relative;
+    }
+
+    .password-wrap input {
+      padding-right: 78px;
+    }
+
+    .show-password {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      color: #082b50;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .forgot-row {
+      text-align: right;
+      margin: 12px 0 18px;
+    }
+
+    a {
+      color: #082b50;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .primary-button {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 7px;
+      background: #082b50;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .primary-button:hover {
+      background: #164d80;
+    }
+
+    .primary-button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    #message {
+      margin: 16px 0 0;
+      font-size: 14px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .return-testimonials {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 14px;
+      width: fit-content;
+      border: 1px solid #c9d5e3;
+      border-radius: 8px;
+      color: #082b50;
+      background: #f4f7fb;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .return-testimonials:hover { background: #e8eff7; text-decoration: none; }
+
+    .back-link {
+      text-align: center;
+      margin: 22px 0 0;
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: #667085;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="login-card">
+    <div class="brand">
+      <img
+        src="images/logo.webp"
+        alt="T-MechaTrucks logo"
+        onerror="this.style.display='none'"
+      >
+      <h1>T-MechaTrucks &amp; Parts Ltd</h1>
+      <p>TRUCKS · PARTS · SERVICE</p>
+    </div>
+
+    <section id="loginSection">
+      <h2>Admin Sign In</h2>
+      <p class="intro">
+        Sign in using your authorized company account.
+      </p>
+
+      <form id="loginForm">
+        <label for="email">Email Address</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Enter your email"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+          <button
+            class="show-password"
+            type="button"
+            id="togglePassword"
+          >SHOW</button>
+        </div>
+
+        <div class="forgot-row">
+          <a href="#" id="forgotLink">Forgot Password?</a>
+        </div>
+
+        <button class="primary-button" id="loginButton" type="submit">
+          Sign In
+        </button>
+      </form>
+    </section>
+
+    <section id="forgotSection" hidden>
+      <h2>Reset Your Password</h2>
+      <p class="intro">
+        Enter your account email. We will send you a link to create a new
+        password.
+      </p>
+
+      <form id="forgotForm">
+        <label for="resetEmail">Email Address</label>
+        <input
+          id="resetEmail"
+          type="email"
+          placeholder="Enter your account email"
+          autocomplete="email"
+          required
+        >
+
+        <button
+          class="primary-button"
+          id="resetButton"
+          type="submit"
+        >
+          Send Reset Link
+        </button>
+      </form>
+
+      <p class="back-link">
+        <a href="#" id="backToLogin">Back to Sign In</a>
+      </p>
+    </section>
+
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <a class="return-testimonials" href="testimonials.html">← Back to Testimonials</a>
+
+    <p class="footer">
+      &copy; 2026 T-MechaTrucks &amp; Parts Ltd
+    </p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://ivyzjzbtdlphjaeywtxa.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP";
+
+    // Admin destination requested by the user.
+    const ADMIN_PAGE = "testimonials.html";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    const loginSection = document.getElementById("loginSection");
+    const forgotSection = document.getElementById("forgotSection");
+    const message = document.getElementById("message");
+    const loginButton = document.getElementById("loginButton");
+    const resetButton = document.getElementById("resetButton");
+
+    function showMessage(text) {
+      message.textContent = text;
+    }
+
+    document.getElementById("togglePassword").addEventListener(
+      "click",
+      function () {
+        const password = document.getElementById("password");
+        const isHidden = password.type === "password";
+
+        password.type = isHidden ? "text" : "password";
+        this.textContent = isHidden ? "HIDE" : "SHOW";
+      }
+    );
+
+    document.getElementById("forgotLink").addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+        loginSection.hidden = true;
+        forgotSection.hidden = false;
+        showMessage("");
+      }
+    );
+
+    document.getElementById("backToLogin").addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+        forgotSection.hidden = true;
+        loginSection.hidden = false;
+        showMessage("");
+      }
+    );
+
+    async function checkAdminAndRedirect(user) {
+      const { data, error } = await supabaseClient
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+
+      if (error) {
+        throw new Error(
+          "Could not verify your Admin role. Check Supabase permissions and try again."
+        );
+      }
+
+      if (!data) {
+        await supabaseClient.auth.signOut();
+        throw new Error(
+          "Access denied. This account is not authorized as an Admin."
+        );
+      }
+
+      window.location.replace(ADMIN_PAGE);
+    }
+
+    document.getElementById("loginForm").addEventListener(
+      "submit",
+      async function (event) {
+        event.preventDefault();
+
+        loginButton.disabled = true;
+        loginButton.textContent = "Signing in...";
+        showMessage("");
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        try {
+          const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+              email,
+              password
+            });
+
+          if (error) {
+            throw new Error(
+              "Sign in failed. Check your email and password, then try again."
+            );
+          }
+
+          if (!data.user) {
+            throw new Error("No user account was returned.");
+          }
+
+          await checkAdminAndRedirect(data.user);
+        } catch (error) {
+          showMessage(error.message || "Something went wrong.");
+          loginButton.disabled = false;
+          loginButton.textContent = "Sign In";
+        }
+      }
+    );
+
+    document.getElementById("forgotForm").addEventListener(
+      "submit",
+      async function (event) {
+        event.preventDefault();
+
+        resetButton.disabled = true;
+        resetButton.textContent = "Sending...";
+        showMessage("");
+
+        const email =
+          document.getElementById("resetEmail").value.trim();
+
+        const resetUrl = new URL(
+          "reset-password.html",
+          window.location.href
+        );
+
+        try {
+          const { error } =
+            await supabaseClient.auth.resetPasswordForEmail(email, {
+              redirectTo: resetUrl.href
+            });
+
+          if (error) {
+            throw error;
+          }
+
+          showMessage(
+            "If this email belongs to an account, a password reset link will be sent. Check your inbox and spam folder."
+          );
+        } catch (error) {
+          showMessage(
+            error.message ||
+            "Unable to send the reset email. Please try again later."
+          );
+        } finally {
+          resetButton.disabled = false;
+          resetButton.textContent = "Send Reset Link";
+        }
+      }
+    );
+  </script>
+</body>
+</html>
