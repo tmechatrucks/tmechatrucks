@@ -1,0 +1,1348 @@
+
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#075e54">
+<title>Admin Messages | T-MECHATRUCKS</title>
+
+<style>
+:root {
+  --green: #075e54;
+  --green-dark: #054c44;
+  --green-light: #128c7e;
+  --sent: #d9fdd3;
+  --received: #ffffff;
+  --navy: #082b50;
+  --orange: #ff8a00;
+  --chat-bg: #efeae2;
+  --header-bg: #f0f2f5;
+  --text: #111b21;
+  --muted: #667781;
+  --border: #e1e7e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #d9dbd5;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 335px minmax(0, 1fr);
+  width: 100%;
+  max-width: 1600px;
+  height: 100vh;
+  height: 100dvh;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0 0 30px #00000018;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-right: 1px solid var(--border);
+  background: #fff;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 83px;
+  padding: 15px;
+  background: var(--navy);
+  color: white;
+  border-bottom: 3px solid var(--orange);
+}
+
+.company-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  object-fit: contain;
+  padding: 3px;
+}
+
+.company-name {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.company-subtitle {
+  color: #d7e4f0;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.sidebar-actions {
+  display: flex;
+  gap: 8px;
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d8e1e5;
+  border-radius: 9px;
+  background: #f7f9fb;
+  color: var(--navy);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sidebar-btn:hover {
+  background: #eaf2f7;
+}
+
+.user-info {
+  padding: 17px;
+  border-bottom: 1px solid var(--border);
+}
+
+.user-info strong {
+  display: block;
+  font-size: 14px;
+  color: var(--navy);
+}
+
+.user-info small {
+  display: block;
+  color: var(--muted);
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+
+.chat-list-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 17px 14px;
+  background: #e9f5f0;
+  border-left: 4px solid var(--green-light);
+}
+
+.group-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #cce8dc;
+  color: var(--green);
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.chat-list-item strong {
+  display: block;
+  font-size: 14px;
+}
+
+.chat-list-item small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 15px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* CHAT PANEL */
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--chat-bg);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 75px;
+  padding: 11px 20px;
+  background: var(--header-bg);
+  border-bottom: 1px solid #d8dfe2;
+  flex-shrink: 0;
+}
+
+.chat-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-title strong {
+  display: block;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.chat-title small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #54656f;
+  font-size: 22px;
+}
+
+.icon-button:hover {
+  background: #dce4e5;
+}
+
+.dropdown-wrap {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 46px;
+  right: 0;
+  width: 195px;
+  padding: 6px;
+  border-radius: 11px;
+  background: white;
+  box-shadow: 0 6px 25px #00000024;
+  z-index: 20;
+}
+
+.dropdown.open {
+  display: block;
+}
+
+.dropdown a,
+.dropdown button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  text-align: left;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+  background: #f0f4f5;
+}
+
+.dropdown select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #fff;
+}
+
+.search-area {
+  display: none;
+  padding: 11px 17px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-area.open {
+  display: block;
+}
+
+.search-area input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #d8e0e3;
+  border-radius: 10px;
+  outline: none;
+}
+
+.search-area input:focus {
+  border-color: var(--green-light);
+}
+
+.status {
+  display: none;
+  padding: 10px 15px;
+  background: #fff3ce;
+  color: #775800;
+  font-size: 12px;
+  text-align: center;
+}
+
+.status.show {
+  display: block;
+}
+
+/* MESSAGES */
+
+.messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 23px clamp(14px, 5vw, 75px);
+  background-color: var(--chat-bg);
+  background-image:
+    radial-gradient(#b9b0a520 1px, transparent 1px);
+  background-size: 21px 21px;
+}
+
+.date-divider {
+  align-self: center;
+  margin: 10px 0;
+  padding: 6px 13px;
+  background: #fffdf9;
+  color: var(--muted);
+  font-size: 11px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px #00000012;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: min(75%, 570px);
+  padding: 9px 11px 6px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px #00000012;
+  overflow-wrap: anywhere;
+}
+
+.message.received {
+  align-self: flex-start;
+  background: var(--received);
+  border-top-left-radius: 3px;
+}
+
+.message.sent {
+  align-self: flex-end;
+  background: var(--sent);
+  border-top-right-radius: 3px;
+}
+
+.sender-name {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #a0478c;
+}
+
+.sent .sender-name {
+  color: #087b5c;
+}
+
+.message-text {
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.delete-btn {
+  padding: 2px 4px;
+  border: none;
+  background: transparent;
+  color: #b44b4b;
+  font-size: 11px;
+  text-decoration: underline;
+}
+
+.message.deleted .message-text {
+  color: #87949b;
+  font-style: italic;
+}
+
+.empty-state {
+  align-self: center;
+  margin: auto;
+  padding: 16px;
+  border-radius: 10px;
+  background: #ffffffd9;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* MESSAGE INPUT */
+
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 11px;
+  padding: 11px 17px;
+  background: var(--header-bg);
+  flex-shrink: 0;
+}
+
+.message-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  max-height: 130px;
+  padding: 12px 15px;
+  border: 1px solid transparent;
+  border-radius: 23px;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.message-input:focus {
+  border-color: #a6d9c9;
+}
+
+.send-button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 47px;
+  height: 47px;
+  border: none;
+  border-radius: 50%;
+  background: var(--green-light);
+  color: white;
+  box-shadow: 0 3px 9px #128c7e35;
+  transition: background .2s, transform .2s;
+}
+
+.send-button:hover {
+  background: var(--green);
+  transform: scale(1.04);
+}
+
+.send-button svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+.chat-footer {
+  padding: 5px;
+  background: var(--header-bg);
+  color: var(--muted);
+  font-size: 10px;
+  text-align: center;
+}
+
+/* MOBILE DESIGN */
+
+@media (max-width: 760px) {
+  .app {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .chat-panel {
+    width: 100%;
+    height: 100%;
+  }
+
+  .chat-header {
+    min-height: 66px;
+    padding: 9px 10px;
+    background: var(--green);
+    border-bottom: 2px solid var(--orange);
+    color: white;
+  }
+
+  .chat-header .group-avatar {
+    width: 41px;
+    height: 41px;
+    background: #d6efe3;
+    font-size: 19px;
+  }
+
+  .chat-title strong {
+    color: white;
+    font-size: 14px;
+  }
+
+  .chat-title small {
+    color: #d5eee7;
+    font-size: 11px;
+  }
+
+  .chat-header .icon-button {
+    width: 36px;
+    height: 36px;
+    color: white;
+  }
+
+  .chat-header .icon-button:hover {
+    background: #ffffff20;
+  }
+
+  .messages {
+    padding: 14px 10px;
+    gap: 6px;
+  }
+
+  .message {
+    max-width: 87%;
+    padding: 8px 10px 5px;
+  }
+
+  .message-text {
+    font-size: 13px;
+  }
+
+  .composer {
+    padding: 9px 8px;
+    gap: 8px;
+  }
+
+  .message-input {
+    min-height: 44px;
+    padding: 11px 14px;
+    font-size: 16px;
+  }
+
+  .send-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .chat-footer {
+    display: none;
+  }
+
+  .dropdown {
+    top: 42px;
+    right: 0;
+  }
+}
+
+@media (max-width: 370px) {
+  .chat-title strong {
+    font-size: 12px;
+  }
+
+  .chat-title small {
+    font-size: 10px;
+  }
+
+  .header-actions {
+    gap: 0;
+  }
+
+  .message {
+    max-width: 91%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- DESKTOP SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+      <img src="images/logo.webp"
+           class="company-logo"
+           alt="Company Logo">
+
+      <div>
+        <div class="company-name">
+          T-MECHATRUCKS &amp; PARTS LTD
+        </div>
+        <div class="company-subtitle">
+          Internal Admin Communication
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-actions">
+      <a href="admin-dashboard.html" class="sidebar-btn">
+        ← Dashboard
+      </a>
+
+      <button class="sidebar-btn" id="sidebarLogout"
+              type="button">
+        Logout
+      </button>
+    </div>
+
+    <div class="user-info">
+      <strong id="currentUserName">
+        Loading user...
+      </strong>
+      <small id="currentUserEmail"></small>
+    </div>
+
+    <div class="chat-list-item">
+      <div class="group-avatar">👥</div>
+      <div>
+        <strong>T-MECHATRUCKS Admin Group</strong>
+        <small>Alphonse · Denyse · Admin Team</small>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      🔒 Private communication for authorized admins.
+    </div>
+
+  </aside>
+
+  <!-- MAIN CHAT -->
+  <main class="chat-panel">
+
+    <header class="chat-header">
+
+      <div class="group-avatar">👥</div>
+
+      <div class="chat-title">
+        <strong>T-MECHATRUCKS Admin Group</strong>
+        <small id="groupStatus">Connecting...</small>
+      </div>
+
+      <div class="header-actions">
+
+        <button class="icon-button" id="searchToggle"
+                type="button" title="Search">
+          ⌕
+        </button>
+
+        <div class="dropdown-wrap">
+          <button class="icon-button" id="menuToggle"
+                  type="button" title="Menu"
+                  aria-expanded="false">
+            ⋮
+          </button>
+
+          <div class="dropdown" id="dropdown">
+            <a href="admin-dashboard.html">
+              ← Dashboard
+            </a>
+
+            <button id="menuLogout" type="button">
+              Logout
+            </button>
+
+            <select id="languageSelect"
+                    aria-label="Language">
+              <option value="rw">🇷🇼 RW</option>
+              <option value="en">🇬🇧 EN</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+    </header>
+
+    <div class="search-area" id="searchArea">
+      <input type="search" id="searchInput"
+             placeholder="Search messages...">
+    </div>
+
+    <div class="status" id="statusMessage"
+         role="alert"></div>
+
+    <div class="messages" id="messages">
+      <div class="empty-state">
+        Loading messages...
+      </div>
+    </div>
+
+    <form class="composer" id="messageForm">
+
+      <textarea
+        class="message-input"
+        id="messageInput"
+        rows="1"
+        maxlength="2000"
+        placeholder="Andika ubutumwa..."
+        disabled
+        required></textarea>
+
+      <button class="send-button" id="sendButton"
+              type="submit" disabled
+              aria-label="Send message">
+
+        <svg viewBox="0 0 24 24"
+             aria-hidden="true">
+          <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+
+      </button>
+
+    </form>
+
+    <div class="chat-footer">
+      T-MECHATRUCKS &amp; PARTS LTD · Admin Group
+    </div>
+
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
+
+<script>
+(() => {
+  "use strict";
+
+  const SUPABASE_URL =
+    "https://ivyzjzbtdlphjaeywtxa.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP";
+
+  const $ = id => document.getElementById(id);
+
+  const translations = {
+    rw: {
+      connecting: "Guhuza na Supabase...",
+      connected: "Ikiganiro cy'abayobozi",
+      loading: "Gufungura ubutumwa...",
+      empty: "Nta butumwa burimo. Tangira ikiganiro!",
+      noResults: "Nta butumwa buhuye n'ibyo ushaka.",
+      placeholder: "Andika ubutumwa...",
+      search: "Shaka ubutumwa...",
+      deleted: "Ubu butumwa bwasibwe",
+      delete: "Siba",
+      confirmDelete: "Urashaka gusiba ubu butumwa kuri bose?",
+      loginError: "Banza winjire muri login.html.",
+      accessError: "Ntabwo wemerewe gukoresha iyi chat.",
+      sendError: "Kohereza ubutumwa byanze: ",
+      loadError: "Gufungura ubutumwa byanze: ",
+      logout: "Sohoka"
+    },
+    en: {
+      connecting: "Connecting to Supabase...",
+      connected: "Private admin group",
+      loading: "Loading messages...",
+      empty: "No messages yet. Start the conversation!",
+      noResults: "No matching messages.",
+      placeholder: "Write a message...",
+      search: "Search messages...",
+      deleted: "This message was deleted",
+      delete: "Delete",
+      confirmDelete: "Delete this message for everyone?",
+      loginError: "Please log in first.",
+      accessError: "You are not authorized to use this chat.",
+      sendError: "Message could not be sent: ",
+      loadError: "Could not load messages: ",
+      logout: "Log out"
+    }
+  };
+
+  let language =
+    localStorage.getItem("tmecha-admin-language") === "en"
+      ? "en" : "rw";
+
+  let db = null;
+  let currentUser = null;
+  let members = [];
+  let messages = [];
+  let sending = false;
+  let loading = false;
+  let realtimeChannel = null;
+
+  const t = key => translations[language][key] || key;
+
+  function showStatus(message) {
+    $("statusMessage").textContent = message;
+    $("statusMessage").classList.toggle(
+      "show", Boolean(message)
+    );
+  }
+
+  function makeElement(tag, className, content) {
+    const element = document.createElement(tag);
+
+    if (className) element.className = className;
+
+    if (content !== undefined) {
+      element.textContent = content;
+    }
+
+    return element;
+  }
+
+  function memberName(userId) {
+    const member = members.find(
+      item => item.user_id === userId
+    );
+
+    if (member?.display_name) {
+      return member.display_name;
+    }
+
+    if (member?.email) {
+      return member.email.split("@")[0];
+    }
+
+    if (userId === currentUser?.id) {
+      return currentUser.email?.split("@")[0] || "Me";
+    }
+
+    return "Admin";
+  }
+
+  function formatTime(value) {
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Africa/Kigali",
+      hour: "2-digit",
+      minute: "2-digit"
+    }).format(new Date(value));
+  }
+
+  function formatDate(value) {
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Africa/Kigali",
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }).format(new Date(value));
+  }
+
+  function renderMessages() {
+    const container = $("messages");
+
+    const shouldScroll =
+      container.scrollHeight -
+      container.scrollTop -
+      container.clientHeight < 120;
+
+    container.replaceChildren();
+
+    const query =
+      $("searchInput").value.trim().toLowerCase();
+
+    const filtered = messages.filter(message => {
+      const text = String(message.body || "")
+        .toLowerCase();
+
+      const sender = memberName(message.sender_id)
+        .toLowerCase();
+
+      return !query ||
+        text.includes(query) ||
+        sender.includes(query);
+    });
+
+    if (!filtered.length) {
+      container.appendChild(
+        makeElement(
+          "div",
+          "empty-state",
+          query ? t("noResults") : t("empty")
+        )
+      );
+      return;
+    }
+
+    let previousDate = "";
+
+    filtered.forEach(message => {
+      const date = formatDate(message.created_at);
+
+      if (date !== previousDate) {
+        container.appendChild(
+          makeElement("div", "date-divider", date)
+        );
+        previousDate = date;
+      }
+
+      const mine =
+        message.sender_id === currentUser?.id;
+
+      const bubble = makeElement(
+        "div",
+        "message " +
+        (mine ? "sent" : "received") +
+        (message.deleted_at ? " deleted" : "")
+      );
+
+      bubble.appendChild(
+        makeElement(
+          "div",
+          "sender-name",
+          memberName(message.sender_id)
+        )
+      );
+
+      bubble.appendChild(
+        makeElement(
+          "div",
+          "message-text",
+          message.deleted_at
+            ? t("deleted")
+            : message.body
+        )
+      );
+
+      const meta = makeElement(
+        "div",
+        "message-meta"
+      );
+
+      meta.appendChild(
+        makeElement(
+          "span",
+          "",
+          formatTime(message.created_at)
+        )
+      );
+
+      const age =
+        Date.now() -
+        new Date(message.created_at).getTime();
+
+      if (
+        mine &&
+        !message.deleted_at &&
+        age >= 0 &&
+        age < 3600000
+      ) {
+        const deleteButton = makeElement(
+          "button",
+          "delete-btn",
+          t("delete")
+        );
+
+        deleteButton.type = "button";
+
+        deleteButton.addEventListener(
+          "click",
+          () => deleteMessage(message.id)
+        );
+
+        meta.appendChild(deleteButton);
+      }
+
+      bubble.appendChild(meta);
+      container.appendChild(bubble);
+    });
+
+    if (shouldScroll || !container.dataset.ready) {
+      container.scrollTop = container.scrollHeight;
+    }
+
+    container.dataset.ready = "true";
+  }
+
+  async function loadMessages() {
+    if (loading || !db || !currentUser) return;
+
+    loading = true;
+
+    try {
+      const { data, error } = await db
+        .from("admin_group_messages")
+        .select(
+          "id,sender_id,body,created_at,deleted_at"
+        )
+        .order("created_at", {
+          ascending: false
+        })
+        .limit(300);
+
+      if (error) throw error;
+
+      const latest = (data || []).reverse();
+
+      if (
+        JSON.stringify(latest) !==
+        JSON.stringify(messages)
+      ) {
+        messages = latest;
+        renderMessages();
+      }
+
+      showStatus("");
+
+    } catch (error) {
+      showStatus(
+        t("loadError") + error.message
+      );
+    } finally {
+      loading = false;
+    }
+  }
+
+  async function deleteMessage(messageId) {
+    if (!confirm(t("confirmDelete"))) return;
+
+    const { error } = await db.rpc(
+      "delete_admin_group_message",
+      { p_message_id: messageId }
+    );
+
+    if (error) {
+      showStatus(error.message);
+      return;
+    }
+
+    await loadMessages();
+  }
+
+  $("messageForm").addEventListener(
+    "submit",
+    async event => {
+      event.preventDefault();
+
+      if (!currentUser || sending) return;
+
+      const body = $("messageInput").value.trim();
+
+      if (!body) return;
+
+      sending = true;
+      $("sendButton").disabled = true;
+
+      try {
+        const { error } = await db
+          .from("admin_group_messages")
+          .insert({
+            sender_id: currentUser.id,
+            body: body
+          });
+
+        if (error) throw error;
+
+        $("messageInput").value = "";
+        $("messageInput").style.height = "46px";
+
+        await loadMessages();
+
+        $("messages").scrollTop =
+          $("messages").scrollHeight;
+
+        $("messageInput").focus();
+
+      } catch (error) {
+        showStatus(
+          t("sendError") + error.message
+        );
+      } finally {
+        sending = false;
+        $("sendButton").disabled = false;
+      }
+    }
+  );
+
+  $("messageInput").addEventListener(
+    "keydown",
+    event => {
+      if (
+        event.key === "Enter" &&
+        !event.shiftKey &&
+        !event.isComposing
+      ) {
+        event.preventDefault();
+        $("messageForm").requestSubmit();
+      }
+    }
+  );
+
+  $("messageInput").addEventListener(
+    "input",
+    event => {
+      const input = event.target;
+
+      input.style.height = "46px";
+
+      input.style.height =
+        Math.min(input.scrollHeight, 130) + "px";
+    }
+  );
+
+  $("searchToggle").addEventListener(
+    "click",
+    () => {
+      $("searchArea").classList.toggle("open");
+
+      if ($("searchArea").classList.contains("open")) {
+        $("searchInput").focus();
+      }
+    }
+  );
+
+  $("searchInput").addEventListener(
+    "input",
+    renderMessages
+  );
+
+  $("menuToggle").addEventListener(
+    "click",
+    () => {
+      const opened =
+        $("dropdown").classList.toggle("open");
+
+      $("menuToggle").setAttribute(
+        "aria-expanded",
+        String(opened)
+      );
+    }
+  );
+
+  document.addEventListener("click", event => {
+    if (!event.target.closest(".dropdown-wrap")) {
+      $("dropdown").classList.remove("open");
+
+      $("menuToggle").setAttribute(
+        "aria-expanded",
+        "false"
+      );
+    }
+  });
+
+  function applyLanguage() {
+    $("languageSelect").value = language;
+
+    $("messageInput").placeholder =
+      t("placeholder");
+
+    $("searchInput").placeholder =
+      t("search");
+
+    $("groupStatus").textContent =
+      t("connected");
+
+    $("menuLogout").textContent =
+      t("logout");
+
+    $("sidebarLogout").textContent =
+      t("logout");
+
+    renderMessages();
+  }
+
+  $("languageSelect").addEventListener(
+    "change",
+    event => {
+      language = event.target.value;
+
+      localStorage.setItem(
+        "tmecha-admin-language",
+        language
+      );
+
+      applyLanguage();
+    }
+  );
+
+  async function logout() {
+    if (db) {
+      await db.auth.signOut();
+    }
+
+    window.location.href = "login.html";
+  }
+
+  $("menuLogout").addEventListener(
+    "click",
+    logout
+  );
+
+  $("sidebarLogout").addEventListener(
+    "click",
+    logout
+  );
+
+  async function initialize() {
+    $("languageSelect").value = language;
+
+    $("groupStatus").textContent =
+      t("connecting");
+
+    if (
+      !window.supabase ||
+      typeof window.supabase.createClient !== "function"
+    ) {
+      throw new Error(
+        "Supabase library did not load. Check internet."
+      );
+    }
+
+    db = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    const { data, error } =
+      await db.auth.getUser();
+
+    if (error || !data.user) {
+      throw new Error(t("loginError"));
+    }
+
+    currentUser = data.user;
+
+    // Membership lookup; database RLS remains
+    // responsible for protecting chat messages.
+    const memberResult = await db
+      .from("admin_chat_users")
+      .select("user_id,display_name,email");
+
+    if (memberResult.error) {
+      throw memberResult.error;
+    }
+
+    members = memberResult.data || [];
+
+    if (
+      !members.some(
+        member => member.user_id === currentUser.id
+      )
+    ) {
+      throw new Error(t("accessError"));
+    }
+
+    $("currentUserName").textContent =
+      memberName(currentUser.id);
+
+    $("currentUserEmail").textContent =
+      currentUser.email || "";
+
+    $("messageInput").disabled = false;
+    $("sendButton").disabled = false;
+
+    applyLanguage();
+    await loadMessages();
+
+    realtimeChannel = db
+      .channel("tmecha-admin-group-chat")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "admin_group_messages"
+        },
+        () => loadMessages()
+      )
+      .subscribe();
+
+    // Backup refresh in case Realtime is unavailable.
+    setInterval(() => {
+      if (!document.hidden) {
+        loadMessages();
+      }
+    }, 7000);
+
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (!document.hidden) {
+          loadMessages();
+        }
+      }
+    );
+  }
+
+  initialize().catch(error => {
+    showStatus(error.message);
+
+    $("groupStatus").textContent =
+      "Connection error";
+
+    $("currentUserName").textContent =
+      "Login required";
+
+    $("messages").replaceChildren(
+      makeElement(
+        "div",
+        "empty-state",
+        error.message
+      )
+    );
+  });
+
+})();
+</script>
+
+</body>
+</html>
