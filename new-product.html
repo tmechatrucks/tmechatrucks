@@ -1,0 +1,2541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#082b50">
+  <meta name="description" content="Browse new truck spare parts from T-MechaTrucks & Parts Ltd in Rwanda.">
+  <title>New Spare Parts | T-MechaTrucks & Parts Ltd</title>
+  <link rel="icon" href="images/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+<style>
+
+  :root {
+    --navy: #082b50;
+    --dark: #041628;
+    --orange: #ff8a00;
+    --gold: #C49A32;
+    --gold-hover: #A77B16;
+    --light: #f4f7fb;
+    --border: #e0e6ee;
+    --text: #172638;
+    --muted: #64748b;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { min-height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--light);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  button, input, select { font: inherit; }
+  button { cursor: pointer; }
+  button:disabled { opacity: .55; cursor: not-allowed; }
+
+  /* HEADER */
+  .np-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: #fff;
+    color: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    box-shadow: 0 4px 18px rgba(4, 22, 40, .08);
+  }
+
+  .np-header-inner {
+    width: min(1320px, 100%);
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* BRANDING — MATCHES ABOUT.HTML AND SERVICES.HTML */
+  .np-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+    flex-shrink: 0;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .np-brand img {
+    display: block;
+    width: 57px;
+    height: 57px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .np-brand-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.2;
+  }
+
+  .np-brand-name {
+    color: var(--navy);
+    font-size: clamp(14px, 1.5vw, 20px);
+    font-weight: 800;
+  }
+
+  .np-brand-sub {
+    margin-top: 5px;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+  }
+
+  .np-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .np-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    min-width: 0;
+  }
+
+  .np-nav a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: color .2s ease;
+  }
+
+  .np-nav a:hover,
+  .np-nav a:focus-visible {
+    color: var(--gold-hover);
+  }
+
+  .np-header-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .np-language {
+    width: 82px;
+    min-width: 82px;
+    padding: 9px 5px;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--navy);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .np-cart-button {
+    white-space: nowrap;
+  }
+
+  .np-menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .np-menu-toggle span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin: 4px 0;
+    border-radius: 2px;
+    background: var(--navy);
+  }
+
+  /* NEW PRODUCTS — MOBILE MENU FIX */
+  @media (max-width: 800px) {
+    .np-header-inner {
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .np-menu-toggle {
+      display: block;
+      margin-left: auto;
+    }
+
+    .np-header-actions {
+      display: none;
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 0;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      background: #fff;
+    }
+
+    .np-header-actions.np-menu-open {
+      display: flex;
+    }
+
+    .np-nav {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .np-nav a {
+      display: block;
+      padding: 12px 8px;
+      white-space: normal;
+      border-bottom: 1px solid #eee;
+    }
+
+    .np-header-tools {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  /* TABLET */
+  @media (max-width: 1100px) and (min-width: 701px) {
+    .np-header-inner {
+      gap: 12px;
+      padding-right: 14px;
+      padding-left: 14px;
+    }
+
+    .np-brand img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .np-header-actions {
+      gap: 10px;
+    }
+
+    .np-nav {
+      gap: 9px;
+    }
+
+    .np-nav a {
+      font-size: 11px;
+    }
+
+    .np-header-tools {
+      gap: 6px;
+    }
+
+    .np-language {
+      width: 72px;
+      min-width: 72px;
+    }
+
+    .np-cart-button {
+      padding: 10px 9px;
+    }
+  }
+
+  /* MOBILE HEADER */
+  @media (max-width: 700px) {
+    .np-header-inner {
+      min-height: 68px;
+      padding: 9px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .np-brand {
+      flex: 1;
+      gap: 7px;
+    }
+
+    .np-brand img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .np-brand-name {
+      font-size: 12px;
+    }
+
+    .np-brand-sub {
+      margin-top: 5px;
+      font-size: 8px;
+      letter-spacing: .8px;
+    }
+
+    .np-menu-toggle {
+      display: block;
+    }
+
+    .np-header-actions {
+      display: none;
+      flex: 0 0 calc(100% + 24px);
+      width: calc(100% + 24px);
+      margin: 0 -12px -9px;
+      padding: 12px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      align-items: stretch;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .np-header-actions.np-menu-open {
+      display: flex;
+    }
+
+    .np-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .np-nav a {
+      display: block;
+      padding: 12px 5px;
+      border-bottom: 1px solid #edf0f4;
+      font-size: 14px;
+      white-space: normal;
+    }
+
+    .np-header-tools {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .np-language {
+      width: 86px;
+      min-width: 86px;
+      min-height: 40px;
+    }
+
+    .np-cart-button {
+      min-height: 40px;
+    }
+
+    /* PAGE FITS PHONE SCREEN */
+    .np-container {
+      width: calc(100% - 24px);
+      max-width: 100%;
+    }
+
+    .np-hero {
+      margin: 14px 0 20px;
+      padding: 28px 17px;
+      border-radius: 12px;
+      background-position: center;
+    }
+
+    /* PRODUCTS AND CART STACK VERTICALLY */
+    .np-shop-layout {
+      display: flex !important;
+      flex-direction: column;
+      height: auto;
+      min-height: 0;
+      gap: 16px;
+    }
+
+    .np-shop-content {
+      order: 1;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      overflow: visible;
+      padding: 0 0 12px;
+    }
+
+    #npProducts,
+    .np-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .np-card {
+      padding: 9px;
+      gap: 8px;
+    }
+
+    .np-product-image,
+    .np-image-placeholder {
+      height: 110px;
+    }
+
+    .np-card h2 {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .np-price {
+      font-size: 15px;
+    }
+
+    .np-card-actions {
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .np-card-actions .np-button {
+      width: 100%;
+      padding: 10px 6px;
+      font-size: 12px;
+    }
+
+    .np-cart-sidebar {
+      order: 2;
+      position: static;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      overflow: visible;
+      padding: 13px;
+    }
+
+    .np-toolbar {
+      gap: 9px;
+    }
+
+    .np-search {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .np-results {
+      width: 100%;
+    }
+
+    .np-dialog {
+      width: 100%;
+      max-height: calc(100dvh - 28px);
+      padding: 22px 16px;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .np-brand img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .np-brand-name {
+      font-size: 12px;
+    }
+
+    .np-brand-sub {
+      font-size: 8px;
+      letter-spacing: .8px;
+    }
+
+    #npProducts,
+    .np-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* BUTTONS */
+  .np-button {
+    border: 0;
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background .2s ease, color .2s ease;
+  }
+
+  .np-primary {
+    background: var(--gold);
+    color: #fff;
+  }
+
+  .np-primary:hover { background: var(--gold-hover); }
+
+  .np-secondary {
+    background: #fff;
+    color: var(--navy);
+    border: 1px solid var(--gold);
+  }
+
+  /* PAGE */
+  .np-container {
+    width: min(1500px,calc(100% - 32px));
+    margin: 0 auto;
+    min-width: 0;
+  }
+
+  .np-eyebrow {
+    color: #b96800;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .np-hero {
+    margin: 24px 0 28px;
+    padding: 48px 30px;
+    border-radius: 16px;
+    color: #fff;
+    background-color: var(--navy);
+    background-image:
+      linear-gradient(90deg,rgba(4,22,40,.72),rgba(8,43,80,.40)),
+      url("images/combo12.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  /* PRODUCTS LEFT + CART RIGHT */
+  .np-shop-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 3fr) minmax(280px, 1fr) !important;
+    gap: 18px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .np-shop-content {
+    grid-column: 1;
+    grid-row: 1;
+    display: block !important;
+    visibility: visible !important;
+    min-width: 0;
+    height: calc(100vh - 180px);
+    min-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    padding: 2px 10px 18px 0;
+  }
+
+  #npProducts {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .np-cart-sidebar {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    min-width: 0;
+    width: 100%;
+    height: calc(100vh - 180px);
+    min-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+  }
+
+  /* SEARCH */
+  .np-toolbar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .np-search {
+    flex: 1;
+    min-width: 190px;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #fff;
+    outline-color: var(--orange);
+  }
+
+  .np-results {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* PRODUCTS */
+  .np-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 15px;
+  }
+
+  .np-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 3px 12px #0b25400a;
+  }
+
+  .np-card:hover {
+    border-color: #f3ad55;
+    box-shadow: 0 8px 22px #0b254014;
+  }
+
+  .np-product-image {
+    display: block;
+    width: 100%;
+    height: 145px;
+    object-fit: contain;
+    background: #f4f7fb;
+    border-radius: 9px;
+  }
+
+  .np-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 145px;
+    padding: 12px;
+    border-radius: 9px;
+    background: #f4f7fb;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .np-card h2 {
+    margin: 0;
+    color: var(--navy);
+    font-size: 15px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .np-sku {
+    color: var(--muted);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .np-price-label {
+    margin-bottom: 5px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .np-price {
+    color: var(--navy);
+    font-size: 19px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+  }
+
+  .np-stock { color: #237347; font-size: 12px; }
+
+  .np-card-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: auto;
+    padding-top: 5px;
+  }
+
+  .np-card-actions .np-button {
+    flex: 1;
+    padding: 10px 7px;
+  }
+
+  .np-status {
+    grid-column: 1 / -1;
+    margin: 0 0 22px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--muted);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  /* CART CONTENT */
+  .np-cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 15px 0;
+  }
+
+  .np-cart-item {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: 9px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .np-cart-item h3 {
+    margin: 0 0 5px;
+    color: var(--navy);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .np-cart-item-price {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 6px;
+  }
+
+  .np-quantity {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 9px;
+  }
+
+  .np-quantity button {
+    width: 29px;
+    height: 29px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #edf2f7;
+  }
+
+  .np-quantity input {
+    width: 48px;
+    height: 29px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .np-remove {
+    margin-top: 7px;
+    padding: 3px 0;
+    border: 0;
+    background: none;
+    color: #b42318;
+    font-size: 12px;
+  }
+
+  .np-cart-summary {
+    border-top: 1px solid var(--border);
+    padding-top: 13px;
+  }
+
+  .np-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 7px 0;
+  }
+
+  .np-price-row span:first-child { color: var(--muted); }
+  .np-price-row strong { text-align: right; }
+
+  .np-cart-note {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 12px 0;
+  }
+
+  .np-cart-buttons {
+    display: grid;
+    gap: 9px;
+  }
+
+  .np-cart-buttons .np-button { width: 100%; }
+
+  /* PRODUCT POPUP */
+  .np-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: #030f1cbb;
+    overflow: auto;
+  }
+
+  .np-overlay.np-open { display: flex; }
+
+  .np-dialog {
+    position: relative;
+    width: min(590px,100%);
+    max-height: calc(100vh - 36px);
+    overflow: auto;
+    padding: 25px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 20px 70px #0004;
+  }
+
+  .np-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 37px;
+    height: 37px;
+    border: 0;
+    border-radius: 50%;
+    background: #edf1f5;
+    color: var(--navy);
+    font-size: 24px;
+  }
+
+  .np-dialog h2 {
+    margin: 9px 40px 8px 0;
+    color: var(--navy);
+    font-size: 22px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .np-dialog-image {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    background: #f4f7fb;
+    border-radius: 9px;
+  }
+
+  .np-description {
+    margin: 15px 0;
+    color: #526173;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .np-price-box {
+    margin: 17px 0;
+    padding: 13px;
+    border-radius: 10px;
+    background: #f3f6fa;
+  }
+
+  .np-price-total {
+    margin-top: 5px;
+    padding-top: 12px;
+    border-top: 1px solid #d9e1ea;
+    color: var(--navy);
+    font-size: 18px;
+  }
+
+  .np-dialog-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .np-dialog-actions .np-button { flex: 1; }
+
+  /* FOOTER */
+  .np-footer {
+    padding: 25px 18px;
+    background: var(--dark);
+    color: #d7e0e9;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .np-footer a { color: #fff; }
+
+  .np-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    z-index: 900;
+    display: none;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 28px);
+    padding: 13px 18px;
+    border-radius: 9px;
+    background: var(--dark);
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    box-shadow: 0 6px 25px #0003;
+  }
+
+  .np-toast.np-show { display: block; }
+  body.np-lock { overflow: hidden; }
+
+  /* SMALL DESKTOP / TABLET */
+  @media (max-width: 1000px) and (min-width: 701px) {
+    .np-shop-layout {
+      grid-template-columns: minmax(0,2.5fr) minmax(245px,1fr) !important;
+      gap: 12px;
+    }
+
+    .np-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .np-card { padding: 11px; }
+    .np-cart-sidebar { padding: 12px; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 700px) {
+    .np-header-inner {
+      padding: 11px 13px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .np-container { width: calc(100% - 24px); }
+
+    .np-hero {
+      margin-top: 15px;
+      padding: 32px 19px;
+    }
+
+    .np-shop-layout {
+      display: flex !important;
+      flex-direction: column;
+      height: auto;
+      min-height: 0;
+      gap: 18px;
+    }
+
+    .np-shop-content {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      overflow: visible;
+      padding-right: 0;
+    }
+
+    .np-cart-sidebar {
+      position: static;
+      width: 100%;
+      height: auto;
+      max-height: 65vh;
+      min-height: 0;
+      overflow-y: auto;
+      order: 2;
+    }
+
+    .np-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 9px;
+    }
+
+    .np-card { padding: 10px; }
+
+    .np-product-image,
+    .np-image-placeholder { height: 105px; }
+
+    .np-card h2 { font-size: 13px; }
+    .np-price { font-size: 16px; }
+
+    .np-card-actions { flex-direction: column; }
+    .np-card-actions .np-button { width: 100%; }
+    .np-results { width: 100%; }
+    .np-dialog { padding: 22px 17px; }
+  }
+
+  @media (max-width: 370px) {
+    .np-grid { grid-template-columns: 1fr; }
+  }
+
+  /* MOBILE HEADER AND MENU FIX */
+  @media (max-width: 700px) {
+    .np-header {
+      position: relative;
+      z-index: 1000;
+    }
+
+    .np-header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+    }
+
+    .np-brand {
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      min-width: 0;
+      gap: 7px;
+    }
+
+    .np-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .np-brand-text {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .np-brand-name {
+      font-size: 12px;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .np-brand-sub {
+      margin-top: 5px;
+      font-size: 8px;
+      letter-spacing: .8px;
+    }
+
+    .np-menu-toggle {
+      display: flex;
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      padding: 9px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1002;
+    }
+
+    .np-menu-toggle span {
+      display: block;
+      width: 23px;
+      height: 2px;
+      flex-shrink: 0;
+    }
+
+    .np-header-actions {
+      display: none;
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      padding: 12px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      background: #041628;
+      border-radius: 10px;
+    }
+
+    .np-header-actions.np-menu-open {
+      display: flex;
+    }
+
+    .np-nav {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .np-nav a {
+      display: block;
+      width: 100%;
+      padding: 12px 8px;
+      font-size: 14px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .np-header-tools {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .np-language {
+      min-width: 85px;
+      max-width: 110px;
+    }
+
+    .np-cart-button {
+      flex: 1;
+    }
+
+    /* PRODUCT LAYOUT FIX */
+    .np-container {
+      width: calc(100% - 24px);
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .np-shop-layout {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch;
+      width: 100%;
+      height: auto !important;
+      min-height: 0;
+      gap: 16px;
+    }
+
+    .np-shop-content {
+      order: 1;
+      display: block;
+      width: 100%;
+      min-width: 0;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      padding: 0;
+    }
+
+    .np-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 10px;
+    }
+
+    .np-search {
+      flex: 1 1 100%;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .np-results {
+      width: 100%;
+    }
+
+    #npProducts,
+    .np-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      align-items: stretch;
+      gap: 10px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .np-card {
+      min-width: 0;
+      max-width: 100%;
+      padding: 10px;
+      overflow-wrap: anywhere;
+    }
+
+    .np-product-image,
+    .np-image-placeholder {
+      display: block;
+      width: 100%;
+      height: 110px;
+      object-fit: contain;
+    }
+
+    .np-card h2 {
+      font-size: 13px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .np-sku {
+      overflow-wrap: anywhere;
+    }
+
+    .np-price {
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .np-card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .np-card-actions .np-button {
+      width: 100%;
+      min-width: 0;
+      padding: 9px 5px;
+      font-size: 12px;
+    }
+
+    .np-cart-sidebar {
+      order: 2;
+      position: static !important;
+      width: 100%;
+      min-width: 0;
+      height: auto !important;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .np-dialog {
+      width: calc(100% - 24px);
+      max-width: 480px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 22px 16px;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .np-brand img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .np-brand-name {
+      font-size: 12px;
+    }
+
+    .np-brand-sub {
+      font-size: 8px;
+      letter-spacing: .8px;
+    }
+
+    #npProducts,
+    .np-grid {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+  }
+
+  /* NEW PRODUCTS MOBILE MENU — FINAL OVERRIDE */
+  @media (max-width: 700px) {
+    .np-menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      padding: 8px;
+    }
+
+    .np-menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 0;
+      background: #082b50;
+      border-radius: 2px;
+    }
+
+    .np-header-actions {
+      display: none;
+      box-sizing: border-box;
+      background: #fff;
+      color: #082b50;
+      width: calc(100% + 24px);
+      margin: 0 -12px -9px;
+      padding: 12px;
+      border-top: 1px solid #e5e7eb;
+      box-shadow: 0 8px 16px rgba(4, 22, 40, 0.12);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .np-header-actions.np-menu-open {
+      display: flex;
+    }
+
+    .np-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+    }
+
+    .np-nav a {
+      display: block;
+      padding: 12px 8px;
+      color: #082b50;
+      background: #fff;
+      border-bottom: 1px solid #edf0f4;
+      font-size: 14px;
+      white-space: normal;
+    }
+
+    .np-header-tools {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-top: 6px;
+    }
+  }
+
+  /* MOBILE HEADER: KEEP LANGUAGE AND CART BESIDE MENU */
+  @media (max-width: 700px) {
+    .np-header-inner {
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .np-brand {
+      flex: 1 1 120px;
+    }
+
+    .np-menu-toggle {
+      flex: 0 0 38px;
+      width: 38px;
+      margin-left: 0;
+    }
+
+    .np-header-tools {
+      display: flex;
+      flex: 0 1 auto;
+      width: auto;
+      gap: 4px;
+      padding: 0;
+      align-items: center;
+    }
+
+    .np-language {
+      width: 62px;
+      min-width: 62px;
+      padding: 8px 2px;
+    }
+
+    .np-cart-button {
+      flex: 0 0 auto;
+      padding: 9px 7px;
+    }
+
+    .np-header-actions {
+      flex: 0 0 100%;
+      width: calc(100% + 24px);
+      margin: 0 -12px -9px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .np-menu-toggle {
+      order: 3;
+    }
+
+    .np-header-tools {
+      order: 2;
+    }
+  }
+
+  /* KEEP HEADER VISIBLE WHILE SCROLLING */
+  .np-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+  }
+  /* FIX HERO IMAGE HEIGHT ON PHONES */
+@media (max-width: 700px) {
+  .np-hero {
+    min-height: 0;
+    margin: 12px 0 18px;
+    padding: 22px 16px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+  }
+
+  .np-hero h1 {
+    font-size: clamp(22px, 6vw, 30px);
+    line-height: 1.25;
+  }
+
+  .np-hero p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* CONSISTENT BUTTON SIZE — MOBILE */
+
+@media (max-width: 560px) {
+  .btn,
+  .button,
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    min-height: 42px;
+    padding: 9px 14px;
+    font-size: 13px;
+    line-height: 1.3;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+  .button-row .btn,
+  .button-row .button {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .center-action .btn,
+  .center-action .button,
+  .testimonial-actions .btn,
+  .testimonial-actions .button {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+
+/* REFINED RESPONSIVE DESIGN — only this page; shared stylesheet untouched */
+.np-header-inner {max-width:1320px; gap:12px;}
+.np-brand-name {font-size:clamp(15px,1.45vw,20px);line-height:1.2;}
+.np-brand-sub {letter-spacing:.8px;}
+.np-header-tools {order:3;}
+.np-header-actions {order:2;}
+.np-menu-toggle {order:4;}
+.np-language {width:82px;min-width:82px;height:42px;padding:6px 5px;}
+.np-button {min-height:38px;padding:9px 12px;font-size:12.5px;line-height:1.35;}
+.np-card-actions .np-button {min-height:39px;}
+.np-floating-cart {position:fixed;right:17px;top:43%;z-index:1150;display:flex;align-items:center;justify-content:center;width:55px;height:55px;border:2px solid #fff;border-radius:50%;background:#c49a32;color:#082b50;box-shadow:0 6px 22px #04162840;font-size:24px;cursor:pointer;}
+.np-floating-cart-count {position:absolute;top:-7px;right:-5px;min-width:22px;height:22px;padding:2px 5px;border-radius:20px;background:#082b50;color:#fff;font-size:12px;font-weight:800;}
+.np-cart-backdrop:not([hidden]) {position:fixed;inset:0;z-index:1190;background:rgba(4,22,40,.55);}
+.np-cart-sidebar {position:fixed!important;top:0;right:0;bottom:0;z-index:1200;grid-column:auto;grid-row:auto;width:min(390px,calc(100vw - 24px));height:100dvh!important;min-height:0;max-height:none;overflow-y:auto;transform:translateX(110%);transition:transform .25s ease;box-shadow:-10px 0 40px #04162824;border-radius:14px 0 0 14px;padding:26px 20px;}
+.np-cart-sidebar.np-cart-visible {transform:translateX(0);}
+.np-cart-close {position:absolute;right:14px;top:10px;border:0;background:#edf2f7;border-radius:50%;width:35px;height:35px;font-size:25px;color:#082b50;}
+body.np-cart-lock {overflow:hidden;}
+.np-shop-layout {display:block!important;}
+.np-shop-content {height:auto;min-height:0;overflow:visible;padding:0 0 25px;}
+#npProducts,.np-grid {grid-template-columns:repeat(4,minmax(0,1fr));}
+.np-dialog {width:min(860px,100%);max-height:calc(100dvh - 30px);}
+.np-dialog-image {height:clamp(260px,45vh,440px);object-fit:contain;}
+.np-detail-quantity {display:flex;align-items:center;gap:6px;}
+.np-detail-quantity button {width:34px;height:34px;border:1px solid #d9e1ea;background:#fff;border-radius:7px;}
+.np-detail-quantity input {width:57px;height:34px;text-align:center;border:1px solid #d9e1ea;border-radius:7px;}
+.np-footer {width:min(1450px,calc(100% - 32px));margin:22px auto 18px;border-radius:16px;background:#082b50;padding:30px 20px;overflow-wrap:anywhere;}
+@media(max-width:1100px) {#npProducts,.np-grid {grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:900px) {
+ .np-header-inner {flex-wrap:wrap;min-height:72px;padding:9px 13px;}
+ .np-brand {flex:1 1 auto;min-width:0;gap:9px;}
+ .np-brand img {width:49px;height:49px;}
+ .np-brand-name {font-size:clamp(12px,2.5vw,17px);overflow-wrap:normal;}
+ .np-brand-sub {font-size:9px;letter-spacing:.4px;}
+ .np-header-tools {order:2;width:auto;flex:0 0 auto;}
+ .np-language {width:76px;min-width:76px;height:40px;}
+ .np-menu-toggle {display:flex;order:3;flex:0 0 42px;width:42px;height:42px;margin:0;padding:8px;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
+ .np-menu-toggle span {margin:0;width:22px;height:2px;}
+ .np-header-actions {display:none;order:4;flex:0 0 100%;width:100%;margin:0;padding:12px;background:#fff;border-top:1px solid #e0e6ee;box-shadow:0 8px 18px #04162818;}
+ .np-header-actions.np-menu-open {display:flex;}
+ .np-nav {flex-direction:column;align-items:stretch;width:100%;gap:0;}
+ .np-nav a {display:block;padding:12px 8px;font-size:14px;color:#082b50;border-bottom:1px solid #edf0f4;}
+ #npProducts,.np-grid {grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+ .np-shop-layout {display:block!important;}
+ .np-shop-content {height:auto!important;overflow:visible!important;}
+ .np-cart-sidebar {position:fixed!important;order:initial;height:100dvh!important;overflow-y:auto!important;}
+}
+@media(max-width:560px) {
+ .np-header-inner {gap:7px;padding:9px 10px;}
+ .np-brand img {width:45px;height:45px;}
+ .np-brand-name {font-size:clamp(11px,3vw,14px);}
+ .np-brand-sub {font-size:8px;letter-spacing:0;}
+ .np-language {width:69px;min-width:69px;height:38px;font-size:12px;padding:4px 2px;}
+ .np-menu-toggle {flex-basis:39px;width:39px;height:39px;}
+ .np-card {padding:10px;}
+ .np-card h2 {font-size:13px;line-height:1.45;}
+ .np-product-image,.np-image-placeholder {height:125px;}
+ .np-price {font-size:15px;}
+ .np-card-actions .np-button {padding:9px 5px;font-size:12px;}
+ .np-floating-cart {right:12px;top:45%;width:50px;height:50px;}
+ .np-dialog {width:100%;padding:18px 14px;}
+ .np-dialog-image {height:260px;}
+ .np-footer {width:calc(100% - 24px);margin:16px auto;border-radius:13px;padding:24px 13px;}
+}
+@media(max-width:360px) {#npProducts,.np-grid {grid-template-columns:1fr!important;}.np-brand img {width:39px;height:39px;}.np-brand-name {font-size:11px;}}
+
+</style>
+
+
+<header class="np-header">
+  <div class="np-header-inner">
+
+    <a class="np-brand" href="index.html" aria-label="T-MechaTrucks home">
+      <img src="images/logo.webp" alt="T-MechaTrucks logo">
+      <div class="np-brand-text">
+        <div class="np-brand-name">T-MechaTrucks &amp; Parts Ltd</div>
+        <div class="np-brand-sub">TRUCKS · PARTS · SERVICE</div>
+      </div>
+    </a>
+
+<!-- THREE-LINE MOBILE MENU -->
+<button
+  type="button"
+  class="np-menu-toggle"
+  id="npMenuToggle"
+  aria-label="Open navigation menu"
+  aria-expanded="false"
+  aria-controls="npHeaderActions">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- LANGUAGE SELECTOR OUTSIDE THE MENU -->
+<div class="np-header-tools">
+  <select id="npLanguage" class="np-language" aria-label="Language">
+    <option value="en">🇬🇧 EN</option>
+    <option value="rw">🇷🇼 RW</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="sw">🇹🇿 SW</option>
+    <option value="zh">🇨🇳 ZH</option>
+  </select>
+
+</div>
+<!-- DROPDOWN MENU -->
+<div class="np-header-actions" id="npHeaderActions">
+  <nav class="np-nav" aria-label="Main navigation">
+    <a href="index.html" data-i18n="Home">Home</a>
+    <a href="used-product.html" data-i18n="Quality used parts">Quality Used Spare Parts</a>
+    <a href="services.html" data-i18n="Our services">Our Services</a>
+    <a href="about.html" data-i18n="About us">About Us</a>
+    <a href="index.html#contact" data-i18n="Contact us">Contact Us</a>
+    <a href="testimonials.html" data-i18n="Testimonials">Testimonials</a>
+  </nav>
+</div>
+
+    </div>
+</header>
+
+<button type="button" class="np-floating-cart" id="npOpenCart" aria-label="Open shopping cart" aria-controls="npCartSidebar" aria-expanded="false">
+  <span aria-hidden="true">🛒</span>
+  <span class="np-floating-cart-count" id="npCartCount" data-cart-count>0</span>
+</button>
+<div class="np-cart-backdrop" id="npCartBackdrop" hidden></div>
+
+<main class="np-container">
+  <section class="np-hero">
+    <div class="np-eyebrow" data-i18n="eyebrow">T-MechaTrucks spare parts</div>
+    <h1 data-i18n="pageTitle">New Truck Spare Parts</h1>
+    <p data-i18n="intro">Browse our available products and request the parts you need. Our team will confirm your order.</p>
+  </section>
+
+  <div class="np-shop-layout">
+    <aside class="np-cart-sidebar" id="npCartSidebar" aria-label="Your parts request">
+      <div class="np-eyebrow" data-i18n="yourRequest">Your parts request</div>
+      <button type="button" class="np-cart-close" id="npCartClose" aria-label="Close cart">&times;</button>
+      <h2 data-i18n="cartTitle">Requested Products</h2>
+      <div id="npCartItems" class="np-cart-list"></div>
+
+      <div class="np-cart-summary">
+        <div class="np-price-row">
+          <span data-i18n="estimatedTotal">Estimated total (incl. VAT)</span>
+          <strong id="npCartTotal">RWF 0</strong>
+        </div>
+        <p class="np-cart-note" data-i18n="confirmationNote">
+          This is a request, not a confirmed order. Our staff will confirm availability.
+        </p>
+        <div class="np-cart-buttons">
+          <button type="button" class="np-button np-secondary" id="npContinueShopping" data-i18n="continueShopping">Continue Shopping</button>
+          <button type="button" class="np-button np-primary" id="npWhatsAppOrder" data-i18n="sendWhatsApp">Send Request on WhatsApp</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="np-shop-content" aria-label="New spare parts">
+      <div class="np-toolbar">
+        <input id="npSearch" class="np-search" type="search"
+          placeholder="Search by product name or SKU..."
+          data-i18n-placeholder="searchPlaceholder">
+        <div class="np-results" id="npResults" aria-live="polite"></div>
+      </div>
+      <section id="npProducts" class="np-grid" aria-label="New spare parts">
+        <div class="np-status" data-i18n="loading">Loading products...</div>
+      </section>
+      <div id="npStatus" class="np-status" hidden></div>
+    </section>
+  </div>
+</main>
+
+<footer class="np-footer">
+  <strong>T-MechaTrucks &amp; Parts Ltd</strong><br>
+  <span data-i18n="footerLine">Your trusted truck partner in Rwanda</span><br>
+  <a href="tel:+250799908714">+250 799 908 714</a>
+  &nbsp; · &nbsp;
+  <a href="mailto:tmechatrucks@gmail.com">tmechatrucks@gmail.com</a><br>
+  <a href="https://share.google/nYQdTx6pXrrND3oRh" target="_blank" rel="noopener" data-i18n="location">Kigali, Rwanda · View location</a>
+</footer>
+
+<div id="npDetailOverlay" class="np-overlay" aria-hidden="true">
+  <section class="np-dialog" role="dialog" aria-modal="true" aria-labelledby="npDetailTitle">
+    <button class="np-close" type="button" data-close-detail aria-label="Close">&times;</button>
+    <div class="np-eyebrow" data-i18n="productDetails">Product details</div>
+    <img id="npDetailImage" class="np-dialog-image" alt="" hidden>
+    <h2 id="npDetailTitle"></h2>
+    <div id="npDetailSku" class="np-sku"></div>
+    <p id="npDetailDescription" class="np-description"></p>
+
+    <div class="np-price-box">
+      <div class="np-price-row">
+        <span data-i18n="priceExcl">Price excluding VAT</span>
+        <strong id="npDetailExcl"></strong>
+      </div>
+      <div class="np-price-row">
+        <span data-i18n="vatAmount">VAT (18%)</span>
+        <strong id="npDetailVat"></strong>
+      </div>
+      <div class="np-price-row np-price-total">
+        <span data-i18n="priceIncl">Price including VAT</span>
+        <strong id="npDetailIncl"></strong>
+      </div>
+      <div class="np-price-row"><span data-i18n="quantity">Quantity</span><div class="np-detail-quantity"><button type="button" id="npDetailMinus" aria-label="Decrease quantity">−</button><input type="number" id="npDetailQuantity" min="1" max="999" value="1" aria-label="Quantity"><button type="button" id="npDetailPlus" aria-label="Increase quantity">+</button></div></div>
+      <div class="np-price-row np-price-total"><span data-i18n="subtotal">Total (incl. VAT)</span><strong id="npDetailTotal"></strong></div>
+    </div>
+
+    <div class="np-dialog-actions">
+      <button type="button" class="np-button np-secondary" data-close-detail data-i18n="close">Close</button>
+      <button type="button" class="np-button np-primary" id="npDetailAdd" data-i18n="addToCart">Add to Cart</button>
+    </div>
+  </section>
+</div>
+
+<div id="npToast" class="np-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+ (() => {
+  "use strict";
+
+  const SUPABASE_URL = "https://ivyzjzbtdlphjaeywtxa.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP";
+
+  const CART_KEY = "tmecha-new-parts-cart";
+  const LANGUAGE_KEY = "tmecha-language";
+  const WHATSAPP_NUMBER = "250799908714";
+
+  const translations = {
+    en: {
+      home: "Home",
+      services: "Our Services",
+      newParts: "New Spare Parts",
+      usedParts: "Quality Used Spare Parts",
+      cart: "Cart",
+      aboutUs: "About Us",
+      contactUs: "Contact Us",
+      testimonials: "Testimonials",
+      eyebrow: "T-MechaTrucks spare parts",
+      pageTitle: "New Truck Spare Parts",
+      intro: "Browse our product catalogue and request the parts you need. Our team will confirm availability.",
+      searchPlaceholder: "Search by product name or SKU...",
+      loading: "Loading products...",
+      noProducts: "No products are currently listed.",
+      loadError: "We could not load products.",
+      noSearchResults: "No products match your search.",
+      productDetails: "Product details",
+      close: "Close",
+      priceExcl: "Price excluding VAT",
+      vatAmount: "VAT amount",
+      priceIncl: "Price including VAT",
+      addToCart: "Add to Cart",
+      viewDetails: "View Details",
+      yourRequest: "Your parts request",
+      cartTitle: "Requested Products",
+      estimatedTotal: "Estimated total (incl. VAT)",
+      confirmationNote: "This is a request, not a confirmed order. Our staff will check availability and confirm the final order on WhatsApp.",
+      continueShopping: "Continue Shopping",
+      sendWhatsApp: "Send Request on WhatsApp",
+      emptyCart: "Your cart is empty. Add products before sending your request.",
+      added: "Product added to your request.",
+      removed: "Product removed.",
+      footerLine: "Your trusted truck partner in Rwanda",
+      location: "Kigali, Rwanda · View location",
+      productsFound: "products listed",
+      sku: "SKU",
+      remove: "Remove",
+      quantity: "Quantity",
+      invalidPrice: "Price to be confirmed",
+      stock: "Availability to be confirmed",
+      whatsappIntro: "Hello T-MechaTrucks & Parts Ltd, I would like to request these spare parts:",
+      whatsappTotal: "Estimated total including VAT",
+      whatsappNote: "Please check availability and confirm the final order. This is a request only.",
+      qty: "Quantity",
+      unitPrice: "Unit price incl. VAT",
+      subtotal: "Subtotal",
+      loadErrorDetails: "Check the Supabase view, read permissions, and browser console.",
+      decrease: "Decrease quantity",
+      increase: "Increase quantity",
+      imageUnavailable: "Product image unavailable",
+      unnamedProduct: "Unnamed product"
+    },
+
+    rw: {
+      home: "Ahabanza",
+      services: "Serivisi Zacu",
+      newParts: "Ibice Bishya",
+      usedParts: "Spare parts zakoze",
+      cart: "Agaseke",
+      aboutUs: "Ibyerekeye Twe",
+      contactUs: "Twandikire",
+      testimonials: "Ubuhamya",
+      eyebrow: "Ibice by’amakamyo bya T-MechaTrucks",
+      pageTitle: "Ibice Bishya by’Amakamyo",
+      intro: "Reba ibicuruzwa biri muri kataloge yacu, uhitemo ibice ukeneye. Abakozi bacu bazabanza kugenzura niba bihari.",
+      searchPlaceholder: "Shakisha ukoresheje izina ry’igicuruzwa cyangwa SKU...",
+      loading: "Ibicuruzwa birimo gufunguka...",
+      noProducts: "Nta bicuruzwa biri ku rubuga byabonetse.",
+      loadError: "Ntitwabashije gufungura ibicuruzwa.",
+      noSearchResults: "Nta bicuruzwa bihuye n’icyo washakishije.",
+      productDetails: "Ibisobanuro by’igicuruzwa",
+      close: "Funga",
+      priceExcl: "Igiciro kitariho VAT",
+      vatAmount: "Amafaranga ya VAT",
+      priceIncl: "Igiciro kirimo VAT",
+      addToCart: "Ongeramo mu Gaseke",
+      viewDetails: "Reba Ibisobanuro",
+      yourRequest: "Ubusabe bw’ibice by’amakamyo",
+      cartTitle: "Ibicuruzwa Wasabye",
+      estimatedTotal: "Igiteranyo cy’igereranya kirimo VAT",
+      confirmationNote: "Ibi ni ubusabe, si order yemejwe. Abakozi bacu bazagenzura niba ibicuruzwa bihari, hanyuma bemeze order ya nyuma kuri WhatsApp kandi mugihe gito.",
+      continueShopping: "Komeza Guhitamo",
+      sendWhatsApp: "Ohereza Ubusabe kuri WhatsApp",
+      emptyCart: "Agaseke karimo ubusa. Banza wongeremo ibicuruzwa.",
+      added: "Igicuruzwa cyongewe mu byo usaba.",
+      removed: "Igicuruzwa cyavanywemo.",
+      footerLine: "Umufatanyabikorwa wawe wizewe mu by’amakamyo mu Rwanda",
+      location: "Kigali, Rwanda · Reba Aho Duherereye",
+      productsFound: "ibicuruzwa biri ku rubuga",
+      sku: "SKU",
+      remove: "Kuramo",
+      quantity: "Umubare",
+      invalidPrice: "Igiciro kizemezwa",
+      stock: "Kuboneka bizabanza kugenzurwa",
+      whatsappIntro: "Muraho T-MechaTrucks & Parts Ltd, ndifuza gusaba ibi bice by’amakamyo:",
+      whatsappTotal: "Igiteranyo cy’igereranya kirimo VAT",
+      whatsappNote: "Murasuzume niba ibicuruzwa bihari, maze mwemeze order ya nyuma. Ubu ni ubusabe gusa.",
+      qty: "Umubare",
+      unitPrice: "Igiciro cy’igice kirimo VAT",
+      subtotal: "Igiteranyo",
+      loadErrorDetails: "Reba view ya Supabase, uburenganzira bwo gusoma, na Console ya browser.",
+      decrease: "Gabanya umubare",
+      increase: "Ongera umubare",
+      imageUnavailable: "Ifoto y’igicuruzwa ntibonetse",
+      unnamedProduct: "Igicuruzwa kitagira izina"
+    },
+
+    fr: {
+      home: "Accueil",
+      services: "Nos services",
+      newParts: "Pièces neuves",
+      usedParts: "Pièces d’occasion de qualité",
+      cart: "Panier",
+      aboutUs: "À propos de nous",
+      contactUs: "Contactez-nous",
+      testimonials: "Témoignages",
+      eyebrow: "Pièces détachées T-MechaTrucks",
+      pageTitle: "Pièces neuves pour camions",
+      intro: "Consultez notre catalogue et demandez les pièces dont vous avez besoin. Notre équipe vérifiera leur disponibilité.",
+      searchPlaceholder: "Rechercher par nom de produit ou SKU...",
+      loading: "Chargement des produits...",
+      noProducts: "Aucun produit n’est actuellement répertorié.",
+      loadError: "Impossible de charger les produits.",
+      noSearchResults: "Aucun produit ne correspond à votre recherche.",
+      productDetails: "Détails du produit",
+      close: "Fermer",
+      priceExcl: "Prix hors TVA",
+      vatAmount: "Montant de la TVA",
+      priceIncl: "Prix TTC",
+      addToCart: "Ajouter au panier",
+      viewDetails: "Voir les détails",
+      yourRequest: "Votre demande de pièces",
+      cartTitle: "Produits demandés",
+      estimatedTotal: "Total estimé TTC",
+      confirmationNote: "Ceci est une demande, pas une commande confirmée. Notre équipe vérifiera la disponibilité et confirmera la commande finale sur WhatsApp.",
+      continueShopping: "Continuer les achats",
+      sendWhatsApp: "Envoyer la demande sur WhatsApp",
+      emptyCart: "Votre panier est vide. Ajoutez des produits avant d’envoyer votre demande.",
+      added: "Produit ajouté à votre demande.",
+      removed: "Produit retiré.",
+      footerLine: "Votre partenaire de confiance pour les camions au Rwanda",
+      location: "Kigali, Rwanda · Voir l’emplacement",
+      productsFound: "produits répertoriés",
+      sku: "SKU",
+      remove: "Retirer",
+      quantity: "Quantité",
+      invalidPrice: "Prix à confirmer",
+      stock: "Disponibilité à vérifier",
+      whatsappIntro: "Bonjour T-MechaTrucks & Parts Ltd, je souhaite demander les pièces suivantes :",
+      whatsappTotal: "Total estimé TTC",
+      whatsappNote: "Veuillez vérifier la disponibilité et confirmer la commande finale. Ceci est uniquement une demande.",
+      qty: "Quantité",
+      unitPrice: "Prix unitaire TTC",
+      subtotal: "Sous-total",
+      loadErrorDetails: "Vérifiez la vue Supabase, les autorisations de lecture et la console du navigateur.",
+      decrease: "Diminuer la quantité",
+      increase: "Augmenter la quantité",
+      imageUnavailable: "Image du produit indisponible",
+      unnamedProduct: "Produit sans nom"
+    },
+
+    sw: {
+      home: "Nyumbani",
+      services: "Huduma Zetu",
+      newParts: "Vipuri Vipya",
+      usedParts: "Vipuri Vilivyotumika Vilivyo Bora",
+      cart: "Kikapu",
+      aboutUs: "Kuhusu Sisi",
+      contactUs: "Wasiliana Nasi",
+      testimonials: "Maoni ya Wateja",
+      eyebrow: "Vipuri vya T-MechaTrucks",
+      pageTitle: "Vipuri Vipya vya Malori",
+      intro: "Tazama bidhaa katika katalogi yetu na uombe vipuri unavyohitaji. Timu yetu itathibitisha upatikanaji.",
+      searchPlaceholder: "Tafuta kwa jina la bidhaa au SKU...",
+      loading: "Inapakia bidhaa...",
+      noProducts: "Hakuna bidhaa zilizoorodheshwa kwa sasa.",
+      loadError: "Bidhaa hazijapakia.",
+      noSearchResults: "Hakuna bidhaa zinazolingana na utafutaji wako.",
+      productDetails: "Maelezo ya bidhaa",
+      close: "Funga",
+      priceExcl: "Bei bila VAT",
+      vatAmount: "Kiasi cha VAT",
+      priceIncl: "Bei pamoja na VAT",
+      addToCart: "Ongeza kwenye kikapu",
+      viewDetails: "Tazama maelezo",
+      yourRequest: "Ombi lako la vipuri",
+      cartTitle: "Bidhaa zilizoombwa",
+      estimatedTotal: "Jumla ya makadirio pamoja na VAT",
+      confirmationNote: "Hili ni ombi, si oda iliyothibitishwa. Timu yetu itakagua upatikanaji na kuthibitisha oda ya mwisho kupitia WhatsApp.",
+      continueShopping: "Endelea kutazama",
+      sendWhatsApp: "Tuma ombi kupitia WhatsApp",
+      emptyCart: "Kikapu chako ni tupu. Ongeza bidhaa kwanza.",
+      added: "Bidhaa imeongezwa kwenye ombi lako.",
+      removed: "Bidhaa imeondolewa.",
+      footerLine: "Mshirika wako wa kuaminika wa malori nchini Rwanda",
+      location: "Kigali, Rwanda · Tazama eneo",
+      productsFound: "bidhaa zilizoorodheshwa",
+      sku: "SKU",
+      remove: "Ondoa",
+      quantity: "Idadi",
+      invalidPrice: "Bei itathibitishwa",
+      stock: "Upatikanaji utathibitishwa",
+      whatsappIntro: "Habari T-MechaTrucks & Parts Ltd, ninaomba vipuri vifuatavyo:",
+      whatsappTotal: "Jumla ya makadirio pamoja na VAT",
+      whatsappNote: "Tafadhali kagueni upatikanaji na kuthibitisha oda ya mwisho. Hili ni ombi tu.",
+      qty: "Idadi",
+      unitPrice: "Bei ya kipande pamoja na VAT",
+      subtotal: "Jumla ndogo",
+      loadErrorDetails: "Angalia view ya Supabase, ruhusa za kusoma na Console ya browser.",
+      decrease: "Punguza idadi",
+      increase: "Ongeza idadi",
+      imageUnavailable: "Picha ya bidhaa haipatikani",
+      unnamedProduct: "Bidhaa isiyo na jina"
+    },
+
+    zh: {
+      home: "首页",
+      services: "我们的服务",
+      newParts: "全新配件",
+      usedParts: "优质二手配件",
+      cart: "购物车",
+      aboutUs: "关于我们",
+      contactUs: "联系我们",
+      testimonials: "客户评价",
+      eyebrow: "T-MechaTrucks 卡车配件",
+      pageTitle: "全新卡车配件",
+      intro: "浏览我们的产品目录并申请所需配件。我们的团队将核实产品是否有货。",
+      searchPlaceholder: "按产品名称或 SKU 搜索...",
+      loading: "正在加载产品...",
+      noProducts: "目前没有列出的产品。",
+      loadError: "无法加载产品。",
+      noSearchResults: "没有找到符合搜索条件的产品。",
+      productDetails: "产品详情",
+      close: "关闭",
+      priceExcl: "未含增值税价格",
+      vatAmount: "增值税金额",
+      priceIncl: "含增值税价格",
+      addToCart: "加入购物车",
+      viewDetails: "查看详情",
+      yourRequest: "配件申请",
+      cartTitle: "申请的产品",
+      estimatedTotal: "含税预估总价",
+      confirmationNote: "这只是申请，并非已确认订单。工作人员将核实产品是否有货，并通过 WhatsApp 确认最终订单。",
+      continueShopping: "继续浏览",
+      sendWhatsApp: "通过 WhatsApp 发送申请",
+      emptyCart: "购物车为空。请先添加产品。",
+      added: "产品已添加到申请。",
+      removed: "产品已移除。",
+      footerLine: "您在卢旺达值得信赖的卡车合作伙伴",
+      location: "基加利，卢旺达 · 查看位置",
+      productsFound: "件已列出的产品",
+      sku: "SKU",
+      remove: "移除",
+      quantity: "数量",
+      invalidPrice: "价格待确认",
+      stock: "库存情况待核实",
+      whatsappIntro: "您好，T-MechaTrucks & Parts Ltd，我想申请以下配件：",
+      whatsappTotal: "含税预估总价",
+      whatsappNote: "请核实产品是否有货，并确认最终订单。这仅是一项申请。",
+      qty: "数量",
+      unitPrice: "含税单价",
+      subtotal: "小计",
+      loadErrorDetails: "请检查 Supabase 视图、读取权限和浏览器控制台。",
+      decrease: "减少数量",
+      increase: "增加数量",
+      imageUnavailable: "产品图片不可用",
+      unnamedProduct: "未命名产品"
+    }
+  };
+
+  const $ = selector => document.querySelector(selector);
+  const $$ = selector => [...document.querySelectorAll(selector)];
+
+  const productGrid = $("#npProducts");
+  const searchInput = $("#npSearch");
+  const resultLabel = $("#npResults");
+  const statusBox = $("#npStatus");
+  const detailOverlay = $("#npDetailOverlay");
+  const toast = $("#npToast");
+  const languageSelect = $("#npLanguage");
+
+  let supabaseClient = null;
+  let products = [];
+  let currentProduct = null;
+  let cart = readCart();
+  let toastTimer = null;
+
+  function readCart() {
+    try {
+      const value = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      return Array.isArray(value) ? value : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCart() {
+    try {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    } catch (error) {
+      console.warn("Could not save cart:", error);
+    }
+  }
+
+  function currentLanguage() {
+    try {
+      const lang = localStorage.getItem(LANGUAGE_KEY);
+      return translations[lang] ? lang : "en";
+    } catch {
+      return "en";
+    }
+  }
+
+  function t(key) {
+    const lang = currentLanguage();
+    return translations[lang]?.[key] ?? translations.en[key] ?? key;
+  }
+
+  function applyLanguage() {
+    if (!languageSelect) return;
+
+    const lang = currentLanguage();
+    languageSelect.value = lang;
+    document.documentElement.lang = lang;
+
+    const aliases = {
+      "Home": "home",
+      "Quality used parts": "usedParts",
+      "Our services": "services",
+      "About us": "aboutUs",
+      "Contact us": "contactUs",
+      "Testimonials": "testimonials",
+      "New spare parts": "newParts",
+      "Cart": "cart"
+    };
+
+    $$("[data-i18n]").forEach(element => {
+      const originalKey = element.dataset.i18n;
+      const key = aliases[originalKey] || originalKey;
+      element.textContent = t(key);
+    });
+
+    $$("[data-i18n-placeholder]").forEach(element => {
+      element.placeholder = t(element.dataset.i18nPlaceholder);
+    });
+
+    renderProducts();
+    renderCart();
+  }
+
+  if (languageSelect) {
+    languageSelect.addEventListener("change", () => {
+      const selected = translations[languageSelect.value] ? languageSelect.value : "en";
+
+      try {
+        localStorage.setItem(LANGUAGE_KEY, selected);
+      } catch (error) {
+        console.warn("Could not save language preference:", error);
+      }
+
+      applyLanguage();
+    });
+  }
+
+  window.addEventListener("pageshow", applyLanguage);
+
+  window.addEventListener("storage", event => {
+    if (event.key === LANGUAGE_KEY) applyLanguage();
+  });
+
+  function money(value) {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return "—";
+
+    return new Intl.NumberFormat("en-RW", {
+      style: "currency",
+      currency: "RWF",
+      maximumFractionDigits: 0
+    }).format(number);
+  }
+
+  function vatRate(product) {
+    const rate = Number(product?.vat_rate);
+    return 18; // The existing inclusive price is split into net + 18% VAT; no VAT added twice.
+  }
+
+  function grossPrice(product) {
+    const value = Number(product?.unit_price_incl_vat);
+    return Number.isFinite(value) && value >= 0 ? value : null;
+  }
+
+  function exclVat(product) {
+    const gross = grossPrice(product);
+    if (gross === null) return null;
+
+    return gross / (1 + vatRate(product) / 100);
+  }
+
+  function vatAmount(product) {
+    const gross = grossPrice(product);
+    if (gross === null) return null;
+
+    const rate = vatRate(product);
+    return gross * rate / (100 + rate);
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, character => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    })[character]);
+  }
+
+  function safeImageUrl(value) {
+    const url = String(value ?? "").trim();
+    if (!url) return "";
+
+    if (/^https:\/\//i.test(url)) return url;
+
+    if (/^(?:\.\/)?images\/[a-z0-9_./-]+\.(?:webp|png|jpe?g|gif|avif)$/i.test(url)) {
+      return url;
+    }
+
+    return "";
+  }
+
+  function showToast(message) {
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add("np-show");
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("np-show"), 2600);
+  }
+
+  function openDetails() {
+    if (!detailOverlay) return;
+
+    detailOverlay.classList.add("np-open");
+    detailOverlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("np-lock");
+  }
+
+  function closeDetails() {
+    if (!detailOverlay) return;
+
+    detailOverlay.classList.remove("np-open");
+    detailOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("np-lock");
+  }
+
+  $$("[data-close-detail]").forEach(button => {
+    button.addEventListener("click", closeDetails);
+  });
+
+  if (detailOverlay) {
+    detailOverlay.addEventListener("click", event => {
+      if (event.target === detailOverlay) closeDetails();
+    });
+  }
+
+  function productById(id) {
+    return products.find(product => String(product.id) === String(id));
+  }
+
+  function updateCartCount() {
+    const button = $("#npOpenCart");
+    if (!button) return;
+
+    const count = cart.reduce((sum, item) => {
+      return sum + Math.max(1, Math.floor(Number(item.quantity) || 1));
+    }, 0);
+
+    const countElement = $("#npCartCount");
+    if (countElement) countElement.textContent = String(count);
+  }
+
+  function addToCart(product) {
+    if (!product || grossPrice(product) === null) {
+      showToast(t("invalidPrice"));
+      return;
+    }
+
+    const id = String(product.id);
+    const existing = cart.find(item => String(item.id) === id);
+
+    if (existing) {
+      existing.quantity = Math.max(1, Math.floor(Number(existing.quantity) || 1)) + 1;
+    } else {
+      cart.push({ id, quantity: 1 });
+    }
+
+    saveCart();
+    renderCart();
+    showToast(t("added"));
+  }
+
+  function renderProducts() {
+    if (!productGrid || !searchInput) return;
+
+    const query = searchInput.value.trim().toLocaleLowerCase();
+    const filtered = products.filter(product => {
+      const name = String(product.name || "").toLocaleLowerCase();
+      const sku = String(product.sku || "").toLocaleLowerCase();
+      return name.includes(query) || sku.includes(query);
+    });
+
+    if (resultLabel) {
+      resultLabel.textContent = `${filtered.length} ${t("productsFound")}`;
+    }
+
+    if (filtered.length === 0) {
+      productGrid.innerHTML = `<div class="np-status">${escapeHtml(
+        products.length ? t("noSearchResults") : t("noProducts")
+      )}</div>`;
+      return;
+    }
+
+    productGrid.innerHTML = filtered.map(product => {
+      const id = escapeHtml(String(product.id));
+      const name = escapeHtml(product.name || t("unnamedProduct"));
+      const sku = escapeHtml(product.sku || "—");
+      const imageUrl = safeImageUrl(product.image_url);
+      const price = exclVat(product);
+
+      const image = imageUrl
+        ? `<div class="np-product-image-wrap">
+             <img class="np-product-image"
+               src="${escapeHtml(imageUrl)}"
+               alt="${name}"
+               loading="lazy"
+               onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='images/logo.webp';}else{this.hidden=true;this.nextElementSibling.hidden=false;}">
+             <div class="np-image-placeholder" hidden>${escapeHtml(t("imageUnavailable"))}</div>
+           </div>`
+        : `<div class="np-image-placeholder">${escapeHtml(t("imageUnavailable"))}</div>`;
+
+      return `
+        <article class="np-card">
+          ${image}
+          <h2>${name}</h2>
+          <div class="np-sku">${t("sku")}: ${sku}</div>
+          <div>
+            <div class="np-price-label">${t("priceExcl")}</div>
+            <div class="np-price">${price === null ? t("invalidPrice") : money(price)}</div>
+          </div>
+          <div class="np-card-actions">
+            <button type="button" class="np-button np-secondary" data-view="${id}">
+              ${t("viewDetails")}
+            </button>
+            <button type="button" class="np-button np-primary" data-add="${id}" ${price === null ? "disabled" : ""}>
+              ${t("addToCart")}
+            </button>
+          </div>
+        </article>`;
+    }).join("");
+
+    productGrid.querySelectorAll("[data-view]").forEach(button => {
+      button.addEventListener("click", () => openProductDetails(button.dataset.view));
+    });
+
+    productGrid.querySelectorAll("[data-add]").forEach(button => {
+      button.addEventListener("click", () => addToCart(productById(button.dataset.add)));
+    });
+  }
+
+  function openProductDetails(id) {
+    const product = productById(id);
+    if (!product) return;
+
+    currentProduct = product;
+
+    const image = $("#npDetailImage");
+    if (image) {
+      const imageUrl = safeImageUrl(product.image_url);
+
+      image.hidden = !imageUrl;
+      image.onerror = () => {
+        if (image.dataset.fallback !== "1") {
+          image.dataset.fallback = "1";
+          image.src = "images/logo.webp";
+        } else {
+          image.hidden = true;
+        }
+      };
+
+      image.dataset.fallback = "0";
+      image.src = imageUrl || "";
+      image.alt = product.name || t("unnamedProduct");
+    }
+
+    $("#npDetailTitle").textContent = product.name || t("unnamedProduct");
+    $("#npDetailSku").textContent = `${t("sku")}: ${product.sku || "—"}`;
+    $("#npDetailDescription").textContent = product.description || "";
+
+    const gross = grossPrice(product);
+    const excl = exclVat(product);
+    const vat = vatAmount(product);
+
+    $("#npDetailExcl").textContent = excl === null ? t("invalidPrice") : money(excl);
+    $("#npDetailVat").textContent = vat === null ? t("invalidPrice") : money(vat);
+    const vatLabel = $("#npDetailVat").previousElementSibling;
+    if (vatLabel) vatLabel.textContent = `${t("vatAmount")} (18%)`;
+    $("#npDetailIncl").textContent = gross === null ? t("invalidPrice") : money(gross);
+    $("#npDetailAdd").disabled = gross === null;
+    $("#npDetailQuantity").value = "1";
+    updateDetailTotal();
+
+    openDetails();
+  }
+
+  function updateDetailTotal() {
+    const qty = Math.max(1, Math.min(999, Math.floor(Number($("#npDetailQuantity").value) || 1)));
+    const gross = currentProduct ? grossPrice(currentProduct) : null;
+    $("#npDetailTotal").textContent = gross === null ? t("invalidPrice") : money(gross * qty);
+  }
+  $("#npDetailQuantity").addEventListener("input", updateDetailTotal);
+  $("#npDetailMinus").addEventListener("click", () => {
+    const input = $("#npDetailQuantity"); input.value = Math.max(1, (Number(input.value) || 1) - 1); updateDetailTotal();
+  });
+  $("#npDetailPlus").addEventListener("click", () => {
+    const input = $("#npDetailQuantity"); input.value = Math.min(999, (Number(input.value) || 1) + 1); updateDetailTotal();
+  });
+
+  if ($("#npDetailAdd")) {
+    $("#npDetailAdd").addEventListener("click", () => {
+      if (currentProduct) {
+        const quantity = Math.max(1, Math.min(999, Math.floor(Number($("#npDetailQuantity").value) || 1)));
+        for (let i = 0; i < quantity; i++) addToCart(currentProduct);
+      }
+      closeDetails();
+    });
+  }
+
+  function renderCart() {
+    const cartItems = $("#npCartItems");
+    if (!cartItems) return;
+
+    const validItems = cart.map(item => {
+      const product = productById(item.id);
+      if (!product || grossPrice(product) === null) return null;
+
+      return {
+        id: String(product.id),
+        product,
+        quantity: Math.max(1, Math.floor(Number(item.quantity) || 1)),
+        gross: grossPrice(product)
+      };
+    }).filter(Boolean);
+
+    cart = validItems.map(item => ({ id: item.id, quantity: item.quantity }));
+    saveCart();
+    updateCartCount();
+
+    if (validItems.length === 0) {
+      cartItems.innerHTML = `<div class="np-status">${escapeHtml(t("emptyCart"))}</div>`;
+      $("#npCartTotal").textContent = money(0);
+      $("#npWhatsAppOrder").disabled = true;
+      return;
+    }
+
+    $("#npWhatsAppOrder").disabled = false;
+
+    cartItems.innerHTML = validItems.map(({ id, product, quantity, gross }) => `
+      <div class="np-cart-item">
+        <div>
+          <h3>${escapeHtml(product.name || t("unnamedProduct"))}</h3>
+          <div class="np-sku">${t("sku")}: ${escapeHtml(product.sku || "—")}</div>
+          <div class="np-cart-item-price">${money(gross)} / ${t("unitPrice")}</div>
+          <div class="np-quantity">
+            <button type="button" data-minus="${escapeHtml(id)}" aria-label="${t("decrease")}">−</button>
+            <input type="number" min="1" step="1" value="${quantity}"
+              data-quantity="${escapeHtml(id)}" aria-label="${t("quantity")}">
+            <button type="button" data-plus="${escapeHtml(id)}" aria-label="${t("increase")}">+</button>
+          </div>
+          <button type="button" class="np-remove" data-remove="${escapeHtml(id)}">${t("remove")}</button>
+        </div>
+        <strong>${money(gross * quantity)}</strong>
+      </div>
+    `).join("");
+
+    const total = validItems.reduce((sum, item) => sum + item.gross * item.quantity, 0);
+    $("#npCartTotal").textContent = money(total);
+
+    cartItems.querySelectorAll("[data-minus]").forEach(button => {
+      button.addEventListener("click", () => changeQuantity(button.dataset.minus, -1));
+    });
+
+    cartItems.querySelectorAll("[data-plus]").forEach(button => {
+      button.addEventListener("click", () => changeQuantity(button.dataset.plus, 1));
+    });
+
+    cartItems.querySelectorAll("[data-quantity]").forEach(input => {
+      input.addEventListener("change", () => {
+        const quantity = Math.floor(Number(input.value));
+
+        if (!Number.isFinite(quantity) || quantity < 1) {
+          removeFromCart(input.dataset.quantity);
+        } else {
+          setQuantity(input.dataset.quantity, quantity);
+        }
+      });
+    });
+
+    cartItems.querySelectorAll("[data-remove]").forEach(button => {
+      button.addEventListener("click", () => removeFromCart(button.dataset.remove));
+    });
+  }
+
+  function setQuantity(id, quantity) {
+    const item = cart.find(entry => String(entry.id) === String(id));
+    if (!item) return;
+
+    item.quantity = Math.max(1, Math.floor(Number(quantity) || 1));
+    saveCart();
+    renderCart();
+  }
+
+  function changeQuantity(id, delta) {
+    const item = cart.find(entry => String(entry.id) === String(id));
+    if (!item) return;
+
+    const next = item.quantity + delta;
+
+    if (next < 1) {
+      removeFromCart(id);
+      return;
+    }
+
+    setQuantity(id, next);
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(item => String(item.id) !== String(id));
+    saveCart();
+    renderCart();
+    showToast(t("removed"));
+  }
+
+  const openCartButton = $("#npOpenCart");
+  const cartSidebar = $("#npCartSidebar");
+  const cartBackdrop = $("#npCartBackdrop");
+  function toggleCart(open) {
+    cartSidebar.classList.toggle("np-cart-visible", open);
+    cartBackdrop.hidden = !open;
+    openCartButton.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("np-cart-lock", open);
+    if (open) renderCart();
+  }
+  openCartButton?.addEventListener("click", () => toggleCart(!cartSidebar.classList.contains("np-cart-visible")));
+  $("#npCartClose")?.addEventListener("click", () => toggleCart(false));
+  cartBackdrop?.addEventListener("click", () => toggleCart(false));
+  $("#npContinueShopping")?.addEventListener("click", () => toggleCart(false));
+  document.addEventListener("keydown", event => { if (event.key === "Escape") { toggleCart(false); closeDetails(); } });
+
+  if (searchInput) searchInput.addEventListener("input", renderProducts);
+
+  const whatsappButton = $("#npWhatsAppOrder");
+  if (whatsappButton) {
+    whatsappButton.addEventListener("click", () => {
+      const lines = [t("whatsappIntro"), ""];
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const product = productById(item.id);
+        if (!product) return;
+
+        const gross = grossPrice(product);
+        if (gross === null) return;
+
+        total += gross * item.quantity;
+
+        lines.push(`${index + 1}. ${product.name || t("unnamedProduct")}`);
+        lines.push(`   ${t("sku")}: ${product.sku || "—"}`);
+        lines.push(`   ${t("qty")}: ${item.quantity}`);
+        lines.push(`   ${t("unitPrice")}: ${money(gross)}`);
+        lines.push(`   ${t("subtotal")}: ${money(gross * item.quantity)}`);
+        lines.push("");
+      });
+
+      if (total <= 0) {
+        showToast(t("emptyCart"));
+        return;
+      }
+
+      lines.push(`${t("whatsappTotal")}: ${money(total)}`);
+      lines.push("");
+      lines.push(t("whatsappNote"));
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+  }
+
+  async function loadProducts() {
+    if (!productGrid || !statusBox) return;
+
+    productGrid.innerHTML = `<div class="np-status">${escapeHtml(t("loading"))}</div>`;
+    statusBox.hidden = true;
+    if (resultLabel) resultLabel.textContent = "";
+
+    try {
+      if (!window.supabase || typeof window.supabase.createClient !== "function") {
+        throw new Error("Supabase JavaScript library did not load. Check your internet connection.");
+      }
+
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+      const { data, error } = await supabaseClient
+        .from("public_products")
+        .select("id, sku, name, description, image_url, unit_price_incl_vat, vat_rate, is_active")
+        .eq("is_active", true)
+        .order("name", { ascending: true });
+
+      if (error) throw error;
+
+      products = (data || []).filter(product => product.is_active === true);
+
+      renderProducts();
+      renderCart();
+
+      if (products.length === 0) {
+        statusBox.hidden = false;
+        statusBox.textContent = t("noProducts");
+      }
+    } catch (error) {
+      console.error("T-MechaTrucks product loading error:", error);
+      products = [];
+      productGrid.innerHTML = "";
+      statusBox.hidden = false;
+      statusBox.textContent = `${t("loadError")} ${error.message || ""} ${t("loadErrorDetails")}`;
+      if (resultLabel) resultLabel.textContent = "";
+      renderCart();
+    }
+  }
+
+  // Mobile navigation
+  const menuToggle = $("#npMenuToggle");
+  const headerActions = $("#npHeaderActions");
+
+  if (menuToggle && headerActions) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = headerActions.classList.toggle("np-menu-open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+    });
+
+    document.addEventListener("click", event => {
+      if (!menuToggle.contains(event.target) && !headerActions.contains(event.target)) {
+        headerActions.classList.remove("np-menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    headerActions.querySelectorAll(".np-nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        headerActions.classList.remove("np-menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+  }
+
+  applyLanguage();
+  renderCart();
+  loadProducts();
+})();
+</script>
+</body>
+</html> 

@@ -1,0 +1,1853 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+
+        content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#082b50">
+
+  <title>Admin Dashboard | T-MECHATRUCKS</title>
+
+
+
+  <style>
+
+    :root {
+
+      --navy: #082b50;
+
+      --deep: #041628;
+
+      --orange: #ff8a00;
+
+      --gold: #c49a32;
+
+      --light: #f4f7fb;
+
+      --border: #e2e8f0;
+
+      --text: #243447;
+
+    }
+
+
+
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, sans-serif;
+
+      background: var(--light);
+
+      color: var(--text);
+
+    }
+
+
+
+    .dashboard {
+
+      display: flex;
+
+      min-height: 100vh;
+
+    }
+
+
+
+    .sidebar {
+
+      width: 260px;
+
+      background: var(--deep);
+
+      color: white;
+
+      padding: 24px 16px;
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .sidebar-brand {
+
+      text-align: center;
+
+      padding-bottom: 22px;
+
+      border-bottom: 1px solid #29445f;
+
+    }
+
+
+
+    .sidebar-brand img {
+
+      width: 75px;
+
+      height: 75px;
+
+      object-fit: contain;
+
+    }
+
+
+
+    .sidebar-brand h2 {
+
+      font-size: 17px;
+
+      margin: 10px 0 5px;
+
+    }
+
+
+
+    .sidebar-brand p {
+
+      font-size: 11px;
+
+      color: #cbd5e1;
+
+      margin: 0;
+
+    }
+
+
+
+    .sidebar-nav {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+      margin-top: 25px;
+
+    }
+
+
+
+    .sidebar-nav button {
+
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 14px 16px;
+
+      border: none;
+
+      border-radius: 9px;
+
+      background: transparent;
+
+      color: #cbd5e1;
+
+      font-size: 14px;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      transition: background .2s, color .2s;
+
+    }
+
+
+
+    .sidebar-nav button:hover,
+
+    .sidebar-nav button.active {
+
+      background: var(--orange);
+
+      color: var(--deep);
+
+      font-weight: bold;
+
+    }
+
+
+
+    .main-content {
+
+      flex: 1;
+
+      min-width: 0;
+
+      padding: 28px;
+
+    }
+
+
+
+    .dashboard-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      flex-wrap: wrap;
+
+      gap: 16px;
+
+      margin-bottom: 28px;
+
+    }
+
+
+
+    .dashboard-header h1 {
+
+      margin: 0 0 7px;
+
+      color: var(--navy);
+
+      font-size: 26px;
+
+    }
+
+
+
+    .dashboard-header p {
+
+      margin: 0;
+
+      color: #64748b;
+
+      font-size: 14px;
+
+    }
+
+
+
+    .admin-profile {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      flex-wrap: wrap;
+
+    }
+
+
+
+    .admin-info {
+
+      text-align: right;
+
+    }
+
+
+
+    .admin-info strong {
+
+      display: block;
+
+      color: var(--navy);
+
+      font-size: 14px;
+
+    }
+
+
+
+    .admin-info span {
+
+      color: #64748b;
+
+      font-size: 12px;
+
+    }
+
+
+
+    .logout-btn {
+
+      padding: 11px 18px;
+
+      border: none;
+
+      border-radius: 8px;
+
+      background: var(--orange);
+
+      color: var(--deep);
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+    }
+
+
+
+    .logout-btn:hover {
+
+      background: #e67c00;
+
+    }
+
+
+
+    .stats-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-bottom: 28px;
+
+    }
+
+
+
+    .stat-card {
+
+      background: #ffffff;
+
+      padding: 22px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 14px;
+
+      box-shadow: 0 4px 15px rgba(8,43,80,.05);
+
+    }
+
+
+
+    .stat-card h3 {
+
+      margin: 0 0 15px;
+
+      color: #64748b;
+
+      font-size: 13px;
+
+    }
+
+
+
+    .stat-card .stat-number {
+
+      color: var(--navy);
+
+      font-size: 30px;
+
+      font-weight: bold;
+
+    }
+
+
+
+    .stat-card .stat-label {
+
+      margin-top: 8px;
+
+      color: #64748b;
+
+      font-size: 12px;
+
+    }
+
+
+
+    @media (max-width: 1100px) {
+
+      .stats-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      }
+
+
+
+      .sidebar {
+
+        width: 220px;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 768px) {
+
+      .dashboard {
+
+        flex-direction: column;
+
+      }
+
+
+
+      .sidebar {
+
+        width: 100%;
+
+        padding: 15px;
+
+      }
+
+
+
+      .sidebar-brand img {
+
+        width: 55px;
+
+        height: 55px;
+
+      }
+
+
+
+      .sidebar-nav {
+
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        padding-bottom: 8px;
+
+      }
+
+
+
+      .sidebar-nav button {
+
+        flex-shrink: 0;
+
+        width: auto;
+
+        white-space: nowrap;
+
+        padding: 12px 14px;
+
+      }
+
+
+
+      .main-content {
+
+        padding: 18px 14px;
+
+      }
+
+
+
+      .dashboard-header {
+
+        align-items: flex-start;
+
+      }
+
+
+
+      .dashboard-header h1 {
+
+        font-size: 22px;
+
+      }
+
+
+
+      .admin-info {
+
+        text-align: left;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 480px) {
+
+      .stats-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+      }
+
+
+
+      .stat-card {
+
+        padding: 18px;
+
+      }
+
+    }
+
+
+/* DASHBOARD ADDITIONS */
+.admin-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.live-clock{display:flex;flex-direction:column;text-align:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:9px 13px;min-width:170px}
+.live-clock strong{font-size:19px;color:var(--navy);font-variant-numeric:tabular-nums}
+.live-clock span{font-size:11px;color:#64748b}
+#adminLanguage{padding:11px;border:1px solid var(--border);border-radius:8px;background:white;color:var(--navy);font-weight:bold}
+.chat-layout{display:grid;grid-template-columns:minmax(190px,250px) minmax(0,1fr);gap:15px}
+.chat-users{border:1px solid var(--border);border-radius:12px;padding:12px;min-width:0}
+.chat-users button{width:100%;padding:12px;text-align:left;background:white;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;cursor:pointer;overflow-wrap:anywhere}
+.chat-users button.selected{border-color:var(--orange);background:#fff8eb}
+.chat-users small{display:block;color:#64748b;margin-top:5px}
+.chat-main{border:1px solid var(--border);border-radius:12px;min-width:0;overflow:hidden}
+.chat-heading{padding:14px;border-bottom:1px solid var(--border);font-weight:bold}
+.chat-messages{height:390px;overflow-y:auto;padding:16px;background:#f7f9fc;display:flex;flex-direction:column;gap:12px}
+.chat-bubble{max-width:85%;background:white;border:1px solid var(--border);border-radius:13px;padding:10px 13px;overflow-wrap:anywhere}
+.chat-bubble.mine{align-self:flex-end;background:#e8f2ff}
+.chat-bubble.other{align-self:flex-start}
+.chat-bubble small{display:block;margin-top:7px;color:#64748b;font-size:11px}
+.chat-bubble button{font-size:11px;color:#a32121;background:none;border:0;cursor:pointer;padding:6px 0}
+.chat-send{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.chat-send input{flex:1;min-width:0;border:1px solid var(--border);border-radius:8px;padding:12px}
+.chat-send button{border:0;background:var(--orange);border-radius:8px;padding:0 16px;font-weight:bold;cursor:pointer}
+.chat-note{font-size:12px;color:#64748b;line-height:1.5}
+.chat-count{display:inline-block;background:#ff8a00;color:#041628;border-radius:20px;padding:2px 7px;font-size:11px;margin-left:4px}
+@media(max-width:650px){.chat-layout{grid-template-columns:1fr}.chat-messages{height:350px}.dashboard-header{gap:12px}.admin-tools{width:100%;justify-content:space-between}}
+
+
+/* AUDIT HISTORY */
+.activity-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:16px 0 22px}
+.activity-controls select{min-width:180px}
+.activity-item{padding:15px 16px;margin:10px 0;background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #ff8a00;border-radius:12px}
+.activity-item strong{color:#082b50}.activity-item p{margin:7px 0;line-height:1.5}
+.activity-item small{color:#64748b}.activity-change{font-size:12px;color:#475569;overflow-wrap:anywhere}
+/* POLISHED DASHBOARD CONTROLS */
+.dashboard button,.dashboard a.logout-btn{font-family:inherit;transition:background .2s ease,transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+.dashboard button:focus-visible,.dashboard a:focus-visible,.dashboard input:focus-visible,.dashboard select:focus-visible,.dashboard textarea:focus-visible{outline:3px solid rgba(255,138,0,.38);outline-offset:2px}
+.dashboard button:not(.sidebar-nav button):not(.chat-bubble button):not(.chat-users button),.dashboard a.logout-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:43px;padding:11px 19px;border:1px solid transparent;border-radius:11px;background:linear-gradient(135deg,#ff9d20,#ff8200);color:#041628;font-size:14px;font-weight:700;line-height:1.25;text-decoration:none;box-shadow:0 4px 12px rgba(255,138,0,.18);cursor:pointer}
+.dashboard button:not(.sidebar-nav button):not(.chat-bubble button):not(.chat-users button):hover,.dashboard a.logout-btn:hover{background:linear-gradient(135deg,#ffb14d,#ff8a00);transform:translateY(-2px);box-shadow:0 7px 16px rgba(255,138,0,.24)}
+.dashboard button:active,.dashboard a.logout-btn:active{transform:translateY(0)!important}
+.dashboard button:disabled{opacity:.55;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.sidebar-nav button{min-height:48px;border:1px solid transparent;border-radius:11px;letter-spacing:.1px}
+.sidebar-nav button:hover{transform:translateX(3px);background:#163a5a;color:#fff}
+.sidebar-nav button.active,.sidebar-nav button.active:hover{background:linear-gradient(120deg,#ff9f27,#ff8a00);color:#041628;box-shadow:0 5px 13px rgba(255,138,0,.2)}
+.dashboard input:not([type=checkbox]),.dashboard textarea,.dashboard select{max-width:100%;padding:12px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#243447;font:inherit;box-shadow:0 1px 3px rgba(8,43,80,.04)}
+#addProductForm input,#addProductForm textarea,#stockForm input,#stockForm textarea{width:100%}
+#addProductForm,#stockForm{max-width:700px}
+#testimonialList [data-status="approved"]{background:linear-gradient(135deg,#17825c,#116947)!important;color:white!important;box-shadow:0 4px 12px rgba(17,105,71,.16)!important}
+#testimonialList [data-status="rejected"]{background:#fff3f0!important;color:#a52d24!important;border-color:#f2b9b2!important;box-shadow:none!important}
+#testimonialList [data-status="rejected"]:hover{background:#ffe2dc!important}
+#refreshBtn::before{content:'↻';font-size:20px;line-height:1}
+#logoutBtn::before{content:'⇥';font-size:19px;line-height:1}
+#addProductForm button[type="submit"]::before{content:'＋';font-size:19px;line-height:1}
+#stockForm button[type="submit"]::before{content:'✓';font-size:18px;line-height:1}
+#testimonialList [data-status="approved"]::before{content:'✓'}
+#testimonialList [data-status="rejected"]::before{content:'✕'}
+.dashboard a.logout-btn::before{content:'◉';font-size:17px}
+@media(max-width:650px){.dashboard button:not(.sidebar-nav button){min-height:44px}.sidebar-nav button:hover{transform:none}.admin-profile{width:100%;justify-content:space-between}.dashboard a.logout-btn{max-width:100%}}
+@media(prefers-reduced-motion:reduce){.dashboard button,.dashboard a.logout-btn{transition:none!important;transform:none!important}}
+
+
+/* INDEPENDENT SIDEBAR AND CLEAR ACTION SHORTCUTS */
+@media(min-width:769px){
+ .sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+ .sidebar-brand{flex-shrink:0}
+ .sidebar-nav{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:5px;scrollbar-width:thin;scrollbar-color:#67809a transparent}
+ .main-content{min-width:0}
+}
+.quick-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.quick-action{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:8px!important;text-align:left!important;padding:18px!important;min-height:100px!important;background:#fff!important;color:#082b50!important;border:1px solid #e2e8f0!important;box-shadow:0 3px 12px #082b5010!important}
+.quick-action:hover{border-color:#ff8a00!important;background:#fff8ee!important}
+.quick-action strong{font-size:16px}
+.quick-action small{font-size:12px;color:#64748b;font-weight:400}
+.quick-action .quick-icon{font-size:24px;color:#d27600}
+.stock-mode-note{font-weight:700;padding:10px 14px;border-left:4px solid #ff8a00;background:#fff8ee;border-radius:6px}
+@media(max-width:900px){.quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.quick-actions{grid-template-columns:1fr}.quick-action{min-height:75px!important}}
+
+
+.brand-white-logo{width:88px;height:88px;border-radius:15px;background:#fff;margin:0 auto;display:flex;align-items:center;justify-content:center;padding:8px}.brand-white-logo img{width:100%;height:100%;object-fit:contain}
+#addProductForm button[type=submit]{background:#ff8a00!important;color:#041628!important;font-weight:800!important;min-height:52px!important;width:100%;position:relative;z-index:1}
+.image-upload{padding:15px;border:1px dashed #a3b5c7;border-radius:12px;background:#f8fafc;margin:14px 0}
+.image-upload label{display:block;font-weight:700;margin-bottom:10px}
+.image-upload input{max-width:100%}
+.photo-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.photo-preview img{width:100%;height:110px;object-fit:contain;background:white;border-radius:9px;border:1px solid #dce3eb}
+.vat-preview{padding:12px;border-radius:9px;background:#fff6e9;font-weight:700;color:#082b50}
+.used-product-card{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid #dce3eb}
+.used-slider{height:185px;position:relative;background:#f1f5f9;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.used-slider img{height:100%;width:100%;object-fit:contain}
+.used-slider button{position:absolute;top:50%;transform:translateY(-50%);border:0;border-radius:50%;width:32px;height:32px;background:#082b50db;color:white;cursor:pointer;font-size:20px;z-index:1}
+.used-slider button.prev{left:7px}.used-slider button.next{right:7px}
+.used-slider .slide-count{position:absolute;bottom:5px;right:7px;background:#082b50d9;color:white;font-size:11px;padding:3px 7px;border-radius:12px}
+@media(max-width:600px){.used-product-card{grid-template-columns:1fr}.used-slider{height:210px}}
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+<div id="authLoading" style="padding:40px;text-align:center">
+
+  Verifying administrator access...
+
+</div>
+
+
+
+<div class="dashboard" id="dashboardApp" hidden>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+      <div class="brand-white-logo"><img src="images/logo.webp" alt="T-MechaTrucks Logo"></div>
+
+      <h2>T-MECHATRUCKS</h2>
+
+      <p>ADMIN MANAGEMENT SYSTEM</p>
+
+    </div>
+
+
+
+    <nav class="sidebar-nav" aria-label="Dashboard navigation">
+
+      <button class="active" data-page="overview">▦ Overview</button>
+
+      <button data-page="testimonials">✉ Testimonials</button>
+
+      <button data-page="products">▣ Add Products</button>
+
+      <button data-page="stock">↕ Increase / Reduce Stock</button>
+
+      <button data-page="sales">◷ Items Sold</button>
+      <button data-page="received">↧ Received in 48 Hours</button>
+
+      <button data-page="damaged">⚠ Damaged Products</button>
+
+      <button data-page="enquiries">☏ Customer Enquiries</button>
+        <button data-page="chat">💬 <span data-i18n="chat">Messages</span> <span class="chat-count" id="chatBadge" hidden>0</span></button>
+
+    </nav>
+
+  </aside>
+
+
+
+  <main class="main-content">
+
+    <header class="dashboard-header">
+
+      <div>
+
+        <h1 id="pageTitle">Admin Dashboard</h1>
+
+        <p>T-MECHATRUCKS & PARTS LTD</p>
+
+      </div>
+
+      <div class="admin-tools">
+        <div class="live-clock" aria-live="off"><strong id="liveTime">--:--:--</strong><span id="liveDate">Kigali</span></div>
+        <select id="adminLanguage" aria-label="Dashboard language"><option value="rw">🇷🇼 RW</option><option value="en">🇬🇧 EN</option></select>
+      </div>
+      <div class="admin-profile">
+
+        <div class="admin-info">
+
+          <strong id="adminName">Administrator</strong>
+
+          <span id="adminEmail"></span>
+
+        </div>
+
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+
+      </div>
+
+    </header>
+
+
+
+    <p id="notice" role="status" aria-live="polite"
+
+       style="color:#082b50;font-weight:bold"></p>
+
+
+
+    <section id="overview" class="dash-page">
+
+      <div class="quick-actions" id="quickActions">
+        <button type="button" class="quick-action" data-quick="increase"><span class="quick-icon">＋</span><strong data-rw="Ongera Stock" data-en="Increase Stock">Ongera Stock</strong><small data-rw="Ibicuruzwa byinjiye" data-en="Record received items">Ibicuruzwa byinjiye</small></button>
+        <button type="button" class="quick-action" data-quick="decrease"><span class="quick-icon">−</span><strong data-rw="Gabanya Stock" data-en="Reduce Stock">Gabanya Stock</strong><small data-rw="Ibyagurishijwe cyangwa ibyangiritse" data-en="Sales or damaged items">Ibyagurishijwe cyangwa ibyangiritse</small></button>
+        <button type="button" class="quick-action" data-quick="testimonials"><span class="quick-icon">✉</span><strong data-rw="Genzura Ubuhamya" data-en="Review Testimonials">Genzura Ubuhamya</strong><small data-rw="Emeza cyangwa wange" data-en="Approve or reject">Emeza cyangwa wange</small></button>
+        <button type="button" class="quick-action" data-quick="products"><span class="quick-icon">▣</span><strong data-rw="Reba Stock Yose" data-en="View All Stock">Reba Stock Yose</strong><small data-rw="Ibicuruzwa n'imibare yabyo" data-en="Products and quantities">Ibicuruzwa n'imibare yabyo</small></button>
+        <button type="button" class="quick-action" data-quick="damaged"><span class="quick-icon">⚠</span><strong data-rw="Reba Ibyangiritse" data-en="View Damaged Items">Reba Ibyangiritse</strong><small data-rw="Ibyakuwe muri stock" data-en="Damaged stock reductions">Ibyakuwe muri stock</small></button>
+        <button type="button" class="quick-action" data-quick="activity"><span class="quick-icon">☷</span><strong data-rw="Reba Amateka Yose" data-en="View Activity History">Reba Amateka Yose</strong><small data-rw="Uwakoze igikorwa n'igihe" data-en="Who did what and when">Uwakoze igikorwa n'igihe</small></button>
+        <button type="button" class="quick-action" data-quick="chat"><span class="quick-icon">💬</span><strong data-rw="Ubutumwa" data-en="Messages">Ubutumwa</strong><small data-rw="Ganira n'abayobozi" data-en="Admin conversations">Ganira n'abayobozi</small></button>
+      </div>
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <h3>Pending Testimonials</h3>
+
+          <div class="stat-number" id="pendingCount">—</div>
+
+          <div class="stat-label">Awaiting approval</div>
+
+        </div>
+
+        <div class="stat-card">
+
+          <h3>Used Products</h3>
+
+          <div class="stat-number" id="productCount">—</div>
+
+          <div class="stat-label">Registered products</div>
+
+        </div>
+
+        <div class="stat-card">
+
+          <h3>Low / Out of Stock</h3>
+
+          <div class="stat-number" id="lowCount">—</div>
+
+          <div class="stat-label">Products needing attention</div>
+
+        </div>
+
+        <div class="stat-card">
+
+          <h3>Stock Movements</h3>
+
+          <div class="stat-number" id="movementCount">—</div>
+
+          <div class="stat-label">Recorded transactions</div>
+
+        </div>
+
+      </div>
+
+      <div class="stat-card">
+
+        <h2>Welcome to T-MechaTrucks</h2>
+
+        <p>Manage customer testimonials, used spare parts,
+
+          stock levels and inventory activity.</p>
+
+        <button class="logout-btn" id="refreshBtn">Refresh Data</button>
+
+      </div>
+
+    </section>
+
+
+
+    <section id="testimonials" class="dash-page" hidden>
+
+      <div class="stat-card">
+
+        <h2>Testimonials Management</h2>
+
+        <p>Review customer feedback before publication.</p>
+
+        <div id="testimonialList">Loading...</div>
+
+      </div>
+
+    </section>
+
+
+
+    <section id="products" class="dash-page" hidden>
+
+      <div class="stat-card">
+
+        <h2>Add Used Product</h2>
+
+        <form id="addProductForm">
+
+          <p><input name="sku" placeholder="SKU" required></p>
+
+          <p><input name="name" placeholder="Product name" required></p>
+
+          <p><textarea name="description" placeholder="Description"
+
+             style="width:100%;min-height:75px"></textarea></p>
+
+          <div class="image-upload"><label id="photoLabel">Amafoto 3 y'igicuruzwa (JPEG, PNG cyangwa WebP; buri imwe munsi ya 5 MB)</label>
+            <input id="usedPhotos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
+            <div id="photoPreview" class="photo-preview"></div>
+          </div>
+          <p><label id="priceLabel">Igiciro kitariho VAT (RWF)</label><input name="price" type="number" min="0" step="0.01" placeholder="Igiciro kitariho VAT (RWF)" required></p>
+          <p id="vatPreview" class="vat-preview">VAT (18%): 0 RWF · Igiciro kirimo VAT: 0 RWF</p>
+          <button class="logout-btn" type="submit">Add Product</button>
+
+        </form>
+
+        <p>New products start with stock 0. Add stock separately.</p>
+
+      </div>
+
+      <div class="stat-card" style="margin-top:18px">
+
+        <h2>All Used Products</h2>
+
+        <div id="productList">Loading...</div>
+
+      </div>
+
+    </section>
+
+
+
+    <section id="stock" class="dash-page" hidden>
+
+      <div class="stat-card">
+
+        <h2>Stock Management</h2>
+
+        <p id="stockModeNote" class="stock-mode-note" hidden></p>
+          <form id="stockForm">
+
+          <p><label for="stockProduct">Select Product</label></p>
+
+          <select id="stockProduct" required
+
+             style="width:100%;padding:12px"></select>
+
+          <p><label for="stockChange">Quantity Change</label></p>
+
+          <input id="stockChange" type="number" step="1"
+
+             placeholder="Example: 5 or -2" required>
+
+          <p><label for="stockReason">Reason</label></p>
+
+          <textarea id="stockReason" required minlength="3"
+
+             placeholder="Purchase, sale, damaged, correction..."
+
+             style="width:100%;min-height:85px;padding:12px"></textarea>
+
+          <p><button class="logout-btn" type="submit">
+
+            Save Stock Movement
+
+          </button></p>
+
+        </form>
+
+        <p>Positive quantity increases stock. Negative quantity reduces it.</p>
+
+      </div>
+
+    </section>
+
+
+
+    <section id="history" class="dash-page" hidden>
+
+      <div class="stat-card">
+
+        <h2>Stock Movement History</h2>
+
+        <div id="historyList">Loading...</div>
+
+      </div>
+
+    </section>
+
+
+
+    <section id="sales" class="dash-page" hidden><div class="stat-card"><h2 data-rw="Ibyacurujwe" data-en="Items Sold">Ibyacurujwe</h2><p data-rw="Stock yagabanutse kubera kugurisha, hashingiwe ku mpamvu yanditswe." data-en="Stock reductions marked as sales.">Stock yagabanutse kubera kugurisha, hashingiwe ku mpamvu yanditswe.</p><div id="salesList"></div></div></section>
+    <section id="received" class="dash-page" hidden><div class="stat-card"><h2 data-rw="Ibyinjiye mu masaha 48" data-en="Received in 48 Hours">Ibyinjiye mu masaha 48</h2><div id="receivedList"></div></div></section>
+    <section id="activity" class="dash-page" hidden>
+      <div class="stat-card">
+        <h2 data-i18n="activityTitle">Activity History</h2>
+        <p data-i18n="activityHelp">Changes recorded by Supabase, linked to the signed-in administrator.</p>
+        <div class="activity-controls">
+          <select id="activityActor" aria-label="Filter administrator"><option value="">All administrators</option></select>
+          <button id="activityRefresh" type="button">↻ Refresh history</button>
+        </div>
+        <div id="activityList" aria-live="polite"></div>
+      </div>
+    </section>
+    <section id="damaged" class="dash-page" hidden>
+
+      <div class="stat-card">
+
+        <h2>Damaged Products</h2>
+
+        <p>Stock reductions recorded with a damage-related reason.</p>
+
+        <div id="damagedList">Loading...</div>
+
+      </div>
+
+    </section>
+
+
+
+    <section id="enquiries" class="dash-page" hidden>
+
+      <div class="stat-card">
+
+        <h2>Customer Enquiries</h2>
+
+        <p>Open the company WhatsApp to communicate with customers.</p>
+
+        <a class="logout-btn"
+
+           style="display:inline-block;text-decoration:none"
+
+           href="https://wa.me/250799908714"
+
+           target="_blank" rel="noopener noreferrer">
+
+          Open WhatsApp
+
+        </a>
+
+        <p>Customer enquiries currently open in WhatsApp. Admin-to-admin chat is available in the separate Chat tab after database setup.</p>
+
+      </div>
+
+    </section>
+    <section id="chat" class="dash-page" hidden>
+      <div class="stat-card">
+        <h2 data-i18n="chatTitle">Admin Private Chat</h2>
+        <p class="chat-note" data-i18n="chatHelp">Only approved administrators. Delete for everyone within 60 minutes.</p>
+        <p id="chatStatus" role="status" aria-live="polite" class="chat-note">Chat will be available after Supabase setup.</p>
+        <div class="chat-layout">
+          <div class="chat-users"><h3 data-i18n="users">Administrators</h3><div id="chatUsers"></div></div>
+          <div class="chat-main">
+            <div class="chat-heading" id="chatPeer">Select an administrator</div>
+            <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+            <form class="chat-send" id="chatForm">
+              <input id="chatInput" type="text" maxlength="2000" placeholder="Write a message..." autocomplete="off" disabled required>
+              <button id="chatSend" type="submit" disabled>Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+(async function () {
+
+  "use strict";
+
+
+
+  const URL = "https://ivyzjzbtdlphjaeywtxa.supabase.co";
+
+  const KEY = "sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP";
+
+  const $ = id => document.getElementById(id);
+
+
+
+  if (!window.supabase) {
+    document.getElementById('authLoading').textContent = 'Supabase JavaScript library failed to load. Check internet connection.';
+    return;
+  }
+  const db = window.supabase.createClient(URL, KEY);
+
+  let currentUser = null;
+
+  let products = [];
+
+  let movements = [];
+  let adminPeople = [];
+  let auditEntries = [];
+  const adminDisplay = id => adminPeople.find(p => p.user_id === id)?.display_name || (id ? (language === "rw" ? "Umuyobozi utazwi" : "Unknown administrator") : (language === "rw" ? "Ntibizwi (amakuru ya kera)" : "Unknown (legacy record)"));
+
+
+
+  function notice(message) {
+
+    $("notice").textContent = message;
+
+  }
+
+
+
+  function escapeHtml(value) {
+
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+
+      "&":"&amp;", "<":"&lt;", ">":"&gt;",
+
+      '"':"&quot;", "'":"&#39;"
+
+    })[char]);
+
+  }
+
+
+
+  function dateText(value) {
+
+    return value ? new Date(value).toLocaleString() : "—";
+
+  }
+
+
+
+  function money(value) {
+
+    return Number(value || 0).toLocaleString("en-RW") + " RWF";
+
+  }
+
+
+
+  function showPage(id) {
+
+    document.querySelectorAll(".dash-page").forEach(section => {
+
+      section.hidden = section.id !== id;
+
+    });
+
+    document.querySelectorAll("[data-page]").forEach(button => {
+
+      button.classList.toggle("active", button.dataset.page === id);
+
+    });
+
+    $("pageTitle").textContent = {
+
+      overview:"Admin Dashboard",
+
+      testimonials:"Testimonials Management",
+
+      products:"Add Products",
+      sales:"Items Sold",received:"Received in 48 Hours",
+
+      stock:"Stock Management",
+
+      history:"Stock History",
+
+      damaged:"Damaged Products",
+
+      enquiries:"Customer Enquiries",
+        chat:"Admin Private Chat"
+
+    }[id];
+
+    notice("");
+    if (typeof language !== 'undefined' && typeof words !== 'undefined') {
+      $("pageTitle").textContent = words[language][id] || $("pageTitle").textContent;
+    }
+
+  }
+
+
+
+  document.querySelectorAll("[data-page]").forEach(button => {
+
+    button.addEventListener("click", () => { if (button.dataset.page === "chat") { window.location.href = "Messages.html"; return; } showPage(button.dataset.page); });
+
+  });
+
+
+
+  // Dashboard shortcuts: keep all stock changes in the existing verified form.
+  let stockMode = '';
+  function setStockMode(mode) {
+    stockMode=mode;
+    showPage('stock');
+    const note=$('stockModeNote');
+    note.hidden=false;
+    note.textContent=language==='rw'
+      ? (mode==='increase'?'ONGERA STOCK: andika umubare urenze 0, urugero 10.':'GABANYA STOCK: andika umubare uri munsi ya 0, urugero -3.')
+      : (mode==='increase'?'INCREASE STOCK: enter a positive number, e.g. 10.':'REDUCE STOCK: enter a negative number, e.g. -3.');
+    const input=$('stockChange');
+    input.placeholder=mode==='increase'?'10':'-3';
+    input.focus();
+  }
+  document.querySelectorAll('[data-quick]').forEach(btn=>btn.addEventListener('click',()=>{
+    const action=btn.dataset.quick;
+    if(action==='chat'){window.location.href='Messages.html';return;}
+    if(action==='increase'||action==='decrease'){setStockMode(action);return;}
+    showPage(action);
+    if(action==='activity')loadActivity();
+  }));
+
+  async function verifyAdmin() {
+
+    const {data, error} = await db.auth.getUser();
+
+    if (error || !data.user) throw new Error("Login required.");
+
+
+
+    const {data: role, error: roleError} = await db
+
+      .from("user_roles")
+
+      .select("role")
+
+      .eq("user_id", data.user.id)
+
+      .eq("role", "admin")
+
+      .maybeSingle();
+
+
+
+    if (roleError || !role) throw new Error("Admin access denied.");
+
+    currentUser = data.user;
+
+    $("adminEmail").textContent = currentUser.email;
+
+    const {data: admins, error: adminsError} = await db.from("admin_chat_users")
+      .select("user_id,display_name,email").order("display_name");
+    if (!adminsError) adminPeople = admins || [];
+    const myName = adminPeople.find(p => p.user_id === currentUser.id)?.display_name;
+    $("adminName").textContent = (myName || currentUser.email || "Administrator") + " · Admin";
+
+  }
+
+
+
+  async function loadTestimonials() {
+
+    const {data, error} = await db.from("testimonials")
+
+      .select("*").order("created_at", {ascending:false});
+
+
+
+    if (error) throw error;
+
+
+
+    const pending = data.filter(item => item.status === "pending");
+
+    $("pendingCount").textContent = pending.length;
+
+
+
+    $("testimonialList").innerHTML = data.length
+
+      ? data.map(item => `
+
+        <article style="padding:16px 0;border-bottom:1px solid #ddd">
+
+          <strong>${escapeHtml(item.customer_name)}</strong>
+
+          <p>${escapeHtml(item.service_used || "")}</p>
+
+          <p>${escapeHtml(item.testimonial)}</p>
+
+          <small>${language === "rw" ? "Imiterere" : "Status"}: ${escapeHtml(item.status)}</small>
+        ${item.reviewed_by ? `<p><strong>${language === "rw" ? "Uwafashe icyemezo" : "Reviewed by"}:</strong> ${escapeHtml(adminDisplay(item.reviewed_by))}</p>` : ""}
+
+          ${item.status === "pending" ? `
+
+          <p>
+
+            <button data-review="${escapeHtml(item.id)}"
+
+                    data-status="approved">${language === "rw" ? "Emeza" : "Approve"}</button>
+
+            <button data-review="${escapeHtml(item.id)}"
+
+                    data-status="rejected">${language === "rw" ? "Anga" : "Reject"}</button>
+
+          </p>` : ""}
+
+        </article>`).join("")
+
+      : (language === "rw" ? "<p>Nta buhamya bubonetse.</p>" : "<p>No testimonials found.</p>");
+
+  }
+
+
+
+  $("testimonialList").addEventListener("click", async event => {
+
+    const button = event.target.closest("[data-review]");
+
+    if (!button || button.disabled) return;
+
+
+
+    const status = button.dataset.status;
+
+    if (!confirm(language === "rw" ? `Urashaka guhindura imiterere y’ubuhamya ibe ${status}?` : `Change testimonial status to ${status}?`)) return;
+
+
+
+    button.disabled = true;
+
+    const {error} = await db.from("testimonials")
+
+      .update({
+
+        status,
+
+        reviewed_at:new Date().toISOString(),
+
+        reviewed_by:currentUser.id
+
+      })
+
+      .eq("id", button.dataset.review)
+
+      .eq("status", "pending");
+
+
+
+    if (error) notice(error.message);
+
+    else {
+
+      notice(language === "rw" ? "Ubuhamya bwavuguruwe." : "Testimonial updated.");
+
+      await loadTestimonials().catch(e => notice(e.message));
+
+    }
+
+    button.disabled = false;
+
+  });
+
+
+
+  async function loadProducts() {
+
+    const {data, error} = await db.from("used_products")
+
+      .select("*").order("name", {ascending:true});
+
+    if (error) throw error;
+
+    products = data || [];
+
+
+
+    $("productCount").textContent = products.length;
+
+    $("lowCount").textContent = products.filter(
+
+      p => Number(p.stock_qty) < Number(p.minimum_stock ?? 2)
+
+    ).length;
+
+
+
+    $("stockProduct").innerHTML = products.map(p =>
+
+      `<option value="${escapeHtml(p.id)}">
+
+        ${escapeHtml(p.name)} (${Number(p.stock_qty)} ${language === "rw" ? "bihari" : "available"})
+
+      </option>`
+
+    ).join("");
+
+
+
+    $("productList").innerHTML = products.length
+      ? products.map(p => {
+        const images = Array.isArray(p.image_urls) && p.image_urls.length
+          ? p.image_urls : (p.image_url ? [p.image_url] : []);
+        const safeImages = images.filter(u => typeof u === 'string' && /^https:\/\//i.test(u));
+        const slider = safeImages.length ? `<div class="used-slider" data-images="${escapeHtml(JSON.stringify(safeImages))}">
+          <img src="${escapeHtml(safeImages[0])}" alt="${escapeHtml(p.name)}" loading="lazy">
+          ${safeImages.length>1?'<button type="button" class="prev" aria-label="Previous photo">‹</button><button type="button" class="next" aria-label="Next photo">›</button>':''}
+          <span class="slide-count">1 / ${safeImages.length}</span></div>`
+          : `<div class="used-slider"><span>${language==='rw'?'Nta foto irashyirwaho':'No photo uploaded'}</span></div>`;
+        return `<article class="used-product-card">${slider}<div>
+          <strong>${escapeHtml(p.name)}</strong>
+          <p>SKU: ${escapeHtml(p.sku)}</p>
+          <p>${language==='rw'?'Igiciro kitariho VAT':'Price before VAT'}: ${money(p.unit_price_excl_vat != null ? p.unit_price_excl_vat : Number(p.unit_price_incl_vat)/1.18)}</p>
+          <p>VAT (18%): ${money(Number(p.unit_price_incl_vat)-(p.unit_price_excl_vat != null ? Number(p.unit_price_excl_vat) : Number(p.unit_price_incl_vat)/1.18))}</p>
+          <p>${language === 'rw' ? 'Igiciro kirimo VAT' : 'Price incl. VAT'}: ${money(p.unit_price_incl_vat)}</p>
+          <p>Stock: ${Number(p.stock_qty)}</p>
+          <p><strong>${language === 'rw' ? 'Uwacyongeye' : 'Created by'}:</strong> ${escapeHtml(adminDisplay(p.created_by))}</p>
+          <p>${language === 'rw' ? 'Imiterere' : 'Status'}: ${p.is_active ? (language === 'rw' ? 'Kirakora' : 'Active') : (language === 'rw' ? 'Ntigikora' : 'Inactive')}</p>
+        </div></article>`;
+      }).join('')
+      : (language === 'rw' ? '<p>Nta bicuruzwa byakoreshejwe birandikwa.</p>' : '<p>No used products registered yet.</p>');
+    initProductSliders();
+  }
+
+  const productSliderTimers = new Set();
+  function initProductSliders(){
+    productSliderTimers.forEach(clearInterval);productSliderTimers.clear();
+    document.querySelectorAll('.used-slider[data-images]').forEach(slider=>{
+      const images=JSON.parse(slider.dataset.images);let i=0;let timer;
+      const img=slider.querySelector('img'),counter=slider.querySelector('.slide-count');
+      const move=(delta)=>{i=(i+delta+images.length)%images.length;img.src=images[i];counter.textContent=`${i+1} / ${images.length}`;};
+      const restart=()=>{if(timer){clearInterval(timer);productSliderTimers.delete(timer)}timer=setInterval(()=>move(1),10000);productSliderTimers.add(timer)};
+      if(images.length>1){slider.querySelector('.prev').addEventListener('click',()=>{move(-1);restart()});slider.querySelector('.next').addEventListener('click',()=>{move(1);restart()});restart();}
+    });
+  }
+  const usedPhotoInput=$('usedPhotos');
+  usedPhotoInput.addEventListener('change',()=>{
+    const files=Array.from(usedPhotoInput.files||[]);$('photoPreview').replaceChildren();
+    if(files.length!==3){notice(language==='rw'?'Hitamo amafoto 3 neza.':'Select exactly 3 photos.');return;}
+    for(const file of files){const url=URL.createObjectURL(file),img=document.createElement('img');img.src=url;img.onload=()=>URL.revokeObjectURL(url);$('photoPreview').append(img);}
+  });
+  const usedPriceInput=$('addProductForm').querySelector('[name="price"]');
+  usedPriceInput.addEventListener('input',()=>{
+    const price=Number(usedPriceInput.value)||0;
+    $('vatPreview').textContent=`VAT (18%): ${money(price*.18)} · ${language==='rw'?'Igiciro kirimo VAT':'Price incl. VAT'}: ${money(price*1.18)}`;
+  });
+
+  $("addProductForm").addEventListener("submit", async event => {
+
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    const button = form.querySelector('[type="submit"]');
+
+    const values = new FormData(form);
+
+    const price = Number(values.get("price"));
+    const photos=Array.from(usedPhotoInput.files||[]);
+    if(!form.reportValidity())return;
+    if(!Number.isFinite(price)||price<0){notice(language==='rw'?'Andika igiciro cyemewe.':'Enter a valid price.');return;}
+    if(photos.length!==3 || photos.some(f=>!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>5*1024*1024)){
+      notice(language==='rw'?'Hitamo amafoto 3 (JPEG, PNG, WebP), buri imwe itarengeje 5 MB.':'Choose exactly 3 JPG/PNG/WebP photos, each at most 5 MB.');usedPhotoInput.focus();return;
+    }
+    button.disabled=true;
+    try{
+      const id=(globalThis.crypto && crypto.randomUUID)?crypto.randomUUID():([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16));
+      const urls=[];
+      for(let i=0;i<photos.length;i++){
+        const file=photos[i];const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';
+        const path=`${id}/${i+1}-${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+        const {error:uploadError}=await db.storage.from('used-product-images').upload(path,file,{contentType:file.type,upsert:false});
+        if(uploadError)throw uploadError;
+        urls.push(db.storage.from('used-product-images').getPublicUrl(path).data.publicUrl);
+      }
+      const {error}=await db.from('used_products').insert({
+        id,sku:String(values.get('sku')).trim(),name:String(values.get('name')).trim(),
+        description:String(values.get('description')).trim(),image_url:urls[0],image_urls:urls,
+        unit_price_excl_vat:price,unit_price_incl_vat:Math.round(price*1.18*100)/100,
+        vat_rate:18,stock_qty:0,is_active:true
+      });
+      if(error)throw error;
+      form.reset();$('photoPreview').replaceChildren();usedPriceInput.dispatchEvent(new Event('input'));
+      notice(language==='rw'?'Igicuruzwa n’amafoto 3 byabitswe neza.':'Product and 3 photos saved.');
+      await loadProducts();
+    }catch(error){console.error('Product save failed:',error);notice((language==='rw'?'Kubika byanze: ':'Save failed: ')+(error.message||'Unknown error'));}
+    finally{button.disabled=false;}
+
+  });
+
+
+
+  $("stockForm").addEventListener("submit", async event => {
+
+    event.preventDefault();
+
+    const button = event.currentTarget.querySelector('[type="submit"]');
+
+    const quantity = Number($("stockChange").value);
+
+    const reason = $("stockReason").value.trim();
+
+    const productId = $("stockProduct").value;
+    if(stockMode === "increase" && quantity < 0 || stockMode === "decrease" && quantity > 0){notice(language==="rw"?"Umubare ntuhuye n’igikorwa wahisemo.":"Quantity does not match the selected action.");return;}
+
+
+
+    if (!Number.isSafeInteger(quantity) || quantity === 0 ||
+
+        reason.length < 3 || !productId) {
+
+      notice(language === "rw" ? "Hitamo igicuruzwa, umubare n’impamvu byemewe." : "Select a product, valid quantity and reason.");
+
+      return;
+
+    }
+
+
+
+    if (!confirm(language === "rw" ? `Urashaka kubika impinduka za stock zingana na ${quantity}?` : `Record stock change of ${quantity}?`)) return;
+
+
+
+    button.disabled = true;
+
+    const {error} = await db.rpc("adjust_used_stock", {
+
+      p_product_id:productId,
+
+      p_quantity_change:quantity,
+
+      p_reason:reason
+
+    });
+
+
+
+    if (error) notice(error.message);
+
+    else {
+
+      $("stockForm").reset();
+
+      notice(language === "rw" ? "Impinduka za stock zabitswe neza." : "Stock movement saved successfully.");
+
+      await loadProducts().catch(e => notice(e.message));
+
+      await loadHistory().catch(e => notice(e.message));
+
+    }
+
+    button.disabled = false;
+
+  });
+
+
+
+  async function loadHistory() {
+
+    const {data, error} = await db.from("used_stock_movements")
+
+      .select("*").order("created_at", {ascending:false}).limit(100);
+
+    if (error) throw error;
+
+
+
+    movements = data || [];
+
+    $("movementCount").textContent = movements.length;
+
+
+
+    function renderMovement(m) {
+
+      const product = products.find(p => p.id === m.product_id);
+
+      return `<article style="padding:13px 0;border-bottom:1px solid #ddd">
+
+        <strong>${escapeHtml(product?.name || m.product_id)}</strong>
+
+        <p>${language === "rw" ? "Impinduka mu mubare" : "Quantity change"}: ${Number(m.quantity_change)}</p>
+
+        <p>${language === "rw" ? "Impamvu" : "Reason"}: ${escapeHtml(m.reason)}</p>
+
+        <p><strong>${language === "rw" ? "Uwabikoze" : "Performed by"}:</strong> ${escapeHtml(adminDisplay(m.performed_by))}</p>
+        <small>${dateText(m.created_at)}</small>
+
+      </article>`;
+
+    }
+
+
+
+    $("historyList").innerHTML = movements.length
+
+      ? movements.map(renderMovement).join("")
+
+      : (language === "rw" ? "<p>Nta mpinduka za stock zirandikwa.</p>" : "<p>No stock movements recorded.</p>");
+
+
+
+    const sales = movements.filter(m => Number(m.quantity_change)<0 && /sale|sold|sell|gurish|yacuruj/i.test(String(m.reason)));
+    $("salesList").innerHTML=sales.length?sales.map(renderMovement).join(""):(language==='rw'?'<p>Nta byacurujwe byanditswe nk’ibyagurishijwe.</p>':'<p>No sales recorded.</p>');
+    const cutoff=Date.now()-48*60*60*1000;
+    const received=movements.filter(m=>Number(m.quantity_change)>0 && new Date(m.created_at).getTime()>=cutoff);
+    $("receivedList").innerHTML=received.length?received.map(renderMovement).join(""):(language==='rw'?'<p>Nta byinjiye mu masaha 48 ashize.</p>':'<p>No items received in the last 48 hours.</p>');
+    const damaged = movements.filter(m =>
+
+      /damag|broken|defect|yangirit|cyangirit|kwangirika/i
+
+        .test(String(m.reason)) && Number(m.quantity_change) < 0
+
+    );
+
+
+
+    $("damagedList").innerHTML = damaged.length
+
+      ? damaged.map(renderMovement).join("")
+
+      : (language === "rw" ? "<p>Nta stock yangiritse yanditswe.</p>" : "<p>No damage-related stock movements found.</p>");
+
+  }
+
+
+
+  function auditLabel(row) {
+    const table = {used_products:language==='rw'?'Igicuruzwa':'Product',used_stock_movements:language==='rw'?'Stock':'Stock',testimonials:language==='rw'?'Ubuhamya':'Testimonial'}[row.table_name] || row.table_name;
+    const action = ({INSERT:language==='rw'?'Yongeye':'Added',UPDATE:language==='rw'?'Yahinduye':'Updated',DELETE:language==='rw'?'Yasibye':'Deleted'})[row.action] || row.action;
+    return action + ' · ' + table;
+  }
+  function auditDetails(row) {
+    const before = row.old_data || {}, after = row.new_data || {};
+    const title = after.name || before.name || after.customer_name || before.customer_name || '';
+    const details = [];
+    if (title) details.push(title);
+    if (row.table_name === 'used_stock_movements') {
+      details.push((language==='rw'?'Umubare':'Quantity')+': '+String(after.quantity_change ?? '—'));
+      if (after.reason) details.push((language==='rw'?'Impamvu':'Reason')+': '+after.reason);
+    }
+    if (row.action === 'UPDATE') {
+      for (const k of ['status','name','sku','unit_price_incl_vat','is_active','stock_qty','minimum_stock']) {
+        if (JSON.stringify(before[k]) !== JSON.stringify(after[k])) details.push(k+': '+String(before[k] ?? '—')+' → '+String(after[k] ?? '—'));
+      }
+    }
+    return details.join(' · ');
+  }
+  function renderActivity() {
+    const filter = $('activityActor').value;
+    const entries = auditEntries.filter(x => !filter || x.actor_id === filter);
+    $('activityList').innerHTML = entries.length ? entries.map(x=>`
+      <article class="activity-item">
+        <strong>${escapeHtml(auditLabel(x))}</strong>
+        <p>${language==='rw'?'Uwabikoze':'Performed by'}: <strong>${escapeHtml(adminDisplay(x.actor_id))}</strong></p>
+        <div class="activity-change">${escapeHtml(auditDetails(x))}</div>
+        <small>${escapeHtml(dateText(x.occurred_at))}</small>
+      </article>`).join('') : `<p>${language==='rw'?'Nta bikorwa byanditswe bibonetse.':'No recorded activity found.'}</p>`;
+  }
+  async function loadActivity() {
+    const {data,error} = await db.from('admin_audit_log')
+      .select('id,actor_id,action,table_name,record_id,old_data,new_data,occurred_at')
+      .order('occurred_at',{ascending:false}).order('id',{ascending:false}).limit(150);
+    if(error) { $('activityList').textContent=error.message; return; }
+    auditEntries = data || [];
+    const selector=$('activityActor'),selected=selector.value;
+    selector.replaceChildren();
+    const all=document.createElement('option');all.value='';all.textContent=language==='rw'?'Abayobozi bose':'All administrators';selector.appendChild(all);
+    for(const p of adminPeople) { const opt=document.createElement('option');opt.value=p.user_id;opt.textContent=p.display_name||p.email;selector.appendChild(opt); }
+    selector.value=selected;
+    renderActivity();
+  }
+  $('activityActor').addEventListener('change',renderActivity);
+  $('activityRefresh').addEventListener('click',loadActivity);
+
+  async function refreshAll() {
+
+    const results = await Promise.allSettled([
+
+      loadTestimonials(), loadProducts()
+
+    ]);
+
+    const failed = results.filter(r => r.status === "rejected");
+
+    if (failed.length) {
+
+      notice(failed.map(r => r.reason.message).join(" | "));
+
+    }
+
+    try { await loadActivity(); } catch (error) { notice(error.message); }
+    try { await loadHistory(); }
+
+    catch (error) { notice(error.message); }
+
+  }
+
+
+
+  $("refreshBtn").addEventListener("click", refreshAll);
+
+
+
+  $("logoutBtn").addEventListener("click", async () => {
+
+    const {error} = await db.auth.signOut();
+
+    if (error) notice(error.message);
+
+    else window.location.replace("login.html");
+
+  });
+
+
+
+
+  // KIGALI LIVE CLOCK AND LANGUAGE
+  const words = {
+    rw:{overview:'Incamake',testimonials:'Ubuhamya',products:'Injiza ibicuruzwa',stock:'Ongera / Gabanya Stock',sales:'Ibyacurujwe',received:'Ibyinjiye mu masaha 48',history:'Amateka ya Stock',damaged:'Ibyangiritse',enquiries:'Ubusabe bw’abakiriya',activity:'Amateka y’ibikorwa',activityTitle:'Amateka y’ibikorwa',activityHelp:'Impinduka zabitswe na Supabase zigaragaza umuyobozi wari winjiye.',chat:'Chat',chatTitle:'Chat y’Abayobozi',chatHelp:'Abayobozi bemerewe gusa. Gusiba ubutumwa kuri bose byemewe mu minota 60.',users:'Abayobozi',send:'Ohereza',placeholder:'Andika ubutumwa...',choose:'Hitamo umuyobozi',deleted:'Ubu butumwa bwasibwe',delete:'Siba kuri bose',empty:'Nta butumwa burimo.'},
+    en:{overview:'Overview',testimonials:'Testimonials',products:'Add Products',stock:'Increase / Reduce Stock',sales:'Items Sold',received:'Received in 48 Hours',history:'Stock History',damaged:'Damaged Products',enquiries:'Customer Enquiries',activity:'Activity History',activityTitle:'Activity History',activityHelp:'Changes recorded by Supabase, linked to the signed-in administrator.',chat:'Chat',chatTitle:'Admin Private Chat',chatHelp:'Approved administrators only. Delete for everyone is available for 60 minutes.',users:'Administrators',send:'Send',placeholder:'Write a message...',choose:'Select an administrator',deleted:'This message was deleted',delete:'Delete for everyone',empty:'No messages yet.'}
+  };
+  let language = localStorage.getItem('tmecha-admin-language') === 'en' ? 'en' : 'rw';
+  const chatState = {peer:null, channel:null, people:[], messages:[], timer:null};
+  function translate(){
+    const t=words[language];
+    $('adminLanguage').value=language;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t[el.dataset.i18n]||el.textContent;});
+    document.querySelectorAll('.sidebar-nav button[data-page]').forEach(b=>{
+      const label=b.querySelector('[data-i18n]');
+      if(label) return;
+      const icon=b.textContent.trim().split(' ')[0];
+      b.textContent=icon+' '+(t[b.dataset.page]||b.dataset.page);
+    });
+    $('chatInput').placeholder=t.placeholder;
+    $('pageTitle').textContent = t[document.querySelector('.sidebar-nav button.active')?.dataset.page] || 'Admin Dashboard';
+    $('chatSend').textContent=t.send;
+    if(!chatState.peer) $('chatPeer').textContent=t.choose;
+    renderChat();
+    translateDashboardStatic();
+    $('activityRefresh').textContent = language==='rw'?'↻ Vugurura amateka':'↻ Refresh history';
+    renderActivity();
+  }
+  $('adminLanguage').addEventListener('change',e=>{
+    language=e.target.value;
+    localStorage.setItem('tmecha-admin-language',language);
+    translate();
+    loadTestimonials().catch(e=>notice(e.message));
+    loadProducts().catch(e=>notice(e.message));
+    loadHistory().catch(e=>notice(e.message));
+    loadActivity().catch(e=>notice(e.message));
+  });
+  function tickClock(){
+    const d=new Date();
+    $('liveTime').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Kigali',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d);
+    $('liveDate').textContent=new Intl.DateTimeFormat(language==='rw'?'en-GB':'en-GB',{timeZone:'Africa/Kigali',weekday:'short',day:'2-digit',month:'short',year:'numeric'}).format(d)+' · Kigali';
+  }
+  tickClock();setInterval(tickClock,1000);
+
+
+  // COMPLETE DASHBOARD STATIC TEXT TRANSLATIONS (RW / EN).
+  const dashboardText = {
+    'ADMIN MANAGEMENT SYSTEM':['SISITEMU YO GUCUNGA IKIGO','ADMIN MANAGEMENT SYSTEM'],
+    'Logout':['Sohoka','Logout'], 'Pending Testimonials':['Ubuhamya butaremezwa','Pending Testimonials'],
+    'Awaiting approval':['Butegereje kwemezwa','Awaiting approval'],
+    'Used Products':['Ibicuruzwa byakoreshejwe','Used Products'],
+    'Registered products':['Ibicuruzwa byanditswe','Registered products'],
+    'Low / Out of Stock':['Stock nke cyangwa yashize','Low / Out of Stock'],
+    'Products needing attention':['Ibicuruzwa bikeneye kwitabwaho','Products needing attention'],
+    'Stock Movements':['Ibyahindutse muri stock','Stock Movements'],
+    'Recorded transactions':['Ibikorwa byanditswe','Recorded transactions'],
+    'Welcome to T-MechaTrucks':['Murakaza neza muri T-MechaTrucks','Welcome to T-MechaTrucks'],
+    'Manage customer testimonials, used spare parts, stock levels and inventory activity.':['Cunga ubuhamya bw’abakiriya, ibikoresho byakoreshejwe, stock n’ibikorwa byayo.','Manage customer testimonials, used spare parts, stock levels and inventory activity.'],
+    'Refresh Data':['Vugurura amakuru','Refresh Data'],
+    'Testimonials Management':['Gucunga ubuhamya','Testimonials Management'],
+    'Review customer feedback before publication.':['Suzuma ubuhamya bw’abakiriya mbere yo kubutangaza.','Review customer feedback before publication.'],
+    'Add Used Product':['Ongeramo igicuruzwa cyakoreshejwe','Add Used Product'],
+    'Add Product':['Ongeramo igicuruzwa','Add Product'],
+    'All Used Products':['Ibicuruzwa byose byakoreshejwe','All Used Products'],
+    'New products start with stock 0. Add stock separately.':['Igicuruzwa gishya gitangirana stock 0. Ongeraho stock ukwayo.','New products start with stock 0. Add stock separately.'],
+    'Stock Management':['Gucunga stock','Stock Management'],
+    'Select Product':['Hitamo igicuruzwa','Select Product'],
+    'Quantity Change':['Impinduka mu mubare','Quantity Change'],
+    'Reason':['Impamvu','Reason'],
+    'Save Stock Movement':['Bika impinduka za stock','Save Stock Movement'],
+    'Positive quantity increases stock. Negative quantity reduces it.':['Umubare mwiza wongera stock; umubare mubi urayigabanya.','Positive quantity increases stock. Negative quantity reduces it.'],
+    'Stock Movement History':['Amateka y’impinduka za stock','Stock Movement History'],
+    'Damaged Products':['Ibicuruzwa byangiritse','Damaged Products'],
+    'Stock reductions recorded with a damage-related reason.':['Stock yagabanutse kubera ibyangiritse.','Stock reductions recorded with a damage-related reason.'],
+    'Customer Enquiries':['Ubusabe bw’abakiriya','Customer Enquiries'],
+    'Open the company WhatsApp to communicate with customers.':['Fungura WhatsApp y’ikigo uganire n’abakiriya.','Open the company WhatsApp to communicate with customers.'],
+    'Open WhatsApp':['Fungura WhatsApp','Open WhatsApp'],
+    'Customer enquiries currently open in WhatsApp. Admin-to-admin chat is available in the separate Chat tab after database setup.':['Ubusabe bw’abakiriya bunyura kuri WhatsApp. Ubutumwa bw’abayobozi buri kuri Messages.','Customer enquiries open in WhatsApp. Administrator messages are on the Messages page.'],
+    'Loading...':['Birimo gufungurwa...','Loading...'],
+    'SKU':['SKU','SKU'],
+    'Status:':['Imiterere:','Status:'],
+  };
+  const dashboardPlaceholders = {
+    'Product name':['Izina ry’igicuruzwa','Product name'],
+    'Description':['Ibisobanuro','Description'],
+    'Product image URL (optional)':['Link y’ifoto (si ngombwa)','Product image URL (optional)'],
+    'Price including VAT (RWF)':['Igiciro kirimo TVA (RWF)','Price including VAT (RWF)'],
+    'Example: 5 or -2':['Urugero: 5 cyangwa -2','Example: 5 or -2'],
+    'Purchase, sale, damaged, correction...':['Kugura, kugurisha, ibyangiritse, gukosora...','Purchase, sale, damaged, correction...']
+  };
+  function translateDashboardStatic(){
+    document.querySelectorAll('[data-rw][data-en]').forEach(el=>{
+      el.textContent=el.dataset[language];
+    });
+    if(stockMode){
+      $('stockModeNote').textContent=language==='rw'
+        ? (stockMode==='increase'?'ONGERA STOCK: andika umubare urenze 0, urugero 10.':'GABANYA STOCK: andika umubare uri munsi ya 0, urugero -3.')
+        : (stockMode==='increase'?'INCREASE STOCK: enter a positive number, e.g. 10.':'REDUCE STOCK: enter a negative number, e.g. -3.');
+    }
+    const index=language==='rw'?0:1;
+    document.querySelectorAll('.dashboard h2,.dashboard h3,.dashboard p,.dashboard label,.dashboard button:not([data-page]),.dashboard a.logout-btn,.dashboard .stat-label,.sidebar-brand p').forEach(el=>{
+      if(el.children.length) return;
+      const original=el.dataset.originalEnglish || el.textContent.trim();
+      if(!dashboardText[original]) return;
+      el.dataset.originalEnglish=original;
+      el.textContent=dashboardText[original][index];
+    });
+    document.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(el=>{
+      const original=el.dataset.originalPlaceholder || el.placeholder;
+      if(dashboardPlaceholders[original]){el.dataset.originalPlaceholder=original;el.placeholder=dashboardPlaceholders[original][index];}
+    });
+  }
+
+  translate();
+
+  // PRIVATE ADMIN CHAT. Requires companion SQL setup with RLS and server-side 60-minute enforcement.
+  function chatStatus(s){ $('chatStatus').textContent=s; }
+  function displayName(p){return p.display_name || p.email || 'Admin';}
+  async function loadChatUsers(){
+    const {data,error}=await db.from('admin_chat_users').select('user_id,display_name,email').order('display_name');
+    if(error) {chatStatus('Chat setup required: '+error.message);return false;}
+    chatState.people=(data||[]).filter(p=>p.user_id!==currentUser.id);
+    $('chatUsers').innerHTML='';
+    for(const p of chatState.people){
+      const btn=document.createElement('button');
+      btn.textContent=displayName(p);
+      btn.dataset.user=p.user_id;
+      btn.addEventListener('click',()=>selectChatUser(p));
+      $('chatUsers').appendChild(btn);
+    }
+    if(!chatState.people.length) chatStatus('No other approved administrators found.');
+    else chatStatus('');
+    return true;
+  }
+  async function selectChatUser(p){
+    chatState.peer=p;
+    $('chatPeer').textContent=displayName(p);
+    $('chatInput').disabled=false;$('chatSend').disabled=false;
+    document.querySelectorAll('#chatUsers button').forEach(b=>b.classList.toggle('selected',b.dataset.user===p.user_id));
+    await loadChatMessages();
+  }
+  async function loadChatMessages(){
+    if(!chatState.peer)return;
+    const other=chatState.peer.user_id, me=currentUser.id;
+    const {data,error}=await db.from('admin_chat_messages')
+      .select('id,sender_id,recipient_id,body,created_at,deleted_at')
+      .or(`and(sender_id.eq.${me},recipient_id.eq.${other}),and(sender_id.eq.${other},recipient_id.eq.${me})`)
+      .order('created_at',{ascending:true}).limit(200);
+    if(error){chatStatus(error.message);return;}
+    chatState.messages=data||[];renderChat();
+  }
+  function renderChat(){
+    const area=$('chatMessages');if(!area)return;
+    area.replaceChildren();
+    if(!chatState.messages.length){area.textContent=words[language].empty;return;}
+    for(const m of chatState.messages){
+      const mine=m.sender_id===currentUser?.id;
+      const box=document.createElement('div');box.className='chat-bubble '+(mine?'mine':'other');
+      const content=document.createElement('div');
+      content.textContent=m.deleted_at?words[language].deleted:m.body;
+      box.appendChild(content);
+      const when=document.createElement('small');when.textContent=dateText(m.created_at);box.appendChild(when);
+      const age=Date.now()-new Date(m.created_at).getTime();
+      if(mine&&!m.deleted_at&&age>=0&&age<3600000){
+        const del=document.createElement('button');del.type='button';del.textContent=words[language].delete;
+        del.addEventListener('click',()=>deleteChatMessage(m.id));box.appendChild(del);
+      }
+      area.appendChild(box);
+    }
+    area.scrollTop=area.scrollHeight;
+  }
+  async function deleteChatMessage(id){
+    if(!confirm(language==='rw'?'Urashaka gusiba ubu butumwa kuri bose?':'Delete this message for everyone?'))return;
+    const {error}=await db.rpc('delete_admin_chat_message',{p_message_id:id});
+    if(error){chatStatus(error.message);return;}
+    await loadChatMessages();
+  }
+  $('chatForm').addEventListener('submit',async e=>{
+    e.preventDefault();if(!chatState.peer)return;
+    const body=$('chatInput').value.trim();if(!body)return;
+    $('chatSend').disabled=true;
+    const {error}=await db.from('admin_chat_messages').insert({sender_id:currentUser.id,recipient_id:chatState.peer.user_id,body});
+    $('chatSend').disabled=false;
+    if(error){chatStatus(error.message);return;}
+    $('chatInput').value='';await loadChatMessages();
+  });
+  function subscribeChat(){
+    chatState.channel=db.channel('admin-chat-'+currentUser.id)
+      .on('postgres_changes',{event:'*',schema:'public',table:'admin_chat_messages'},payload=>{
+        const m=payload.new||payload.old;
+        if(!m)return;
+        if(m.sender_id===currentUser.id||m.recipient_id===currentUser.id){
+          if(chatState.peer)loadChatMessages();
+          if(m.sender_id!==currentUser.id && payload.eventType==='INSERT'){
+            const badge=$('chatBadge');badge.hidden=false;badge.textContent=String(Number(badge.textContent||0)+1);
+          }
+        }
+      }).subscribe();
+  }
+  document.querySelector('[data-page="chat"]').addEventListener('click',()=>{
+    $('chatBadge').hidden=true;$('chatBadge').textContent='0';
+    if(chatState.peer)loadChatMessages();
+  });
+  setInterval(()=>{if(!document.hidden&&chatState.peer)renderChat();},15000);
+
+  try {
+
+    if (!window.supabase) throw new Error("Supabase library not loaded.");
+
+    await verifyAdmin();
+
+    $("dashboardApp").hidden = false;
+
+    $("authLoading").hidden = true;
+
+    await refreshAll();
+    // Chat is optional until its secured tables are installed; never block the dashboard.
+    try { /* Chat is now in Messages.html */ }
+    catch (chatError) { chatStatus('Chat: ' + chatError.message); }
+
+  } catch (error) {
+
+    $("authLoading").textContent = error.message;
+
+    if (/Login required|Admin access denied/.test(error.message)) {
+
+      await db.auth.signOut();
+
+      window.location.replace("login.html");
+
+    }
+
+  }
+
+})();
+
+</script>
+
+</body>
+
+</html>
