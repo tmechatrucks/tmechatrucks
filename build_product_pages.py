@@ -14,7 +14,7 @@ from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parent
-SITE = 'https://tmechatrucks.com'
+SITE = 'https://www.tmechatrucks.com'
 SUPABASE_URL = 'https://ivyzjzbtdlphjaeywtxa.supabase.co'
 PUBLIC_KEY = 'sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP'
 FIELDS = 'id,sku,name,description,image_url,unit_price_incl_vat,vat_rate,is_active,manufacturer,manufacturer_part_number,oe_numbers,fitment_notes'
