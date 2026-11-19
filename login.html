@@ -3,94 +3,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
   <title>Admin Login | T-MechaTrucks & Parts Ltd</title>
 
+  <meta name="robots" content="noindex, nofollow">
+
   <style>
+    :root {
+      --navy: #082b50;
+      --orange: #ff8a00;
+      --white: #ffffff;
+      --muted: #607188;
+      --border: #d4dce5;
+      --danger: #b42318;
+      --success: #087443;
+    }
+
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      color: #082b50;
-      background: linear-gradient(135deg, #ff8a00, #ffab3d);
+      padding: 24px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--navy);
+      background: linear-gradient(
+        135deg,
+        #ff8a00 0%,
+        #ffab3d 100%
+      );
     }
 
     .login-card {
       width: 100%;
-      max-width: 430px;
+      max-width: 440px;
       padding: 32px;
-      border: 1px solid #f0e5d7;
+      background: var(--white);
       border-radius: 16px;
-      background: #ffffff;
-      box-shadow: 0 15px 40px rgba(0,0,0,.3);
+      border: 1px solid #f0e5d7;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .20);
     }
 
     .brand {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .brand img {
       display: block;
-      width: 100px;
-      height: 100px;
+      width: 96px;
+      height: 96px;
       object-fit: contain;
       margin: 0 auto 12px;
     }
 
     .brand h1 {
-      color: #082b50;
-      font-size: 22px;
       margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 22px;
+      line-height: 1.3;
     }
 
     .brand p {
-      color: #607188;
-      font-size: 13px;
       margin: 0;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
     }
 
     h2 {
-      color: #082b50;
-      font-size: 21px;
       margin: 0 0 8px;
+      font-size: 21px;
+      color: var(--navy);
     }
 
     .intro {
-      color: #607188;
+      margin: 0 0 22px;
       font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 22px;
+      line-height: 1.6;
+      color: var(--muted);
     }
 
     label {
       display: block;
       margin: 16px 0 7px;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 700;
     }
 
     input {
+      display: block;
       width: 100%;
       padding: 13px;
       border: 1px solid #a9bbcc;
-      border-radius: 7px;
-      font-size: 15px;
+      border-radius: 8px;
       background: #fff;
       color: #172536;
+      font-size: 15px;
+      outline: none;
     }
 
     input:focus {
-      outline: 2px solid #ff8a00;
-      border-color: #ff8a00;
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255,138,0,.18);
     }
 
     .password-wrap {
@@ -98,7 +125,7 @@
     }
 
     .password-wrap input {
-      padding-right: 78px;
+      padding-right: 80px;
     }
 
     .show-password {
@@ -106,21 +133,22 @@
       right: 8px;
       top: 50%;
       transform: translateY(-50%);
-      border: 0;
+      padding: 8px;
+      border: none;
       background: transparent;
-      color: #082b50;
-      cursor: pointer;
+      color: var(--navy);
       font-size: 12px;
-      font-weight: bold;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     .forgot-row {
+      margin: 12px 0 20px;
       text-align: right;
-      margin: 12px 0 18px;
     }
 
     a {
-      color: #082b50;
+      color: var(--navy);
       text-decoration: none;
     }
 
@@ -128,15 +156,21 @@
       text-decoration: underline;
     }
 
+    .forgot-row a {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
     .primary-button {
+      display: block;
       width: 100%;
       padding: 14px;
-      border: 0;
-      border-radius: 7px;
-      background: #082b50;
+      border: none;
+      border-radius: 8px;
+      background: var(--navy);
       color: #fff;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -145,321 +179,512 @@
     }
 
     .primary-button:disabled {
-      opacity: .6;
+      opacity: .65;
       cursor: not-allowed;
     }
 
     #message {
       margin: 16px 0 0;
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.6;
       overflow-wrap: anywhere;
+    }
+
+    #message:empty {
+      display: none;
+    }
+
+    .back-link {
+      margin: 20px 0 0;
+      text-align: center;
+      font-size: 13px;
     }
 
     .return-testimonials {
       display: block;
-      margin: 20px auto 0;
-      padding: 10px 14px;
       width: fit-content;
+      max-width: 100%;
+      margin: 22px auto 0;
+      padding: 11px 15px;
       border: 1px solid #c9d5e3;
       border-radius: 8px;
-      color: #082b50;
       background: #f4f7fb;
       font-size: 13px;
       font-weight: 700;
       text-align: center;
     }
-    .return-testimonials:hover { background: #e8eff7; text-decoration: none; }
 
-    .back-link {
-      text-align: center;
-      margin: 22px 0 0;
-      font-size: 13px;
+    .return-testimonials:hover {
+      background: #e8eff7;
+      text-decoration: none;
     }
 
     .footer {
-      margin-top: 24px;
+      margin: 24px 0 0;
       color: #667085;
-      text-align: center;
       font-size: 12px;
+      text-align: center;
+    }
+
+    [hidden] {
+      display: none !important;
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+      }
+
       .login-card {
-        padding: 24px 20px;
+        padding: 25px 20px;
+        border-radius: 13px;
+      }
+
+      .brand img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .brand h1 {
+        font-size: 19px;
       }
     }
   </style>
 </head>
 
 <body>
+
   <main class="login-card">
-    <div class="brand">
+
+    <!-- COMPANY BRAND -->
+    <header class="brand">
+
       <img
         src="images/logo.webp"
-        alt="T-MechaTrucks logo"
-        onerror="this.style.display='none'"
+        alt="T-MechaTrucks & Parts Ltd logo"
+        onerror="this.hidden=true"
       >
-      <h1>T-MechaTrucks &amp; Parts Ltd</h1>
-      <p>TRUCKS · PARTS · SERVICE</p>
-    </div>
 
+      <h1>T-MechaTrucks &amp; Parts Ltd</h1>
+
+      <p>TRUCKS · PARTS · SERVICE</p>
+
+    </header>
+
+    <!-- LOGIN SECTION -->
     <section id="loginSection">
+
       <h2>Admin Sign In</h2>
+
       <p class="intro">
         Sign in using your authorized company account.
       </p>
 
       <form id="loginForm">
+
         <label for="email">Email Address</label>
+
         <input
-          id="email"
           type="email"
+          id="email"
+          name="email"
           placeholder="Enter your email"
           autocomplete="username"
           required
         >
 
         <label for="password">Password</label>
+
         <div class="password-wrap">
+
           <input
-            id="password"
             type="password"
+            id="password"
+            name="password"
             placeholder="Enter your password"
             autocomplete="current-password"
             required
           >
+
           <button
-            class="show-password"
             type="button"
+            class="show-password"
             id="togglePassword"
-          >SHOW</button>
+            aria-label="Show password"
+          >
+            SHOW
+          </button>
+
         </div>
 
         <div class="forgot-row">
-          <a href="#" id="forgotLink">Forgot Password?</a>
+          <a href="#" id="forgotLink">
+            Forgot Password?
+          </a>
         </div>
 
-        <button class="primary-button" id="loginButton" type="submit">
+        <button
+          type="submit"
+          class="primary-button"
+          id="loginButton"
+        >
           Sign In
         </button>
+
       </form>
+
     </section>
 
+    <!-- FORGOT PASSWORD SECTION -->
     <section id="forgotSection" hidden>
+
       <h2>Reset Your Password</h2>
+
       <p class="intro">
-        Enter your account email. We will send you a link to create a new
-        password.
+        Enter your account email address.
+        We will send you a password reset link.
       </p>
 
       <form id="forgotForm">
-        <label for="resetEmail">Email Address</label>
+
+        <label for="resetEmail">
+          Email Address
+        </label>
+
         <input
-          id="resetEmail"
           type="email"
-          placeholder="Enter your account email"
+          id="resetEmail"
+          name="resetEmail"
+          placeholder="Enter your email"
           autocomplete="email"
           required
         >
 
         <button
+          type="submit"
           class="primary-button"
           id="resetButton"
-          type="submit"
         >
           Send Reset Link
         </button>
+
       </form>
 
       <p class="back-link">
-        <a href="#" id="backToLogin">Back to Sign In</a>
+        <a href="#" id="backToLogin">
+          Back to Sign In
+        </a>
       </p>
+
     </section>
 
-    <p id="message" role="status" aria-live="polite"></p>
+    <!-- STATUS AND ERROR MESSAGES -->
+    <p
+      id="message"
+      role="status"
+      aria-live="polite"
+    ></p>
 
-    <a class="return-testimonials" href="testimonials.html">← Back to Testimonials</a>
+    <!-- RETURN LINK -->
+    <a
+      href="testimonials.html"
+      class="return-testimonials"
+    >
+      ← Back to Website
+    </a>
 
     <p class="footer">
       &copy; 2026 T-MechaTrucks &amp; Parts Ltd
     </p>
+
   </main>
 
+  <!-- SUPABASE LIBRARY -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+  <!-- LOGIN JAVASCRIPT -->
   <script>
+    "use strict";
+
     const SUPABASE_URL =
       "https://ivyzjzbtdlphjaeywtxa.supabase.co";
 
     const SUPABASE_KEY =
       "sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP";
 
-    // Admin destination requested by the user.
-    const ADMIN_PAGE = "admin-dashboard.html";
+      const ADMIN_PAGE = "admin-dashboard.html";
 
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+    const $ = (id) => document.getElementById(id);
 
-    const loginSection = document.getElementById("loginSection");
-    const forgotSection = document.getElementById("forgotSection");
-    const message = document.getElementById("message");
-    const loginButton = document.getElementById("loginButton");
-    const resetButton = document.getElementById("resetButton");
+    const loginSection = $("loginSection");
+    const forgotSection = $("forgotSection");
+    const messageBox = $("message");
+    const loginButton = $("loginButton");
+    const resetButton = $("resetButton");
 
-    function showMessage(text) {
-      message.textContent = text;
+    let supabaseClient = null;
+
+    /* SHOW MESSAGES */
+    function showMessage(text, isError = false) {
+      messageBox.textContent = text;
+      messageBox.style.color = isError
+        ? "#b42318"
+        : "#087443";
     }
 
-    document.getElementById("togglePassword").addEventListener(
-      "click",
-      function () {
-        const password = document.getElementById("password");
-        const isHidden = password.type === "password";
-
-        password.type = isHidden ? "text" : "password";
-        this.textContent = isHidden ? "HIDE" : "SHOW";
+    /* SUPABASE CLIENT */
+    function getClient() {
+      if (
+        !window.supabase ||
+        typeof window.supabase.createClient !== "function"
+      ) {
+        throw new Error(
+          "Supabase could not load. Check your internet connection."
+        );
       }
-    );
 
-    document.getElementById("forgotLink").addEventListener(
-      "click",
-      function (event) {
-        event.preventDefault();
-        loginSection.hidden = true;
-        forgotSection.hidden = false;
-        showMessage("");
+      if (!supabaseClient) {
+        supabaseClient = window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_KEY
+        );
       }
-    );
 
-    document.getElementById("backToLogin").addEventListener(
-      "click",
-      function (event) {
-        event.preventDefault();
-        forgotSection.hidden = true;
-        loginSection.hidden = false;
-        showMessage("");
-      }
-    );
+      return supabaseClient;
+    }
 
+    /* ADMIN DESTINATION */
+    function getAdminUrl() {
+      return new URL(
+        ADMIN_PAGE,
+        window.location.href
+      ).href;
+    }
+
+    /* PASSWORD RESET DESTINATION */
+    function getResetUrl() {
+      // Supabase Auth needs an allowed HTTP(S) redirect.
+      // Password reset should return to the published site.
+      return new URL(
+        "reset-password.html",
+        "https://tmechatrucks.com/"
+      ).href;
+    }
+
+    /* VERIFY ADMIN ACCESS */
     async function checkAdminAndRedirect(user) {
-      const { data, error } = await supabaseClient
+      if (!user || !user.id) {
+        throw new Error("Invalid user session.");
+      }
+
+      const client = getClient();
+
+      const { data, error } = await client
         .from("user_roles")
         .select("role")
         .eq("user_id", user.id)
-        .eq("role", "admin")
-        .maybeSingle();
+        .in("role", ["admin", "stock_manager"]);
 
       if (error) {
         throw new Error(
-          "Could not verify your Admin role. Check Supabase permissions and try again."
+          "Unable to verify Admin role: " +
+          error.message
         );
       }
 
-      if (!data) {
-        await supabaseClient.auth.signOut();
+      if (!data || !data.length) {
+        await client.auth.signOut();
+
         throw new Error(
-          "Access denied. This account is not authorized as an Admin."
+          "Access denied. This account is not authorized as Admin or Stock Manager."
         );
       }
 
-      window.location.replace(ADMIN_PAGE);
+      window.location.replace(getAdminUrl());
     }
 
-    // If an authorized admin is already signed in, skip the login form.
-    async function redirectExistingAdmin() {
-      try {
-        const { data, error } = await supabaseClient.auth.getUser();
-        if (error || !data?.user) return;
-        await checkAdminAndRedirect(data.user);
-      } catch (error) {
-        // Keep the login form available if the session or role check fails.
-        console.warn("Existing admin session check:", error.message);
+    /* SHOW / HIDE PASSWORD */
+    $("togglePassword").addEventListener(
+      "click",
+      function () {
+        const passwordInput = $("password");
+        const isHidden =
+          passwordInput.type === "password";
+
+        passwordInput.type =
+          isHidden ? "text" : "password";
+
+        this.textContent =
+          isHidden ? "HIDE" : "SHOW";
+
+        this.setAttribute(
+          "aria-label",
+          isHidden ? "Hide password" : "Show password"
+        );
       }
-    }
-    redirectExistingAdmin();
+    );
 
-    document.getElementById("loginForm").addEventListener(
+    /* OPEN FORGOT PASSWORD */
+    $("forgotLink").addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+
+        loginSection.hidden = true;
+        forgotSection.hidden = false;
+
+        showMessage("");
+      }
+    );
+
+    /* BACK TO LOGIN */
+    $("backToLogin").addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+
+        forgotSection.hidden = true;
+        loginSection.hidden = false;
+
+        showMessage("");
+      }
+    );
+
+    /* LOGIN SUBMISSION */
+    $("loginForm").addEventListener(
       "submit",
       async function (event) {
         event.preventDefault();
 
         loginButton.disabled = true;
         loginButton.textContent = "Signing in...";
+
         showMessage("");
 
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-
         try {
+          const email = $("email").value.trim();
+          const password = $("password").value;
+
+          if (!email || !password) {
+            throw new Error(
+              "Please enter your email and password."
+            );
+          }
+
+          const client = getClient();
+
           const { data, error } =
-            await supabaseClient.auth.signInWithPassword({
+            await client.auth.signInWithPassword({
               email,
               password
             });
 
           if (error) {
+            throw new Error(error.message);
+          }
+
+          if (!data || !data.user) {
             throw new Error(
-              "Sign in failed. Check your email and password, then try again."
+              "No user account was returned."
             );
           }
 
-          if (!data.user) {
-            throw new Error("No user account was returned.");
-          }
-
           await checkAdminAndRedirect(data.user);
+
         } catch (error) {
-          showMessage(error.message || "Something went wrong.");
+          console.error("Login error:", error);
+
+          showMessage(
+            error.message || "Sign in failed.",
+            true
+          );
+
+        } finally {
           loginButton.disabled = false;
           loginButton.textContent = "Sign In";
         }
       }
     );
 
-    document.getElementById("forgotForm").addEventListener(
+    /* PASSWORD RESET */
+    $("forgotForm").addEventListener(
       "submit",
       async function (event) {
         event.preventDefault();
 
         resetButton.disabled = true;
         resetButton.textContent = "Sending...";
+
         showMessage("");
 
-        const email =
-          document.getElementById("resetEmail").value.trim();
-
-        const resetUrl = new URL(
-          "reset-password.html",
-          window.location.href
-        );
-
         try {
+          const email = $("resetEmail").value.trim();
+
+          if (!email) {
+            throw new Error(
+              "Please enter your email address."
+            );
+          }
+
+          const client = getClient();
+
           const { error } =
-            await supabaseClient.auth.resetPasswordForEmail(email, {
-              redirectTo: resetUrl.href
-            });
+            await client.auth.resetPasswordForEmail(
+              email,
+              {
+                redirectTo: getResetUrl()
+              }
+            );
 
           if (error) {
-            throw error;
+            throw new Error(error.message);
           }
 
           showMessage(
             "If this email belongs to an account, a password reset link will be sent. Check your inbox and spam folder."
           );
+
         } catch (error) {
+          console.error("Reset error:", error);
+
           showMessage(
-            error.message ||
-            "Unable to send the reset email. Please try again later."
+            error.message || "Password reset failed.",
+            true
           );
+
         } finally {
           resetButton.disabled = false;
           resetButton.textContent = "Send Reset Link";
         }
       }
     );
+
+    /* CHECK EXISTING SESSION */
+    async function checkExistingSession() {
+      try {
+        const client = getClient();
+
+        const { data, error } =
+          await client.auth.getUser();
+
+        if (error || !data || !data.user) {
+          return;
+        }
+
+        await checkAdminAndRedirect(data.user);
+
+      } catch (error) {
+        console.warn(
+          "Existing session check:",
+          error.message
+        );
+      }
+    }
+
+    /* INITIALIZE */
+    checkExistingSession();
+
   </script>
+
 </body>
 </html>

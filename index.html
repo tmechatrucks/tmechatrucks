@@ -3,9 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>T-MechaTrucks &amp; Parts Ltd | Trucks, Spare Parts &amp; Services</title>
-  <meta name="description" content="T-MechaTrucks &amp; Parts Ltd in Kigali, Rwanda. Truck and trailer sales, new and quality used spare parts, diagnostics, repairs and fleet solutions.">
+  <title>Truck Spare Parts &amp; Services in East Africa | T-MechaTrucks Rwanda</title>
+  <meta name="description" content="Based in Kigali, Rwanda, T-MechaTrucks &amp; Parts Ltd supplies new and used truck spare parts, repairs, diagnostics and technical support across East Africa.">
   <meta name="theme-color" content="#082b50">
+  <link rel="canonical" href="https://www.tmechatrucks.com/">
+  <!-- Social sharing metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="T-MechaTrucks &amp; Parts Ltd">
+  <meta property="og:title" content="Truck Spare Parts &amp; Services in East Africa | T-MechaTrucks Rwanda">
+  <meta property="og:description" content="Based in Kigali, Rwanda, T-MechaTrucks provides truck spare parts, repairs, diagnostics and technical support for customers across East Africa.">
+  <meta property="og:url" content="https://www.tmechatrucks.com/">
+  <meta property="og:image" content="https://www.tmechatrucks.com/images/logo.webp">
+  <meta property="og:image:alt" content="T-MechaTrucks &amp; Parts Ltd logo">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Business details for search engines; no invented ratings or opening hours -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.tmechatrucks.com/#business",
+    "name": "T-MechaTrucks & Parts Ltd",
+    "url": "https://www.tmechatrucks.com/",
+    "logo": "https://www.tmechatrucks.com/images/logo.webp",
+    "image": "https://www.tmechatrucks.com/images/logo.webp",
+    "telephone": "+250799908714",
+    "email": "tmechatrucks@gmail.com",
+    "description": "Based in Kigali, Rwanda, supplying new and quality used truck spare parts, truck and trailer sales, repairs, diagnostics and technical support for customers across East Africa.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kabutare, Rusororo",
+      "addressLocality": "Kigali",
+      "addressRegion": "Gasabo",
+      "addressCountry": "RW"
+    },
+    "hasMap": "https://share.google/nYQdTx6pXrrND3oRh"
+  }
+  </script>
   <link rel="stylesheet"
 href="css/style.css">
 <style>
@@ -1114,7 +1148,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 /* HERO: three image slides, desktop full width, mobile inset */
 .hero{position:relative;isolation:isolate;width:100%;max-width:none;margin:0;border-radius:0;overflow:hidden;background:#041628;}
 .hero-images{position:absolute;inset:0;z-index:-2;pointer-events:none}
-.hero-image-slide{position:absolute;inset:0;background-image:url("images/combo12.png");background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease}
+.hero-image-slide{position:absolute;inset:0;background-image:url("images/combo12.webp");background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease}
 .hero-image-slide.is-active{opacity:1}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,22,40,.94),rgba(4,22,40,.72) 55%,rgba(4,22,40,.18));pointer-events:none}
 .hero-slide-controls{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:9px;z-index:2}
@@ -1204,7 +1238,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* FINAL HERO: gentle navy overlay for clear white text, all three slides */
 .hero{color:#fff;background:#041628}
-.hero::before{content:""!important;display:block!important;position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,22,40,.48) 0%,rgba(4,22,40,.26) 58%,rgba(4,22,40,.10) 100%)!important;pointer-events:none}
+.hero::before{content:""!important;display:block!important;position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,22,40,.68) 0%,rgba(4,22,40,.48) 58%,rgba(4,22,40,.29) 100%)!important;pointer-events:none}
 .hero .eyebrow{color:#ffd18a;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 .hero h1{color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.45)}
 .hero h1 span{color:#ff9a21}
@@ -1225,67 +1259,153 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   .hero .eyebrow { font-size: 9px; margin-bottom: 8px; }
   .hero .button-row .btn { min-height: 34px; padding: 7px 10px; font-size: 11px; }
 }
+
+/* HERO REFINEMENT — balanced across desktop, tablet and phone */
+.hero-content { max-width: 600px; padding: 52px 0 62px; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 49px); line-height: 1.13; margin-bottom: 13px; }
+.hero p { max-width: 480px; font-size: 15px; line-height: 1.55; margin-bottom: 19px; }
+.hero .eyebrow { font-size: 11px; margin-bottom: 10px; }
+.hero .button-row > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero .button-row .btn { min-height: 42px; padding: 9px 16px; font-size: 12px; width: auto; flex: 0 1 auto; }
+@media (min-width: 561px) and (max-width: 850px) {
+  .hero-content { max-width: 540px; padding: 44px 0 58px; }
+  .hero h1 { font-size: clamp(30px, 4.5vw, 39px); }
+  .hero p { font-size: 14px; }
+}
+@media (max-width: 560px) {
+  .hero { min-height: 410px; }
+  .hero-content { max-width: 100%; padding: 27px 0 57px; }
+  .hero h1 { font-size: clamp(25px, 6.8vw, 31px); line-height: 1.15; margin-bottom: 10px; }
+  .hero p { max-width: 315px; font-size: 12px; line-height: 1.45; margin-bottom: 14px; }
+  .hero .eyebrow { font-size: 9px; margin-bottom: 8px; }
+  .hero .button-row { padding-left: 0; }
+  .hero .button-row > div { gap: 8px; }
+  .hero .button-row .btn { min-height: 37px; padding: 8px 11px; font-size: 11px; width: auto; flex: 0 1 auto; }
+}
+
+/* HOME PAGE ENHANCEMENTS — scoped to this page; shared pages remain unchanged */
+.tm-header { background:linear-gradient(90deg,#f1f3f6 0%,#fff 25%,#fff 100%); }
+.tm-header-inner { width:min(1400px,98%); justify-content:space-between; }
+.tm-brand { margin-left:0; }
+/* Keep service photographs prominent without cropping their contents. */
+#services .service-photo { height:clamp(170px,17vw,215px);padding:0;overflow:hidden; }
+#services .service-photo img { width:100%;height:100%;object-fit:contain;background:#f4f7fb; }
+#services .service-body { min-height:160px;display:flex;flex-direction:column;gap:6px; }
+#services .service-card h3 { font-size:clamp(15px,1.45vw,18px); }
+#services .service-card p { font-size:14px;line-height:1.6; }
+#why-choose-us .why-grid { align-items:center; }
+#why-choose-us .why-photo { height:auto;min-height:0;padding:0;border:0;overflow:hidden; }
+#why-choose-us .why-photo img { width:100%;height:auto;min-height:0;max-height:480px;object-fit:contain;object-position:center; }
+/* Fullscreen image viewer */
+.tm-photo-viewer[hidden] { display:none!important; }
+.tm-photo-viewer { position:fixed;inset:0;z-index:3000;background:rgba(4,22,40,.94);display:flex;align-items:center;justify-content:center;padding:62px 15px 74px; }
+.tm-photo-viewer-stage {width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none;cursor:grab;}
+.tm-photo-viewer-stage:active {cursor:grabbing;}
+.tm-photo-viewer-image {max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transform-origin:center;user-select:none;-webkit-user-drag:none;will-change:transform;}
+.tm-photo-viewer-tools {position:absolute;top:12px;right:14px;display:flex;gap:9px;z-index:2;}
+.tm-photo-viewer-tools button {min-width:42px;min-height:42px;border:1px solid #ffffff80;border-radius:9px;background:#082b50;color:#fff;font-size:24px;cursor:pointer;}
+.tm-photo-viewer-caption {position:absolute;bottom:15px;left:15px;right:15px;text-align:center;color:#fff;font-size:13px;}
+.tm-photo-openable {cursor:zoom-in;}
+.tm-location-float {position:fixed;left:15px;top:50%;bottom:auto;z-index:1100;display:grid;place-items:center;width:51px;height:51px;border-radius:50%;background:#082b50;color:#fff;box-shadow:0 6px 18px #0004;opacity:0;visibility:hidden;transform:translateY(-50%);transition:opacity .25s,visibility .25s;}
+.tm-location-float.is-visible {opacity:1;visibility:visible;transform:translateY(-50%);animation:tm-location-bob 2.8s ease-in-out infinite;}
+.tm-location-float svg {width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+@keyframes tm-location-bob {0%,100%{transform:translateY(-50%) translateY(0)}50%{transform:translateY(-50%) translateY(-7px)}}
+@media(max-width:850px){.tm-header-inner{width:96%;}#services .service-photo{height:190px;}#services .service-body{min-height:0;}}
+@media(max-width:560px){.tm-header-inner{width:96%;}#services .service-photo{height:210px;}#services .service-body{min-height:0;}#why-choose-us .why-photo img{max-height:none;}.tm-location-float{left:10px;top:50%;bottom:auto;width:43px;height:43px;}.tm-photo-viewer{padding:60px 9px 65px;}}
+@media(prefers-reduced-motion:reduce){.tm-location-float.is-visible{animation:none;}.tm-photo-viewer-image{transition:none;}}
+
+
+/* SHARED HEADER STANDARD — MATCHES SERVICES.HTML */
+.tm-header{position:sticky;top:0;z-index:1000;background:#fff!important;border-bottom:3px solid var(--gold);box-shadow:0 3px 16px #00000012}
+.tm-header-inner{width:min(1320px,96%);min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:nowrap;padding:0}
+.tm-brand{display:flex;align-items:center;gap:11px;min-width:0;flex-shrink:0;margin:0}
+.tm-brand img{width:62px;height:62px;object-fit:contain;flex-shrink:0}
+.tm-brand-text{display:flex;flex-direction:column;gap:4px}
+.tm-brand-name{display:block;color:var(--navy);font-size:clamp(14px,1.4vw,19px);font-weight:800;line-height:1.25}
+.tm-brand-tagline{display:block;margin-top:0;color:var(--orange);font-size:10px;font-weight:800;letter-spacing:.6px}
+.tm-nav{display:flex;align-items:center;justify-content:flex-start;flex-wrap:nowrap;gap:15px;position:static;padding:0;background:transparent;box-shadow:none}
+.tm-nav a{color:var(--navy);font-size:13px;font-weight:700;white-space:nowrap}
+.tm-nav a:hover,.tm-nav a.active{color:var(--orange)}
+.tm-header-controls{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.tm-language,.tm-header .tm-language{width:82px;min-width:82px;max-width:82px;min-height:40px;height:auto;padding:6px;border:1px solid var(--gold);border-radius:8px;background:#fff;color:var(--navy);font-size:12px;font-weight:700}
+.tm-menu-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;min-height:42px;padding:8px;border:1px solid var(--gold);border-radius:8px;background:#fff;color:var(--navy);cursor:pointer}
+.tm-menu-toggle svg{width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.tm-menu-toggle .icon-close{display:none}
+.tm-menu-toggle[aria-expanded="true"] .icon-menu{display:none}
+.tm-menu-toggle[aria-expanded="true"] .icon-close{display:block}
+@media(max-width:1100px){.tm-nav{gap:10px}.tm-nav a{font-size:12px}}
+@media(max-width:1050px){
+ .tm-header-inner{position:relative;min-height:76px}
+ .tm-menu-toggle{display:flex}
+ .tm-nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:12px 16px;background:#fff;box-shadow:0 12px 20px #04162820;border-radius:0 0 12px 12px;max-height:calc(100dvh - 80px);overflow-y:auto;z-index:1001}
+ .tm-nav.tm-nav-open{display:flex}
+ .tm-nav a{padding:11px 8px;font-size:14px;border-bottom:1px solid var(--border)}
+}
+@media(max-width:600px){
+ .tm-header-inner{width:calc(100% - 20px);min-height:70px;gap:8px}
+ .tm-brand{flex:1 1 auto;gap:8px}
+ .tm-brand img{width:47px;height:47px}
+ .tm-brand-name{font-size:clamp(12px,3.35vw,15px);overflow-wrap:anywhere}
+ .tm-brand-tagline{font-size:clamp(8px,2.2vw,10px);letter-spacing:0}
+ .tm-header-controls{gap:6px}
+ .tm-language,.tm-header .tm-language{width:70px;min-width:70px;max-width:70px;min-height:38px;padding:4px 2px;font-size:11px}
+ .tm-menu-toggle,.tm-header .tm-menu-toggle{width:39px;height:39px;min-height:39px;padding:7px;flex:0 0 39px}
+}
+@media(max-width:360px){.tm-brand img{width:38px;height:38px}.tm-brand-name{font-size:11px}.tm-brand-tagline{font-size:7px}.tm-language,.tm-header .tm-language{width:62px;min-width:62px;max-width:62px}}
+/* Consistent floating buttons and permanent map location */
+.tm-location-float,.tm-location-float.is-visible{position:fixed;left:12px;top:50%;bottom:auto;width:50px;height:50px;display:grid;place-items:center;opacity:1;visibility:visible;transform:translateY(-50%);border:2px solid var(--gold);border-radius:50%;background:var(--navy);color:#fff;box-shadow:0 4px 15px #00000038;animation:tm-location-wiggle 5s ease-in-out infinite}
+@keyframes tm-location-wiggle{0%,88%,100%{rotate:0deg}91%{rotate:-9deg}94%{rotate:9deg}97%{rotate:-5deg}}
+.floating-contact{right:18px;bottom:20px;gap:11px}
+.float-btn{width:49px;height:49px}
+.float-call{background:var(--navy)}.float-whatsapp{background:#20b968}
+@media(max-width:600px){.tm-location-float,.tm-location-float.is-visible{left:8px;width:42px;height:42px}.floating-contact{right:12px;bottom:13px}.float-btn{width:45px;height:45px}}
+@media(prefers-reduced-motion:reduce){.tm-location-float,.tm-location-float.is-visible{animation:none}}
+
 </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>
-        <a href="tel:+250799908714">☎ +250 799 908 714</a>
-        &nbsp; · &nbsp;
-        <a href="mailto:tmechatrucks@gmail.com">✉ tmechatrucks@gmail.com</a>
-      </span>
-      <span data-i18n="locationShort">East Africa</span>
-    </div>
-  </div>
-
   <header class="tm-header">
     <div class="tm-header-inner">
       <a class="tm-brand" href="index.html" aria-label="T-MechaTrucks Home">
-        <img src="images/logo.webp" alt="T-MechaTrucks &amp; Parts Ltd logo">
-        <span class="tm-brand-text">
-          <span class="tm-brand-name">T-MechaTrucks &amp; Parts Ltd</span>
-          <span class="tm-brand-tagline">TRUCKS · PARTS · SERVICE</span>
-        </span>
+        <img src="images/logo.webp" alt="T-MechaTrucks logo">
+        <span class="tm-brand-text"><strong class="tm-brand-name">T-MechaTrucks &amp; Parts Ltd</strong><span class="tm-brand-tagline">TRUCKS · PARTS · SERVICE</span></span>
       </a>
-
+      <nav class="tm-nav" id="mainNav" aria-label="Main navigation">
+        <a href="index.html" class="active" data-i18n="navHome">Home</a>
+        <a href="new-product.html" data-i18n="navNewParts">New Spare Parts</a>
+        <a href="used-product.html" data-i18n="navUsedParts">Used Spare Parts</a>
+        <a href="services.html" data-i18n="navServices">Our Services</a>
+        <a href="about.html" data-i18n="navAbout">About Us</a>
+        <a href="contact.html" data-i18n="navContact">Contact</a>
+        <a href="testimonials.html" data-i18n="navTestimonials">Testimonials</a>
+      </nav>
       <div class="tm-header-controls">
         <select id="languageSelect" class="tm-language" aria-label="Select language">
-          <option value="en">🇬🇧 EN</option>
-          <option value="rw">🇷🇼 RW</option>
-          <option value="fr">🇫🇷 FR</option>
-          <option value="sw">🇹🇿 SW</option>
-          <option value="zh">🇨🇳 ZH</option>
+          <option value="en">🇬🇧 EN</option><option value="rw">🇷🇼 RW</option><option value="fr">🇫🇷 FR</option><option value="sw">🇹🇿 SW</option><option value="zh">🇨🇳 ZH</option>
         </select>
-        <button class="tm-menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">☰</button>
-        <nav class="tm-nav" id="mainNav" aria-label="Main navigation">
-          <a href="index.html" data-i18n="navHome">Home</a>
-          <a href="new-product.html" data-i18n="navnewparts">New spare parts</a>
-          <a href="used-product.html" data-i18n="navusedparts">Quality used spare parts</a>
-          <a href="services.html" data-i18n="navservices">Our services</a>
-          <a href="about.html" data-i18n="navabout">About us</a>
-          <a href="#contact" data-i18n="navcontact">Contact us</a>
-          <a href="testimonials.html" data-i18n="navTestimonials">Testimonials</a>
-        </nav>
+        <button class="tm-menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home" aria-label="Company hero slideshow">
-      <div class="hero-images" aria-hidden="true"><div class="hero-image-slide is-active" style="background-image:url('images/combo1.webp')"></div><div class="hero-image-slide" style="background-image:url('images/combo12.png')"></div><div class="hero-image-slide" style="background-image:url('images/combo123.webp')"></div></div>
+      <div class="hero-images" aria-hidden="true"><div class="hero-image-slide is-active" style="background-image:url('images/combo1.webp')"></div><div class="hero-image-slide" style="background-image:url('images/combo12.webp')"></div><div class="hero-image-slide" style="background-image:url('images/combo123.webp')"></div></div>
       <button type="button" class="hero-slide-arrow hero-slide-prev" aria-label="Previous hero photo">‹</button>
       <button type="button" class="hero-slide-arrow hero-slide-next" aria-label="Next hero photo">›</button>
       <div class="hero-slide-controls" aria-label="Hero photo selection"><button type="button" class="hero-slide-dot is-active" aria-label="Photo 1"></button><button type="button" class="hero-slide-dot" aria-label="Photo 2"></button><button type="button" class="hero-slide-dot" aria-label="Photo 3"></button></div>
       <div class="container">
         <div class="hero-content">
-          <span class="eyebrow" data-i18n="heroEyebrow">YOUR TRUSTED TRUCK PARTNER IN EAST AFRICA</span>
-          <h1 data-i18n="heroTitle">Complete Solutions for <span>Trucks, Trailers &amp; Your Business</span></h1>
-          <p data-i18n="heroDescription">From truck and trailer sales to spare parts, repairs, diagnostics, ECU and key programming, roadside assistance and fleet support — we help keep your business moving.</p>
+          <span class="eyebrow" data-i18n="heroEyebrow">TRUCKS · PARTS · SERVICE</span>
+          <h1 data-i18n="heroTitle">Your Trusted <span>Truck Partner</span></h1>
+          <p data-i18n="heroDescription">Based in Kigali, Rwanda, serving customers across East Africa with truck sales, spare parts, repairs, diagnostics and technical support.</p>
           <div class="button-row">
             <div>
-  <a class="btn btn-primary" href="services.html" data-i18n="heroServices">Explore Our Services →</a>
+  <a class="btn btn-primary" href="services.html" data-i18n="heroServices">Our Services →</a>
   <a class="btn btn-outline" href="new-product.html" data-i18n="heroNewParts">New Spare Parts →</a>
 </div>
         </div>
@@ -1302,34 +1422,127 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       </div>
     </section>
 
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-kicker" data-i18n="servicesKicker">What We Do</span>
-          <h2 data-i18n="servicesTitle">Complete Solutions for Trucks &amp; Trailers</h2>
-          <p data-i18n="servicesDescription">From sourcing vehicles and spare parts to technical support, we help keep your business moving.</p>
+<section class="section" id="services">
+  <div class="container">
+
+    <div class="section-heading">
+      <span class="section-kicker" data-i18n="servicesKicker">
+        What We Do
+      </span>
+
+      <h2 data-i18n="servicesTitle">
+        Complete Solutions for Trucks &amp; Trailers
+      </h2>
+
+      <p data-i18n="servicesDescription">
+        From sourcing vehicles and spare parts to technical support,
+        we help keep your business moving.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- 01: TRUCK SALES -->
+      <article class="service-card">
+        <div class="service-photo">
+          <img
+            src="images/truck-sales.webp"
+            alt="Commercial trucks and trailers at T-MechaTrucks in Kigali"
+            loading="lazy"
+            decoding="async"
+          >
         </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-photo" aria-label="Truck sales image placeholder">Truck Sales Photo</div>
-            <div class="service-body"><h3 data-i18n="service1Title">Truck Sales &amp; Purchasing</h3><p data-i18n="service1Text">Support with buying and selling commercial trucks and trailers.</p></div>
-          </article>
-          <article class="service-card">
-            <div class="service-photo" aria-label="Spare parts image placeholder">Spare Parts Photo</div>
-            <div class="service-body"><h3 data-i18n="service2Title">New &amp; Used Spare Parts</h3><p data-i18n="service2Text">New parts and quality used parts selected for your requirements.</p></div>
-          </article>
-          <article class="service-card">
-            <div class="service-photo" aria-label="Truck repair image placeholder">Repair &amp; Maintenance Photo</div>
-            <div class="service-body"><h3 data-i18n="service3Title">Repair &amp; Maintenance</h3><p data-i18n="service3Text">Repair and maintenance services for trucks, prime movers and trailers.</p></div>
-          </article>
-          <article class="service-card">
-            <div class="service-photo" aria-label="Diagnostics image placeholder">Diagnostics Photo</div>
-            <div class="service-body"><h3 data-i18n="service4Title">Diagnostics &amp; Inspection</h3><p data-i18n="service4Text">Fault-code diagnosis, electrical troubleshooting and vehicle inspection.</p></div>
-          </article>
+
+        <div class="service-body">
+          <h3 data-i18n="service1Title">
+            Truck Sales &amp; Purchasing
+          </h3>
+          <p data-i18n="service1Text">
+            Support with buying and selling commercial trucks and trailers.
+          </p>
         </div>
-        <div class="center-action"><a class="btn btn-dark" href="services.html" data-i18n="viewAllServices">View All Services →</a></div>
-      </div>
-    </section>
+      </article>
+
+      <!-- 02: SPARE PARTS -->
+      <article class="service-card">
+        <div class="service-photo">
+          <img
+            src="images/truck-spare-parts.webp"
+            alt="New and quality used truck spare parts at T-MechaTrucks"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div class="service-body">
+          <h3 data-i18n="service2Title">
+            New &amp; Used Spare Parts
+          </h3>
+          <p data-i18n="service2Text">
+            New parts and quality used parts selected for your requirements.
+          </p>
+        </div>
+      </article>
+
+      <!-- 03: REPAIR & MAINTENANCE -->
+      <article class="service-card">
+        <div class="service-photo">
+          <img
+            src="images/truck-engine-repair.webp"
+            alt="Heavy truck engine repair and maintenance at T-MechaTrucks"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div class="service-body">
+          <h3 data-i18n="service3Title">
+            Repair &amp; Maintenance
+          </h3>
+          <p data-i18n="service3Text">
+            Repair and maintenance services for trucks,
+            prime movers and trailers.
+          </p>
+        </div>
+      </article>
+
+      <!-- 04: DIAGNOSTICS -->
+      <article class="service-card">
+        <div class="service-photo">
+          <img
+            src="images/truck-diagnostics.webp"
+            alt="Technician performing truck diagnostics using a laptop"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div class="service-body">
+          <h3 data-i18n="service4Title">
+            Diagnostics &amp; Inspection
+          </h3>
+          <p data-i18n="service4Text">
+            Fault-code diagnosis, electrical troubleshooting
+            and vehicle inspection.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="center-action">
+      <a
+        class="btn btn-dark"
+        href="services.html"
+        data-i18n="viewAllServices"
+      >
+        View All Services →
+      </a>
+    </div>
+
+  </div>
+</section>
+
 
     <section class="section section-light" id="parts">
       <div class="container">
@@ -1340,7 +1553,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
         </div>
         <div class="parts-grid">
           <article class="part-card">
-            <div class="part-image"><img src="images/new.png" alt="New truck spare parts" loading="lazy"></div>
+            <div class="part-image"><img src="images/new.webp" alt="New truck spare parts" loading="lazy"></div>
             <div class="part-content">
               <h3 data-i18n="newPartsTitle">New Spare Parts</h3>
               <p data-i18n="newPartsDescription">Explore new spare parts for supported truck and trailer brands.</p>
@@ -1392,7 +1605,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
           <p data-i18n="whyDescription">Practical truck solutions, technical knowledge and customer-focused service.</p>
         </div>
         <div class="why-grid">
-          <div class="why-photo">Company / Truck Expertise Photo Placeholder</div>
+        
+<div class="why-photo">
+  <img
+    src="images/truck-repair-expertise.webp"
+    alt="T-MechaTrucks technician repairing a heavy-duty truck engine in Kigali, Rwanda"
+    loading="lazy"
+    decoding="async"
+  >
+</div>
+
+ 
           <div class="why-card">
             <h3 data-i18n="whyCardTitle">Built Around Your Business</h3>
             <p data-i18n="whyCardText">We support truck owners and transport businesses with truck sourcing, spare parts, repairs and diagnostics to help keep vehicles working.</p>
@@ -1488,7 +1711,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
             <li data-i18n="aboutPoint1">New and quality used spare parts</li>
             <li data-i18n="aboutPoint2">Truck and trailer repair solutions</li>
             <li data-i18n="aboutPoint3">Diagnostics and technical support</li>
-            <li data-i18n="aboutPoint4">Customer-focused service in Rwanda</li>
+            <li data-i18n="aboutPoint4">Customer-focused service East Africa</li>
           </ul>
           <a href="#contact" class="btn btn-primary" data-i18n="aboutButton">Talk to Our Team →</a>
         </div>
@@ -1570,17 +1793,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="footer-grid">
         <div>
           <div class="footer-brand">T-MechaTrucks &amp; Parts Ltd</div>
-          <p data-i18n="footerDescription">Your trusted truck partner in Rwanda for trucks, spare parts, repairs and technical services.</p>
+          <p data-i18n="footerDescription">Your trusted truck partner in East Africa for trucks, spare parts, repairs and technical services.</p>
         </div>
         <div class="footer-quicklinks">
           <h4 data-i18n="quickLinks">Quick Links</h4>
           <div class="footer-links">
             <a href="index.html" data-i18n="navHome">Home</a>
-            <a href="#about" data-show-about="true" data-i18n="navAbout">About Us</a>
+            <a href="about.html" data-i18n="navAbout">About Us</a>
             <a href="new-product.html" data-i18n="navNewParts">New Spare Parts</a>
             <a href="used-product.html" data-i18n="navUsedParts">Quality Used Spare Parts</a>
             <a href="services.html" data-i18n="navServices">Our Services</a>
-            <a href="#testimonials" data-i18n="navTestimonials">Testimonials</a>
+            <a href="testimonials.html" data-i18n="navTestimonials">Testimonials</a>
             <a href="#contact" data-i18n="navContact">Contact Us</a>
           </div>
         </div>
@@ -1588,7 +1811,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
           <h4 data-i18n="contactDetails">Contact Details</h4>
           <div class="footer-links">
             <a href="tel:+250799908714">+250 799 908 714</a>
-            <a href="mailto:tmechtrucks@gmail.com">tmechatrucks@gmail.com</a>
+            <a href="mailto:tmechatrucks@gmail.com">tmechatrucks@gmail.com</a>
             <a href="https://share.google/nYQdTx6pXrrND3oRh" target="_blank" rel="noopener" data-i18n="footerMap">Kabutare, Rusororo, Kigali, Rwanda</a>
           </div>
         </div>
@@ -1599,6 +1822,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </footer>
 
+  <a class="tm-location-float" id="tmLocationFloat" href="https://share.google/nYQdTx6pXrrND3oRh" target="_blank" rel="noopener noreferrer" aria-label="Find T-MechaTrucks on Google Maps" title="Google Maps Location">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+  </a>
+  <div class="tm-photo-viewer" id="tmPhotoViewer" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <div class="tm-photo-viewer-tools"><button type="button" data-photo-zoom="out" aria-label="Zoom out">−</button><button type="button" data-photo-zoom="in" aria-label="Zoom in">+</button><button type="button" data-photo-zoom="reset" aria-label="Reset zoom">↺</button><button type="button" data-photo-close aria-label="Close photo">×</button></div>
+    <div class="tm-photo-viewer-stage"><img class="tm-photo-viewer-image" alt=""></div>
+    <div class="tm-photo-viewer-caption" aria-live="polite"></div>
+  </div>
   <div class="floating-contact">
     <a class="float-btn float-call" href="tel:+250799908714" aria-label="Call T-MechaTrucks" title="Call">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.56 3.57.56a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.19 2.45.56 3.57a1 1 0 01-.25 1.02l-2.19 2.2z"/></svg>
@@ -1649,11 +1880,11 @@ const translations = {
     navTestimonials: "Customer Reviews",
     navContact: "Contact Us",
 
-    heroEyebrow: "Your Trusted Truck Partner in East Africa",
-    heroTitle: 'Complete Solutions for <span>Trucks, Trailers &amp; Your Business</span>',
-    heroDescription: "From truck and trailer sales to spare parts, repairs, diagnostics, ECU and key programming, roadside assistance and fleet support — we help keep your business moving.",
-    heroServices: "Explore Our Services →",
-    heroNewParts: "Explore New Spare Parts →",
+    heroEyebrow: "TRUCKS · PARTS · SERVICE",
+    heroTitle: 'Your Trusted <span>Truck Partner</span>',
+    heroDescription: "Based in Kigali, Rwanda, serving customers across East Africa with truck sales, spare parts, repairs, diagnostics and technical support.",
+    heroServices: "Our Services →",
+    heroNewParts: "New Spare Parts →",
     heroWhatsApp: "Contact Us on WhatsApp",
 
     statExperience: "Years of Experience",
@@ -1731,7 +1962,7 @@ const translations = {
     aboutPoint1: "New and quality used spare parts",
     aboutPoint2: "Truck and trailer repair solutions",
     aboutPoint3: "Vehicle diagnostics and technical support",
-    aboutPoint4: "Customer-focused service in Rwanda",
+    aboutPoint4: "Customer-focused service in East Africa",
     aboutButton: "Talk to Our Team →",
 
     panelTitle: "Keep Your Business Moving",
@@ -1782,7 +2013,7 @@ const translations = {
     whatsappService: "Service Required",
     whatsappMessage: "Message",
 
-    footerDescription: "Your trusted partner in Rwanda for commercial trucks, spare parts, repairs and technical services.",
+    footerDescription: "Your trusted partner in East Africa for commercial trucks, spare parts, repairs and technical services.",
     quickLinks: "Quick Links",
     footerMap: "Kabutare, Rusororo, Kigali, Rwanda",
     rights: "All rights reserved.",
@@ -1800,8 +2031,8 @@ const translations = {
     navContact: "Twandikire",
 
     heroEyebrow: "Umufatanyabikorwa wawe wizewe mu by'amakamyo muri Afurika y’Iburasirazuba",
-    heroTitle: '<span>Serivisi Zuzuye</span> z’Amakamyo, Remorques n’Ubucuruzi Bwawe',
-    heroDescription: "Dutanga serivisi zo kugura no kugurisha amakamyo na remorques, spare parts, gusana, diagnostics, programming ya ECU n’imfunguzo, ubutabazi bwo mu muhanda no gufasha fleet.",
+    heroTitle: '<span>Serivisi z’<span>Amakamyo</span>',
+    heroDescription: "Kugurisha amakamyo, spare parts, gusana no gusuzuma ibibazo.",
     heroServices: "Menya Serivisi Zacu →",
     heroNewParts: "Reba Spare Parts Nshya →",
     heroWhatsApp: "Twandikire kuri WhatsApp",
@@ -1950,8 +2181,8 @@ const translations = {
     navContact: "Contactez-nous",
 
     heroEyebrow: "Votre partenaire de confiance pour les camions en Afrique de l’Est",
-    heroTitle: '<span>Des Solutions Complètes</span> pour Camions, Remorques et Entreprises',
-    heroDescription: "Vente et achat de camions et remorques, pièces détachées, réparations, diagnostics, programmation ECU et clés, dépannage routier et accompagnement des flottes.",
+    heroTitle: '<span>Votre Partenaire <span>Camions</span>',
+    heroDescription: "Vente de camions, pièces détachées, réparation et diagnostic.",
     heroServices: "Découvrir nos services →",
     heroNewParts: "Découvrir les pièces neuves →",
     heroWhatsApp: "Contactez-nous sur WhatsApp",
@@ -2100,8 +2331,8 @@ const translations = {
     navContact: "Wasiliana Nasi",
 
     heroEyebrow: "Mshirika wako wa kuaminika wa malori Afrika Mashariki",
-    heroTitle: '<span>Suluhisho Kamili</span> kwa Malori, Trela na Biashara Yako',
-    heroDescription: "Tunatoa huduma za kuuza na kununua malori na trela, vipuri, matengenezo, uchunguzi wa hitilafu, programu za ECU na funguo, msaada barabarani na huduma za magari ya biashara.",
+    heroTitle: '<span>Mshirika Wako wa <span>Malori</span>',
+    heroDescription: "Uuzaji wa malori, vipuri, matengenezo na uchunguzi wa hitilafu.",
     heroServices: "Gundua Huduma Zetu →",
     heroNewParts: "Gundua Vipuri Vipya →",
     heroWhatsApp: "Wasiliana Nasi kupitia WhatsApp",
@@ -2250,8 +2481,8 @@ const translations = {
     navContact: "联系我们",
 
     heroEyebrow: "您在东非值得信赖的卡车合作伙伴",
-    heroTitle: '为卡车、挂车及企业提供<span>全方位解决方案</span>',
-    heroDescription: "提供卡车及挂车买卖、全新及优质二手配件、专业维修、故障诊断、ECU及钥匙编程、道路救援与车队支持。",
+    heroTitle: '您值得信赖的<span>卡车伙伴</span>',
+    heroDescription: "卡车销售、配件供应、维修与故障诊断。",
     heroServices: "了解我们的服务 →",
     heroNewParts: "浏览全新配件 →",
     heroWhatsApp: "通过 WhatsApp 联系我们",
@@ -2507,7 +2738,7 @@ function closeMobileMenu() {
   mainNav.classList.remove("tm-nav-open");
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.setAttribute("aria-label", "Open menu");
-  menuToggle.textContent = "☰";
+
 }
 
 function showAboutSection() {
@@ -2526,7 +2757,7 @@ menuToggle.addEventListener("click", function() {
 
   menuToggle.setAttribute("aria-expanded", String(isOpen));
   menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-  menuToggle.textContent = isOpen ? "×" : "☰";
+
 });
 
 // Close mobile navigation when clicking/tapping outside it.
@@ -2538,7 +2769,7 @@ document.addEventListener("pointerdown", function(event) {
 
 // Close an open mobile menu if the layout returns to desktop.
 window.addEventListener("resize", function() {
-  if (window.innerWidth > 850 && mainNav.classList.contains("tm-nav-open")) {
+  if (window.innerWidth > 1050 && mainNav.classList.contains("tm-nav-open")) {
     closeMobileMenu();
   }
 });
@@ -2808,11 +3039,11 @@ loadApprovedTestimonials();
  const heroTitle=hero.querySelector('[data-i18n="heroTitle"]');
  const heroDescription=hero.querySelector('[data-i18n="heroDescription"]');
  const slideMessages={
- en:[null,{eyebrow:'TRUCK REPAIR & MAINTENANCE',title:'Committed to <span>Keeping Your Truck on the Road</span>',description:'Through professional repairs, maintenance, diagnostics and reliable spare parts, we work to keep your truck moving and your business running.'},{eyebrow:'INVESTING IN THE NEXT GENERATION',title:'Training Young Talent, <span>Building the Technicians of Tomorrow</span>',description:'We strive to equip young people with practical technical skills and help develop the next generation of skilled truck technicians.'}],
- rw:[null,{eyebrow:'GUSANA NO KWITA KU MAKAMYO',title:'Duharanira <span>Kugumisha Ikamyo Yawe mu Muhanda</span>',description:'Dutanga serivisi zo gusana, kubungabunga, gusuzuma ibibazo no gutanga spare parts kugira ngo ikamyo yawe ikomeze gukora neza.'},{eyebrow:'GUTEZA IMBERE URUBYIRUKO',title:'Duharanira Guhugura Abakiri Bato <span>ngo Dutegure Abatekinisiye b’Ejo Hazaza</span>',description:'Dushyira imbere ubumenyi ngiro n’amahugurwa y’urubyiruko kugira ngo haboneke abatekinisiye b’umwuga b’ejo hazaza.'}],
- fr:[null,{eyebrow:'RÉPARATION ET ENTRETIEN DES CAMIONS',title:'Nous nous engageons à <span>maintenir votre camion sur la route</span>',description:'Grâce à la réparation, à l’entretien, au diagnostic et aux pièces de rechange, nous aidons votre camion à rester opérationnel.'},{eyebrow:'INVESTIR DANS LA NOUVELLE GÉNÉRATION',title:'Former les jeunes talents, <span>préparer les techniciens de demain</span>',description:'Nous souhaitons transmettre des compétences techniques pratiques aux jeunes et contribuer à former les futurs techniciens.'}],
- sw:[null,{eyebrow:'MATENGENEZO NA HUDUMA ZA MALORI',title:'Tumejizatiti <span>Kuliweka Lori Lako Barabarani</span>',description:'Kwa matengenezo, ukaguzi wa hitilafu na vipuri vya kuaminika, tunasaidia lori lako kuendelea kufanya kazi.'},{eyebrow:'KUWEKEZA KATIKA KIZAZI KIJACHO',title:'Kuwafundisha Vijana, <span>Kuandaa Mafundi wa Kesho</span>',description:'Tunajitahidi kuwapa vijana ujuzi wa vitendo ili kukuza kizazi kijacho cha mafundi wa malori.'}],
- zh:[null,{eyebrow:'卡车维修与保养',title:'致力于<span>让您的卡车持续驰骋</span>',description:'通过专业维修、保养、故障诊断和可靠的配件，帮助您的卡车保持运行、业务持续发展。'},{eyebrow:'培养下一代人才',title:'培养青年人才，<span>造就未来技术人才</span>',description:'我们致力于帮助年轻人掌握实用技术技能，培养下一代专业卡车维修技师。'}]
+ en:[null,{eyebrow:'TRUCK REPAIR & MAINTENANCE',title:'Keeping <span>Your Trucks Moving</span>',description:'Truck repairs, maintenance, diagnostics and reliable parts.'},{eyebrow:'INVESTING IN THE NEXT GENERATION',title:'Training <span>Tomorrow’s Technicians</span>',description:'Practical skills for the next generation of truck technicians.'}],
+ rw:[null,{eyebrow:'GUSANA NO KWITA KU MAKAMYO',title:'<span>Amakamyo Akomeza Gukora</span>',description:'Gusana, gusuzuma ibibazo no gutanga spare parts.'},{eyebrow:'GUTEZA IMBERE URUBYIRUKO',title:'Guhugura <span>Abatekinisiye b’Ejo</span>',description:'Guha urubyiruko ubumenyi ngiro mu by’amakamyo.'}],
+ fr:[null,{eyebrow:'RÉPARATION ET ENTRETIEN DES CAMIONS',title:'Vos Camions <span>En Mouvement</span>',description:'Réparation, entretien, diagnostic et pièces fiables.'},{eyebrow:'INVESTIR DANS LA NOUVELLE GÉNÉRATION',title:'Former les <span>Techniciens de Demain</span>',description:'Des compétences pratiques pour les futurs techniciens.'}],
+ sw:[null,{eyebrow:'MATENGENEZO NA HUDUMA ZA MALORI',title:'<span>Malori Yako Yaendelee</span>',description:'Matengenezo, uchunguzi wa hitilafu na vipuri bora.'},{eyebrow:'KUWEKEZA KATIKA KIZAZI KIJACHO',title:'Kufundisha <span>Mafundi wa Kesho</span>',description:'Ujuzi wa vitendo kwa mafundi vijana.'}],
+ zh:[null,{eyebrow:'卡车维修与保养',title:'让您的<span>卡车持续运行</span>',description:'专业维修、保养、故障诊断与可靠配件。'},{eyebrow:'培养下一代人才',title:'培养<span>未来技术人才</span>',description:'帮助青年掌握实用卡车维修技能。'}]
  };
  function renderSlideMessage(){
    const lang=document.querySelector('#languageSelect')?.value||'en';
@@ -2824,7 +3055,7 @@ loadApprovedTestimonials();
  }
 
  function show(i){active=(i+slides.length)%slides.length;slides.forEach((el,n)=>el.classList.toggle('is-active',n===active));dots.forEach((el,n)=>{el.classList.toggle('is-active',n===active);el.setAttribute('aria-current',String(n===active))});renderSlideMessage()}
- function manual(i){pausedUntil=Date.now()+4000;show(i)}
+ function manual(i){pausedUntil=Date.now()+7500;show(i)}
  hero.querySelector('.hero-slide-prev').addEventListener('click',()=>manual(active-1));
  hero.querySelector('.hero-slide-next').addEventListener('click',()=>manual(active+1));
  dots.forEach((dot,i)=>dot.addEventListener('click',()=>manual(i)));
@@ -2832,7 +3063,7 @@ loadApprovedTestimonials();
  renderSlideMessage();
  hero.addEventListener('touchstart',e=>{touchStart=e.touches[0].clientX},{passive:true});
  hero.addEventListener('touchend',e=>{if(touchStart===null)return;const delta=e.changedTouches[0].clientX-touchStart;touchStart=null;if(Math.abs(delta)>45)manual(active+(delta<0?1:-1))},{passive:true});
- setInterval(()=>{if(document.hidden||Date.now()<pausedUntil)return;show(active+1)},4000);
+ setInterval(()=>{if(document.hidden||Date.now()<pausedUntil)return;show(active+1)},7500);
 })();
 /* Services: phone-only horizontal cards, original desktop grid retained. */
 (function(){
@@ -2845,9 +3076,9 @@ loadApprovedTestimonials();
  const dots=[...dotsBox.children];const mobile=()=>window.matchMedia('(max-width:560px)').matches;
  const current=()=>cards.reduce((best,c,i)=>Math.abs((c.offsetLeft-cards[0].offsetLeft)-track.scrollLeft)<Math.abs((cards[best].offsetLeft-cards[0].offsetLeft)-track.scrollLeft)?i:best,0);
  function update(){const n=current();dots.forEach((b,i)=>b.classList.toggle('is-active',i===n))}
- function go(i,user){if(!mobile())return;if(user)pausedUntil=Date.now()+4000;const n=(i+cards.length)%cards.length;const max=track.scrollWidth-track.clientWidth;const left=n===0?0:Math.min(cards[n].offsetLeft-cards[0].offsetLeft,max);track.scrollTo({left,behavior:'smooth'});setTimeout(update,500)}
+ function go(i,user){if(!mobile())return;if(user)pausedUntil=Date.now()+7500;const n=(i+cards.length)%cards.length;const max=track.scrollWidth-track.clientWidth;const left=n===0?0:Math.min(cards[n].offsetLeft-cards[0].offsetLeft,max);track.scrollTo({left,behavior:'smooth'});setTimeout(update,500)}
  controls.children[0].addEventListener('click',()=>go(current()-1,true));controls.children[2].addEventListener('click',()=>go(current()+1,true));
- track.addEventListener('touchstart',()=>{pausedUntil=Date.now()+4000},{passive:true});track.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();
+ track.addEventListener('touchstart',()=>{pausedUntil=Date.now()+7500},{passive:true});track.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();
  setInterval(()=>{if(!mobile()||document.hidden||Date.now()<pausedUntil)return;go(current()+1,false)},4000);
 })();
 </script>
@@ -2864,12 +3095,61 @@ loadApprovedTestimonials();
  const box=controls.querySelector('.brand-slide-dots');let pausedUntil=0;
  const mobile=()=>window.matchMedia('(max-width:560px)').matches;
  const index=()=>cards.reduce((best,c,i)=>Math.abs((c.offsetLeft-cards[0].offsetLeft)-track.scrollLeft)<Math.abs((cards[best].offsetLeft-cards[0].offsetLeft)-track.scrollLeft)?i:best,0);
- const go=(i,manual)=>{if(!mobile())return;if(manual)pausedUntil=Date.now()+4000;const n=(i+cards.length)%cards.length;const max=track.scrollWidth-track.clientWidth;const left=n===0?0:Math.min(cards[n].offsetLeft-cards[0].offsetLeft,max);track.scrollTo({left,behavior:'smooth'});setTimeout(update,500)};
+ const go=(i,manual)=>{if(!mobile())return;if(manual)pausedUntil=Date.now()+7500;const n=(i+cards.length)%cards.length;const max=track.scrollWidth-track.clientWidth;const left=n===0?0:Math.min(cards[n].offsetLeft-cards[0].offsetLeft,max);track.scrollTo({left,behavior:'smooth'});setTimeout(update,500)};
  cards.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.className='brand-slide-dot';b.setAttribute('aria-label','Brand '+(i+1));b.addEventListener('click',()=>go(i,true));box.appendChild(b)});
  const dots=[...box.children];function update(){const n=index();dots.forEach((b,i)=>b.classList.toggle('is-active',i===n))}
  controls.firstElementChild.addEventListener('click',()=>go(index()-1,true));controls.lastElementChild.addEventListener('click',()=>go(index()+1,true));
- track.addEventListener('touchstart',()=>{pausedUntil=Date.now()+4000},{passive:true});track.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();
+ track.addEventListener('touchstart',()=>{pausedUntil=Date.now()+7500},{passive:true});track.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();
  setInterval(()=>{if(!mobile()||document.hidden||Date.now()<pausedUntil)return;go(index()+1,false)},4000);
+})();
+</script>
+
+<script>
+/* Home-only photo lightbox with wheel, touch pinch, drag, keyboard and controls. */
+(function(){
+  const viewer=document.getElementById('tmPhotoViewer');
+  const stage=viewer.querySelector('.tm-photo-viewer-stage');
+  const image=viewer.querySelector('img');
+  const caption=viewer.querySelector('.tm-photo-viewer-caption');
+  const locationButton=document.getElementById('tmLocationFloat');
+  let zoom=1,x=0,y=0,lastFocus=null,previousOverflow='',drag=null,pinchDistance=0,pinchZoom=1;
+  const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+  function paint(){image.style.transform=`translate(${x}px,${y}px) scale(${zoom})`;}
+  function setZoom(next){zoom=clamp(next,1,5);if(zoom===1){x=0;y=0;}paint();}
+  function openPhoto(url,alt){if(!url)return;lastFocus=document.activeElement;previousOverflow=document.body.style.overflow;image.src=url;image.alt=alt||'T-MechaTrucks photo';caption.textContent=alt||'';zoom=1;x=0;y=0;paint();viewer.hidden=false;document.body.style.overflow='hidden';viewer.querySelector('[data-photo-close]').focus();}
+  function closePhoto(){viewer.hidden=true;image.removeAttribute('src');document.body.style.overflow=previousOverflow;if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  /* Original images are not changed; click to see the complete file. */
+  document.querySelectorAll('main img, .site-footer img').forEach(img=>{
+    img.classList.add('tm-photo-openable');img.setAttribute('title',img.getAttribute('title')||'Open full photo');
+    img.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openPhoto(img.currentSrc||img.src,img.alt);});
+    img.setAttribute('tabindex','0');img.setAttribute('role','button');
+    img.setAttribute('aria-label','Open full photo: '+(img.alt||'photo'));
+    img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPhoto(img.currentSrc||img.src,img.alt);}});
+  });
+  /* Hero uses background-image slides, so open the currently displayed photo. */
+  const hero=document.querySelector('#home.hero');
+  if(hero){hero.addEventListener('click',e=>{
+    if(e.target.closest('a,button,.button-row,.hero-slide-dots,.hero-slide-controls'))return;
+    const active=hero.querySelector('.hero-image-slide.is-active');if(!active)return;
+    const value=active.style.backgroundImage||getComputedStyle(active).backgroundImage;
+    const match=value.match(/url\(["']?(.*?)["']?\)/);if(match)openPhoto(match[1],'T-MechaTrucks hero photo');
+  });}
+  viewer.querySelector('[data-photo-close]').addEventListener('click',closePhoto);
+  viewer.querySelector('[data-photo-zoom="in"]').addEventListener('click',()=>setZoom(zoom+.5));
+  viewer.querySelector('[data-photo-zoom="out"]').addEventListener('click',()=>setZoom(zoom-.5));
+  viewer.querySelector('[data-photo-zoom="reset"]').addEventListener('click',()=>{x=0;y=0;setZoom(1);});
+  viewer.addEventListener('click',e=>{if(e.target===viewer||e.target===stage)closePhoto();});
+  document.addEventListener('keydown',e=>{if(viewer.hidden)return;if(e.key==='Escape')closePhoto();if(e.key==='+'||e.key==='=')setZoom(zoom+.5);if(e.key==='-')setZoom(zoom-.5);if(e.key==='Tab'){const controls=[...viewer.querySelectorAll('button')];const i=controls.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();controls.at(-1).focus();}else if(!e.shiftKey&&i===controls.length-1){e.preventDefault();controls[0].focus();}}});
+  stage.addEventListener('wheel',e=>{e.preventDefault();setZoom(zoom+(e.deltaY<0?.25:-.25));},{passive:false});
+  stage.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;drag={sx:e.clientX,sy:e.clientY,x,y};stage.setPointerCapture(e.pointerId);});
+  stage.addEventListener('pointermove',e=>{if(!drag||zoom<=1)return;x=drag.x+e.clientX-drag.sx;y=drag.y+e.clientY-drag.sy;paint();});
+  stage.addEventListener('pointerup',()=>{drag=null;});stage.addEventListener('pointercancel',()=>{drag=null;});
+  const distance=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
+  stage.addEventListener('touchstart',e=>{if(e.touches.length===2){pinchDistance=distance(e.touches);pinchZoom=zoom;drag=null;}else if(e.touches.length===1){drag={sx:e.touches[0].clientX,sy:e.touches[0].clientY,x,y};}},{passive:true});
+  stage.addEventListener('touchmove',e=>{if(e.touches.length===2&&pinchDistance){e.preventDefault();setZoom(pinchZoom*distance(e.touches)/pinchDistance);}else if(e.touches.length===1&&drag&&zoom>1){e.preventDefault();x=drag.x+e.touches[0].clientX-drag.sx;y=drag.y+e.touches[0].clientY-drag.sy;paint();}},{passive:false});
+  stage.addEventListener('touchend',()=>{pinchDistance=0;drag=null;});
+  function updateLocation(){locationButton.classList.add('is-visible');}
+  window.addEventListener('scroll',updateLocation,{passive:true});window.addEventListener('resize',updateLocation);updateLocation();
 })();
 </script>
 </body>

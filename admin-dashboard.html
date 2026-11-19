@@ -1,1867 +1,1750 @@
 
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-
-  <meta name="viewport"
-
-        content="width=device-width, initial-scale=1">
-
-  <meta name="theme-color" content="#082b50">
-
-  <title>Admin Dashboard | T-MECHATRUCKS</title>
-
-
-
-  <style>
-
-    :root {
-
-      --navy: #082b50;
-
-      --deep: #041628;
-
-      --orange: #ff8a00;
-
-
-      --light: #f4f7fb;
-
-      --border: #e2e8f0;
-
-      --text: #243447;
-
-    }
-
-
-
-    * { box-sizing: border-box; }
-    [hidden] { display: none !important; }
-
-
-
-    body {
-
-      margin: 0;
-
-      font-family: Arial, sans-serif;
-
-      background: var(--light);
-
-      color: var(--text);
-
-    }
-
-
-
-    .dashboard {
-
-      display: flex;
-
-      min-height: 100vh;
-
-    }
-
-
-
-    .sidebar {
-
-      width: 260px;
-
-      background: var(--deep);
-
-      color: white;
-
-      padding: 24px 16px;
-
-      flex-shrink: 0;
-
-    }
-
-
-
-    .sidebar-brand {
-
-      text-align: center;
-
-      padding-bottom: 22px;
-
-      border-bottom: 1px solid #29445f;
-
-    }
-
-
-
-    .sidebar-brand img {
-
-      width: 75px;
-
-      height: 75px;
-
-      object-fit: contain;
-
-    }
-
-
-
-    .sidebar-brand h2 {
-
-      font-size: 17px;
-
-      margin: 10px 0 5px;
-
-    }
-
-
-
-    .sidebar-brand p {
-
-      font-size: 11px;
-
-      color: #cbd5e1;
-
-      margin: 0;
-
-    }
-
-
-
-    .sidebar-nav {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 8px;
-
-      margin-top: 25px;
-
-    }
-
-
-
-    .sidebar-nav button {
-
-      width: 100%;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 12px;
-
-      padding: 14px 16px;
-
-      border: none;
-
-      border-radius: 9px;
-
-      background: transparent;
-
-      color: #cbd5e1;
-
-      font-size: 14px;
-
-      text-align: left;
-
-      cursor: pointer;
-
-      transition: background .2s, color .2s;
-
-    }
-
-
-
-    .sidebar-nav button:hover,
-
-    .sidebar-nav button.active {
-
-      background: var(--orange);
-
-      color: var(--deep);
-
-      font-weight: bold;
-
-    }
-
-
-
-    .main-content {
-
-      flex: 1;
-
-      min-width: 0;
-
-      padding: 28px;
-
-    }
-
-
-
-    .dashboard-header {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      flex-wrap: wrap;
-
-      gap: 16px;
-
-      margin-bottom: 28px;
-
-    }
-
-
-
-    .dashboard-header h1 {
-
-      margin: 0 0 7px;
-
-      color: var(--navy);
-
-      font-size: 26px;
-
-    }
-
-
-
-    .dashboard-header p {
-
-      margin: 0;
-
-      color: #64748b;
-
-      font-size: 14px;
-
-    }
-
-
-
-    .admin-profile {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 14px;
-
-      flex-wrap: wrap;
-
-    }
-
-
-
-    .admin-info {
-
-      text-align: right;
-
-    }
-
-
-
-    .admin-info strong {
-
-      display: block;
-
-      color: var(--navy);
-
-      font-size: 14px;
-
-    }
-
-
-
-    .admin-info span {
-
-      color: #64748b;
-
-      font-size: 12px;
-
-    }
-
-
-
-    .logout-btn {
-
-      padding: 11px 18px;
-
-      border: none;
-
-      border-radius: 8px;
-
-      background: var(--orange);
-
-      color: var(--deep);
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-    }
-
-
-
-    .logout-btn:hover {
-
-      background: #e67c00;
-
-    }
-
-
-
-    .stats-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-
-      gap: 18px;
-
-      margin-bottom: 28px;
-
-    }
-
-
-
-    .stat-card {
-
-      background: #ffffff;
-
-      padding: 22px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 14px;
-
-      box-shadow: 0 4px 15px rgba(8,43,80,.05);
-
-    }
-
-
-
-    .stat-card h3 {
-
-      margin: 0 0 15px;
-
-      color: #64748b;
-
-      font-size: 13px;
-
-    }
-
-
-
-    .stat-card .stat-number {
-
-      color: var(--navy);
-
-      font-size: 30px;
-
-      font-weight: bold;
-
-    }
-
-
-
-    .stat-card .stat-label {
-
-      margin-top: 8px;
-
-      color: #64748b;
-
-      font-size: 12px;
-
-    }
-
-
-
-    @media (max-width: 1100px) {
-
-      .stats-grid {
-
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      }
-
-
-
-      .sidebar {
-
-        width: 220px;
-
-      }
-
-    }
-
-
-
-    @media (max-width: 768px) {
-
-      .dashboard {
-
-        flex-direction: column;
-
-      }
-
-
-
-      .sidebar {
-
-        width: 100%;
-
-        padding: 15px;
-
-      }
-
-
-
-      .sidebar-brand img {
-
-        width: 55px;
-
-        height: 55px;
-
-      }
-
-
-
-      .sidebar-nav {
-
-        flex-direction: row;
-
-        overflow-x: auto;
-
-        padding-bottom: 8px;
-
-      }
-
-
-
-      .sidebar-nav button {
-
-        flex-shrink: 0;
-
-        width: auto;
-
-        white-space: nowrap;
-
-        padding: 12px 14px;
-
-      }
-
-
-
-      .main-content {
-
-        padding: 18px 14px;
-
-      }
-
-
-
-      .dashboard-header {
-
-        align-items: flex-start;
-
-      }
-
-
-
-      .dashboard-header h1 {
-
-        font-size: 22px;
-
-      }
-
-
-
-      .admin-info {
-
-        text-align: left;
-
-      }
-
-    }
-
-
-
-    @media (max-width: 480px) {
-
-      .stats-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 12px;
-
-      }
-
-
-
-      .stat-card {
-
-        padding: 18px;
-
-      }
-
-    }
-
-
-/* DASHBOARD ADDITIONS */
-.admin-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.live-clock{display:flex;flex-direction:column;text-align:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:9px 13px;min-width:170px}
-.live-clock strong{font-size:19px;color:var(--navy);font-variant-numeric:tabular-nums}
-.live-clock span{font-size:11px;color:#64748b}
-#adminLanguage{padding:11px;border:1px solid var(--border);border-radius:8px;background:white;color:var(--navy);font-weight:bold}
-.chat-layout{display:grid;grid-template-columns:minmax(190px,250px) minmax(0,1fr);gap:15px}
-.chat-users{border:1px solid var(--border);border-radius:12px;padding:12px;min-width:0}
-.chat-users button{width:100%;padding:12px;text-align:left;background:white;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;cursor:pointer;overflow-wrap:anywhere}
-.chat-users button.selected{border-color:var(--orange);background:#fff8eb}
-.chat-users small{display:block;color:#64748b;margin-top:5px}
-.chat-main{border:1px solid var(--border);border-radius:12px;min-width:0;overflow:hidden}
-.chat-heading{padding:14px;border-bottom:1px solid var(--border);font-weight:bold}
-.chat-messages{height:390px;overflow-y:auto;padding:16px;background:#f7f9fc;display:flex;flex-direction:column;gap:12px}
-.chat-bubble{max-width:85%;background:white;border:1px solid var(--border);border-radius:13px;padding:10px 13px;overflow-wrap:anywhere}
-.chat-bubble.mine{align-self:flex-end;background:#e8f2ff}
-.chat-bubble.other{align-self:flex-start}
-.chat-bubble small{display:block;margin-top:7px;color:#64748b;font-size:11px}
-.chat-bubble button{font-size:11px;color:#a32121;background:none;border:0;cursor:pointer;padding:6px 0}
-.chat-send{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
-.chat-send input{flex:1;min-width:0;border:1px solid var(--border);border-radius:8px;padding:12px}
-.chat-send button{border:0;background:var(--orange);border-radius:8px;padding:0 16px;font-weight:bold;cursor:pointer}
-.chat-note{font-size:12px;color:#64748b;line-height:1.5}
-.chat-count{display:inline-block;background:#ff8a00;color:#041628;border-radius:20px;padding:2px 7px;font-size:11px;margin-left:4px}
-@media(max-width:650px){.chat-layout{grid-template-columns:1fr}.chat-messages{height:350px}.dashboard-header{gap:12px}.admin-tools{width:100%;justify-content:space-between}}
-
-
-/* AUDIT HISTORY */
-.activity-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:16px 0 22px}
-.activity-controls select{min-width:180px}
-.activity-item{padding:15px 16px;margin:10px 0;background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #ff8a00;border-radius:12px}
-.activity-item strong{color:#082b50}.activity-item p{margin:7px 0;line-height:1.5}
-.activity-item small{color:#64748b}.activity-change{font-size:12px;color:#475569;overflow-wrap:anywhere}
-/* POLISHED DASHBOARD CONTROLS */
-.dashboard button,.dashboard a.logout-btn{font-family:inherit;transition:background .2s ease,transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
-.dashboard button:focus-visible,.dashboard a:focus-visible,.dashboard input:focus-visible,.dashboard select:focus-visible,.dashboard textarea:focus-visible{outline:3px solid rgba(255,138,0,.38);outline-offset:2px}
-.dashboard button:not(.sidebar-nav button):not(.chat-bubble button):not(.chat-users button),.dashboard a.logout-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:43px;padding:11px 19px;border:1px solid transparent;border-radius:11px;background:linear-gradient(135deg,#ff9d20,#ff8200);color:#041628;font-size:14px;font-weight:700;line-height:1.25;text-decoration:none;box-shadow:0 4px 12px rgba(255,138,0,.18);cursor:pointer}
-.dashboard button:not(.sidebar-nav button):not(.chat-bubble button):not(.chat-users button):hover,.dashboard a.logout-btn:hover{background:linear-gradient(135deg,#ffb14d,#ff8a00);transform:translateY(-2px);box-shadow:0 7px 16px rgba(255,138,0,.24)}
-.dashboard button:active,.dashboard a.logout-btn:active{transform:translateY(0)!important}
-.dashboard button:disabled{opacity:.55;cursor:not-allowed;transform:none!important;box-shadow:none!important}
-.sidebar-nav button{min-height:48px;border:1px solid transparent;border-radius:11px;letter-spacing:.1px}
-.sidebar-nav button:hover{transform:translateX(3px);background:#163a5a;color:#fff}
-.sidebar-nav button.active,.sidebar-nav button.active:hover{background:linear-gradient(120deg,#ff9f27,#ff8a00);color:#041628;box-shadow:0 5px 13px rgba(255,138,0,.2)}
-.dashboard input:not([type=checkbox]),.dashboard textarea,.dashboard select{max-width:100%;padding:12px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#243447;font:inherit;box-shadow:0 1px 3px rgba(8,43,80,.04)}
-#addProductForm input,#addProductForm textarea,#stockForm input,#stockForm textarea{width:100%}
-#addProductForm,#stockForm{max-width:700px}
-#testimonialList [data-status="approved"]{background:linear-gradient(135deg,#17825c,#116947)!important;color:white!important;box-shadow:0 4px 12px rgba(17,105,71,.16)!important}
-#testimonialList [data-status="rejected"]{background:#fff3f0!important;color:#a52d24!important;border-color:#f2b9b2!important;box-shadow:none!important}
-#testimonialList [data-status="rejected"]:hover{background:#ffe2dc!important}
-#refreshBtn::before{content:'↻';font-size:20px;line-height:1}
-#logoutBtn::before{content:'⇥';font-size:19px;line-height:1}
-#addProductForm button[type="submit"]::before{content:'＋';font-size:19px;line-height:1}
-#stockForm button[type="submit"]::before{content:'✓';font-size:18px;line-height:1}
-#testimonialList [data-status="approved"]::before{content:'✓'}
-#testimonialList [data-status="rejected"]::before{content:'✕'}
-.dashboard a.logout-btn::before{content:'◉';font-size:17px}
-@media(max-width:650px){.dashboard button:not(.sidebar-nav button){min-height:44px}.sidebar-nav button:hover{transform:none}.admin-profile{width:100%;justify-content:space-between}.dashboard a.logout-btn{max-width:100%}}
-@media(prefers-reduced-motion:reduce){.dashboard button,.dashboard a.logout-btn{transition:none!important;transform:none!important}}
-
-
-/* INDEPENDENT SIDEBAR AND CLEAR ACTION SHORTCUTS */
-@media(min-width:769px){
- .sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
- .sidebar-brand{flex-shrink:0}
- .sidebar-nav{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:5px;scrollbar-width:thin;scrollbar-color:#67809a transparent}
- .main-content{min-width:0}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin Dashboard | T-MechaTrucks & Parts Ltd</title>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.10/dist/umd/supabase.min.js"></script>
+
+<style>
+:root{
+  --nav:#103a62;
+  --ink:#123657;
+  --green:#15864a;
+  --orange:#f28c28;
+  --bg:#f2f8fb;
+  --muted:#57748c;
+  --line:#dce9ef;
+  --red:#bd3d49;
 }
-.quick-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:22px}
-.quick-action{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:8px!important;text-align:left!important;padding:18px!important;min-height:100px!important;background:#fff!important;color:#082b50!important;border:1px solid #e2e8f0!important;box-shadow:0 3px 12px #082b5010!important}
-.quick-action:hover{border-color:#ff8a00!important;background:#fff8ee!important}
-.quick-action strong{font-size:16px}
-.quick-action small{font-size:12px;color:#64748b;font-weight:400}
-.quick-action .quick-icon{font-size:24px;color:#d27600}
-.stock-mode-note{font-weight:700;padding:10px 14px;border-left:4px solid #ff8a00;background:#fff8ee;border-radius:6px}
-@media(max-width:900px){.quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:480px){.quick-actions{grid-template-columns:1fr}.quick-action{min-height:75px!important}}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:14px/1.5 Inter,system-ui,Arial,sans-serif;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.hidden{display:none!important}
+.app{
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
+  min-height:100vh;
+}
+.sidebar{
+  background:var(--nav);
+  padding:22px 16px;
+  color:white;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:white;
+  color:var(--nav);
+  border-radius:12px;
+  padding:12px;
+  font-weight:800;
+}
+.brand img{
+  width:55px;
+  height:55px;
+  object-fit:contain;
+}
+.brand small{color:var(--green)}
+.nav{
+  display:grid;
+  gap:7px;
+  margin-top:28px;
+}
+.nav button,.nav a{
+  border:0;
+  border-radius:10px;
+  padding:12px;
+  color:#e1edf6;
+  background:transparent;
+  text-align:left;
+  font-weight:700;
+  text-decoration:none;
+}
+.nav button.active,.nav button:hover,.nav a:hover{
+  background:var(--green);
+  color:white;
+}
+.main{
+  padding:26px;
+  min-width:0;
+}
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:22px;
+}
+.top h1{margin:3px 0;font-size:30px}
+.eyebrow{
+  color:var(--green);
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+.muted{color:var(--muted)}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+.btn{
+  background:var(--green);
+  color:white;
+  border:0;
+  border-radius:10px;
+  padding:11px 15px;
+  font-weight:750;
+}
+.btn.secondary{
+  background:#e6f1fb;
+  color:var(--nav);
+}
+.btn.dark{background:var(--nav)}
+.btn.danger{
+  background:#fff0f1;
+  color:var(--red);
+}
+.btn.small{padding:7px 10px;font-size:12px}
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:19px;
+  box-shadow:0 6px 24px #142c4310;
+  min-width:0;
+}
+.card h3{margin:0 0 12px}
+.section{display:none}
+.section.active{display:block}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+.metric{font-size:30px;font-weight:850}
+.workspace{
+  display:grid;
+  grid-template-columns:minmax(260px,340px) minmax(0,1fr);
+  gap:16px;
+}
+.workspace>.card:first-child{border-top:4px solid var(--green)}
+.workspace>.card:nth-child(2){border-top:4px solid var(--orange)}
+.toolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:12px 0;
+}
+.search{
+  border:1px solid #cfdbe5;
+  border-radius:9px;
+  padding:10px;
+  min-width:0;
+  flex:1;
+  background:white;
+}
+.list{
+  max-height:65vh;
+  overflow:auto;
+}
+.item{
+  width:100%;
+  display:block;
+  text-align:left;
+  background:white;
+  border:0;
+  border-bottom:1px solid var(--line);
+  padding:12px;
+}
+.item.active,.item:hover{background:#e8f7ed}
+.item strong{display:block}
+.item small{color:var(--muted)}
+.formgrid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+}
+.field{display:grid;gap:5px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-weight:750;font-size:12px}
+.field input,.field select,.field textarea{
+  width:100%;
+  min-width:0;
+  padding:10px;
+  border:1px solid #cfdbe5;
+  border-radius:9px;
+  background:white;
+  color:var(--ink);
+}
+.field textarea{min-height:100px}
+.note{
+  padding:12px;
+  border-radius:10px;
+  background:#e8f7ed;
+  color:#286247;
+  font-size:12px;
+}
+.alert{
+  padding:12px;
+  margin:10px 0;
+  background:#e8f7ed;
+  border-radius:9px;
+}
+.alert.error{
+  background:#fff0f1;
+  color:#a52c37;
+}
+.preview{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:9px;
+}
+.photo-box{
+  display:grid;
+  gap:5px;
+  text-align:center;
+}
+.photo-box img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:white;
+}
+ .photo-box small{color:var(--muted)}
+.photo-box{position:relative;border:1px solid var(--line);padding:9px;border-radius:12px;min-width:130px;background:#fff}
+.photo-box img{width:125px;height:110px;cursor:zoom-in}
+.photo-box.removed{opacity:.45;background:#fff0f1}
+.photo-box .remove-photo{position:absolute;top:3px;right:3px;border:0;background:#bd3d49;color:white;border-radius:50%;width:27px;height:27px;font-weight:900;font-size:17px}
+.photo-box .main-photo{border:1px solid #15864a;border-radius:7px;background:#e8f7ed;color:#12633b;padding:5px;font-size:11px;font-weight:750}
+.photo-box .main-photo:disabled{background:#15864a;color:#fff;opacity:1}
+.gallery-hint{font-size:12px;color:var(--muted);margin:6px 0}
 
-
-.brand-white-logo{width:88px;height:88px;border-radius:15px;background:#fff;margin:0 auto;display:flex;align-items:center;justify-content:center;padding:8px}.brand-white-logo img{width:100%;height:100%;object-fit:contain}
-#addProductForm button[type=submit]{background:#ff8a00!important;color:#041628!important;font-weight:800!important;min-height:52px!important;width:100%;position:relative;z-index:1}
-.image-upload{padding:15px;border:1px dashed #a3b5c7;border-radius:12px;background:#f8fafc;margin:14px 0}
-.image-upload label{display:block;font-weight:700;margin-bottom:10px}
-.image-upload input{max-width:100%}
-.photo-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
-.photo-preview img{width:100%;height:110px;object-fit:contain;background:white;border-radius:9px;border:1px solid #dce3eb}
-.vat-preview{padding:12px;border-radius:9px;background:#fff6e9;font-weight:700;color:#082b50}
-.used-product-card{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid #dce3eb}
-.used-slider{height:185px;position:relative;background:#f1f5f9;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.used-slider img{height:100%;width:100%;object-fit:contain}
-.used-slider button{position:absolute;top:50%;transform:translateY(-50%);border:0;border-radius:50%;width:32px;height:32px;background:#082b50db;color:white;cursor:pointer;font-size:20px;z-index:1}
-.used-slider button.prev{left:7px}.used-slider button.next{right:7px}
-.used-slider .slide-count{position:absolute;bottom:5px;right:7px;background:#082b50d9;color:white;font-size:11px;padding:3px 7px;border-radius:12px}
-@media(max-width:600px){.used-product-card{grid-template-columns:1fr}.used-slider{height:210px}}
-
-  </style>
-
+.tablewrap{overflow-x:auto}
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:650px;
+}
+th,td{
+  border-bottom:1px solid var(--line);
+  padding:10px;
+  text-align:left;
+}
+th{font-size:12px;color:var(--muted)}
+.low{
+  background:#fff1df;
+  color:#955300;
+  border-radius:6px;
+  padding:3px 7px;
+  font-size:11px;
+  font-weight:800;
+}
+.pill{
+  background:#e8f7ed;
+  color:#147c48;
+  padding:3px 8px;
+  border-radius:20px;
+  font-size:11px;
+}
+.pill.draft{
+  background:#fff3df;
+  color:#9d650d;
+}
+@media(max-width:1050px){
+  .workspace{grid-template-columns:260px minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:740px){
+  .app{display:block}
+  .sidebar{
+    position:sticky;
+    top:0;
+    z-index:30;
+    padding:9px;
+  }
+  .sidebar .brand{display:none}
+  .nav{
+    display:flex;
+    overflow-x:auto;
+    margin:0;
+    gap:5px;
+  }
+  .nav button,.nav a{
+    white-space:nowrap;
+    padding:10px;
+    flex-shrink:0;
+  }
+  .main{padding:14px}
+  .top h1{font-size:24px}
+  .workspace{grid-template-columns:1fr}
+  .list{max-height:240px}
+  .formgrid{grid-template-columns:1fr}
+  .field.full{grid-column:1}
+  .field input,.field select,.field textarea{
+    font-size:16px;
+  }
+}
+@media(max-width:390px){
+  .stats{grid-template-columns:1fr}
+}
+</style>
 </head>
-
-
 
 <body>
 
-<div id="authLoading" style="padding:40px;text-align:center">
-
-  Verifying administrator access...
-
-</div>
-
-
-
-<div class="dashboard" id="dashboardApp" hidden>
-
+<div id="app" class="app hidden">
   <aside class="sidebar">
-
-    <div class="sidebar-brand">
-
-      <div class="brand-white-logo"><img src="images/logo.webp" alt="T-MechaTrucks Logo"></div>
-
-      <h2>T-MECHATRUCKS</h2>
-
-      <p>ADMIN MANAGEMENT SYSTEM</p>
-
+    <div class="brand">
+      <img src="images/logo.webp" alt="T-MechaTrucks">
+      <span>
+        T-MECHATRUCKS
+        <small style="display:block">Unified Admin</small>
+      </span>
     </div>
 
-
-
-    <nav class="sidebar-nav" aria-label="Dashboard navigation">
-
-      <button class="active" data-page="overview">▦ Overview</button>
-
-      <button data-page="testimonials">✉ Testimonials</button>
-
-      <button data-page="products">▣ Add Products</button>
-
-      <button data-page="stock">↕ Increase / Reduce Stock</button>
-
-      <button data-page="sales">◷ Items Sold</button>
-      <button data-page="received">↧ Received in 48 Hours</button>
-
-      <button data-page="damaged">⚠ Damaged Products</button>
-
-      <button data-page="enquiries">☏ Customer Enquiries</button>
-        <button data-page="chat">💬 <span data-i18n="chat">Messages</span> <span class="chat-count" id="chatBadge" hidden>0</span></button>
-
+    <nav class="nav" id="nav">
+      <button data-page="overview" class="active">◫ Overview</button>
+      <button data-page="products">▦ Products</button>
+      <button data-page="stock">▤ Stock</button>
+      <button data-page="reports">▥ Reports</button>
+      <button data-page="activity">◷ Activity</button>
+      <a href="Messages.html" target="_blank" rel="noopener">✉ Messages ↗</a>
+      <button data-page="testimonials">★ Testimonials</button>
     </nav>
-
   </aside>
 
-
-
-  <main class="main-content">
-
-    <header class="dashboard-header">
-
+  <main class="main">
+    <div class="top">
       <div>
-
-        <h1 id="pageTitle">Admin Dashboard</h1>
-
-        <p>T-MECHATRUCKS & PARTS LTD</p>
-
+        <div class="eyebrow">T-MechaTrucks Operations</div>
+        <h1 id="pageTitle">Overview</h1>
+        <div id="userInfo" class="muted"></div>
       </div>
-
-      <div class="admin-tools">
-        <div class="live-clock" aria-live="off"><strong id="liveTime">--:--:--</strong><span id="liveDate">Kigali</span></div>
-        <select id="adminLanguage" aria-label="Dashboard language"><option value="rw">🇷🇼 RW</option><option value="en">🇬🇧 EN</option></select>
+      <div class="actions">
+        <select id="uiLanguage" class="search" style="flex:0 0 75px">
+          <option value="en">EN</option>
+          <option value="rw">RW</option>
+          <option value="fr">FR</option>
+          <option value="sw">SW</option>
+          <option value="zh">ZH</option>
+        </select>
+        <button class="btn secondary" id="refresh">Refresh</button>
+        <button class="btn dark" id="logout">Sign out</button>
       </div>
-      <div class="admin-profile">
+    </div>
 
-        <div class="admin-info">
+    <div id="notice" class="alert hidden" role="status"></div>
 
-          <strong id="adminName">Administrator</strong>
-
-          <span id="adminEmail"></span>
-
+    <section id="overview" class="section active">
+      <div class="stats">
+        <div class="card">
+          <p>All products</p>
+          <div class="metric" id="mTotal">—</div>
         </div>
-
-        <button class="logout-btn" id="logoutBtn">Logout</button>
-
-      </div>
-
-    </header>
-
-
-
-    <p id="notice" role="status" aria-live="polite"
-
-       style="color:#082b50;font-weight:bold"></p>
-
-
-
-    <section id="overview" class="dash-page">
-
-      <div class="quick-actions" id="quickActions">
-        <button type="button" class="quick-action" data-quick="increase"><span class="quick-icon">＋</span><strong data-rw="Ongera Stock" data-en="Increase Stock">Ongera Stock</strong><small data-rw="Ibicuruzwa byinjiye" data-en="Record received items">Ibicuruzwa byinjiye</small></button>
-        <button type="button" class="quick-action" data-quick="decrease"><span class="quick-icon">−</span><strong data-rw="Gabanya Stock" data-en="Reduce Stock">Gabanya Stock</strong><small data-rw="Ibyagurishijwe cyangwa ibyangiritse" data-en="Sales or damaged items">Ibyagurishijwe cyangwa ibyangiritse</small></button>
-        <button type="button" class="quick-action" data-quick="testimonials"><span class="quick-icon">✉</span><strong data-rw="Genzura Ubuhamya" data-en="Review Testimonials">Genzura Ubuhamya</strong><small data-rw="Emeza cyangwa wange" data-en="Approve or reject">Emeza cyangwa wange</small></button>
-        <button type="button" class="quick-action" data-quick="products"><span class="quick-icon">▣</span><strong data-rw="Reba Stock Yose" data-en="View All Stock">Reba Stock Yose</strong><small data-rw="Ibicuruzwa n'imibare yabyo" data-en="Products and quantities">Ibicuruzwa n'imibare yabyo</small></button>
-        <button type="button" class="quick-action" data-quick="damaged"><span class="quick-icon">⚠</span><strong data-rw="Reba Ibyangiritse" data-en="View Damaged Items">Reba Ibyangiritse</strong><small data-rw="Ibyakuwe muri stock" data-en="Damaged stock reductions">Ibyakuwe muri stock</small></button>
-        <button type="button" class="quick-action" data-quick="activity"><span class="quick-icon">☷</span><strong data-rw="Reba Amateka Yose" data-en="View Activity History">Reba Amateka Yose</strong><small data-rw="Uwakoze igikorwa n'igihe" data-en="Who did what and when">Uwakoze igikorwa n'igihe</small></button>
-        <button type="button" class="quick-action" data-quick="chat"><span class="quick-icon">💬</span><strong data-rw="Ubutumwa" data-en="Messages">Ubutumwa</strong><small data-rw="Ganira n'abayobozi" data-en="Admin conversations">Ganira n'abayobozi</small></button>
-      </div>
-      <div class="stats-grid">
-
-        <div class="stat-card">
-
-          <h3>Pending Testimonials</h3>
-
-          <div class="stat-number" id="pendingCount">—</div>
-
-          <div class="stat-label">Awaiting approval</div>
-
+        <div class="card">
+          <p>New products</p>
+          <div class="metric" id="mNew">—</div>
         </div>
-
-        <div class="stat-card">
-
-          <h3>Used Products</h3>
-
-          <div class="stat-number" id="productCount">—</div>
-
-          <div class="stat-label">Registered products</div>
-
+        <div class="card">
+          <p>Used products</p>
+          <div class="metric" id="mUsed">—</div>
         </div>
-
-        <div class="stat-card">
-
-          <h3>Low / Out of Stock</h3>
-
-          <div class="stat-number" id="lowCount">—</div>
-
-          <div class="stat-label">Products needing attention</div>
-
+        <div class="card">
+          <p>Published products</p>
+          <div class="metric" id="mPublished">—</div>
         </div>
-
-        <div class="stat-card">
-
-          <h3>Stock Movements</h3>
-
-          <div class="stat-number" id="movementCount">—</div>
-
-          <div class="stat-label">Recorded transactions</div>
-
-        </div>
-
       </div>
-
-      <div class="stat-card">
-
-        <h2>Welcome to T-MechaTrucks</h2>
-
-        <p>Manage customer testimonials, used spare parts,
-
-          stock levels and inventory activity.</p>
-
-        <button class="logout-btn" id="refreshBtn">Refresh Data</button>
-
+      <div class="card" style="margin-top:16px">
+        <h3>Operations snapshot</h3>
+        <p id="snapshot">Loading...</p>
+        <div class="note">
+          Stock quantities are staff-only. Public product visibility
+          is also controlled by Supabase access policies.
+        </div>
       </div>
-
     </section>
 
+    <section id="products" class="section">
+      <div class="workspace">
 
-
-    <section id="testimonials" class="dash-page" hidden>
-
-      <div class="stat-card">
-
-        <h2>Testimonials Management</h2>
-
-        <p>Review customer feedback before publication.</p>
-
-        <div id="testimonialList">Loading...</div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="products" class="dash-page" hidden>
-
-      <div class="stat-card">
-
-        <h2>Add Used Product</h2>
-
-        <form id="addProductForm">
-
-          <p><input name="sku" placeholder="SKU" required></p>
-
-          <p><input name="name" placeholder="Product name" required></p>
-
-          <p><textarea name="description" placeholder="Description"
-
-             style="width:100%;min-height:75px"></textarea></p>
-
-          <div class="image-upload"><label id="photoLabel">Amafoto 3 y'igicuruzwa (JPEG, PNG cyangwa WebP; buri imwe munsi ya 5 MB)</label>
-            <input id="usedPhotos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
-            <div id="photoPreview" class="photo-preview"></div>
+        <div class="card">
+          <div class="actions" style="justify-content:space-between">
+            <h3>Product catalog</h3>
+            <button id="newProduct" class="btn small">+ Add product</button>
           </div>
-          <p><label id="priceLabel">Igiciro kitariho VAT (RWF)</label><input name="price" type="number" min="0" step="0.01" placeholder="Igiciro kitariho VAT (RWF)" required></p>
-          <p id="vatPreview" class="vat-preview">VAT (18%): 0 RWF · Igiciro kirimo VAT: 0 RWF</p>
-          <button class="logout-btn" type="submit">Add Product</button>
 
-        </form>
-
-        <p>New products start with stock 0. Add stock separately.</p>
-
-      </div>
-
-      <div class="stat-card" style="margin-top:18px">
-
-        <h2>All Used Products</h2>
-
-        <div id="productList">Loading...</div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="stock" class="dash-page" hidden>
-
-      <div class="stat-card">
-
-        <h2>Stock Management</h2>
-
-        <p id="stockModeNote" class="stock-mode-note" hidden></p>
-          <form id="stockForm">
-
-          <p><label for="stockProduct">Select Product</label></p>
-
-          <select id="stockProduct" required
-
-             style="width:100%;padding:12px"></select>
-
-          <p><label for="stockChange">Quantity Change</label></p>
-
-          <input id="stockChange" type="number" step="1"
-
-             placeholder="Example: 5 or -2" required>
-
-          <p><label for="stockReason">Reason</label></p>
-
-          <textarea id="stockReason" required minlength="3"
-
-             placeholder="Purchase, sale, damaged, correction..."
-
-             style="width:100%;min-height:85px;padding:12px"></textarea>
-
-          <p><button class="logout-btn" type="submit">
-
-            Save Stock Movement
-
-          </button></p>
-
-        </form>
-
-        <p>Positive quantity increases stock. Negative quantity reduces it.</p>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="history" class="dash-page" hidden>
-
-      <div class="stat-card">
-
-        <h2>Stock Movement History</h2>
-
-        <div id="historyList">Loading...</div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="sales" class="dash-page" hidden><div class="stat-card"><h2 data-rw="Ibyacurujwe" data-en="Items Sold">Ibyacurujwe</h2><p data-rw="Stock yagabanutse kubera kugurisha, hashingiwe ku mpamvu yanditswe." data-en="Stock reductions marked as sales.">Stock yagabanutse kubera kugurisha, hashingiwe ku mpamvu yanditswe.</p><div id="salesList"></div></div></section>
-    <section id="received" class="dash-page" hidden><div class="stat-card"><h2 data-rw="Ibyinjiye mu masaha 48" data-en="Received in 48 Hours">Ibyinjiye mu masaha 48</h2><div id="receivedList"></div></div></section>
-    <section id="activity" class="dash-page" hidden>
-      <div class="stat-card">
-        <h2 data-i18n="activityTitle">Activity History</h2>
-        <p data-i18n="activityHelp">Changes recorded by Supabase, linked to the signed-in administrator.</p>
-        <div class="activity-controls">
-          <select id="activityActor" aria-label="Filter administrator"><option value="">All administrators</option></select>
-          <button id="activityRefresh" type="button">↻ Refresh history</button>
-        </div>
-        <div id="activityList" aria-live="polite"></div>
-      </div>
-    </section>
-    <section id="damaged" class="dash-page" hidden>
-
-      <div class="stat-card">
-
-        <h2>Damaged Products</h2>
-
-        <p>Stock reductions recorded with a damage-related reason.</p>
-
-        <div id="damagedList">Loading...</div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="enquiries" class="dash-page" hidden>
-
-      <div class="stat-card">
-
-        <h2>Customer Enquiries</h2>
-
-        <p>Open the company WhatsApp to communicate with customers.</p>
-
-        <a class="logout-btn"
-
-           style="display:inline-block;text-decoration:none"
-
-           href="https://wa.me/250799908714"
-
-           target="_blank" rel="noopener noreferrer">
-
-          Open WhatsApp
-
-        </a>
-
-        <p>Customer enquiries currently open in WhatsApp. Admin-to-admin chat is available in the separate Chat tab after database setup.</p>
-
-      </div>
-
-    </section>
-    <section id="chat" class="dash-page" hidden>
-      <div class="stat-card">
-        <h2 data-i18n="chatTitle">Admin Private Chat</h2>
-        <p class="chat-note" data-i18n="chatHelp">Only approved administrators. Delete for everyone within 60 minutes.</p>
-        <p id="chatStatus" role="status" aria-live="polite" class="chat-note">Chat will be available after Supabase setup.</p>
-        <div class="chat-layout">
-          <div class="chat-users"><h3 data-i18n="users">Administrators</h3><div id="chatUsers"></div></div>
-          <div class="chat-main">
-            <div class="chat-heading" id="chatPeer">Select an administrator</div>
-            <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
-            <form class="chat-send" id="chatForm">
-              <input id="chatInput" type="text" maxlength="2000" placeholder="Write a message..." autocomplete="off" disabled required>
-              <button id="chatSend" type="submit" disabled>Send</button>
-            </form>
+          <div class="toolbar">
+            <input id="search" class="search" placeholder="Search name or SKU">
+            <select id="filterCondition" class="search" style="flex:0 0 100px">
+              <option value="all">All</option>
+              <option value="new">New</option>
+              <option value="used">Used</option>
+            </select>
           </div>
+
+          <p class="muted" id="listCount"></p>
+          <div id="productList" class="list"></div>
         </div>
+
+        <div class="card">
+          <h3 id="editorTitle">Add Product</h3>
+
+          <div class="note">
+            Draft stays private. Published products can appear
+            on the public website. Used product images: maximum 3.
+          </div>
+
+          <form id="productForm" class="formgrid" style="margin-top:15px">
+
+            <div class="field">
+              <label>Product condition *</label>
+              <select id="condition">
+                <option value="new">New Product</option>
+                <option value="used">Used Product</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Publication *</label>
+              <select id="publication">
+                <option value="draft">Draft (private)</option>
+                <option value="published">Published</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label>Product name *</label>
+              <input id="name" required maxlength="250">
+            </div>
+
+            <div class="field">
+              <label>SKU *</label>
+              <input id="sku" required maxlength="100">
+            </div>
+
+            <div class="field">
+              <label>Price including VAT (RWF) *</label>
+              <input id="price" type="number" min="0" step="1" required>
+            </div>
+
+            <div class="field">
+              <label>VAT rate (%)</label>
+              <input id="vat" type="number" min="0" max="100" step="0.01" value="18">
+            </div>
+
+            <div class="field">
+              <label>Price excluding VAT (preview)</label>
+              <input id="excl" readonly>
+            </div>
+
+            <div class="field">
+              <label>Minimum stock (alert threshold)</label>
+              <input id="minimumStock" type="number" value="2" readonly>
+            </div>
+
+            <div class="field">
+              <label>Current stock (staff only)</label>
+              <input id="qty" readonly>
+            </div>
+
+            <div class="field">
+              <label>Brand</label>
+              <input id="brand" maxlength="150">
+            </div>
+
+            <div class="field">
+              <label>Category</label>
+              <input id="category" maxlength="150">
+            </div>
+
+            <div class="field">
+              <label>Country of Origin</label>
+              <input id="countryOfOrigin" maxlength="150">
+            </div>
+
+            <div class="field">
+              <label>Manufacturer (New)</label>
+              <input id="manufacturer">
+            </div>
+
+            <div class="field">
+              <label>Manufacturer part number (New)</label>
+              <input id="partNumber">
+            </div>
+
+            <div class="field">
+              <label>Quality grade (New)</label>
+              <input id="quality">
+            </div>
+
+            <div class="field">
+              <label>OE numbers (New)</label>
+              <input id="oe">
+            </div>
+
+            <div class="field full">
+              <label>Description</label>
+              <textarea id="description"></textarea>
+            </div>
+
+            <div class="field full">
+              <label>Fitment notes (New)</label>
+              <textarea id="fitment"></textarea>
+            </div>
+
+            <div class="field full">
+              <label>Technical specs JSON (New)</label>
+              <textarea id="specs">{}</textarea>
+            </div>
+
+            <div class="field full">
+              <label>Product images (WebP/JPG/PNG, max 5MB each)</label>
+              <input id="photos" type="file" multiple
+                accept="image/webp,image/jpeg,image/png">
+              <div class="gallery-hint">Saved photos appear here. Click X to remove a photo from the product; select Main Image to change the cover. Changes take effect when you save.</div>
+               <div id="images" class="preview"></div>
+              <div id="imageStatus" class="muted"></div>
+            </div>
+
+            <div class="field full">
+              <div id="productNotice" class="note">
+                Product details are saved in Supabase.
+              </div>
+            </div>
+
+            <div class="field full actions">
+              <button id="savePhotosOnly" class="btn dark" type="button">Save photos only</button>
+              <button id="saveDraft" class="btn secondary" type="button">
+                Save draft
+              </button>
+              <button id="savePublish" class="btn" type="button">
+                Publish product
+              </button>
+              <a id="websiteLink" class="btn secondary"
+                href="new-product.html" target="_blank"
+                rel="noopener" style="text-decoration:none">
+                View catalog
+              </a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="stock" class="section">
+      <div class="card">
+        <h3>Staff stock management</h3>
+        <div class="note">
+          Low stock threshold: 2 units. Stock is not shown publicly.
+        </div>
+
+        <div class="toolbar">
+          <select id="stockCondition" class="search" style="flex:0 0 140px">
+            <option value="new">New stock</option>
+            <option value="used">Used stock</option>
+          </select>
+          <input id="stockSearch" class="search"
+            placeholder="Search product / SKU">
+        </div>
+
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th><th>SKU</th><th>Quantity</th>
+                <th>Status</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="stockRows"></tbody>
+          </table>
+        </div>
+
+        <h3 id="adjustHeading" style="margin-top:25px">
+          New stock adjustment
+        </h3>
+
+        <form id="adjustForm" class="formgrid">
+          <div class="field">
+            <label>Selected product</label>
+            <select id="adjustProduct" required></select>
+          </div>
+          <div class="field">
+            <label>Quantity change (+ in / - out)</label>
+            <input id="adjustQty" type="number" step="1" required>
+          </div>
+          <div class="field full">
+            <label>Reason *</label>
+            <input id="adjustReason" minlength="3" required>
+          </div>
+          <div class="field full">
+            <button id="adjustSubmit" class="btn" type="submit">
+              Record stock movement
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="reports" class="section">
+      <div class="card">
+        <h3>Product and stock report</h3>
+        <div class="toolbar">
+          <select id="reportCondition" class="search" style="flex:0 0 160px">
+            <option value="all">All products</option>
+            <option value="new">New</option>
+            <option value="used">Used</option>
+          </select>
+          <button id="exportCsv" class="btn">
+            Export product report (CSV)
+          </button>
+        </div>
+        <div id="reportSummary" class="note"></div>
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Condition</th><th>SKU</th><th>Name</th>
+                <th>Published</th><th>Qty</th><th>Stock</th>
+                <th>VAT incl. (RWF)</th>
+              </tr>
+            </thead>
+            <tbody id="reportRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="activity" class="section">
+      <div class="card">
+        <h3>Stock movement history</h3>
+        <button id="loadActivity" class="btn secondary">
+          Reload history
+        </button>
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th><th>Catalog</th><th>Product ID</th>
+                <th>Change</th><th>Reason</th>
+              </tr>
+            </thead>
+            <tbody id="activityRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section">
+      <div class="card">
+        <h3>Manage testimonials</h3>
+        <div class="toolbar">
+          <select id="testimonialFilter" class="search" style="flex:0 0 170px">
+            <option value="all">All statuses</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          <button id="reloadTestimonials" class="btn secondary">
+            Reload testimonials
+          </button>
+        </div>
+        <p id="testimonialCount" class="muted"></p>
+        <div id="testimonialRows"></div>
       </div>
     </section>
 
   </main>
-
 </div>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
+window.addEventListener('DOMContentLoaded', () => {
+'use strict';
 
-(async function () {
+const SUPABASE_URL = 'https://ivyzjzbtdlphjaeywtxa.supabase.co';
+const KEY = 'sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP';
 
-  "use strict";
+const $ = id => document.getElementById(id);
+const db = window.supabase?.createClient(SUPABASE_URL, KEY);
+
+let products = [];
+let selected = null;
+let staffRole = '';
+let busy = false;
+let testimonials = [];
+let testimonialsBusy = false;
+let gallery = []; // {url, id?, storage_path?} for selected product
+let removedPhotos = new Set();
+let mainPhotoUrl = null;
+let galleryRequest = 0;
 
 
+const safe = value => String(value ?? '').replace(
+  /[&<>"']/g,
+  char => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[char])
+);
 
-  const SUPABASE_URL = "https://ivyzjzbtdlphjaeywtxa.supabase.co";
+const money = n => Number(n || 0).toLocaleString('en-US');
 
-  const KEY = "sb_publishable_8uDL-s41xR7B7KHlfWCovA_v7ixrNAP";
+function notice(message, error = false) {
+  const el = $('notice');
+  el.textContent = message;
+  el.className = 'alert' + (error ? ' error' : '');
+  el.classList.remove('hidden');
+}
 
-  const $ = id => document.getElementById(id);
+function clearNotice() {
+  $('notice').classList.add('hidden');
+}
 
+function type(p) {
+  return p._table === 'used_products' ? 'used' : 'new';
+}
 
+function published(p) {
+  return type(p) === 'used'
+    ? p.is_active === true
+    : p.is_active === true &&
+      p.publication_status === 'published';
+}
 
-  if (!window.supabase) {
-    document.getElementById('authLoading').textContent = 'Supabase JavaScript library failed to load. Check internet connection.';
+function savedImages(p) {
+  if (!p) return [];
+  if (type(p) === 'used') {
+    const urls = Array.isArray(p.image_urls) && p.image_urls.length
+      ? p.image_urls : p.image_url ? [p.image_url] : [];
+    return [...new Set(urls.filter(Boolean))];
+  }
+  return p.image_url ? [p.image_url] : [];
+}
+
+function activeGallery() {
+  return gallery.filter(photo => !removedPhotos.has(photo.url));
+}
+
+function showImages() {
+  const active = activeGallery();
+  const used = $('condition').value === 'used';
+  const remaining = used ? Math.max(0, 3 - active.length) : null;
+  $('images').innerHTML = gallery.map((photo, i) => {
+    const removed = removedPhotos.has(photo.url);
+    const main = !removed && photo.url === mainPhotoUrl;
+    return `<div class="photo-box ${removed ? 'removed' : ''}">
+      <button type="button" class="remove-photo" data-photo-remove="${i}" aria-label="${removed ? 'Restore' : 'Remove'} photo" title="${removed ? 'Restore photo' : 'Remove photo'}">${removed ? '↶' : '×'}</button>
+      <a href="${safe(photo.url)}" target="_blank" rel="noopener noreferrer" title="Open full-size photo"><img src="${safe(photo.url)}" alt="Product photo ${i+1}" loading="lazy"></a>
+      <small>Photo ${i+1}${removed ? ' · Removed on save' : ''}</small>
+      <button type="button" class="main-photo" data-photo-main="${i}" ${main || removed ? 'disabled' : ''}>${main ? '✓ Main Image' : 'Set Main Image'}</button>
+    </div>`;
+  }).join('') || '<p class="muted">No saved photos for this product.</p>';
+
+  document.querySelectorAll('[data-photo-remove]').forEach(btn => {
+    btn.onclick = () => {
+      const photo = gallery[Number(btn.dataset.photoRemove)];
+      if (!photo) return;
+      if (removedPhotos.has(photo.url)) {
+        if ($('condition').value === 'used' && activeGallery().length >= 3) {
+          notice('Used Product allows a maximum of 3 photos.', true); return;
+        }
+        removedPhotos.delete(photo.url);
+      } else {
+        removedPhotos.add(photo.url);
+      }
+      if (!activeGallery().some(x => x.url === mainPhotoUrl)) mainPhotoUrl = activeGallery()[0]?.url || null;
+      showImages();
+    };
+  });
+  document.querySelectorAll('[data-photo-main]').forEach(btn => {
+    btn.onclick = () => {
+      const photo = gallery[Number(btn.dataset.photoMain)];
+      if (photo && !removedPhotos.has(photo.url)) { mainPhotoUrl = photo.url; showImages(); }
+    };
+  });
+
+  $('photos').disabled = used && remaining === 0;
+  const pending = [...$('photos').files].length;
+  $('imageStatus').textContent = used
+    ? `${active.length}/3 saved photos · ${remaining} slot(s) available · ${pending} new file(s) selected.`
+    : `${active.length} saved photos · ${pending} new file(s) selected.`;
+  $('productNotice').textContent = 'Use X to remove or restore photos, choose Main Image, then click Save photos only. Save Draft hides published products.';
+}
+
+async function loadGallery(p) {
+  const request = ++galleryRequest;
+  gallery = []; removedPhotos = new Set(); mainPhotoUrl = p?.image_url || null;
+  if (!p) { showImages(); return; }
+  if (type(p) === 'used') {
+    gallery = savedImages(p).map(url => ({url}));
+    if (!gallery.some(x => x.url === mainPhotoUrl)) mainPhotoUrl = gallery[0]?.url || null;
+    showImages(); return;
+  }
+  $('images').innerHTML = '<p class="muted">Loading saved photos...</p>';
+  const {data, error} = await db.from('new_product_images')
+    .select('id,storage_path,sort_order,is_primary')
+    .eq('product_id',p.id).order('sort_order',{ascending:true});
+  if (request !== galleryRequest) return;
+  if (error) {
+    gallery = savedImages(p).map(url => ({url}));
+    showImages();
+    notice('Could not load New Product gallery: ' + error.message, true);
     return;
   }
-  const db = window.supabase.createClient(SUPABASE_URL, KEY);
-
-  let currentUser = null;
-  let currentRole = null;
-  const canManageTestimonials = () => currentRole === "admin";
-  function applyRoleVisibility() {
-    const allowed = canManageTestimonials();
-    document.querySelectorAll('[data-page="testimonials"], [data-quick="testimonials"]').forEach(el => { el.hidden = !allowed; });
-    const pending = document.getElementById("pendingCount")?.closest(".stat-card");
-    if (pending) pending.hidden = !allowed;
-    const testimonialSection = document.getElementById("testimonials");
-    if (testimonialSection && !allowed) testimonialSection.hidden = true;
-    const welcome = document.querySelector("#overview .stat-card > p");
-    if (welcome && !allowed) welcome.textContent = "Manage used spare parts, stock levels and inventory activity.";
-  }
-
-  let products = [];
-
-  let movements = [];
-  let adminPeople = [];
-  let auditEntries = [];
-  const adminDisplay = id => adminPeople.find(p => p.user_id === id)?.display_name || (id ? (language === "rw" ? "Umuyobozi utazwi" : "Unknown administrator") : (language === "rw" ? "Ntibizwi (amakuru ya kera)" : "Unknown (legacy record)"));
-
-
-
-  function notice(message) {
-
-    $("notice").textContent = message;
-
-  }
-
-
-
-  function escapeHtml(value) {
-
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
-
-      "&":"&amp;", "<":"&lt;", ">":"&gt;",
-
-      '"':"&quot;", "'":"&#39;"
-
-    })[char]);
-
-  }
-
-
-
-  function dateText(value) {
-
-    return value ? new Date(value).toLocaleString() : "—";
-
-  }
-
-
-
-  function money(value) {
-
-    return Number(value || 0).toLocaleString("en-RW") + " RWF";
-
-  }
-
-
-
-  function showPage(id) {
-    if (id === "testimonials" && !canManageTestimonials()) { notice("Access denied."); return; }
-
-    document.querySelectorAll(".dash-page").forEach(section => {
-
-      section.hidden = section.id !== id;
-
-    });
-
-    document.querySelectorAll("[data-page]").forEach(button => {
-
-      button.classList.toggle("active", button.dataset.page === id);
-
-    });
-
-    $("pageTitle").textContent = {
-
-      overview:"Admin Dashboard",
-
-      testimonials:"Testimonials Management",
-
-      products:"Add Products",
-      sales:"Items Sold",received:"Received in 48 Hours",
-
-      stock:"Stock Management",
-
-      history:"Stock History",
-
-      damaged:"Damaged Products",
-
-      enquiries:"Customer Enquiries",
-        chat:"Admin Private Chat"
-
-    }[id];
-
-    notice("");
-    if (typeof language !== 'undefined' && typeof words !== 'undefined') {
-      $("pageTitle").textContent = words[language][id] || $("pageTitle").textContent;
-    }
-
-  }
-
-
-
-  document.querySelectorAll("[data-page]").forEach(button => {
-
-    button.addEventListener("click", () => { if (button.dataset.page === "chat") { window.location.href = "Messages.html"; return; } showPage(button.dataset.page); });
-
-  });
-
-
-
-  // Dashboard shortcuts: keep all stock changes in the existing verified form.
-  let stockMode = '';
-  function setStockMode(mode) {
-    stockMode=mode;
-    showPage('stock');
-    const note=$('stockModeNote');
-    note.hidden=false;
-    note.textContent=language==='rw'
-      ? (mode==='increase'?'ONGERA STOCK: andika umubare urenze 0, urugero 10.':'GABANYA STOCK: andika umubare uri munsi ya 0, urugero -3.')
-      : (mode==='increase'?'INCREASE STOCK: enter a positive number, e.g. 10.':'REDUCE STOCK: enter a negative number, e.g. -3.');
-    const input=$('stockChange');
-    input.placeholder=mode==='increase'?'10':'-3';
-    input.focus();
-  }
-  document.querySelectorAll('[data-quick]').forEach(btn=>btn.addEventListener('click',()=>{
-    const action=btn.dataset.quick;
-    if(action==='chat'){window.location.href='Messages.html';return;}
-    if(action==='increase'||action==='decrease'){setStockMode(action);return;}
-    showPage(action);
-    if(action==='activity')loadActivity();
+  gallery = (data || []).map(item => ({
+    ...item, url:db.storage.from('new-product-images').getPublicUrl(item.storage_path).data.publicUrl
   }));
+  if (p.image_url && !gallery.some(x => x.url === p.image_url)) gallery.unshift({url:p.image_url, legacy:true});
+  const primary = gallery.find(x => x.is_primary);
+  mainPhotoUrl = primary?.url || (gallery.some(x => x.url === p.image_url) ? p.image_url : gallery[0]?.url) || null;
+  showImages();
+}
 
-  async function verifyAdmin() {
-
-    const {data, error} = await db.auth.getUser();
-
-    if (error || !data.user) throw new Error("Login required.");
-
-
-
-    const {data: role, error: roleError} = await db
-
-      .from("user_roles")
-
-      .select("role")
-
-      .eq("user_id", data.user.id)
-
-      .in("role", ["admin", "operations_manager"])
-
-      .maybeSingle();
-
-
-
-    if (roleError || !role) throw new Error("Admin access denied.");
-
-    currentUser = data.user;
-    currentRole = role.role;
-    applyRoleVisibility();
-
-    $("adminEmail").textContent = currentUser.email;
-
-    const {data: admins, error: adminsError} = await db.from("admin_chat_users")
-      .select("user_id,display_name,email").order("display_name");
-    if (!adminsError) adminPeople = admins || [];
-    const myName = adminPeople.find(p => p.user_id === currentUser.id)?.display_name;
-    $("adminName").textContent = (myName || currentUser.email || "Administrator") + (canManageTestimonials() ? " · Admin" : " · Staff");
-
-  }
-
-
-
-  async function loadTestimonials() {
-    if (!canManageTestimonials()) return;
-
-    const {data, error} = await db.from("testimonials")
-
-      .select("*").order("created_at", {ascending:false});
-
-
-
+async function saveGalleryChanges(id, table) {
+  if (!selected) return;
+  const keep = activeGallery();
+  const chosenMain = keep.some(x => x.url === mainPhotoUrl) ? mainPhotoUrl : keep[0]?.url || null;
+  if (table === 'used_products') {
+    const ordered = chosenMain ? [chosenMain, ...keep.map(x => x.url).filter(x => x !== chosenMain)] : [];
+    const {error} = await db.from('used_products').update({
+      image_urls:ordered, image_url:ordered[0] || null
+    }).eq('id',id);
     if (error) throw error;
-
-
-
-    const pending = data.filter(item => item.status === "pending");
-
-    $("pendingCount").textContent = pending.length;
-
-
-
-    $("testimonialList").innerHTML = data.length
-
-      ? data.map(item => `
-
-        <article style="padding:16px 0;border-bottom:1px solid #ddd">
-
-          <strong>${escapeHtml(item.customer_name)}</strong>
-
-          <p>${escapeHtml(item.service_used || "")}</p>
-
-          <p>${escapeHtml(item.testimonial)}</p>
-
-          <small>${language === "rw" ? "Imiterere" : "Status"}: ${escapeHtml(item.status)}</small>
-        ${item.reviewed_by ? `<p><strong>${language === "rw" ? "Uwafashe icyemezo" : "Reviewed by"}:</strong> ${escapeHtml(adminDisplay(item.reviewed_by))}</p>` : ""}
-
-          ${item.status === "pending" ? `
-
-          <p>
-
-            <button data-review="${escapeHtml(item.id)}"
-
-                    data-status="approved">${language === "rw" ? "Emeza" : "Approve"}</button>
-
-            <button data-review="${escapeHtml(item.id)}"
-
-                    data-status="rejected">${language === "rw" ? "Anga" : "Reject"}</button>
-
-          </p>` : ""}
-
-        </article>`).join("")
-
-      : (language === "rw" ? "<p>Nta buhamya bubonetse.</p>" : "<p>No testimonials found.</p>");
-
-  }
-
-
-
-  $("testimonialList").addEventListener("click", async event => {
-
-    const button = event.target.closest("[data-review]");
-
-    if (!button || button.disabled || !canManageTestimonials()) return;
-
-
-
-    const status = button.dataset.status;
-
-    if (!confirm(language === "rw" ? `Urashaka guhindura imiterere y’ubuhamya ibe ${status}?` : `Change testimonial status to ${status}?`)) return;
-
-
-
-    button.disabled = true;
-
-    const {error} = await db.from("testimonials")
-
-      .update({
-
-        status,
-
-        reviewed_at:new Date().toISOString(),
-
-        reviewed_by:currentUser.id
-
-      })
-
-      .eq("id", button.dataset.review)
-
-      .eq("status", "pending");
-
-
-
-    if (error) notice(error.message);
-
-    else {
-
-      notice(language === "rw" ? "Ubuhamya bwavuguruwe." : "Testimonial updated.");
-
-      await loadTestimonials().catch(e => notice(e.message));
-
+  } else {
+    // Remove image references only. Storage files are intentionally preserved.
+    for (const photo of gallery.filter(x => removedPhotos.has(x.url) && x.id)) {
+      const {error} = await db.from('new_product_images').delete().eq('id',photo.id).eq('product_id',id);
+      if (error) throw error;
     }
-
-    button.disabled = false;
-
-  });
-
-
-
-  async function loadProducts() {
-
-    const {data, error} = await db.from("used_products")
-
-      .select("*").order("name", {ascending:true});
-
+    for (const photo of keep.filter(x => x.id)) {
+      const {error} = await db.from('new_product_images').update({
+        is_primary:photo.url === chosenMain
+      }).eq('id',photo.id).eq('product_id',id);
+      if (error) throw error;
+    }
+    const {error} = await db.from('products').update({image_url:chosenMain}).eq('id',id);
     if (error) throw error;
+  }
+}
 
-    products = data || [];
+function setPage(page) {
+  document.querySelectorAll('.section').forEach(el => {
+    el.classList.toggle('active', el.id === page);
+  });
 
+  document.querySelectorAll('#nav button').forEach(el => {
+    el.classList.toggle('active', el.dataset.page === page);
+  });
 
+  $('pageTitle').textContent = ({
+    overview:'Overview',
+    products:'Product Management',
+    stock:'Stock Management',
+    reports:'Reports',
+    activity:'Activity History',
+    testimonials:'Testimonials'
+  })[page];
 
-    $("productCount").textContent = products.length;
+  if (page === 'stock') renderStock();
+  if (page === 'reports') renderReports();
+  if (page === 'activity') loadActivity();
+  if (page === 'testimonials') loadTestimonials();
+}
 
-    $("lowCount").textContent = products.filter(
+document.querySelectorAll('#nav button').forEach(btn => {
+  btn.onclick = () => setPage(btn.dataset.page);
+});
 
-      p => Number(p.stock_qty) < Number(p.minimum_stock ?? 2)
+async function init() {
+  if (!db) throw Error('Supabase library did not load.');
 
-    ).length;
+  const { data:{ user }, error } = await db.auth.getUser();
 
-
-
-    $("stockProduct").innerHTML = products.map(p =>
-
-      `<option value="${escapeHtml(p.id)}">
-
-        ${escapeHtml(p.name)} (${Number(p.stock_qty)} ${language === "rw" ? "bihari" : "available"})
-
-      </option>`
-
-    ).join("");
-
-
-
-    $("productList").innerHTML = products.length
-      ? products.map(p => {
-        const images = Array.isArray(p.image_urls) && p.image_urls.length
-          ? p.image_urls : (p.image_url ? [p.image_url] : []);
-        const safeImages = images.filter(u => typeof u === 'string' && /^https:\/\//i.test(u));
-        const slider = safeImages.length ? `<div class="used-slider" data-images="${escapeHtml(JSON.stringify(safeImages))}">
-          <img src="${escapeHtml(safeImages[0])}" alt="${escapeHtml(p.name)}" loading="lazy">
-          ${safeImages.length>1?'<button type="button" class="prev" aria-label="Previous photo">‹</button><button type="button" class="next" aria-label="Next photo">›</button>':''}
-          <span class="slide-count">1 / ${safeImages.length}</span></div>`
-          : `<div class="used-slider"><span>${language==='rw'?'Nta foto irashyirwaho':'No photo uploaded'}</span></div>`;
-        return `<article class="used-product-card">${slider}<div>
-          <strong>${escapeHtml(p.name)}</strong>
-          <p>SKU: ${escapeHtml(p.sku)}</p>
-          <p>${language==='rw'?'Igiciro kitariho VAT':'Price before VAT'}: ${money(p.unit_price_excl_vat != null ? p.unit_price_excl_vat : Number(p.unit_price_incl_vat)/1.18)}</p>
-          <p>VAT (18%): ${money(Number(p.unit_price_incl_vat)-(p.unit_price_excl_vat != null ? Number(p.unit_price_excl_vat) : Number(p.unit_price_incl_vat)/1.18))}</p>
-          <p>${language === 'rw' ? 'Igiciro kirimo VAT' : 'Price incl. VAT'}: ${money(p.unit_price_incl_vat)}</p>
-          <p>Stock: ${Number(p.stock_qty)}</p>
-          <p><strong>${language === 'rw' ? 'Uwacyongeye' : 'Created by'}:</strong> ${escapeHtml(adminDisplay(p.created_by))}</p>
-          <p>${language === 'rw' ? 'Imiterere' : 'Status'}: ${p.is_active ? (language === 'rw' ? 'Kirakora' : 'Active') : (language === 'rw' ? 'Ntigikora' : 'Inactive')}</p>
-        </div></article>`;
-      }).join('')
-      : (language === 'rw' ? '<p>Nta bicuruzwa byakoreshejwe birandikwa.</p>' : '<p>No used products registered yet.</p>');
-    initProductSliders();
+  if (error || !user) {
+    location.replace('login.html');
+    return;
   }
 
-  const productSliderTimers = new Set();
-  function initProductSliders(){
-    productSliderTimers.forEach(clearInterval);productSliderTimers.clear();
-    document.querySelectorAll('.used-slider[data-images]').forEach(slider=>{
-      const images=JSON.parse(slider.dataset.images);let i=0;let timer;
-      const img=slider.querySelector('img'),counter=slider.querySelector('.slide-count');
-      const move=(delta)=>{i=(i+delta+images.length)%images.length;img.src=images[i];counter.textContent=`${i+1} / ${images.length}`;};
-      const restart=()=>{if(timer){clearInterval(timer);productSliderTimers.delete(timer)}timer=setInterval(()=>move(1),10000);productSliderTimers.add(timer)};
-      if(images.length>1){slider.querySelector('.prev').addEventListener('click',()=>{move(-1);restart()});slider.querySelector('.next').addEventListener('click',()=>{move(1);restart()});restart();}
-    });
+  const roles = await db.from('user_roles')
+    .select('role')
+    .eq('user_id', user.id);
+
+  if (roles.error) throw roles.error;
+
+  staffRole = (roles.data || [])
+    .map(r => r.role)
+    .find(r => ['admin','stock_manager'].includes(r)) || '';
+
+  if (!staffRole) {
+    await db.auth.signOut();
+    location.replace('login.html?access=denied');
+    return;
   }
-  const usedPhotoInput=$('usedPhotos');
-  usedPhotoInput.addEventListener('change',()=>{
-    const files=Array.from(usedPhotoInput.files||[]);$('photoPreview').replaceChildren();
-    if(files.length!==3){notice(language==='rw'?'Hitamo amafoto 3 neza.':'Select exactly 3 photos.');return;}
-    for(const file of files){const url=window.URL.createObjectURL(file),img=document.createElement('img');img.src=url;img.onload=()=>window.URL.revokeObjectURL(url);$('photoPreview').append(img);}
+
+  $('app').classList.remove('hidden');
+  $('userInfo').textContent = user.email + ' · ' + staffRole;
+
+  const tab = document.querySelector('[data-page="testimonials"]');
+  if (tab) tab.hidden = staffRole !== 'admin';
+
+  await load();
+  reset();
+}
+
+async function load() {
+  const [n, u] = await Promise.all([
+    db.from('products').select('*').order('name').limit(1000),
+    db.from('used_products').select('*').order('name').limit(1000)
+  ]);
+
+  if (n.error || u.error) throw n.error || u.error;
+
+  products = [
+    ...(n.data || []).map(p => ({...p, _table:'products'})),
+    ...(u.data || []).map(p => ({...p, _table:'used_products'}))
+  ];
+
+  $('mTotal').textContent = products.length;
+  $('mNew').textContent = products.filter(
+    p => type(p) === 'new'
+  ).length;
+  $('mUsed').textContent = products.filter(
+    p => type(p) === 'used'
+  ).length;
+  $('mPublished').textContent = products.filter(published).length;
+
+  $('snapshot').textContent =
+    `${products.length} products loaded · ` +
+    `${products.filter(p => !published(p)).length} unpublished · ` +
+    `${products.filter(p => type(p) === 'new').length} New · ` +
+    `${products.filter(p => type(p) === 'used').length} Used.`;
+
+  if (selected) {
+    selected = products.find(
+      p => p.id === selected.id &&
+           p._table === selected._table
+    ) || null;
+  }
+
+  renderList();
+  renderStock();
+  renderReports();
+}
+
+function renderList() {
+  const q = $('search').value.trim().toLowerCase();
+  const filter = $('filterCondition').value;
+
+  const rows = products.filter(p =>
+    (filter === 'all' || type(p) === filter) &&
+    `${p.name} ${p.sku}`.toLowerCase().includes(q)
+  );
+
+  $('listCount').textContent = rows.length + ' matching products';
+
+  $('productList').innerHTML = rows.map(p => `
+    <button class="item ${
+      selected?.id === p.id &&
+      selected?._table === p._table ? 'active' : ''
+    }" data-id="${safe(p.id)}" data-table="${p._table}">
+      <strong>${safe(p.name)}</strong>
+      <small>
+        ${type(p).toUpperCase()} · ${safe(p.sku)} ·
+        ${published(p) ? 'Published' : 'Draft'}
+      </small>
+    </button>
+  `).join('') || '<p>No products found.</p>';
+
+  document.querySelectorAll('#productList .item').forEach(btn => {
+    btn.onclick = () => edit(btn.dataset.id, btn.dataset.table);
   });
-  const usedPriceInput=$('addProductForm').querySelector('[name="price"]');
-  usedPriceInput.addEventListener('input',()=>{
-    const price=Number(usedPriceInput.value)||0;
-    $('vatPreview').textContent=`VAT (18%): ${money(price*.18)} · ${language==='rw'?'Igiciro kirimo VAT':'Price incl. VAT'}: ${money(price*1.18)}`;
-  });
-
-  $("addProductForm").addEventListener("submit", async event => {
-
-    event.preventDefault();
-
-    const form = event.currentTarget;
-
-    const button = form.querySelector('[type="submit"]');
-
-    const values = new FormData(form);
-
-    const price = Number(values.get("price"));
-    const photos=Array.from(usedPhotoInput.files||[]);
-    if(!form.reportValidity())return;
-    if(!Number.isFinite(price)||price<0){notice(language==='rw'?'Andika igiciro cyemewe.':'Enter a valid price.');return;}
-    if(photos.length!==3 || photos.some(f=>!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>5*1024*1024)){
-      notice(language==='rw'?'Hitamo amafoto 3 (JPEG, PNG, WebP), buri imwe itarengeje 5 MB.':'Choose exactly 3 JPG/PNG/WebP photos, each at most 5 MB.');usedPhotoInput.focus();return;
-    }
-    button.disabled=true;
-    try{
-      const id=(globalThis.crypto && crypto.randomUUID)?crypto.randomUUID():([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16));
-      const urls=[];
-      for(let i=0;i<photos.length;i++){
-        const file=photos[i];const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';
-        const path=`${id}/${i+1}-${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-        const {error:uploadError}=await db.storage.from('used-product-images').upload(path,file,{contentType:file.type,upsert:false});
-        if(uploadError)throw uploadError;
-        urls.push(db.storage.from('used-product-images').getPublicUrl(path).data.publicUrl);
-      }
-      const {error}=await db.from('used_products').insert({
-        id,sku:String(values.get('sku')).trim(),name:String(values.get('name')).trim(),
-        description:String(values.get('description')).trim(),image_url:urls[0],image_urls:urls,
-        unit_price_excl_vat:price,unit_price_incl_vat:Math.round(price*1.18*100)/100,
-        vat_rate:18,stock_qty:0,is_active:true
-      });
-      if(error)throw error;
-      form.reset();$('photoPreview').replaceChildren();usedPriceInput.dispatchEvent(new Event('input'));
-      notice(language==='rw'?'Igicuruzwa n’amafoto 3 byabitswe neza.':'Product and 3 photos saved.');
-      await loadProducts();
-    }catch(error){console.error('Product save failed:',error);notice((language==='rw'?'Kubika byanze: ':'Save failed: ')+(error.message||'Unknown error'));}
-    finally{button.disabled=false;}
-
-  });
-
-
-
-  $("stockForm").addEventListener("submit", async event => {
-
-    event.preventDefault();
-
-    const button = event.currentTarget.querySelector('[type="submit"]');
-
-    const quantity = Number($("stockChange").value);
-
-    const reason = $("stockReason").value.trim();
-
-    const productId = $("stockProduct").value;
-    if(stockMode === "increase" && quantity < 0 || stockMode === "decrease" && quantity > 0){notice(language==="rw"?"Umubare ntuhuye n’igikorwa wahisemo.":"Quantity does not match the selected action.");return;}
-
-
-
-    if (!Number.isSafeInteger(quantity) || quantity === 0 ||
-
-        reason.length < 3 || !productId) {
-
-      notice(language === "rw" ? "Hitamo igicuruzwa, umubare n’impamvu byemewe." : "Select a product, valid quantity and reason.");
-
-      return;
-
-    }
-
-
-
-    if (!confirm(language === "rw" ? `Urashaka kubika impinduka za stock zingana na ${quantity}?` : `Record stock change of ${quantity}?`)) return;
-
-
-
-    button.disabled = true;
-
-    const {error} = await db.rpc("adjust_used_stock", {
-
-      p_product_id:productId,
-
-      p_quantity_change:quantity,
-
-      p_reason:reason
-
-    });
-
-
-
-    if (error) notice(error.message);
-
-    else {
-
-      $("stockForm").reset();
-
-      notice(language === "rw" ? "Impinduka za stock zabitswe neza." : "Stock movement saved successfully.");
-
-      await loadProducts().catch(e => notice(e.message));
-
-      await loadHistory().catch(e => notice(e.message));
-
-    }
-
-    button.disabled = false;
-
-  });
-
-
-
-  async function loadHistory() {
-
-    const {data, error} = await db.from("used_stock_movements")
-
-      .select("*").order("created_at", {ascending:false}).limit(100);
-
-    if (error) throw error;
-
-
-
-    movements = data || [];
-
-    $("movementCount").textContent = movements.length;
-
-
-
-    function renderMovement(m) {
-
-      const product = products.find(p => p.id === m.product_id);
-
-      return `<article style="padding:13px 0;border-bottom:1px solid #ddd">
-
-        <strong>${escapeHtml(product?.name || m.product_id)}</strong>
-
-        <p>${language === "rw" ? "Impinduka mu mubare" : "Quantity change"}: ${Number(m.quantity_change)}</p>
-
-        <p>${language === "rw" ? "Impamvu" : "Reason"}: ${escapeHtml(m.reason)}</p>
-
-        <p><strong>${language === "rw" ? "Uwabikoze" : "Performed by"}:</strong> ${escapeHtml(adminDisplay(m.performed_by))}</p>
-        <small>${dateText(m.created_at)}</small>
-
-      </article>`;
-
-    }
-
-
-
-    $("historyList").innerHTML = movements.length
-
-      ? movements.map(renderMovement).join("")
-
-      : (language === "rw" ? "<p>Nta mpinduka za stock zirandikwa.</p>" : "<p>No stock movements recorded.</p>");
-
-
-
-    const sales = movements.filter(m => Number(m.quantity_change)<0 && /sale|sold|sell|gurish|yacuruj/i.test(String(m.reason)));
-    $("salesList").innerHTML=sales.length?sales.map(renderMovement).join(""):(language==='rw'?'<p>Nta byacurujwe byanditswe nk’ibyagurishijwe.</p>':'<p>No sales recorded.</p>');
-    const cutoff=Date.now()-48*60*60*1000;
-    const received=movements.filter(m=>Number(m.quantity_change)>0 && new Date(m.created_at).getTime()>=cutoff);
-    $("receivedList").innerHTML=received.length?received.map(renderMovement).join(""):(language==='rw'?'<p>Nta byinjiye mu masaha 48 ashize.</p>':'<p>No items received in the last 48 hours.</p>');
-    const damaged = movements.filter(m =>
-
-      /damag|broken|defect|yangirit|cyangirit|kwangirika/i
-
-        .test(String(m.reason)) && Number(m.quantity_change) < 0
-
+}
+
+function reset() {
+  selected = null;
+  ++galleryRequest; gallery = []; removedPhotos = new Set(); mainPhotoUrl = null;
+  $('productForm').reset();
+  $('condition').disabled = false;
+  $('photos').disabled = false;
+  $('vat').value = 18;
+  $('qty').value = 0;
+  $('specs').value = '{}';
+  $('editorTitle').textContent = 'Add Product';
+  showImages();
+  $('productNotice').textContent =
+    'Choose up to 3 photos for a Used Product.';
+  preview();
+  renderList();
+}
+
+function preview() {
+  const price = Number($('price').value);
+  const vat = Number($('vat').value);
+
+  $('excl').value = Number.isFinite(price) &&
+    Number.isFinite(vat) && vat >= 0
+      ? money(Math.round(price / (1 + vat / 100)))
+      : '';
+
+  const used = $('condition').value === 'used';
+
+  $('websiteLink').href = used
+    ? 'used-product.html'
+    : 'new-product.html';
+
+  for (const id of [
+    'manufacturer','partNumber','quality',
+    'oe','fitment','specs'
+  ]) {
+    $(id).disabled = used;
+  }
+}
+
+function edit(id, table) {
+  const p = products.find(
+    x => x.id === id && x._table === table
+  );
+  if (!p) return;
+
+  selected = p;
+  $('editorTitle').textContent = 'Edit · ' + p.name;
+  $('condition').value = type(p);
+  $('condition').disabled = true;
+  $('photos').value = '';
+  $('publication').value = published(p)
+    ? 'published' : 'draft';
+
+  const fields = {
+    name:'name',
+    sku:'sku',
+    price:'unit_price_incl_vat',
+    vat:'vat_rate',
+    qty:'stock_qty',
+    manufacturer:'manufacturer',
+    partNumber:'manufacturer_part_number',
+    quality:'quality_grade',
+    description:'description',
+    fitment:'fitment_notes',
+    brand:'brand',
+    category:'category',
+    countryOfOrigin:'country_of_origin'
+  };
+
+  for (const [id, column] of Object.entries(fields)) {
+    $(id).value = p[column] ?? '';
+  }
+
+  $('oe').value = (p.oe_numbers || []).join(', ');
+  $('specs').value = JSON.stringify(
+    p.technical_specs || {}, null, 2
+  );
+
+  $('photos').value = '';
+  loadGallery(p).catch(error => notice(error.message,true));
+  preview();
+  renderList();
+}
+
+function validate() {
+  const name = $('name').value.trim();
+  const sku = $('sku').value.trim();
+  const price = Number($('price').value);
+  const vat = Number($('vat').value);
+
+  if (
+    !name || !sku ||
+    $('price').value === '' ||
+    !Number.isFinite(price) || price < 0 ||
+    !Number.isFinite(vat) || vat < 0 || vat > 100
+  ) {
+    throw Error('Enter valid name, SKU, price and VAT.');
+  }
+
+  return {name, sku, price, vat};
+}
+
+function validateFiles(files, existingCount = 0, used = false) {
+  if (used && existingCount + files.length > 3) {
+    throw Error(
+      `Maximum 3 product images. ` +
+      `${existingCount} saved, ${files.length} selected.`
     );
-
-
-
-    $("damagedList").innerHTML = damaged.length
-
-      ? damaged.map(renderMovement).join("")
-
-      : (language === "rw" ? "<p>Nta stock yangiritse yanditswe.</p>" : "<p>No damage-related stock movements found.</p>");
-
   }
 
-
-
-  function auditLabel(row) {
-    const table = {used_products:language==='rw'?'Igicuruzwa':'Product',used_stock_movements:language==='rw'?'Stock':'Stock',testimonials:language==='rw'?'Ubuhamya':'Testimonial'}[row.table_name] || row.table_name;
-    const action = ({INSERT:language==='rw'?'Yongeye':'Added',UPDATE:language==='rw'?'Yahinduye':'Updated',DELETE:language==='rw'?'Yasibye':'Deleted'})[row.action] || row.action;
-    return action + ' · ' + table;
-  }
-  function auditDetails(row) {
-    const before = row.old_data || {}, after = row.new_data || {};
-    const title = after.name || before.name || after.customer_name || before.customer_name || '';
-    const details = [];
-    if (title) details.push(title);
-    if (row.table_name === 'used_stock_movements') {
-      details.push((language==='rw'?'Umubare':'Quantity')+': '+String(after.quantity_change ?? '—'));
-      if (after.reason) details.push((language==='rw'?'Impamvu':'Reason')+': '+after.reason);
+  for (const file of files) {
+    if (
+      file.size > 5 * 1024 * 1024 ||
+      !['image/webp','image/jpeg','image/png'].includes(file.type)
+    ) {
+      throw Error('Invalid image (max 5MB): ' + file.name);
     }
-    if (row.action === 'UPDATE') {
-      for (const k of ['status','name','sku','unit_price_incl_vat','is_active','stock_qty','minimum_stock']) {
-        if (JSON.stringify(before[k]) !== JSON.stringify(after[k])) details.push(k+': '+String(before[k] ?? '—')+' → '+String(after[k] ?? '—'));
+  }
+}
+
+async function uploadPhotos(id, table) {
+  const files = [...$('photos').files];
+  if (!files.length) return;
+
+  const bucket = table === 'products'
+    ? 'new-product-images'
+    : 'used-product-images';
+
+  let urls = [];
+
+  if (table === 'used_products') {
+    const {data, error} = await db
+      .from('used_products')
+      .select('image_url,image_urls')
+      .eq('id', id)
+      .single();
+
+    if (error) throw error;
+
+    urls = Array.isArray(data.image_urls) &&
+      data.image_urls.length
+        ? [...data.image_urls]
+        : data.image_url ? [data.image_url] : [];
+
+    urls = [...new Set(urls.filter(Boolean))];
+  }
+
+  validateFiles(
+    files,
+    urls.length,
+    table === 'used_products'
+  );
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+
+    const ext = file.type === 'image/png' ? 'png'
+      : file.type === 'image/webp' ? 'webp' : 'jpg';
+
+    const path = id + '/' + crypto.randomUUID() + '.' + ext;
+
+    const {error: uploadError} = await db.storage
+      .from(bucket)
+      .upload(path, file, {
+        contentType:file.type,
+        upsert:false
+      });
+
+    if (uploadError) throw uploadError;
+
+    const url = db.storage
+      .from(bucket)
+      .getPublicUrl(path).data.publicUrl;
+
+    if (table === 'products') {
+      const {error: imageError} = await db
+        .from('new_product_images')
+        .insert({
+          product_id:id,
+          storage_path:path,
+          sort_order:i,
+          is_primary:!mainPhotoUrl && i === 0
+        });
+
+      if (imageError) throw imageError;
+
+      if (!mainPhotoUrl && i === 0) {
+        const {error: coverError} = await db
+          .from('products')
+          .update({image_url:url})
+          .eq('id',id);
+
+        if (coverError) throw coverError;
       }
+    } else {
+      const nextUrls = [...urls, url];
+
+      const {error: updateError} = await db
+        .from('used_products')
+        .update({
+          image_urls:nextUrls,
+          image_url:nextUrls[0]
+        })
+        .eq('id',id);
+
+      if (updateError) throw updateError;
+
+      urls = nextUrls;
     }
-    return details.join(' · ');
   }
-  function renderActivity() {
-    const filter = $('activityActor').value;
-    const entries = auditEntries.filter(x => !filter || x.actor_id === filter);
-    $('activityList').innerHTML = entries.length ? entries.map(x=>`
-      <article class="activity-item">
-        <strong>${escapeHtml(auditLabel(x))}</strong>
-        <p>${language==='rw'?'Uwabikoze':'Performed by'}: <strong>${escapeHtml(adminDisplay(x.actor_id))}</strong></p>
-        <div class="activity-change">${escapeHtml(auditDetails(x))}</div>
-        <small>${escapeHtml(dateText(x.occurred_at))}</small>
-      </article>`).join('') : `<p>${language==='rw'?'Nta bikorwa byanditswe bibonetse.':'No recorded activity found.'}</p>`;
+}
+
+async function savePhotosOnly() {
+  if (busy) return;
+  if (!selected) { notice('Select an existing product first.', true); return; }
+  const id = selected.id;
+  const table = selected._table;
+  const files = [...$('photos').files];
+  const removed = gallery.filter(p => removedPhotos.has(p.url));
+  const changedMain = activeGallery().length && mainPhotoUrl !== selected.image_url;
+  if (!files.length && !removed.length && !changedMain) {
+    notice('No photo changes to save.'); return;
   }
-  async function loadActivity() {
-    const {data,error} = await db.from('admin_audit_log')
-      .select('id,actor_id,action,table_name,record_id,old_data,new_data,occurred_at')
-      .order('occurred_at',{ascending:false}).order('id',{ascending:false}).limit(150);
-    if(error) { $('activityList').textContent=error.message; return; }
-    auditEntries = canManageTestimonials() ? (data || []) : (data || []).filter(row => row.table_name !== "testimonials");
-    const selector=$('activityActor'),selected=selector.value;
-    selector.replaceChildren();
-    const all=document.createElement('option');all.value='';all.textContent=language==='rw'?'Abayobozi bose':'All administrators';selector.appendChild(all);
-    for(const p of adminPeople) { const opt=document.createElement('option');opt.value=p.user_id;opt.textContent=p.display_name||p.email;selector.appendChild(opt); }
-    selector.value=selected;
-    renderActivity();
-  }
-  $('activityActor').addEventListener('change',renderActivity);
-  $('activityRefresh').addEventListener('click',loadActivity);
-
-  async function refreshAll() {
-
-    const results = await Promise.allSettled([
-
-      ...(canManageTestimonials() ? [loadTestimonials()] : []), loadProducts()
-
-    ]);
-
-    const failed = results.filter(r => r.status === "rejected");
-
-    if (failed.length) {
-
-      notice(failed.map(r => r.reason.message).join(" | "));
-
+  try {
+    validateFiles(files, activeGallery().length, table === 'used_products');
+    if (!activeGallery().length && !files.length) {
+      throw Error('Add at least one photo before removing the last saved photo.');
     }
+  } catch (error) { notice(error.message, true); return; }
+  busy = true;
+  for (const key of ['savePhotosOnly','saveDraft','savePublish']) $(key).disabled = true;
+  try {
+    await saveGalleryChanges(id, table);
+    await uploadPhotos(id, table);
+    await load();
+    edit(id, table);
+    notice('Photos saved. Publication status and other product details were not changed.');
+  } catch (error) {
+    notice('Photo changes may have been partially saved: ' + error.message, true);
+    try { await load(); edit(id, table); } catch (_) {}
+  } finally {
+    busy = false;
+    for (const key of ['savePhotosOnly','saveDraft','savePublish']) $(key).disabled = false;
+  }
+}
 
-    try { await loadActivity(); } catch (error) { notice(error.message); }
-    try { await loadHistory(); }
+async function save(status) {
+  if (busy) return;
 
-    catch (error) { notice(error.message); }
-
+  let values;
+  try {
+    values = validate();
+  } catch (error) {
+    notice(error.message, true);
+    return;
   }
 
+  const condition = selected
+    ? type(selected)
+    : $('condition').value;
 
+  const table = condition === 'new'
+    ? 'products'
+    : 'used_products';
 
-  $("refreshBtn").addEventListener("click", refreshAll);
+  const files = [...$('photos').files];
 
+  const duplicate = products.find(p =>
+    p.sku?.toLowerCase() === values.sku.toLowerCase() &&
+    !(selected &&
+      p.id === selected.id &&
+      p._table === selected._table)
+  );
 
+  if (duplicate) {
+    notice('SKU already exists in the catalog.', true);
+    return;
+  }
 
-  $("logoutBtn").addEventListener("click", async () => {
+  // Check image limit before saving product fields.
+  try {
+    if (table === 'used_products') {
+             const existingCount = selected ? activeGallery().length : 0;
+validateFiles(files, existingCount, true);
+    } else {
+      validateFiles(files);
+    }
+  } catch (error) {
+    notice(error.message, true);
+    return;
+  }
 
-    const {error} = await db.auth.signOut();
-
-    if (error) notice(error.message);
-
-    else window.location.replace("login.html");
-
-  });
-
-
-
-
-  // KIGALI LIVE CLOCK AND LANGUAGE
-  const words = {
-    rw:{overview:'Incamake',testimonials:'Ubuhamya',products:'Injiza ibicuruzwa',stock:'Ongera / Gabanya Stock',sales:'Ibyacurujwe',received:'Ibyinjiye mu masaha 48',history:'Amateka ya Stock',damaged:'Ibyangiritse',enquiries:'Ubusabe bw’abakiriya',activity:'Amateka y’ibikorwa',activityTitle:'Amateka y’ibikorwa',activityHelp:'Impinduka zabitswe na Supabase zigaragaza umuyobozi wari winjiye.',chat:'Chat',chatTitle:'Chat y’Abayobozi',chatHelp:'Abayobozi bemerewe gusa. Gusiba ubutumwa kuri bose byemewe mu minota 60.',users:'Abayobozi',send:'Ohereza',placeholder:'Andika ubutumwa...',choose:'Hitamo umuyobozi',deleted:'Ubu butumwa bwasibwe',delete:'Siba kuri bose',empty:'Nta butumwa burimo.'},
-    en:{overview:'Overview',testimonials:'Testimonials',products:'Add Products',stock:'Increase / Reduce Stock',sales:'Items Sold',received:'Received in 48 Hours',history:'Stock History',damaged:'Damaged Products',enquiries:'Customer Enquiries',activity:'Activity History',activityTitle:'Activity History',activityHelp:'Changes recorded by Supabase, linked to the signed-in administrator.',chat:'Chat',chatTitle:'Admin Private Chat',chatHelp:'Approved administrators only. Delete for everyone is available for 60 minutes.',users:'Administrators',send:'Send',placeholder:'Write a message...',choose:'Select an administrator',deleted:'This message was deleted',delete:'Delete for everyone',empty:'No messages yet.'}
+  const payload = {
+    name:values.name,
+    sku:values.sku,
+    description:$('description').value.trim(),
+    unit_price_incl_vat:values.price,
+    vat_rate:values.vat,
+    brand:$('brand').value.trim() || null,
+    category:$('category').value.trim() || null,
+    country_of_origin:$('countryOfOrigin').value.trim() || null
   };
-  let language = localStorage.getItem('tmecha-admin-language') === 'en' ? 'en' : 'rw';
-  const chatState = {peer:null, channel:null, people:[], messages:[], timer:null};
-  function translate(){
-    const t=words[language];
-    $('adminLanguage').value=language;
-    document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t[el.dataset.i18n]||el.textContent;});
-    document.querySelectorAll('.sidebar-nav button[data-page]').forEach(b=>{
-      const label=b.querySelector('[data-i18n]');
-      if(label) return;
-      const icon=b.textContent.trim().split(' ')[0];
-      b.textContent=icon+' '+(t[b.dataset.page]||b.dataset.page);
-    });
-    $('chatInput').placeholder=t.placeholder;
-    $('pageTitle').textContent = t[document.querySelector('.sidebar-nav button.active')?.dataset.page] || 'Admin Dashboard';
-    $('chatSend').textContent=t.send;
-    if(!chatState.peer) $('chatPeer').textContent=t.choose;
-    renderChat();
-    translateDashboardStatic();
-    $('activityRefresh').textContent = language==='rw'?'↻ Vugurura amateka':'↻ Refresh history';
-    renderActivity();
-  }
-  $('adminLanguage').addEventListener('change',e=>{
-    language=e.target.value;
-    localStorage.setItem('tmecha-admin-language',language);
-    translate();
-    if (canManageTestimonials()) loadTestimonials().catch(e=>notice(e.message));
-    loadProducts().catch(e=>notice(e.message));
-    loadHistory().catch(e=>notice(e.message));
-    loadActivity().catch(e=>notice(e.message));
-  });
-  function tickClock(){
-    const d=new Date();
-    $('liveTime').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Kigali',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d);
-    $('liveDate').textContent=new Intl.DateTimeFormat(language==='rw'?'en-GB':'en-GB',{timeZone:'Africa/Kigali',weekday:'short',day:'2-digit',month:'short',year:'numeric'}).format(d)+' · Kigali';
-  }
-  tickClock();setInterval(tickClock,1000);
 
+  if (table === 'products') {
+    let specs;
 
-  // COMPLETE DASHBOARD STATIC TEXT TRANSLATIONS (RW / EN).
-  const dashboardText = {
-    'ADMIN MANAGEMENT SYSTEM':['SISITEMU YO GUCUNGA IKIGO','ADMIN MANAGEMENT SYSTEM'],
-    'Logout':['Sohoka','Logout'], 'Pending Testimonials':['Ubuhamya butaremezwa','Pending Testimonials'],
-    'Awaiting approval':['Butegereje kwemezwa','Awaiting approval'],
-    'Used Products':['Ibicuruzwa byakoreshejwe','Used Products'],
-    'Registered products':['Ibicuruzwa byanditswe','Registered products'],
-    'Low / Out of Stock':['Stock nke cyangwa yashize','Low / Out of Stock'],
-    'Products needing attention':['Ibicuruzwa bikeneye kwitabwaho','Products needing attention'],
-    'Stock Movements':['Ibyahindutse muri stock','Stock Movements'],
-    'Recorded transactions':['Ibikorwa byanditswe','Recorded transactions'],
-    'Welcome to T-MechaTrucks':['Murakaza neza muri T-MechaTrucks','Welcome to T-MechaTrucks'],
-    'Manage customer testimonials, used spare parts, stock levels and inventory activity.':['Cunga ubuhamya bw’abakiriya, ibikoresho byakoreshejwe, stock n’ibikorwa byayo.','Manage customer testimonials, used spare parts, stock levels and inventory activity.'],
-    'Refresh Data':['Vugurura amakuru','Refresh Data'],
-    'Testimonials Management':['Gucunga ubuhamya','Testimonials Management'],
-    'Review customer feedback before publication.':['Suzuma ubuhamya bw’abakiriya mbere yo kubutangaza.','Review customer feedback before publication.'],
-    'Add Used Product':['Ongeramo igicuruzwa cyakoreshejwe','Add Used Product'],
-    'Add Product':['Ongeramo igicuruzwa','Add Product'],
-    'All Used Products':['Ibicuruzwa byose byakoreshejwe','All Used Products'],
-    'New products start with stock 0. Add stock separately.':['Igicuruzwa gishya gitangirana stock 0. Ongeraho stock ukwayo.','New products start with stock 0. Add stock separately.'],
-    'Stock Management':['Gucunga stock','Stock Management'],
-    'Select Product':['Hitamo igicuruzwa','Select Product'],
-    'Quantity Change':['Impinduka mu mubare','Quantity Change'],
-    'Reason':['Impamvu','Reason'],
-    'Save Stock Movement':['Bika impinduka za stock','Save Stock Movement'],
-    'Positive quantity increases stock. Negative quantity reduces it.':['Umubare mwiza wongera stock; umubare mubi urayigabanya.','Positive quantity increases stock. Negative quantity reduces it.'],
-    'Stock Movement History':['Amateka y’impinduka za stock','Stock Movement History'],
-    'Damaged Products':['Ibicuruzwa byangiritse','Damaged Products'],
-    'Stock reductions recorded with a damage-related reason.':['Stock yagabanutse kubera ibyangiritse.','Stock reductions recorded with a damage-related reason.'],
-    'Customer Enquiries':['Ubusabe bw’abakiriya','Customer Enquiries'],
-    'Open the company WhatsApp to communicate with customers.':['Fungura WhatsApp y’ikigo uganire n’abakiriya.','Open the company WhatsApp to communicate with customers.'],
-    'Open WhatsApp':['Fungura WhatsApp','Open WhatsApp'],
-    'Customer enquiries currently open in WhatsApp. Admin-to-admin chat is available in the separate Chat tab after database setup.':['Ubusabe bw’abakiriya bunyura kuri WhatsApp. Ubutumwa bw’abayobozi buri kuri Messages.','Customer enquiries open in WhatsApp. Administrator messages are on the Messages page.'],
-    'Loading...':['Birimo gufungurwa...','Loading...'],
-    'SKU':['SKU','SKU'],
-    'Status:':['Imiterere:','Status:'],
-  };
-  const dashboardPlaceholders = {
-    'Product name':['Izina ry’igicuruzwa','Product name'],
-    'Description':['Ibisobanuro','Description'],
-    'Product image URL (optional)':['Link y’ifoto (si ngombwa)','Product image URL (optional)'],
-    'Price including VAT (RWF)':['Igiciro kirimo TVA (RWF)','Price including VAT (RWF)'],
-    'Example: 5 or -2':['Urugero: 5 cyangwa -2','Example: 5 or -2'],
-    'Purchase, sale, damaged, correction...':['Kugura, kugurisha, ibyangiritse, gukosora...','Purchase, sale, damaged, correction...']
-  };
-  function translateDashboardStatic(){
-    document.querySelectorAll('[data-rw][data-en]').forEach(el=>{
-      el.textContent=el.dataset[language];
-    });
-    if(stockMode){
-      $('stockModeNote').textContent=language==='rw'
-        ? (stockMode==='increase'?'ONGERA STOCK: andika umubare urenze 0, urugero 10.':'GABANYA STOCK: andika umubare uri munsi ya 0, urugero -3.')
-        : (stockMode==='increase'?'INCREASE STOCK: enter a positive number, e.g. 10.':'REDUCE STOCK: enter a negative number, e.g. -3.');
-    }
-    const index=language==='rw'?0:1;
-    document.querySelectorAll('.dashboard h2,.dashboard h3,.dashboard p,.dashboard label,.dashboard button:not([data-page]),.dashboard a.logout-btn,.dashboard .stat-label,.sidebar-brand p').forEach(el=>{
-      if(el.children.length) return;
-      const original=el.dataset.originalEnglish || el.textContent.trim();
-      if(!dashboardText[original]) return;
-      el.dataset.originalEnglish=original;
-      el.textContent=dashboardText[original][index];
-    });
-    document.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(el=>{
-      const original=el.dataset.originalPlaceholder || el.placeholder;
-      if(dashboardPlaceholders[original]){el.dataset.originalPlaceholder=original;el.placeholder=dashboardPlaceholders[original][index];}
-    });
-  }
-
-  translate();
-
-  // PRIVATE ADMIN CHAT. Requires companion SQL setup with RLS and server-side 60-minute enforcement.
-  function chatStatus(s){ $('chatStatus').textContent=s; }
-  function displayName(p){return p.display_name || p.email || 'Admin';}
-  async function loadChatUsers(){
-    const {data,error}=await db.from('admin_chat_users').select('user_id,display_name,email').order('display_name');
-    if(error) {chatStatus('Chat setup required: '+error.message);return false;}
-    chatState.people=(data||[]).filter(p=>p.user_id!==currentUser.id);
-    $('chatUsers').innerHTML='';
-    for(const p of chatState.people){
-      const btn=document.createElement('button');
-      btn.textContent=displayName(p);
-      btn.dataset.user=p.user_id;
-      btn.addEventListener('click',()=>selectChatUser(p));
-      $('chatUsers').appendChild(btn);
-    }
-    if(!chatState.people.length) chatStatus('No other approved administrators found.');
-    else chatStatus('');
-    return true;
-  }
-  async function selectChatUser(p){
-    chatState.peer=p;
-    $('chatPeer').textContent=displayName(p);
-    $('chatInput').disabled=false;$('chatSend').disabled=false;
-    document.querySelectorAll('#chatUsers button').forEach(b=>b.classList.toggle('selected',b.dataset.user===p.user_id));
-    await loadChatMessages();
-  }
-  async function loadChatMessages(){
-    if(!chatState.peer)return;
-    const other=chatState.peer.user_id, me=currentUser.id;
-    const {data,error}=await db.from('admin_chat_messages')
-      .select('id,sender_id,recipient_id,body,created_at,deleted_at')
-      .or(`and(sender_id.eq.${me},recipient_id.eq.${other}),and(sender_id.eq.${other},recipient_id.eq.${me})`)
-      .order('created_at',{ascending:true}).limit(200);
-    if(error){chatStatus(error.message);return;}
-    chatState.messages=data||[];renderChat();
-  }
-  function renderChat(){
-    const area=$('chatMessages');if(!area)return;
-    area.replaceChildren();
-    if(!chatState.messages.length){area.textContent=words[language].empty;return;}
-    for(const m of chatState.messages){
-      const mine=m.sender_id===currentUser?.id;
-      const box=document.createElement('div');box.className='chat-bubble '+(mine?'mine':'other');
-      const content=document.createElement('div');
-      content.textContent=m.deleted_at?words[language].deleted:m.body;
-      box.appendChild(content);
-      const when=document.createElement('small');when.textContent=dateText(m.created_at);box.appendChild(when);
-      const age=Date.now()-new Date(m.created_at).getTime();
-      if(mine&&!m.deleted_at&&age>=0&&age<3600000){
-        const del=document.createElement('button');del.type='button';del.textContent=words[language].delete;
-        del.addEventListener('click',()=>deleteChatMessage(m.id));box.appendChild(del);
+    try {
+      specs = JSON.parse($('specs').value || '{}');
+      if (!specs || typeof specs !== 'object' ||
+          Array.isArray(specs)) {
+        throw Error('Invalid JSON');
       }
-      area.appendChild(box);
+    } catch {
+      notice('Technical specs must be a JSON object.', true);
+      return;
     }
-    area.scrollTop=area.scrollHeight;
+
+    Object.assign(payload, {
+      condition:'new',
+      manufacturer:$('manufacturer').value.trim() || null,
+      manufacturer_part_number:$('partNumber').value.trim() || null,
+      quality_grade:$('quality').value || null,
+      oe_numbers:$('oe').value.split(',')
+        .map(s => s.trim()).filter(Boolean),
+      technical_specs:specs,
+      fitment_notes:$('fitment').value.trim(),
+      publication_status:status,
+      is_active:status === 'published'
+    });
+  } else {
+    Object.assign(payload, {
+      is_active:status === 'published',
+      unit_price_excl_vat:Math.round(
+        values.price / (1 + values.vat / 100)
+      )
+    });
   }
-  async function deleteChatMessage(id){
-    if(!confirm(language==='rw'?'Urashaka gusiba ubu butumwa kuri bose?':'Delete this message for everyone?'))return;
-    const {error}=await db.rpc('delete_admin_chat_message',{p_message_id:id});
-    if(error){chatStatus(error.message);return;}
-    await loadChatMessages();
-  }
-  $('chatForm').addEventListener('submit',async e=>{
-    e.preventDefault();if(!chatState.peer)return;
-    const body=$('chatInput').value.trim();if(!body)return;
-    $('chatSend').disabled=true;
-    const {error}=await db.from('admin_chat_messages').insert({sender_id:currentUser.id,recipient_id:chatState.peer.user_id,body});
-    $('chatSend').disabled=false;
-    if(error){chatStatus(error.message);return;}
-    $('chatInput').value='';await loadChatMessages();
-  });
-  function subscribeChat(){
-    chatState.channel=db.channel('admin-chat-'+currentUser.id)
-      .on('postgres_changes',{event:'*',schema:'public',table:'admin_chat_messages'},payload=>{
-        const m=payload.new||payload.old;
-        if(!m)return;
-        if(m.sender_id===currentUser.id||m.recipient_id===currentUser.id){
-          if(chatState.peer)loadChatMessages();
-          if(m.sender_id!==currentUser.id && payload.eventType==='INSERT'){
-            const badge=$('chatBadge');badge.hidden=false;badge.textContent=String(Number(badge.textContent||0)+1);
-          }
-        }
-      }).subscribe();
-  }
-  document.querySelector('[data-page="chat"]').addEventListener('click',()=>{
-    $('chatBadge').hidden=true;$('chatBadge').textContent='0';
-    if(chatState.peer)loadChatMessages();
-  });
-  setInterval(()=>{if(!document.hidden&&chatState.peer)renderChat();},15000);
+
+  if (!selected) payload.stock_qty = 0;
+
+  busy = true;
+  $('saveDraft').disabled = true;
+  $('savePublish').disabled = true;
 
   try {
+    const result = selected
+      ? await db.from(table)
+          .update(payload)
+          .eq('id',selected.id)
+          .select('id')
+          .single()
+      : await db.from(table)
+          .insert(payload)
+          .select('id')
+          .single();
 
-    if (!window.supabase) throw new Error("Supabase library not loaded.");
+    if (result.error) throw result.error;
 
-    await verifyAdmin();
+    const id = result.data.id;
 
-    $("dashboardApp").hidden = false;
+    if (selected) await saveGalleryChanges(id, table);
+    await uploadPhotos(id, table);
+    await load();
+    edit(id, table);
 
-    $("authLoading").hidden = true;
-
-    await refreshAll();
-    // Chat is optional until its secured tables are installed; never block the dashboard.
-    try { /* Chat is now in Messages.html */ }
-    catch (chatError) { chatStatus('Chat: ' + chatError.message); }
-
+    notice(
+      `${condition.toUpperCase()} product saved as ${status}. ` +
+      'Saved images loaded successfully.'
+    );
   } catch (error) {
+    notice(
+      'Save failed or partially completed: ' + error.message,
+      true
+    );
 
-    $("authLoading").textContent = error.message;
+    // Reload the database so partially saved images are visible.
+    try {
+      await load();
+      if (selected) edit(selected.id, selected._table);
+    } catch {}
+  } finally {
+    busy = false;
+    $('saveDraft').disabled = false;
+    $('savePublish').disabled = false;
+  }
+}
 
-    if (/Login required|Admin access denied/.test(error.message)) {
+function renderStock() {
+  const kind = $('stockCondition').value;
+  const q = $('stockSearch').value.trim().toLowerCase();
 
-      await db.auth.signOut();
+  const rows = products.filter(p =>
+    type(p) === kind &&
+    `${p.name} ${p.sku}`.toLowerCase().includes(q)
+  );
 
-      window.location.replace("login.html");
+  $('stockRows').innerHTML = rows.map(p => `
+    <tr>
+      <td>${safe(p.name)}</td>
+      <td>${safe(p.sku)}</td>
+      <td>${safe(p.stock_qty ?? '—')}</td>
+      <td>${Number(p.stock_qty) <= 2
+        ? '<span class="low">LOW ≤ 2</span>' : 'OK'}</td>
+      <td>
+        <button class="btn small secondary"
+          data-stock="${safe(p.id)}">Adjust</button>
+      </td>
+    </tr>
+  `).join('') || '<tr><td colspan="5">No products</td></tr>';
 
-    }
+  $('adjustHeading').textContent =
+    kind === 'new' ? 'New stock adjustment' : 'Used stock adjustment';
 
+  const previous = $('adjustProduct').value;
+
+  $('adjustProduct').innerHTML =
+    '<option value="">Select product...</option>' +
+    rows.map(p => `
+      <option value="${safe(p.id)}">
+        ${safe(p.sku)} · ${safe(p.name)}
+      </option>
+    `).join('');
+
+  if ([...$('adjustProduct').options].some(
+    o => o.value === previous
+  )) {
+    $('adjustProduct').value = previous;
   }
 
-})();
+  document.querySelectorAll('[data-stock]').forEach(btn => {
+    btn.onclick = () => {
+      $('adjustProduct').value = btn.dataset.stock;
+      $('adjustQty').focus();
+    };
+  });
+}
 
+async function adjustStock(event) {
+  event.preventDefault();
+  if (busy) return;
+
+  const kind = $('stockCondition').value;
+  const id = $('adjustProduct').value;
+  const qty = Number($('adjustQty').value);
+  const reason = $('adjustReason').value.trim();
+
+  if (!id || !Number.isInteger(qty) ||
+      qty === 0 || reason.length < 3) {
+    notice('Select product, valid quantity and reason.', true);
+    return;
+  }
+
+  const product = products.find(p =>
+    p.id === id && type(p) === kind
+  );
+
+  if (!product) return;
+
+  if (qty < 0 && Number(product.stock_qty) + qty < 0) {
+    notice('Insufficient stock.', true);
+    return;
+  }
+
+  if (!confirm(
+    `Confirm ${qty} stock change for ${product.name}?\n` +
+    `Reason: ${reason}`
+  )) return;
+
+  busy = true;
+  $('adjustSubmit').disabled = true;
+
+  try {
+    const fn = kind === 'new'
+      ? 'adjust_new_stock'
+      : 'adjust_used_stock';
+
+    const {data,error} = await db.rpc(fn, {
+      p_product_id:id,
+      p_quantity_change:qty,
+      p_reason:reason
+    });
+
+    if (error) throw error;
+
+    $('adjustForm').reset();
+    await load();
+    notice('Stock adjusted successfully. New balance: ' + data);
+  } catch (error) {
+    notice('Stock adjustment failed: ' + error.message, true);
+  } finally {
+    busy = false;
+    $('adjustSubmit').disabled = false;
+  }
+}
+
+function reportData() {
+  const kind = $('reportCondition').value;
+  return products.filter(p =>
+    kind === 'all' || type(p) === kind
+  );
+}
+
+function renderReports() {
+  const rows = reportData();
+
+  $('reportSummary').textContent =
+    `${rows.length} products · ` +
+    `${rows.filter(published).length} published · ` +
+    `${rows.filter(p => !published(p)).length} unpublished.`;
+
+  $('reportRows').innerHTML = rows.map(p => `
+    <tr>
+      <td>${type(p)}</td>
+      <td>${safe(p.sku)}</td>
+      <td>${safe(p.name)}</td>
+      <td>${published(p) ? 'Yes' : 'No'}</td>
+      <td>${safe(p.stock_qty ?? '')}</td>
+      <td>${Number(p.stock_qty) <= 2 ? 'LOW' : 'OK'}</td>
+      <td>${money(p.unit_price_incl_vat)}</td>
+    </tr>
+  `).join('');
+}
+
+function exportCsv() {
+  const rows = [
+    ['Condition','SKU','Name','Published',
+     'Stock quantity','Price incl VAT'],
+    ...reportData().map(p => [
+      type(p),p.sku,p.name,
+      published(p) ? 'Yes' : 'No',
+      p.stock_qty,p.unit_price_incl_vat
+    ])
+  ];
+
+  const csv = '\ufeff' + rows.map(row =>
+    row.map(value => {
+      let s = String(value ?? '');
+      if (/^[=+@\-\t\r]/.test(s)) s = "'" + s;
+      return '"' + s.replace(/"/g,'""') + '"';
+    }).join(',')
+  ).join('\r\n');
+
+  const url = window.URL.createObjectURL(
+    new Blob([csv], {type:'text/csv;charset=utf-8'})
+  );
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'tmecha-products-report.csv';
+  link.click();
+  setTimeout(() => window.URL.revokeObjectURL(url),1000);
+}
+
+async function loadActivity() {
+  const [n,u] = await Promise.all([
+    db.from('stock_movements')
+      .select('product_id,quantity_change,movement_type,note,created_at')
+      .order('created_at',{ascending:false}).limit(150),
+    db.from('used_stock_movements')
+      .select('product_id,quantity_change,reason,created_at')
+      .order('created_at',{ascending:false}).limit(150)
+  ]);
+
+  if (n.error || u.error) {
+    notice('Some stock history could not be loaded.', true);
+  }
+
+  const rows = [
+    ...(n.data || []).map(x => ({
+      ...x,kind:'New',reason:x.note || x.movement_type
+    })),
+    ...(u.data || []).map(x => ({...x,kind:'Used'}))
+  ].sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+
+  $('activityRows').innerHTML = rows.map(x => `
+    <tr>
+      <td>${safe(new Date(x.created_at).toLocaleString())}</td>
+      <td>${x.kind}</td>
+      <td>${safe(x.product_id)}</td>
+      <td>${safe(x.quantity_change)}</td>
+      <td>${safe(x.reason || '')}</td>
+    </tr>
+  `).join('') || '<tr><td colspan="5">No movements</td></tr>';
+}
+
+async function loadTestimonials() {
+  if (staffRole !== 'admin') return;
+
+  const {data,error} = await db.from('testimonials')
+    .select('id,customer_name,service_used,testimonial,photo_url,status,created_at')
+    .order('created_at',{ascending:false})
+    .limit(500);
+
+  if (error) {
+    notice('Testimonials: ' + error.message, true);
+    return;
+  }
+
+  testimonials = data || [];
+  renderTestimonials();
+}
+
+function renderTestimonials() {
+  const filter = $('testimonialFilter').value;
+  const rows = testimonials.filter(t =>
+    filter === 'all' || t.status === filter
+  );
+
+  $('testimonialCount').textContent =
+    rows.length + ' testimonials shown';
+
+  $('testimonialRows').innerHTML = rows.map(t => `
+    <article class="card" style="margin-bottom:12px">
+      <div class="actions" style="justify-content:space-between">
+        <strong>${safe(t.customer_name)}</strong>
+        <span class="pill">${safe(t.status)}</span>
+      </div>
+      <p><strong>Service:</strong> ${safe(t.service_used)}</p>
+      <p style="white-space:pre-wrap">${safe(t.testimonial)}</p>
+      ${t.photo_url
+        ? `<p><a href="${safe(t.photo_url)}" target="_blank"
+            rel="noopener noreferrer">View customer photo</a></p>`
+        : ''}
+      <div class="actions">
+        <button class="btn small" data-review="${safe(t.id)}"
+          data-status="approved">Approve</button>
+        <button class="btn small danger" data-review="${safe(t.id)}"
+          data-status="rejected">Reject</button>
+        <button class="btn small secondary" data-review="${safe(t.id)}"
+          data-status="pending">Move to pending</button>
+      </div>
+    </article>
+  `).join('') || '<p>No testimonials.</p>';
+
+  document.querySelectorAll('[data-review]').forEach(btn => {
+    btn.onclick = () => reviewTestimonial(
+      btn.dataset.review,
+      btn.dataset.status
+    );
+  });
+}
+
+async function reviewTestimonial(id,status) {
+  if (staffRole !== 'admin' || testimonialsBusy) return;
+
+  const item = testimonials.find(t => t.id === id);
+  if (!item || !confirm(`Change testimonial to ${status}?`)) return;
+
+  testimonialsBusy = true;
+
+  try {
+    const {data:{user},error:authError} =
+      await db.auth.getUser();
+
+    if (authError || !user) {
+      throw authError || Error('Session expired');
+    }
+
+    const {error} = await db.from('testimonials')
+      .update({
+        status,
+        reviewed_at:status === 'pending'
+          ? null : new Date().toISOString(),
+        reviewed_by:status === 'pending' ? null : user.id
+      })
+      .eq('id',id);
+
+    if (error) throw error;
+
+    await loadTestimonials();
+    notice('Testimonial updated.');
+  } catch (error) {
+    notice(error.message,true);
+  } finally {
+    testimonialsBusy = false;
+  }
+}
+
+// Events
+$('search').oninput = renderList;
+$('filterCondition').onchange = renderList;
+$('newProduct').onclick = () => {
+  reset();
+  setPage('products');
+};
+
+$('price').oninput = preview;
+$('vat').oninput = preview;
+$('condition').onchange = preview;
+
+$('photos').onchange = () => {
+  const files = [...$('photos').files];
+
+  try {
+    validateFiles(
+      files,
+      selected && type(selected) === 'used'
+        ? activeGallery().length : 0,
+      $('condition').value === 'used'
+    );
+    showImages();
+  } catch (error) {
+    $('photos').value = '';
+    showImages();
+    notice(error.message,true);
+  }
+};
+
+$('savePhotosOnly').onclick = savePhotosOnly;
+$('saveDraft').onclick = () => {
+  if (selected && published(selected) && !confirm('This will HIDE this published product from the public website. Continue?')) return;
+  save('draft');
+};
+$('savePublish').onclick = () => save('published');
+
+$('stockCondition').onchange = renderStock;
+$('stockSearch').oninput = renderStock;
+$('adjustForm').onsubmit = adjustStock;
+
+$('reportCondition').onchange = renderReports;
+$('exportCsv').onclick = exportCsv;
+$('loadActivity').onclick = loadActivity;
+
+$('testimonialFilter').onchange = renderTestimonials;
+$('reloadTestimonials').onclick = loadTestimonials;
+
+$('refresh').onclick = async () => {
+  $('refresh').disabled = true;
+  try {
+    await load();
+    if (selected) edit(selected.id,selected._table);
+    notice('Data refreshed from Supabase.');
+  } catch (error) {
+    notice(error.message,true);
+  } finally {
+    $('refresh').disabled = false;
+  }
+};
+
+$('logout').onclick = async () => {
+  await db.auth.signOut();
+  location.replace('login.html');
+};
+
+try {
+  $('uiLanguage').value =
+    localStorage.getItem('tmecha-admin-lang') || 'en';
+} catch {}
+
+$('uiLanguage').onchange = () => {
+  try {
+    localStorage.setItem(
+      'tmecha-admin-lang',
+      $('uiLanguage').value
+    );
+  } catch {}
+};
+
+init().catch(error => {
+  notice('Initialization failed: ' + error.message,true);
+});
+
+});
 </script>
-
 </body>
-
 </html>

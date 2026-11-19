@@ -4,9 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#082b50">
-  <meta name="description" content="Learn about T-MechaTrucks & Parts Ltd, our history, values, mission and vision in Rwanda.">
+  <meta name="description" content="Learn about T-MechaTrucks & Parts Ltd, our history, values, mission and vision in East Africa.">
   <title>About Us | T-MechaTrucks &amp; Parts Ltd</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="canonical" href="https://www.tmechatrucks.com/about.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="T-MechaTrucks &amp; Parts Ltd">
+  <meta property="og:title" content="About Us | T-MechaTrucks &amp; Parts Ltd">
+  <meta property="og:description" content="Discover the history, mission, values and future vision of T-MechaTrucks &amp; Parts Ltd, a truck and spare parts business in Kigali, Rwanda.">
+  <meta property="og:url" content="https://www.tmechatrucks.com/about.html">
+  <meta property="og:image" content="https://www.tmechatrucks.com/images/combo14.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://www.tmechatrucks.com/about.html#webpage",
+  "url": "https://www.tmechatrucks.com/about.html",
+  "name": "About Us | T-MechaTrucks & Parts Ltd",
+  "description": "Learn about the history, values, mission and vision of T-MechaTrucks & Parts Ltd in Kigali, Rwanda.",
+  "inLanguage": "en",
+  "about": {
+    "@type": "Organization",
+    "@id": "https://www.tmechatrucks.com/#organization",
+    "name": "T-MechaTrucks & Parts Ltd",
+    "url": "https://www.tmechatrucks.com/",
+    "logo": "https://www.tmechatrucks.com/images/logo.webp",
+    "telephone": "+250799908714",
+    "email": "tmechatrucks@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kabutare, Rusororo",
+      "addressLocality": "Kigali",
+      "addressRegion": "Gasabo",
+      "addressCountry": "RW"
+    }
+  }
+}
+  </script>
+
 
   <style>
     :root {
@@ -149,7 +186,7 @@
       display: flex;
       align-items: center;
       color: white;
-      background: var(--deep) url("images/combo12.png") center / cover no-repeat;
+      background: var(--deep) url("images/combo14.webp") center / cover no-repeat;
     }
 
     .tm-hero::before {
@@ -667,6 +704,78 @@
 }
 @media(max-width:360px){.tm-brand img{width:36px;height:36px}.tm-brand-name{font-size:10px}.tm-brand-tagline{font-size:7px}.tm-language{width:70px;min-width:70px;max-width:70px}}
 
+
+/* ABOUT: consistent header and accessible floating controls */
+.tm-header{background:#fff;border-bottom:3px solid var(--gold)}
+.tm-header-inner{width:min(1320px,96%)}
+.tm-brand img{width:62px;height:62px;flex-shrink:0}
+.tm-language{width:82px;min-width:82px;border-color:var(--gold)}
+.tm-menu-toggle{display:none;align-items:center;justify-content:center;border:1px solid var(--gold);background:#fff;color:var(--navy)}
+.tm-menu-toggle svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.tm-nav{gap:10px}
+.tm-nav a{padding:7px 2px;font-size:12px}
+.tm-nav a:hover,.tm-nav a[aria-current="page"]{background:transparent;color:#a77b16}
+.tm-location-float{position:fixed;left:12px;top:50%;transform:translateY(-50%);z-index:1100;display:grid;place-items:center;width:50px;height:50px;border-radius:50%;border:2px solid var(--gold);background:var(--navy);color:#fff;box-shadow:0 4px 15px #0004;animation:aboutLocationWiggle 5s ease-in-out infinite}
+.tm-location-float svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes aboutLocationWiggle{0%,90%,100%{transform:translateY(-50%) rotate(0)}93%{transform:translateY(-50%) rotate(-7deg)}96%{transform:translateY(-50%) rotate(7deg)}}
+.tm-float-wa{background:#25d366}
+.tm-photo-openable{cursor:zoom-in}
+.tm-about-viewer[hidden]{display:none!important}
+.tm-about-viewer{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:64px 15px 72px;background:rgba(4,22,40,.96)}
+.tm-about-viewer-stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none;cursor:grab}
+.tm-about-viewer-stage:active{cursor:grabbing}
+.tm-about-viewer-image{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;transform-origin:center;will-change:transform}
+.tm-about-viewer-tools{position:absolute;top:12px;right:14px;display:flex;gap:8px}
+.tm-about-viewer-tools button{min-width:42px;min-height:42px;padding:4px 9px;border:1px solid #ffffff80;border-radius:9px;background:var(--navy);color:white;font-size:23px;cursor:pointer}
+.tm-about-viewer-caption{position:absolute;bottom:14px;left:12px;right:12px;text-align:center;color:white;font-size:13px}
+.tm-about-viewer button:focus-visible,.tm-location-float:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+@media(max-width:1050px){.tm-nav{gap:3px}.tm-nav a{font-size:11px}}
+@media(max-width:850px){.tm-menu-toggle{display:flex}.tm-header-inner{width:96%}.tm-brand img{width:49px;height:49px}.tm-nav{gap:0}.tm-nav a{padding:11px 13px;font-size:14px}.tm-nav.is-open{display:flex;max-height:calc(100dvh - 75px);overflow-y:auto}.tm-header-inner{position:static}}
+@media(max-width:560px){.tm-brand img{width:43px;height:43px}.tm-location-float{left:10px;width:43px;height:43px}.tm-about-viewer{padding:60px 9px 65px}.tm-header-controls{flex-shrink:0}}
+@media(prefers-reduced-motion:reduce){.tm-location-float{animation:none}}
+
+
+/* ABOUT HEADER MATCHES INDEX — SINGLE OVERRIDE */
+/* SHARED HEADER STANDARD — MATCHES SERVICES.HTML */
+.tm-header{position:sticky;top:0;z-index:1000;background:#fff!important;border-bottom:3px solid var(--gold);box-shadow:0 3px 16px #00000012}
+.tm-header-inner{width:min(1320px,96%);min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:nowrap;padding:0}
+.tm-brand{display:flex;align-items:center;gap:11px;min-width:0;flex-shrink:0;margin:0}
+.tm-brand img{width:62px;height:62px;object-fit:contain;flex-shrink:0}
+.tm-brand-text{display:flex;flex-direction:column;gap:4px}
+.tm-brand-name{display:block;color:var(--navy);font-size:clamp(14px,1.4vw,19px);font-weight:800;line-height:1.25}
+.tm-brand-tagline{display:block;margin-top:0;color:var(--orange);font-size:10px;font-weight:800;letter-spacing:.6px}
+.tm-nav{display:flex;align-items:center;justify-content:flex-start;flex-wrap:nowrap;gap:15px;position:static;padding:0;background:transparent;box-shadow:none}
+.tm-nav a{color:var(--navy);font-size:13px;font-weight:700;white-space:nowrap}
+.tm-nav a:hover,.tm-nav a.active{color:var(--orange)}
+.tm-header-controls{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.tm-language,.tm-header .tm-language{width:82px;min-width:82px;max-width:82px;min-height:40px;height:auto;padding:6px;border:1px solid var(--gold);border-radius:8px;background:#fff;color:var(--navy);font-size:12px;font-weight:700}
+.tm-menu-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;min-height:42px;padding:8px;border:1px solid var(--gold);border-radius:8px;background:#fff;color:var(--navy);cursor:pointer}
+.tm-menu-toggle svg{width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.tm-menu-toggle .icon-close{display:none}
+.tm-menu-toggle[aria-expanded="true"] .icon-menu{display:none}
+.tm-menu-toggle[aria-expanded="true"] .icon-close{display:block}
+@media(max-width:1100px){.tm-nav{gap:10px}.tm-nav a{font-size:12px}}
+@media(max-width:1050px){
+ .tm-header-inner{position:relative;min-height:76px}
+ .tm-menu-toggle{display:flex}
+ .tm-nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:12px 16px;background:#fff;box-shadow:0 12px 20px #04162820;border-radius:0 0 12px 12px;max-height:calc(100dvh - 80px);overflow-y:auto;z-index:1001}
+ .tm-nav.tm-nav-open,.tm-nav.is-open{display:flex}
+ .tm-nav a{padding:11px 8px;font-size:14px;border-bottom:1px solid var(--border)}
+}
+@media(max-width:600px){
+ .tm-header-inner{width:calc(100% - 20px);min-height:70px;gap:8px}
+ .tm-brand{flex:1 1 auto;gap:8px}
+ .tm-brand img{width:47px;height:47px}
+ .tm-brand-name{font-size:clamp(12px,3.35vw,15px);overflow-wrap:anywhere}
+ .tm-brand-tagline{font-size:clamp(8px,2.2vw,10px);letter-spacing:0}
+ .tm-header-controls{gap:6px}
+ .tm-language,.tm-header .tm-language{width:70px;min-width:70px;max-width:70px;min-height:38px;padding:4px 2px;font-size:11px}
+ .tm-menu-toggle,.tm-header .tm-menu-toggle{width:39px;height:39px;min-height:39px;padding:7px;flex:0 0 39px}
+}
+@media(max-width:360px){.tm-brand img{width:38px;height:38px}.tm-brand-name{font-size:11px}.tm-brand-tagline{font-size:7px}.tm-language,.tm-header .tm-language{width:62px;min-width:62px;max-width:62px}}
+
+.tm-nav a[aria-current="page"]{color:var(--orange)}
+
 </style>
 </head>
 
@@ -675,33 +784,25 @@
   <div class="tm-header-inner">
     <a class="tm-brand" href="index.html" aria-label="T-MechaTrucks Home">
       <img src="images/logo.webp" alt="T-MechaTrucks &amp; Parts Ltd logo">
-      <span class="tm-brand-text">
-        <span class="tm-brand-name">T-MechaTrucks &amp; Parts Ltd</span>
-        <span class="tm-brand-tagline" data-i18n="tagline">TRUCKS · PARTS · SERVICE</span>
-      </span>
+      <span class="tm-brand-text"><strong class="tm-brand-name">T-MechaTrucks &amp; Parts Ltd</strong><span class="tm-brand-tagline" data-i18n="tagline">TRUCKS · PARTS · SERVICE</span></span>
     </a>
-
-    <div class="tm-header-controls">
-      <select id="languageSelect" class="tm-language" aria-label="Select language">
-        <option value="en">🇬🇧 EN</option>
-        <option value="rw">🇷🇼 RW</option>
-        <option value="fr">🇫🇷 FR</option>
-        <option value="sw">🇹🇿 SW</option>
-        <option value="zh">🇨🇳 ZH</option>
-      </select>
-
-      <button class="tm-menu-toggle" id="menuToggle" type="button"
-        aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">☰</button>
-
-      <nav class="tm-nav" id="mainNav" aria-label="Main navigation">
+    <nav class="tm-nav" id="mainNav" aria-label="Main navigation">
         <a href="index.html" data-i18n="navHome">Home</a>
         <a href="new-product.html" data-i18n="navNew">New spare parts</a>
         <a href="used-product.html" data-i18n="navUsed">Quality used spare parts</a>
         <a href="services.html" data-i18n="navServices">Our services</a>
-        <a href="about.html" aria-current="page" data-i18n="navAbout">About us</a>
-        <a href="index.html#contact" data-i18n="navContact">Contact us</a>
+        <a href="about.html" class="active" aria-current="page" data-i18n="navAbout">About us</a>
+        <a href="contact.html" data-i18n="navContact">Contact us</a>
         <a href="testimonials.html" data-i18n="navReviews">Testimonials</a>
       </nav>
+    <div class="tm-header-controls">
+      <select id="languageSelect" class="tm-language" aria-label="Select language">
+        <option value="en">🇬🇧 EN</option><option value="rw">🇷🇼 RW</option><option value="fr">🇫🇷 FR</option><option value="sw">🇹🇿 SW</option><option value="zh">🇨🇳 ZH</option>
+      </select>
+      <button class="tm-menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
     </div>
   </div>
 </header>
@@ -710,7 +811,7 @@
   <section class="tm-hero">
     <div class="tm-container tm-hero-content">
       <span class="tm-eyebrow" data-i18n="eyebrow">WHO WE ARE</span>
-      <h1 data-i18n="heroTitle">Your Trusted Truck Partner in Rwanda</h1>
+      <h1 data-i18n="heroTitle">Your Trusted Truck Partner in East Africa</h1>
       <p data-i18n="heroText">Built on hands-on experience, honest service and a commitment to helping customers find the right trucks, parts and technical support.</p>
       <div class="tm-actions">
         <a class="tm-btn tm-btn-primary" href="services.html" data-i18n="heroServices">Explore Our Services</a>
@@ -730,7 +831,7 @@
       </div>
 
       <div class="tm-story-image">
-        <img src="images/combo12.png" alt="T-MechaTrucks truck and parts services">
+        <img class="tm-photo-openable" tabindex="0" role="button" src="images/combo14.webp" alt="T-MechaTrucks truck and parts services" title="Open photo">
         <div class="tm-image-caption">
           <strong data-i18n="captionTitle">Built through real-world experience</strong>
           <span data-i18n="captionText">From hands-on truck repairs to broader transport support.</span>
@@ -757,7 +858,7 @@
         <article class="tm-card">
           <div class="tm-card-icon" aria-hidden="true">↗</div>
           <h3 data-i18n="visionHeading">Our Vision</h3>
-          <p data-i18n="visionText">To become a trusted partner in Rwanda’s transport sector and contribute to stronger local technical capacity and production.</p>
+          <p data-i18n="visionText">To become a trusted partner in East Africa’s transport sector and contribute to stronger local technical capacity and production.</p>
         </article>
 
         <article class="tm-card">
@@ -783,7 +884,7 @@
   <section class="tm-section">
     <div class="tm-container tm-founder-grid">
       <div class="tm-founder-photo">
-        <img src="images/ceo.jpg" alt="Dieudonné TUYISHIME, founder of T-MechaTrucks &amp; Parts Ltd" loading="lazy">
+        <img class="tm-photo-openable" tabindex="0" role="button" src="images/ceo.webp" alt="Dieudonné TUYISHIME, founder of T-MechaTrucks &amp; Parts Ltd" loading="lazy" title="Open photo">
       </div>
 
       <div class="tm-founder-copy">
@@ -847,7 +948,7 @@
     <div class="tm-footer-grid">
       <div>
         <h3>T-MechaTrucks &amp; Parts Ltd</h3>
-        <p data-i18n="footerIntro">Your trusted truck partner in Rwanda for trucks, spare parts and technical services.</p>
+        <p data-i18n="footerIntro">Your trusted truck partner in East Africa for trucks, spare parts and technical services.</p>
       </div>
       
       <div>
@@ -880,6 +981,9 @@
 </div>
 
 
+<a class="tm-location-float" href="https://share.google/nYQdTx6pXrrND3oRh" target="_blank" rel="noopener noreferrer" aria-label="Find T-MechaTrucks on Google Maps" title="Our location on Google Maps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+<div class="tm-about-viewer" id="aboutViewer" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden><div class="tm-about-viewer-tools"><button type="button" id="aboutZoomOut" aria-label="Zoom out">−</button><button type="button" id="aboutZoomIn" aria-label="Zoom in">+</button><button type="button" id="aboutViewerClose" aria-label="Close photo viewer">×</button></div><div class="tm-about-viewer-stage" id="aboutViewerStage"><img class="tm-about-viewer-image" id="aboutViewerImage" alt=""></div><div class="tm-about-viewer-caption" id="aboutViewerCaption" aria-live="polite"></div></div>
+
 <script>
 (() => {
   "use strict";
@@ -902,7 +1006,7 @@
       navContact: "Contact Us",
       navReviews: "Testimonials",
       eyebrow: "WHO WE ARE",
-      heroTitle: "Your Trusted Truck Partner in Rwanda",
+      heroTitle: "Your Trusted Truck Partner in East Africa",
       heroText: "Built on practical experience, honest service and a commitment to helping customers find the right trucks, quality spare parts and dependable technical support.",
       heroServices: "Explore Our Services",
       heroContact: "Talk to Our Team",
@@ -919,7 +1023,7 @@
       missionHeading: "Our Mission",
       missionText: "To provide dependable truck solutions, quality spare parts and practical technical services that help customers keep their businesses moving.",
       visionHeading: "Our Vision",
-      visionText: "To become a trusted partner in Rwanda's transport sector while contributing to stronger local technical skills and sustainable production.",
+      visionText: "To become a trusted partner in East Africa's transport sector while contributing to stronger local technical skills and sustainable production.",
       valuesHeading: "Our Values",
       valuesText: "Honesty, practical problem-solving, respect for customers, quality workmanship and a commitment to continuous improvement.",
       founderKicker: "LEADERSHIP",
@@ -946,7 +1050,7 @@
       ctaText: "Whether you need a truck, spare parts or technical assistance, contact our team to discuss your requirements.",
       ctaServices: "Explore Our Services",
       ctaContact: "Contact Us",
-      footerIntro: "Your trusted truck partner in Rwanda for trucks, spare parts and technical services.",
+      footerIntro: "Your trusted truck partner in East Africa for trucks, spare parts and technical services.",
       footerLinksTitle: "Quick Links",
       footerContactTitle: "Contact Information",
       footerLocation: "Kabutare, Rusororo, Gasabo, Kigali, Rwanda",
@@ -1240,7 +1344,9 @@
       "aria-label",
       isOpen ? menuLabels[language].close : menuLabels[language].open
     );
-    menuToggle.textContent = isOpen ? "×" : "☰";
+    menuToggle.innerHTML = isOpen
+      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
   }
 
   function closeMenu() {
@@ -1321,6 +1427,57 @@
       }
     });
   }
+
+
+  // Image viewer: mouse wheel, buttons, double-click and touch pinch zoom.
+  const viewer = document.getElementById('aboutViewer');
+  const viewerImage = document.getElementById('aboutViewerImage');
+  const viewerStage = document.getElementById('aboutViewerStage');
+  const viewerCaption = document.getElementById('aboutViewerCaption');
+  const viewerClose = document.getElementById('aboutViewerClose');
+  let viewerScale = 1;
+  let previousFocus = null;
+  const setViewerScale = next => {
+    viewerScale = Math.max(1, Math.min(5, next));
+    viewerImage.style.transform = `scale(${viewerScale})`;
+  };
+  const closeViewer = () => {
+    if (viewer.hidden) return;
+    viewer.hidden = true;
+    document.body.style.overflow = '';
+    setViewerScale(1);
+    if (previousFocus) previousFocus.focus();
+  };
+  document.querySelectorAll('.tm-photo-openable').forEach(img => {
+    const open = () => {
+      previousFocus = document.activeElement;
+      viewerImage.src = img.currentSrc || img.src;
+      viewerImage.alt = img.alt;
+      viewerCaption.textContent = img.alt;
+      setViewerScale(1);
+      viewer.hidden = false;
+      document.body.style.overflow = 'hidden';
+      viewerClose.focus();
+    };
+    img.addEventListener('click', open);
+    img.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') {e.preventDefault();open();} });
+  });
+  viewerClose.addEventListener('click', closeViewer);
+  document.getElementById('aboutZoomIn').addEventListener('click', () => setViewerScale(viewerScale + .5));
+  document.getElementById('aboutZoomOut').addEventListener('click', () => setViewerScale(viewerScale - .5));
+  viewerStage.addEventListener('dblclick', () => setViewerScale(viewerScale === 1 ? 2 : 1));
+  viewerStage.addEventListener('wheel', e => {e.preventDefault();setViewerScale(viewerScale + (e.deltaY < 0 ? .25 : -.25));}, {passive:false});
+  viewer.addEventListener('click', e => {if(e.target === viewer) closeViewer();});
+  document.addEventListener('keydown', e => {
+    if (viewer.hidden) return;
+    if (e.key === 'Escape') {e.preventDefault();closeViewer();}
+    if (e.key === 'Tab') {e.preventDefault();const controls = [...viewer.querySelectorAll('button')];const i = controls.indexOf(document.activeElement);controls[(i+(e.shiftKey?-1:1)+controls.length)%controls.length].focus();}
+  });
+  let pinchStart = 0, pinchScale = 1;
+  const pinchDistance = touches => Math.hypot(touches[0].clientX-touches[1].clientX,touches[0].clientY-touches[1].clientY);
+  viewerStage.addEventListener('touchstart', e => {if(e.touches.length===2){pinchStart=pinchDistance(e.touches);pinchScale=viewerScale;}}, {passive:true});
+  viewerStage.addEventListener('touchmove', e => {if(e.touches.length===2 && pinchStart){e.preventDefault();setViewerScale(pinchScale*pinchDistance(e.touches)/pinchStart);}}, {passive:false});
+  viewerStage.addEventListener('touchend', e => {if(e.touches.length<2) pinchStart=0;});
 
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
